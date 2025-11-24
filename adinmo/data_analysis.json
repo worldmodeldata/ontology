@@ -1,0 +1,3970 @@
+{
+  "bids": {
+    "table_name": "bids",
+    "total_columns": 68,
+    "columns": {
+      "INSERT_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "5539674344221",
+          "5539662013763",
+          "5539659311646",
+          "5539652355449",
+          "5539640473133"
+        ]
+      },
+      "INSERTED_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 95,
+        "sample_values": [
+          "2025-09-15 23:55:36.437",
+          "2025-09-15 23:51:57.410",
+          "2025-09-15 23:51:06.552",
+          "2025-09-15 23:49:07.343",
+          "2025-09-15 23:45:26.801"
+        ]
+      },
+      "ACTIVITY_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "2025-09-15 23:55:26.664",
+          "2025-09-15 23:51:51.611",
+          "2025-09-15 23:50:55.994",
+          "2025-09-15 23:49:03.724",
+          "2025-09-15 23:45:25.134"
+        ]
+      },
+      "EVENT_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "bid_request",
+          "bid_request",
+          "bid_request",
+          "bid_request",
+          "bid_request"
+        ]
+      },
+      "IP_ADDRESS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "LAT": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "LONG": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "USER_AGENT": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "ASPECT_RATIO": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "1:1",
+          "5:1",
+          "3:2",
+          "1:1",
+          "5:1"
+        ]
+      },
+      "PLACEMENT_FIT": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "VeryLoose",
+          "VeryLoose",
+          "VeryLoose",
+          "VeryLoose",
+          "VeryLoose"
+        ]
+      },
+      "HEIGHT": {
+        "dtype": "float64",
+        "null_count": 52,
+        "null_percentage": 52.0,
+        "unique_count": 8,
+        "sample_values": [
+          "250.0",
+          "50.0",
+          "250.0",
+          "480.0",
+          "640.0"
+        ]
+      },
+      "WIDTH": {
+        "dtype": "float64",
+        "null_count": 52,
+        "null_percentage": 52.0,
+        "unique_count": 7,
+        "sample_values": [
+          "300.0",
+          "320.0",
+          "300.0",
+          "320.0",
+          "360.0"
+        ]
+      },
+      "BID_FLOOR": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 11,
+        "sample_values": [
+          "1000",
+          "400",
+          "200",
+          "1500",
+          "100"
+        ]
+      },
+      "PROTOCOLS": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "BID_PRICE": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "SEAT": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "CONSENT_GDPR": {
+        "dtype": "object",
+        "null_count": 91,
+        "null_percentage": 91.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "True",
+          "False",
+          "True",
+          "True"
+        ]
+      },
+      "CONSENT_CCPA": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "COPPA": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "HAS_CONSENT_STRING": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "NO_BID_REASON": {
+        "dtype": "object",
+        "null_count": 1,
+        "null_percentage": 1.0,
+        "unique_count": 3,
+        "sample_values": [
+          "204 |  | ",
+          "204 |  | ",
+          "204 |  | ",
+          "204 |  | ",
+          "204 |  | "
+        ]
+      },
+      "BID_URL": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "CONNECTION_TYPE": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "3",
+          "2",
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      "NO_BID_MAJOR": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "No Content",
+          "No Content",
+          "No Content",
+          "No Content",
+          "No Content"
+        ]
+      },
+      "NO_BID_MINOR": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "No Content",
+          "No Content",
+          "No Content",
+          "No Content",
+          "No Content"
+        ]
+      },
+      "CONSENT_OTHER": {
+        "dtype": "object",
+        "null_count": 75,
+        "null_percentage": 75.0,
+        "unique_count": 1,
+        "sample_values": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ]
+      },
+      "CONSENT_PERSONALISED_GDPR": {
+        "dtype": "object",
+        "null_count": 91,
+        "null_percentage": 91.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "True",
+          "False",
+          "True",
+          "True"
+        ]
+      },
+      "IS_THROTTLED": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "USED_DYNAMIC_PRICING": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "REQUEST_SIZES": {
+        "dtype": "object",
+        "null_count": 24,
+        "null_percentage": 24.0,
+        "unique_count": 10,
+        "sample_values": [
+          "[\n  {\n    \"h\": 50,\n    \"w\": 320\n  },\n  {\n    \"h\": 50,\n    \"w\": 300\n  },\n  {\n    \"h\": 90,\n    \"w\": 72",
+          "[\n  {\n    \"h\": 320,\n    \"w\": 480\n  },\n  {\n    \"h\": 250,\n    \"w\": 300\n  },\n  {\n    \"h\": 280,\n    \"w\":",
+          "[\n  {\n    \"h\": 480,\n    \"w\": 320\n  }\n]",
+          "[\n  {\n    \"h\": 50,\n    \"w\": 320\n  },\n  {\n    \"h\": 50,\n    \"w\": 300\n  },\n  {\n    \"h\": 90,\n    \"w\": 72",
+          "[\n  {\n    \"h\": 480,\n    \"w\": 320\n  },\n  {\n    \"h\": 600,\n    \"w\": 300\n  },\n  {\n    \"h\": 1024,\n    \"w\""
+        ]
+      },
+      "SDK_VAST_PARSING": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "AD_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "video",
+          "banner",
+          "banner",
+          "banner",
+          "banner"
+        ]
+      },
+      "OS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 91,
+        "sample_values": [
+          "android os 15 / api-35 (ap3a.240905.015.a2/x518usqs9cyf1)",
+          "android os 14 / api-34 (honorclk-l33/8.0.0.335c605e10r2p3)",
+          "ios 18.5",
+          "android os 9 / api-28 (ppr1.180610.011/a305fdds4asl1)",
+          "android os 13 / api-33 (tp1a.220624.014/250218v5302)"
+        ]
+      },
+      "ANON_DEVICE_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 97,
+        "sample_values": [
+          "b64659297b48f3a6f20e70ad581583a4",
+          "cad5abd5bce7746d16dc529883768a2a",
+          "80d183438d584e2ea1b69905963a608b",
+          "5732e981bf2c2bea28f4a3ec74627145",
+          "057c27b3ffd6006be4cddd3108ddfb21"
+        ]
+      },
+      "IMP_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "6de68811-3b39-45e4-92af-06ee1f7f211d",
+          "6f8b9db0-750a-4fe0-9a5d-c8031e81df96",
+          "f7aa6c65-bc33-4c81-9ffa-30cf4d092bc4",
+          "ec826c94-56fc-4eb3-8596-241c40514ce4",
+          "4b0a70d7-59bb-4b23-8772-948fa8625564"
+        ]
+      },
+      "GAME_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "905",
+          "1104",
+          "445",
+          "1104",
+          "754"
+        ]
+      },
+      "ADVERTISING_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "DEVICE_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "tablet",
+          "phone",
+          "phone",
+          "phone",
+          "phone"
+        ]
+      },
+      "DEVICE_OS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "android",
+          "android",
+          "ios",
+          "android",
+          "android"
+        ]
+      },
+      "DEVICE_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "DEVICE_MODEL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 91,
+        "sample_values": [
+          "samsung sm-x518u",
+          "honor clk-lx3",
+          "iphone13,2",
+          "samsung sm-a305f",
+          "tecno tecno ki7"
+        ]
+      },
+      "COUNTRY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 27,
+        "sample_values": [
+          "us",
+          "mx",
+          "us",
+          "vn",
+          "bd"
+        ]
+      },
+      "STATE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "CITY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "POSTCODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "LOCALE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "LANG": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 8,
+        "sample_values": [
+          "english",
+          "spanish",
+          "english",
+          "vietnamese",
+          "english"
+        ]
+      },
+      "REQUEST_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "408e659a-b604-4c3b-9d69-cb8f446db4c0",
+          "9805bdf4-b6ef-47c9-b9b9-fa3863be3257",
+          "18dce587-bb12-498e-bc5e-8fc7373099fa",
+          "093cbbf1-f3fe-455d-8537-bf5da853edd2",
+          "b35a9aa4-3637-448d-8c36-f32d76fbc5f5"
+        ]
+      },
+      "IAB_CAT": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "[\"iab9-30\"]",
+          "[\"iab9-30\"]",
+          "[\"iab9-25\",\"iab9-30\"]",
+          "[\"iab9-30\"]",
+          "[\"iab17\",\"iab9-30\"]"
+        ]
+      },
+      "APP_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "com.mirai.idle.gym.clicker.battle.simulation",
+          "com.moon.craft.buildingcraft",
+          "com.jamieparish.thewanderer",
+          "com.moon.craft.buildingcraft",
+          "com.nextwave.wcc3"
+        ]
+      },
+      "STORE_URL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "https://play.google.com/store/apps/details?id=com.mirai.idle.gym.clicker.battle.simulation",
+          "https://play.google.com/store/apps/details?id=com.moon.craft.buildingcraft",
+          "https://apps.apple.com/gb/app/the-wanderer-post-nuclear-rpg/id1365548683",
+          "https://play.google.com/store/apps/details?id=com.moon.craft.buildingcraft",
+          "https://play.google.com/store/apps/details?id=com.nextwave.wcc3"
+        ]
+      },
+      "AD_EXCHANGE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 26,
+        "sample_values": [
+          "gamoshi",
+          "adsparc",
+          "loopme-clickable",
+          "venatus",
+          "boldwin"
+        ]
+      },
+      "BID_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "ADVERTISER_DOMAIN": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "CREATIVE_URL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "CAMPAIGN_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "CREATIVE_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "SESSION_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 97,
+        "sample_values": [
+          "0ae10cbb-8259-4475-86a9-cfe2d6837f0f",
+          "7c131b0f-12a8-4cbb-9ab7-f65a0e3654c8",
+          "c9d417a0-d34e-4183-aa81-53e8d7dff8da",
+          "2b08293e-02fe-4adf-9740-1332bdae5c20",
+          "e5fa7592-d559-4775-b954-d1e3966b8e2c"
+        ]
+      },
+      "SDK_VERSION": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "314",
+          "314",
+          "314",
+          "314",
+          "314"
+        ]
+      },
+      "APPLICATION_VERSION": {
+        "dtype": "object",
+        "null_count": 4,
+        "null_percentage": 4.0,
+        "unique_count": 3,
+        "sample_values": [
+          "4.0.55",
+          "4.0.54",
+          "2.9.3",
+          "4.0.55",
+          "4.0.55"
+        ]
+      },
+      "BUNDLE_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "com.mirai.idle.gym.clicker.battle.simulation",
+          "com.moon.craft.buildingcraft",
+          "1365548683",
+          "com.moon.craft.buildingcraft",
+          "com.nextwave.wcc3"
+        ]
+      },
+      "PROVIDER_REQUEST_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 50,
+        "sample_values": [
+          "294",
+          "18",
+          "259",
+          "289",
+          "298"
+        ]
+      },
+      "DEAL_ID": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "SDK_REQUEST_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 99,
+        "sample_values": [
+          "5469f377-6e32-4e1d-b741-359da02ba532",
+          "3221485e-db51-45d8-82c3-97a0b6a5a69a",
+          "1f831961-ea7b-475b-89fa-ca07473513e6",
+          "4ac7abb3-6464-47fa-ba62-b8173b075384",
+          "09882561-ab08-4a1a-a2f9-bf137d2c513d"
+        ]
+      },
+      "STORE_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "1",
+          "1",
+          "2",
+          "1",
+          "1"
+        ]
+      },
+      "INSTALLER_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "com.android.vending",
+          "com.android.vending",
+          "apple store",
+          "com.android.vending",
+          "com.android.vending"
+        ]
+      },
+      "INSTALL_MODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "store",
+          "store",
+          "store",
+          "store",
+          "store"
+        ]
+      },
+      "PLATFORM": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "android",
+          "android",
+          "iphoneplayer",
+          "android",
+          "android"
+        ]
+      }
+    },
+    "sample_row_count": 100,
+    "common_keys": [
+      "ANON_DEVICE_ID",
+      "SESSION_ID",
+      "GAME_ID"
+    ]
+  },
+  "iap": {
+    "table_name": "iap",
+    "total_columns": 44,
+    "columns": {
+      "INSERT_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "5539669700049",
+          "5539656202000",
+          "5539652875519",
+          "5539609944295",
+          "5539583168174"
+        ]
+      },
+      "INSERTED_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 90,
+        "sample_values": [
+          "2025-09-15 23:54:12.302",
+          "2025-09-15 23:50:11.808",
+          "2025-09-15 23:49:12.309",
+          "2025-09-15 23:36:41.708",
+          "2025-09-15 23:28:43.094"
+        ]
+      },
+      "ACTIVITY_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "2025-09-15 23:53:53.159",
+          "2025-09-15 23:49:48.911",
+          "2025-09-15 23:48:39.632",
+          "2025-09-15 23:36:27.899",
+          "2025-09-15 23:28:14.751"
+        ]
+      },
+      "IAP_PURCHASE_MADE": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "CONSENT_GDPR": {
+        "dtype": "object",
+        "null_count": 95,
+        "null_percentage": 95.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "False",
+          "False",
+          "False",
+          "True"
+        ]
+      },
+      "CONSENT_CCPA": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "COPPA": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "TRACKING_ENABLED": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "HAS_CONSENT_STRING": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "IP_ADDRESS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "LAT": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "LONG": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "POSTCODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "CONSENT_PERSONALISED_GDPR": {
+        "dtype": "object",
+        "null_count": 95,
+        "null_percentage": 95.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "False",
+          "False",
+          "False",
+          "True"
+        ]
+      },
+      "CONSENT_OTHER": {
+        "dtype": "object",
+        "null_count": 66,
+        "null_percentage": 66.0,
+        "unique_count": 1,
+        "sample_values": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ]
+      },
+      "ITEM_COST": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 59,
+        "sample_values": [
+          "1780",
+          "509000",
+          "4990",
+          "1770",
+          "4360"
+        ]
+      },
+      "AMOUNT_INVOICEABLE": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "FAILURE_REASON": {
+        "dtype": "object",
+        "null_count": 1,
+        "null_percentage": 1.0,
+        "unique_count": 5,
+        "sample_values": [
+          "UserCancelled",
+          "UserCancelled",
+          "UserCancelled",
+          "UserCancelled",
+          "UserCancelled"
+        ]
+      },
+      "ITEM_COST_USD": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 63,
+        "sample_values": [
+          "1780",
+          "8917",
+          "4990",
+          "1770",
+          "4360"
+        ]
+      },
+      "ANON_DEVICE_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 97,
+        "sample_values": [
+          "46f35efffcf98e2de1bc7f1e2d2babe0",
+          "061ad7d5acf78adff23951aa11e56eed",
+          "57fd1c8418afee45e4c8accb977dbcc0",
+          "6b8bcb14b5da0ee446247b19a8ca28da",
+          "95ba949d844ddb2e1a45d22ec767cf97"
+        ]
+      },
+      "GAME_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "1104",
+          "1104",
+          "1104",
+          "1104",
+          "1104"
+        ]
+      },
+      "SESSION_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 97,
+        "sample_values": [
+          "335a7026-b582-44a0-aa67-71b84b54e179",
+          "37565bf0-b0cc-47be-8bb6-76bd78794a69",
+          "9daf0e37-83fd-4c0b-81cb-b16b24fe2adf",
+          "0c6f11af-b541-47c0-856f-0e9918ab72d1",
+          "a7ee07c5-c3f7-4337-94fd-ecaf34856968"
+        ]
+      },
+      "SDK_VERSION": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "314",
+          "314",
+          "314",
+          "314",
+          "314"
+        ]
+      },
+      "UNITY_VERSION": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "2022.3.64f1",
+          "2022.3.64f1",
+          "2022.3.66f1",
+          "2022.3.66f1",
+          "2022.3.64f1"
+        ]
+      },
+      "UNREAL_VERSION": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "IAP_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 37,
+        "sample_values": [
+          "craft.charpack",
+          "block.craft.smashers.vipweek",
+          "craft.gem7",
+          "craft.removeads",
+          "craft.gem7"
+        ]
+      },
+      "CAMPAIGN_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 6,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "ADVERTISING_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "DEVICE_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "phone",
+          "phone",
+          "phone",
+          "phone",
+          "phone"
+        ]
+      },
+      "DEVICE_OS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "android",
+          "android",
+          "android",
+          "android",
+          "android"
+        ]
+      },
+      "OS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 90,
+        "sample_values": [
+          "android os 12 / api-31 (stas32.79-77-28-63-9/77-28-63-9)",
+          "android os 10 / api-29 (qp1a.190711.020/2024022110)",
+          "android os 11 / api-30 (rp1a.200720.012/a307fnxxs4cwh1)",
+          "android os 12 / api-31 (sp1a.210812.003/compiler09281512)",
+          "android os 15 / api-35 (ap3a.240905.015.a2/a145mubsadyh2)"
+        ]
+      },
+      "DEVICE_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 82,
+        "sample_values": [
+          "moto g22",
+          "oppo a15",
+          "a30s \u0627\u0644\u062e\u0627\u0635 \u0628\u0640 \u0647\u0627\u0634\u0645",
+          "v2027",
+          "galaxy a14"
+        ]
+      },
+      "DEVICE_MODEL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 83,
+        "sample_values": [
+          "motorola moto g22",
+          "oppo cph2185",
+          "samsung sm-a307fn",
+          "vivo v2027",
+          "samsung sm-a145m"
+        ]
+      },
+      "COUNTRY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 31,
+        "sample_values": [
+          "ar",
+          "ph",
+          "iq",
+          "np",
+          "ni"
+        ]
+      },
+      "STATE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "CITY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "LOCALE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "LANG": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 9,
+        "sample_values": [
+          "spanish",
+          "english",
+          "arabic",
+          "english",
+          "spanish"
+        ]
+      },
+      "CURRENCY_CODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 23,
+        "sample_values": [
+          "usd",
+          "php",
+          "usd",
+          "usd",
+          "usd"
+        ]
+      },
+      "TRANSACTION_CODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "STORE_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      },
+      "PURCHASE_SOURCE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "other",
+          "other",
+          "other",
+          "other",
+          "other"
+        ]
+      },
+      "PLACEMENT_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "IMAGE_GUID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      }
+    },
+    "sample_row_count": 100,
+    "common_keys": [
+      "ANON_DEVICE_ID",
+      "SESSION_ID",
+      "GAME_ID"
+    ]
+  },
+  "impressions": {
+    "table_name": "impressions",
+    "total_columns": 87,
+    "columns": {
+      "INSERT_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "5539680622886",
+          "5539647268124",
+          "5539646152889",
+          "5539629382542",
+          "5539548769979"
+        ]
+      },
+      "INSERTED_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 99,
+        "sample_values": [
+          "2025-09-15 23:57:20.248",
+          "2025-09-15 23:47:29.347",
+          "2025-09-15 23:47:09.585",
+          "2025-09-15 23:42:09.364",
+          "2025-09-15 23:18:29.533"
+        ]
+      },
+      "ACTIVITY_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "2025-09-15 23:57:15.628",
+          "2025-09-15 23:47:22.867",
+          "2025-09-15 23:47:02.343",
+          "2025-09-15 23:41:59.756",
+          "2025-09-15 23:18:19.978"
+        ]
+      },
+      "START_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "2025-09-15 23:56:30.127",
+          "2025-09-15 23:46:21.678",
+          "2025-09-15 23:46:36.513",
+          "2025-09-15 23:41:56.145",
+          "2025-09-15 23:17:33.324"
+        ]
+      },
+      "END_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "2025-09-15 23:56:31.127",
+          "2025-09-15 23:46:22.678",
+          "2025-09-15 23:46:37.513",
+          "2025-09-15 23:41:56.145",
+          "2025-09-15 23:17:34.324"
+        ]
+      },
+      "SESSION_TIME_MS": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "311680",
+          "5996577",
+          "287840",
+          "3010161",
+          "10313581"
+        ]
+      },
+      "EVENT_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "invalid_impression",
+          "invalid_impression",
+          "invalid_impression",
+          "invalid_impression",
+          "invalid_impression"
+        ]
+      },
+      "CACHED": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "IS_MEASURED": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "True",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "IS_RTB": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "IS_WEBVIEW": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "ACTUAL_REVENUE": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "COOLDOWN_COVERAGE": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "CONSENT_GDPR": {
+        "dtype": "object",
+        "null_count": 94,
+        "null_percentage": 94.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "CONSENT_CCPA": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "COPPA": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "TRACKING_ENABLED": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "IP_ADDRESS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "AGE": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "LAT": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "LONG": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "ASPECT_RATIO": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "VIDEO_DURATION_MS": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "HEIGHT": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 11,
+        "sample_values": [
+          "575",
+          "800",
+          "800",
+          "575",
+          "575"
+        ]
+      },
+      "WIDTH": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 12,
+        "sample_values": [
+          "864",
+          "600",
+          "600",
+          "864",
+          "864"
+        ]
+      },
+      "PLACEMENT_FIT": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "BID_PRICE": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "COVERAGES": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 33,
+        "sample_values": [
+          "[\n  0,\n  -1,\n  -1,\n  -1,\n  -1\n]",
+          "[\n  0,\n  -1,\n  -1,\n  -1,\n  -1\n]",
+          "[\n  0,\n  -1,\n  -1,\n  -1,\n  -1\n]",
+          "[\n  -1\n]",
+          "[\n  0,\n  -1,\n  -1,\n  -1,\n  -1\n]"
+        ]
+      },
+      "FRAUD_CODE": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "DWELL_TIME": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "BATCH_NUMBER": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 91,
+        "sample_values": [
+          "133",
+          "117",
+          "136",
+          "31",
+          "129"
+        ]
+      },
+      "PLAYER_ENGAGEMENT_SCORE": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "ZBD_MILLISATS_REWARD": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "CONSENT_OTHER": {
+        "dtype": "object",
+        "null_count": 48,
+        "null_percentage": 48.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ]
+      },
+      "CONSENT_PERSONALISED_GDPR": {
+        "dtype": "object",
+        "null_count": 94,
+        "null_percentage": 94.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "TIME_SINCE_LEVEL_LOAD": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "311680",
+          "5996576",
+          "287840",
+          "3010159",
+          "10313579"
+        ]
+      },
+      "IMAGE_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "AdinmoHouseAd",
+          "AdinmoHouseAd",
+          "AdinmoHouseAd",
+          "AdinmoHouseAd",
+          "AdinmoHouseAd"
+        ]
+      },
+      "FAILED_REASON": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 9,
+        "sample_values": [
+          "NotInShot",
+          "NotInShot",
+          "NotInShot",
+          "ImageExpired",
+          "NotInShot"
+        ]
+      },
+      "T_C_STRING": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "USER_EMAIL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "SEX": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "POSTCODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "STORE_URL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "ERROR_DETAIL": {
+        "dtype": "object",
+        "null_count": 87,
+        "null_percentage": 87.0,
+        "unique_count": 10,
+        "sample_values": [
+          "Status Downloaded, applied=True, created=2025-09-15 23:09:40.238, last updated=2025-09-15 23:07:41.8",
+          "Failed to download image Cannot connect to destination host",
+          "Failed to download image Cannot connect to destination host",
+          "Status Downloaded, applied=False, created=2025-09-15 21:03:12.861, last updated=2025-09-15 21:03:12.",
+          "Status Downloaded, applied=True, created=2025-09-15 20:52:56.339, last updated=2025-09-15 20:32:03.1"
+        ]
+      },
+      "SOURCE_OBJECT": {
+        "dtype": "object",
+        "null_count": 13,
+        "null_percentage": 13.0,
+        "unique_count": 9,
+        "sample_values": [
+          "[DontDestroyOnLoad]/AdinmoQuadTV/GameObject/GameObject/GameObject/GameObject",
+          "[DontDestroyOnLoad]/AdinmoQuadPortrait/GameObject/GameObject/GameObject/GameObject",
+          "[DontDestroyOnLoad]/AdinmoQuadPortrait/GameObject/GameObject/GameObject/GameObject",
+          "[DontDestroyOnLoad]/AdinmoQuadTV/GameObject/GameObject/GameObject/GameObject",
+          "[Swiming]/AdinmoQuadPortrait/GameObject/GameObject/GameObject"
+        ]
+      },
+      "CURRENT_LEVEL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "DontDestroyOnLoad",
+          "DontDestroyOnLoad",
+          "DontDestroyOnLoad",
+          "DontDestroyOnLoad",
+          "DontDestroyOnLoad"
+        ]
+      },
+      "CONTEXT_INFO": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "AD_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "banner",
+          "banner",
+          "banner",
+          "banner",
+          "banner"
+        ]
+      },
+      "ANON_DEVICE_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "d68876fa5695a45028d3b20e967fd568",
+          "90c860574d8faf9f6ae85ebac2bd1fd2",
+          "9927aa773c078330fcbc324289ba3761",
+          "6db4dc32cd280595b0c37d4ca72028cd",
+          "e80900f8d5c6b4fb17254f007fb651c8"
+        ]
+      },
+      "IMPRESSION_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "044659f4-1bb9-4ac6-b128-68110c09ca6e",
+          "79436f13-ea54-4ad2-a7d9-8864c1f65c4c",
+          "8590ca0b-0eca-4502-a0b8-8319b4e511d7",
+          "ea7414e3-d132-4480-a7fd-b0226f0cf819",
+          "efdb8839-f318-43ed-a8f2-c5cdb696e272"
+        ]
+      },
+      "GAME_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "1104",
+          "1104",
+          "1104",
+          "1104",
+          "1104"
+        ]
+      },
+      "CAMPAIGN_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 16,
+        "sample_values": [
+          "1657",
+          "1660",
+          "1660",
+          "1663",
+          "1662"
+        ]
+      },
+      "PLACEMENT_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 8,
+        "sample_values": [
+          "4907",
+          "4908",
+          "4908",
+          "unknown",
+          "4907"
+        ]
+      },
+      "SESSION_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "2ef27d7d-3903-425b-9cf4-be236c773946",
+          "e5400c17-dedd-4a4b-950f-6573330d838b",
+          "93751166-d862-48b1-b7f8-89162e70aff3",
+          "3af2656c-567b-43f1-be39-3a61e7cf0747",
+          "d42d1746-a8b7-4d6e-9dbf-03becae459f6"
+        ]
+      },
+      "IMAGE_GUID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "d4ad36ab-5645-4d51-a32a-a97ba03c9272_888c46ad-541f-409b-90d8-a3a65c7a278d",
+          "e02cc043-587b-4caa-9bc1-6e574d8bd126_21d03192-64e1-41eb-8ba5-dbca9f21bfbf",
+          "e02cc043-587b-4caa-9bc1-6e574d8bd126_03b7e277-9d18-419d-b579-6dc440276995",
+          "097ad8a4-5ce4-4315-9492-cc7d0be752cf_c8c9eb4f-d16f-4c72-a07f-68e3a5b57df9",
+          "12b91ae4-a6df-46f9-ab1f-46836355adc6_28f9b656-eaf4-4bfc-bc70-953e7f9c36e6"
+        ]
+      },
+      "SDK_SOURCE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "website",
+          "website",
+          "website",
+          "website",
+          "website"
+        ]
+      },
+      "SDK_VERSION": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "314",
+          "314",
+          "314",
+          "314",
+          "314"
+        ]
+      },
+      "UNITY_VERSION": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "2022.3.66f1",
+          "2022.3.66f1",
+          "2022.3.64f1",
+          "2022.3.66f1",
+          "2022.3.64f1"
+        ]
+      },
+      "UNREAL_VERSION": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "GAME_KEY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "GAME_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "PLACEMENT_KEY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "PLACEMENT_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "ADVERTISING_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "DEVICE_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "phone",
+          "phone",
+          "phone",
+          "phone",
+          "phone"
+        ]
+      },
+      "DEVICE_OS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "android",
+          "android",
+          "android",
+          "android",
+          "android"
+        ]
+      },
+      "OS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 97,
+        "sample_values": [
+          "android os 10 / api-29 (qp1a.190711.020/102.0.0.295c432)",
+          "android os 14 / api-34 (up1a.231005.007/a135mubu4dxa2)",
+          "android os 12 / api-31 (sp1a.210812.003/compiler10220125)",
+          "android os 13 / api-33 (tp1a.220624.014/a032mubs6cyf3)",
+          "android os 14 / api-34 (uta34.82-113/82-113)"
+        ]
+      },
+      "DEVICE_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "DEVICE_MODEL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 90,
+        "sample_values": [
+          "vivo v1911a",
+          "samsung sm-a135m",
+          "vivo v2111",
+          "samsung sm-a032m",
+          "motorola moto g24 power"
+        ]
+      },
+      "COUNTRY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 28,
+        "sample_values": [
+          "mx",
+          "ve",
+          "vn",
+          "br",
+          "ar"
+        ]
+      },
+      "STATE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "CITY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "LOCALE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "LANG": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 8,
+        "sample_values": [
+          "spanish",
+          "spanish",
+          "vietnamese",
+          "portuguese",
+          "spanish"
+        ]
+      },
+      "BID_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "ADVERTISER_DOMAIN": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "APP_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "com.moon.craft.buildingcraft",
+          "com.moon.craft.buildingcraft",
+          "com.moon.craft.buildingcraft",
+          "com.moon.craft.buildingcraft",
+          "com.moon.craft.buildingcraft"
+        ]
+      },
+      "AD_EXCHANGE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "REQUEST_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "APPLICATION_VERSION": {
+        "dtype": "object",
+        "null_count": 2,
+        "null_percentage": 2.0,
+        "unique_count": 3,
+        "sample_values": [
+          "4.0.55",
+          "4.0.55",
+          "4.0.54",
+          "4.0.55",
+          "4.0.54"
+        ]
+      },
+      "ZBD_GAMERTAG": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "ZBD_USER_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "EXTERNAL_ZBD_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "STORE_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      },
+      "INSTALLER_NAME": {
+        "dtype": "object",
+        "null_count": 1,
+        "null_percentage": 1.0,
+        "unique_count": 3,
+        "sample_values": [
+          "com.android.vending",
+          "com.android.vending",
+          "com.android.vending",
+          "com.android.vending",
+          "com.android.vending"
+        ]
+      },
+      "INSTALL_MODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "store",
+          "store",
+          "store",
+          "store",
+          "store"
+        ]
+      },
+      "DEVICE_UNIQUE_IDENTIFIER": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      }
+    },
+    "sample_row_count": 100,
+    "common_keys": [
+      "ANON_DEVICE_ID",
+      "SESSION_ID",
+      "GAME_ID"
+    ]
+  },
+  "sessions": {
+    "table_name": "sessions",
+    "total_columns": 48,
+    "columns": {
+      "INSERT_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "5539689618187",
+          "5539687942930",
+          "5539652322991",
+          "5539632458492",
+          "5539592656985"
+        ]
+      },
+      "INSERTED_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 94,
+        "sample_values": [
+          "2025-09-16 00:00:05.861",
+          "2025-09-15 23:59:36.216",
+          "2025-09-15 23:49:06.740",
+          "2025-09-15 23:43:07.360",
+          "2025-09-15 23:31:36.591"
+        ]
+      },
+      "ACTIVITY_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "2025-09-15 23:59:59.766",
+          "2025-09-15 23:59:18.653",
+          "2025-09-15 23:48:41.267",
+          "2025-09-15 23:42:50.537",
+          "2025-09-15 23:31:16.452"
+        ]
+      },
+      "EVENT_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "session_start",
+          "session_start",
+          "session_start",
+          "session_start",
+          "session_start"
+        ]
+      },
+      "CONSENT_GDPR": {
+        "dtype": "object",
+        "null_count": 93,
+        "null_percentage": 93.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "False"
+        ]
+      },
+      "CONSENT_CCPA": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "COPPA": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "TRACKING_ENABLED": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "IP_ADDRESS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "AGE": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "LAT": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "LONG": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "PIXALATE_IP_FRAUD": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "CONSENT_OTHER": {
+        "dtype": "object",
+        "null_count": 60,
+        "null_percentage": 60.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ]
+      },
+      "CONSENT_PERSONALISED_GDPR": {
+        "dtype": "object",
+        "null_count": 93,
+        "null_percentage": 93.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "False"
+        ]
+      },
+      "PIXALATE_DATACENTER_FRAUD": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "PIXALATE_USER_AGENT_FRAUD": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "PIXALATE_AD_ID_SCORE": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "PIXALATE_IP_SCORE": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "HAS_DMP_DATA": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ]
+      },
+      "T_C_STRING": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "SEX": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "POSTCODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "GAME_FRAUD_CODE": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "USER_EMAIL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "ANON_DEVICE_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "86ded15472ef38e2ddfd9ba99f31d166",
+          "9d85844bf6e353b6ce4e8c91fc95a5f2",
+          "a4173aa517b7c28f522e1cfac2e7dba4",
+          "fd550785d6a6ea6dc38e5dacde303ef7",
+          "d89d88625ca028d6c9fdfc0f8122d81e"
+        ]
+      },
+      "GAME_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "754",
+          "1104",
+          "1104",
+          "754",
+          "1104"
+        ]
+      },
+      "SESSION_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "7c57a99d-9f5b-4195-9433-a60a403522b9",
+          "05027a98-5129-48ad-b3ff-a5c43590a2bd",
+          "890b0655-321f-4549-868d-40b4931c39eb",
+          "efa07660-203f-4577-aa39-9635b32049aa",
+          "f675679b-fc83-48fd-8175-5e6359a32d36"
+        ]
+      },
+      "SDK_SOURCE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "SDK_VERSION": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "314",
+          "314",
+          "314",
+          "314",
+          "314"
+        ]
+      },
+      "UNITY_VERSION": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "2022.3.45f1",
+          "2022.3.64f1",
+          "2022.3.64f1",
+          "2022.3.45f1",
+          "2022.3.66f1"
+        ]
+      },
+      "UNREAL_VERSION": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "ADVERTISING_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "DEVICE_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "phone",
+          "phone",
+          "phone",
+          "phone",
+          "tablet"
+        ]
+      },
+      "DEVICE_OS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "android",
+          "android",
+          "android",
+          "android",
+          "android"
+        ]
+      },
+      "OS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 99,
+        "sample_values": [
+          "android os 14 / api-34 (ukq1.240624.001/os2.0.9.0.umsmixm)",
+          "android os 12 / api-31 (sp1a.210812.016/250122v1402)",
+          "android os 8.0.0 / api-26 (honorlld-l31/138(c432))",
+          "android os 12 / api-31 (sp1a.210812.016/190)",
+          "android os 14 / api-34 (up1a.231105.001.a1/20250526-140017)"
+        ]
+      },
+      "DEVICE_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "DEVICE_MODEL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 97,
+        "sample_values": [
+          "xiaomi 22101320g",
+          "infinix infinix x669c",
+          "huawei lld-l31",
+          "lava lava lzx409",
+          "g-tab t7"
+        ]
+      },
+      "COUNTRY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 31,
+        "sample_values": [
+          "pk",
+          "id",
+          "ci",
+          "bd",
+          "qa"
+        ]
+      },
+      "STATE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "CITY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "LOCALE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "LANG": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 11,
+        "sample_values": [
+          "english",
+          "indonesian",
+          "french",
+          "english",
+          "english"
+        ]
+      },
+      "APPLICATION_VERSION": {
+        "dtype": "object",
+        "null_count": 2,
+        "null_percentage": 2.0,
+        "unique_count": 3,
+        "sample_values": [
+          "2.9.3",
+          "4.0.54",
+          "4.0.54",
+          "2.9.3",
+          "4.0.55"
+        ]
+      },
+      "STORE_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      },
+      "INSTALLER_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "com.android.vending",
+          "com.android.vending",
+          "com.android.vending",
+          "com.android.vending",
+          "com.android.vending"
+        ]
+      },
+      "INSTALL_MODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "store",
+          "store",
+          "store",
+          "store",
+          "store"
+        ]
+      },
+      "PLATFORM": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "android",
+          "android",
+          "android",
+          "android",
+          "android"
+        ]
+      }
+    },
+    "sample_row_count": 100,
+    "common_keys": [
+      "ANON_DEVICE_ID",
+      "SESSION_ID",
+      "GAME_ID"
+    ]
+  },
+  "tracker_events": {
+    "table_name": "tracker_events",
+    "total_columns": 54,
+    "columns": {
+      "INSERT_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "5573873555735",
+          "5573858518335",
+          "5573857058491",
+          "5573854525212",
+          "5573850933195"
+        ]
+      },
+      "INSERTED_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 94,
+        "sample_values": [
+          "2025-09-20 23:56:57.253",
+          "2025-09-20 23:53:07.315",
+          "2025-09-20 23:52:47.306",
+          "2025-09-20 23:52:07.311",
+          "2025-09-20 23:51:07.312"
+        ]
+      },
+      "ACTIVITY_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "2025-09-20 23:56:50.512",
+          "2025-09-20 23:53:00.558",
+          "2025-09-20 23:52:41.003",
+          "2025-09-20 23:51:45.867",
+          "2025-09-20 23:50:45.200"
+        ]
+      },
+      "EVENT_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "click",
+          "click",
+          "click",
+          "click",
+          "click"
+        ]
+      },
+      "IP_ADDRESS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "LAT": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "LONG": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "ASPECT_RATIO": {
+        "dtype": "object",
+        "null_count": 67,
+        "null_percentage": 67.0,
+        "unique_count": 3,
+        "sample_values": [
+          "2:3",
+          "1:1",
+          "1:1",
+          "3:2",
+          "3:2"
+        ]
+      },
+      "PLACEMENT_FIT": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "VeryLoose",
+          "VeryLoose",
+          "VeryLoose",
+          "VeryLoose",
+          "VeryLoose"
+        ]
+      },
+      "HEIGHT": {
+        "dtype": "float64",
+        "null_count": 4,
+        "null_percentage": 4.0,
+        "unique_count": 11,
+        "sample_values": [
+          "480.0",
+          "320.0",
+          "512.0",
+          "768.0",
+          "320.0"
+        ]
+      },
+      "WIDTH": {
+        "dtype": "float64",
+        "null_count": 4,
+        "null_percentage": 4.0,
+        "unique_count": 12,
+        "sample_values": [
+          "320.0",
+          "480.0",
+          "768.0",
+          "1024.0",
+          "480.0"
+        ]
+      },
+      "BID_PRICE": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 31,
+        "sample_values": [
+          "142",
+          "277",
+          "0",
+          "283",
+          "821"
+        ]
+      },
+      "CONSENT_GDPR": {
+        "dtype": "object",
+        "null_count": 93,
+        "null_percentage": 93.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ]
+      },
+      "HAS_CONSENT_STRING": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "VIDEO_DURATION_MS": {
+        "dtype": "float64",
+        "null_count": 83,
+        "null_percentage": 83.0,
+        "unique_count": 7,
+        "sample_values": [
+          "16000.0",
+          "20000.0",
+          "28000.0",
+          "15000.0",
+          "15000.0"
+        ]
+      },
+      "CONSENT_OTHER": {
+        "dtype": "object",
+        "null_count": 65,
+        "null_percentage": 65.0,
+        "unique_count": 1,
+        "sample_values": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ]
+      },
+      "CONSENT_PERSONALISED_GDPR": {
+        "dtype": "object",
+        "null_count": 93,
+        "null_percentage": 93.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ]
+      },
+      "DISPLAY_TIME": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "TRACKER_IP_ADDRESS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "USED_N8": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "FOR_REVENUE": {
+        "dtype": "bool",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      "POSTCODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "FRAUD_REASON": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "FRAUD_DETAILS": {
+        "dtype": "float64",
+        "null_count": 100,
+        "null_percentage": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      "AD_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "banner",
+          "banner",
+          "banner",
+          "banner",
+          "banner"
+        ]
+      },
+      "ANON_DEVICE_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 75,
+        "sample_values": [
+          "e76fc100f1fc54ca11ad91f10d0b2cd4",
+          "4e3bad6a733a41ca9a2fbc1f5125eec8",
+          "c9291d2b5b607f16911e9d6008691690",
+          "ef55c6db7d338d6da5cb02bab61c5de7",
+          "ef55c6db7d338d6da5cb02bab61c5de7"
+        ]
+      },
+      "GAME_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "905",
+          "905",
+          "754",
+          "905",
+          "905"
+        ]
+      },
+      "ADVERTISING_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "DEVICE_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "tablet",
+          "phone",
+          "phone",
+          "tablet",
+          "tablet"
+        ]
+      },
+      "DEVICE_OS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "android",
+          "android",
+          "android",
+          "android",
+          "android"
+        ]
+      },
+      "OS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 66,
+        "sample_values": [
+          "android os 15 / api-35 (ap3a.240905.015.a2/p620xxu5bye5)",
+          "android os 15 / api-35 (v1tds35h.83-20-5-5/a8c92-2b8bb0)",
+          "android os 13 / api-33 (tp1a.220624.014/n985fxxsihyh3)",
+          "android os 15 / api-35 (ap3a.240905.015.a2/x210xxs8dyg1)",
+          "android os 15 / api-35 (ap3a.240905.015.a2/x210xxs8dyg1)"
+        ]
+      },
+      "DEVICE_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "DEVICE_MODEL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 70,
+        "sample_values": [
+          "samsung sm-p620",
+          "motorola moto g54 5g",
+          "samsung sm-n985f",
+          "samsung sm-x210",
+          "samsung sm-x210"
+        ]
+      },
+      "COUNTRY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 27,
+        "sample_values": [
+          "us",
+          "br",
+          "pk",
+          "us",
+          "us"
+        ]
+      },
+      "STATE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "CITY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]",
+          "[Redacted]"
+        ]
+      },
+      "LOCALE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "LANG": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 11,
+        "sample_values": [
+          "english",
+          "portuguese",
+          "english",
+          "english",
+          "english"
+        ]
+      },
+      "REQUEST_ID": {
+        "dtype": "object",
+        "null_count": 67,
+        "null_percentage": 67.0,
+        "unique_count": 33,
+        "sample_values": [
+          "a97a6461-4cff-4e95-9f8e-e97f457e1e77",
+          "4c4859c2-0fa0-4bc1-9101-3fb9ab799598",
+          "fcb7eb88-dd01-4486-b9d2-b431e3cf6755",
+          "aae6e49b-b337-4c4d-85b4-d6361ef14983",
+          "ec70a13e-2988-4c5f-a4fd-ba6ef5a0d015"
+        ]
+      },
+      "APP_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "com.mirai.idle.gym.clicker.battle.simulation",
+          "com.mirai.idle.gym.clicker.battle.simulation",
+          "com.nextwave.wcc3",
+          "com.mirai.idle.gym.clicker.battle.simulation",
+          "com.mirai.idle.gym.clicker.battle.simulation"
+        ]
+      },
+      "AD_EXCHANGE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 14,
+        "sample_values": [
+          "smaato",
+          "smaato",
+          "unknown",
+          "insticator",
+          "xandr"
+        ]
+      },
+      "BID_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 34,
+        "sample_values": [
+          "99b025ed-c086-4abf-a62d-a3ed15690a0d",
+          "5bb4d148-ff40-42f1-8134-08027c1d4ea4",
+          "unknown",
+          "eef537bc546ce9ece30ab2fc7b9880f2",
+          "6862095509819477485"
+        ]
+      },
+      "ADVERTISER_DOMAIN": {
+        "dtype": "object",
+        "null_count": 5,
+        "null_percentage": 5.0,
+        "unique_count": 19,
+        "sample_values": [
+          "unknown",
+          "homes.com",
+          "homes.com",
+          "unknown",
+          "unknown"
+        ]
+      },
+      "CAMPAIGN_ID": {
+        "dtype": "object",
+        "null_count": 2,
+        "null_percentage": 2.0,
+        "unique_count": 33,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "1648",
+          "136811sh",
+          "903"
+        ]
+      },
+      "CREATIVE_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 92,
+        "sample_values": [
+          "unknown",
+          "unknown",
+          "dc4b223f-9891-4aab-8921-14d296bce70f_01883ea6-8582-457d-aea3-5311a2ad8eb9",
+          "136811|2149:11802158",
+          "546375721"
+        ]
+      },
+      "SESSION_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 76,
+        "sample_values": [
+          "d7ddca80-1cc5-40c3-8c96-9c2f5ae13bf3",
+          "fe7e75f3-df82-4210-8412-1469375f17a2",
+          "80367840-5bbf-4a0f-9054-bffb528618b6",
+          "47e6b0ef-552f-4d48-92ff-2413bafdb4da",
+          "47e6b0ef-552f-4d48-92ff-2413bafdb4da"
+        ]
+      },
+      "SDK_VERSION": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "314",
+          "314",
+          "314",
+          "314",
+          "314"
+        ]
+      },
+      "BUNDLE_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "com.mirai.idle.gym.clicker.battle.simulation",
+          "com.mirai.idle.gym.clicker.battle.simulation",
+          "com.nextwave.wcc3",
+          "com.mirai.idle.gym.clicker.battle.simulation",
+          "com.mirai.idle.gym.clicker.battle.simulation"
+        ]
+      },
+      "STORE_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      },
+      "INSTALLER_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "com.android.vending",
+          "com.android.vending",
+          "com.android.vending",
+          "com.android.vending",
+          "com.android.vending"
+        ]
+      },
+      "INSTALL_MODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "store",
+          "store",
+          "store",
+          "store",
+          "store"
+        ]
+      },
+      "PLACEMENT_KEY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 6,
+        "sample_values": [
+          "pk_3446d3ba18c246cbb74b1e085aaa318b",
+          "pk_b372d28b4c1b4e5383705aff4086cffa",
+          "pk_6e65811eedb6427482e0172894407563",
+          "pk_6945c360fd7b41c09bf2f017a53b4c0c",
+          "pk_6945c360fd7b41c09bf2f017a53b4c0c"
+        ]
+      },
+      "IMP_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 34,
+        "sample_values": [
+          "96f4c1a2-d0fd-4ed3-b0a2-85abdd052de3",
+          "b48dfed7-152f-4935-87ad-e8d5831ed928",
+          "unknown",
+          "48481bfc-3750-40ed-a128-05678908d0d1",
+          "ede99837-d9e9-457c-9f3d-4e0dba2cee32"
+        ]
+      },
+      "PROVIDER_REQUEST_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 16,
+        "sample_values": [
+          "10",
+          "10",
+          "unknown",
+          "277",
+          "91"
+        ]
+      }
+    },
+    "sample_row_count": 100,
+    "common_keys": [
+      "ANON_DEVICE_ID",
+      "SESSION_ID",
+      "GAME_ID"
+    ]
+  },
+  "attributed_installs": {
+    "table_name": "attributed_installs",
+    "total_columns": 13,
+    "columns": {
+      "INSERT_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 29,
+        "sample_values": [
+          "5539446443432",
+          "5539389196340",
+          "5539099585680",
+          "5549321544053",
+          "5538766404195"
+        ]
+      },
+      "INSERTED_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 29,
+        "sample_values": [
+          "2025-09-15 22:48:45.903",
+          "2025-09-15 22:31:46.109",
+          "2025-09-15 21:12:11.395",
+          "2025-09-17 12:29:35.340",
+          "2025-09-15 19:51:48.729"
+        ]
+      },
+      "ACTIVITY_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 29,
+        "sample_values": [
+          "2025-09-15 22:40:11.000",
+          "2025-09-15 22:26:43.000",
+          "2025-09-15 21:09:01.000",
+          "2025-09-15 19:58:41.000",
+          "2025-09-15 19:44:44.000"
+        ]
+      },
+      "INSTALL_TS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 29,
+        "sample_values": [
+          "2025-09-15 22:46:49.000",
+          "2025-09-15 22:29:32.000",
+          "2025-09-15 21:10:09.000",
+          "2025-09-17 12:27:36.000",
+          "2025-09-15 19:46:07.000"
+        ]
+      },
+      "EVENT_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "click",
+          "click",
+          "click",
+          "click",
+          "click"
+        ]
+      },
+      "ANON_DEVICE_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 28,
+        "sample_values": [
+          "955c21ea7099d749ede779d3e8f9fbc4",
+          "bb49316c607dcf0cd339a9e66887d84d",
+          "51a11887def870c22d767a91fcbb2713",
+          "eb1d033294f42565ac4e8c858f6b3b5f",
+          "9d6aa72b1689a8ae9e4ece67bfae86d0"
+        ]
+      },
+      "GAME_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 6,
+        "sample_values": [
+          "914",
+          "947",
+          "914",
+          "947",
+          "914"
+        ]
+      },
+      "SESSION_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 28,
+        "sample_values": [
+          "06942f63-670e-4cf9-b77d-709045074464",
+          "e0dd90ba-d481-4dc6-953f-21fe8a17cb72",
+          "82b1e4ab-2171-4929-9dd8-6c6f7635054f",
+          "ecf2e525-dda0-4cb7-bf24-30a36eac1784",
+          "e5ab91b4-a308-4c24-b2b7-756c2a567ad3"
+        ]
+      },
+      "CAMPAIGN_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 12,
+        "sample_values": [
+          "1546",
+          "1541",
+          "1548",
+          "1541",
+          "1544"
+        ]
+      },
+      "CAMPAIGN_BATCH_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "1169",
+          "1168",
+          "1169",
+          "1168",
+          "1169"
+        ]
+      },
+      "SDK_REQUEST_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 29,
+        "sample_values": [
+          "54866567-4aa3-4140-b736-5b7209cb472b",
+          "58d142a1-fa88-4165-a49a-8f30e9bea81b",
+          "2b070ad9-c189-439f-88cc-5825651b8f6a",
+          "2ef1ae21-14e0-4f5a-b80e-a1bdd4b554ca",
+          "4241af7b-b040-4f83-ac2d-b05929ed7f37"
+        ]
+      },
+      "PARTNER_ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "3",
+          "3",
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      "IMAGE_GUID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 14,
+        "sample_values": [
+          "a7ad0452-63e7-4db5-b671-66c319c9255c",
+          "8b4be47a-e40a-4be2-9d99-500627b82930",
+          "04251432-2d07-4012-816d-1a241b7342a7",
+          "8b4be47a-e40a-4be2-9d99-500627b82930",
+          "9d927162-b500-4058-b848-b6ea08145c75"
+        ]
+      }
+    },
+    "sample_row_count": 29,
+    "common_keys": [
+      "ANON_DEVICE_ID",
+      "SESSION_ID",
+      "GAME_ID"
+    ]
+  }
+}

@@ -1,0 +1,701 @@
+---
+# Adinmo Impressions Table Schema
+# Records actual ad impressions shown to users (post-bid)
+
+table_name: impressions
+description: |
+  Records when ads are actually displayed to users. This is the result of
+  successful bid requests. Contains detailed engagement metrics including
+  dwell time, viewability, and player engagement scores.
+  
+business_context: |
+  This is where the rubber meets the road - actual ad delivery and measurement.
+  Key for:
+  - Calculating actual revenue (vs bid requests)
+  - Measuring ad quality (dwell time, engagement)
+  - Analyzing viewability (valid vs invalid impressions)
+  - Fraud detection (multiple invalidity reasons)
+
+primary_key: INSERT_ID
+unique_keys: [IMPRESSION_ID]
+foreign_keys:
+  - ANON_DEVICE_ID  # User identity
+  - SESSION_ID      # Session context
+  - GAME_ID         # Game context
+  - BID_ID          # Links back to bid request
+  - CAMPAIGN_ID     # Campaign tracking
+
+record_volume_estimate: ~42 events/hour (subset of bid requests - only successful bids)
+largest_table: 87 columns - most detailed event data
+
+fields:
+  # Core Identity
+  INSERT_ID:
+    type: int64
+    nullable: false
+    description: Unique database record ID
+    purpose: Primary key
+    
+  INSERTED_TS:
+    type: timestamp
+    nullable: false
+    description: Database insertion time
+    purpose: Pipeline lag monitoring
+    
+  ACTIVITY_TS:
+    type: timestamp
+    nullable: false
+    description: SOURCE OF TRUTH - When impression actually occurred
+    purpose: Temporal analysis
+    
+  START_TS:
+    type: timestamp
+    nullable: false
+    description: When ad started displaying
+    purpose: Calculate display duration
+    
+  END_TS:
+    type: timestamp
+    nullable: false
+    description: When ad stopped displaying
+    purpose: Calculate display duration
+    
+  SESSION_TIME_MS:
+    type: int64
+    nullable: false
+    description: Total session time in milliseconds when impression occurred
+    purpose: Session depth analysis
+    business_insight: |
+      Shows how far into session user has played.
+      Early-session vs late-session ad performance differs significantly.
+      
+  # Impression Identity
+  IMPRESSION_ID:
+    type: string (uuid)
+    nullable: false
+    description: Unique identifier for this specific impression
+    purpose: Link to tracker events, deduplication
+    cardinality: High (1 per impression)
+    relationships:
+      - tracker_events.IMPRESSION_ID (one-to-many)
+      
+  # Linking Keys
+  ANON_DEVICE_ID:
+    type: string
+    nullable: false
+    description: CRITICAL - Device/user identifier
+    purpose: User journey tracking
+    
+  SESSION_ID:
+    type: string (uuid)
+    nullable: false
+    description: Gaming session identifier
+    purpose: Session-level ad load and frequency capping
+    
+  GAME_ID:
+    type: int64
+    nullable: false
+    description: Game identifier
+    purpose: Game-level monetization
+    
+  BID_ID:
+    type: string (uuid)
+    nullable: false
+    description: Links to originating bid request
+    purpose: Connect bid request to impression delivery
+    relationships:
+      - bids.BID_ID (many-to-one)
+      
+  # Event Classification
+  EVENT_TYPE:
+    type: string
+    nullable: false
+    description: Type of impression event
+    possible_values:
+      - invalid_impression  # Not counted/billed
+      - valid_impression    # Counted and billed
+      - viewable_impression # Met viewability standards
+    purpose: Impression quality classification
+    business_critical: |
+      Only valid/viewable impressions generate revenue!
+      invalid_impression = no revenue
+      
+  # Impression Validity & Measurement
+  IS_MEASURED:
+    type: bool
+    nullable: false
+    description: Whether impression met measurement criteria
+    purpose: Viewability and fraud prevention
+    
+  IS_RTB:
+    type: bool
+    nullable: false
+    description: Whether this was real-time bidding
+    purpose: Direct vs programmatic revenue segmentation
+    
+  IS_WEBVIEW:
+    type: bool
+    nullable: false
+    description: Whether ad was shown in webview
+    purpose: Rendering context tracking
+    
+  CACHED:
+    type: bool
+    nullable: false
+    description: Whether creative was pre-cached
+    purpose: Performance optimization tracking
+    business_impact: Cached creatives = better user experience
+    
+  # Revenue
+  ACTUAL_REVENUE:
+    type: int64 (cents)
+    nullable: false
+    description: Actual revenue earned from this impression in cents
+    purpose: Revenue calculation and reporting
+    distribution: Often 0 for invalid impressions
+    business_critical: |
+      This is THE revenue field.
+      Sum this for total revenue reporting.
+      
+  BID_PRICE:
+    type: int64 (cents CPM)
+    nullable: false
+    description: Winning bid price
+    purpose: Revenue analysis and optimization
+    relationship_to_revenue: |
+      ACTUAL_REVENUE = (BID_PRICE / 1000) * (1 impression)
+      But may be 0 if impression was invalid.
+      
+  # Engagement Metrics
+  DWELL_TIME:
+    type: int64 (milliseconds)
+    nullable: true
+    description: How long ad was in view
+    purpose: Engagement quality metric
+    calculation: Calculated SDK-side based on visibility tracking
+    business_insight: |
+      Longer dwell time = better engagement = higher value
+      Used for:
+      - Quality scoring
+      - Advertiser reporting
+      - Dynamic pricing optimization
+      
+  PLAYER_ENGAGEMENT_SCORE:
+    type: float64
+    nullable: true
+    description: Calculated engagement quality score
+    purpose: Holistic ad quality metric
+    calculation: Calculated server-side from multiple factors
+    business_use: |
+      Used to optimize:
+      - Ad placement locations
+      - Ad frequency
+      - Creative selection
+      
+  TIME_SINCE_LEVEL_LOAD:
+    type: int64 (milliseconds)
+    nullable: true
+    description: Time since current level/scene loaded
+    purpose: In-game context for ad timing
+    business_insight: |
+      Ads shown at level completion vs mid-level have
+      very different engagement patterns.
+      
+  CURRENT_LEVEL:
+    type: string
+    nullable: true
+    description: Current game level/stage
+    purpose: Progression-based targeting
+    
+  CONTEXT_INFO:
+    type: string (JSON)
+    nullable: true
+    description: Additional game context
+    purpose: Rich contextual data for optimization
+    
+  # Viewability & Coverage
+  COVERAGES:
+    type: string (JSON array)
+    nullable: true
+    description: Array of coverage/occlusion measurements
+    format: '[0, -1, -1, -1]'
+    purpose: Track ad visibility over time
+    business_context: |
+      Measures what % of ad was visible at intervals.
+      -1 = not measured
+      0-100 = percentage visible
+      Required for viewability standards (MRC, IAB).
+      
+  COOLDOWN_COVERAGE:
+    type: float64
+    nullable: true (100% null)
+    description: Coverage during cooldown period
+    purpose: Post-display visibility tracking
+    question: Why always null? Feature not implemented?
+    
+  # Placement Details
+  PLACEMENT_ID:
+    type: string
+    nullable: false
+    description: In-game placement identifier
+    purpose: Optimize placement performance
+    
+  PLACEMENT_KEY:
+    type: string
+    nullable: false
+    description: Readable placement identifier
+    format: "pk_xxxxxx..."
+    purpose: Placement identification and reporting
+    
+  PLACEMENT_NAME:
+    type: string
+    nullable: true
+    description: Human-readable placement name
+    purpose: Reporting and analysis
+    
+  ASPECT_RATIO:
+    type: string
+    nullable: false
+    description: Ad dimensions ratio
+    purpose: Creative format tracking
+    
+  HEIGHT:
+    type: int64 (pixels)
+    nullable: false
+    description: Ad height
+    purpose: Creative sizing
+    
+  WIDTH:
+    type: int64 (pixels)
+    nullable: false
+    description: Ad width
+    purpose: Creative sizing
+    
+  PLACEMENT_FIT:
+    type: string
+    nullable: true
+    description: How flexible placement sizing is
+    purpose: Creative adaptation tracking
+    
+  # Creative Details
+  IMAGE_GUID:
+    type: string (uuid)
+    nullable: false
+    description: Creative asset identifier
+    purpose: Creative performance analysis
+    relationships:
+      - Can link to creative database
+      - Appears in IAP and attributed_installs tables
+      
+  IMAGE_TYPE:
+    type: string
+    nullable: true
+    description: Type of creative asset
+    possible_values: ["static", "video", "playable"]
+    purpose: Creative format segmentation
+    
+  AD_TYPE:
+    type: string
+    nullable: false
+    description: Ad format type
+    possible_values: ["banner", "video", "interstitial", "rewarded"]
+    purpose: Format performance analysis
+    
+  VIDEO_DURATION_MS:
+    type: int64
+    nullable: true
+    description: Video length in milliseconds
+    purpose: Video ad analysis
+    
+  # Campaign & Advertiser
+  CAMPAIGN_ID:
+    type: int64
+    nullable: false
+    description: Campaign identifier
+    purpose: Campaign performance tracking
+    
+  ADVERTISER_DOMAIN:
+    type: string
+    nullable: true
+    description: Advertiser's domain
+    purpose: Brand safety and competitive intelligence
+    
+  GAME_KEY:
+    type: string
+    nullable: true
+    description: Game identifier key
+    purpose: Game reference
+    
+  GAME_NAME:
+    type: string
+    nullable: true
+    description: Human-readable game name
+    purpose: Reporting
+    
+  # Ad Exchange & Supply Chain
+  AD_EXCHANGE:
+    type: string
+    nullable: false
+    description: Ad exchange that filled impression
+    purpose: Exchange performance comparison
+    
+  REQUEST_ID:
+    type: string (uuid)
+    nullable: false
+    description: Original request identifier
+    purpose: Trace through system
+    
+  APP_ID:
+    type: string (bundle ID)
+    nullable: false
+    description: App identifier
+    purpose: App-level tracking
+    
+  # Device Information
+  ADVERTISING_ID:
+    type: string
+    nullable: true (redacted)
+    description: Platform advertising identifier
+    purpose: Cross-app attribution
+    
+  DEVICE_TYPE:
+    type: string
+    nullable: false
+    description: Device category
+    purpose: Device targeting
+    
+  DEVICE_OS:
+    type: string
+    nullable: false
+    description: Operating system
+    purpose: Platform analysis
+    
+  OS:
+    type: string
+    nullable: false
+    description: Detailed OS version
+    purpose: Compatibility tracking
+    
+  DEVICE_NAME:
+    type: string
+    nullable: false
+    description: Device name
+    purpose: Device performance analysis
+    
+  DEVICE_MODEL:
+    type: string
+    nullable: false
+    description: Device model code
+    purpose: Technical identification
+    
+  # Geolocation
+  COUNTRY:
+    type: string (ISO 2-letter)
+    nullable: false
+    description: Country code
+    purpose: Geographic analysis
+    
+  STATE:
+    type: string
+    nullable: true (redacted)
+    description: State/province
+    purpose: Sub-national targeting
+    
+  CITY:
+    type: string
+    nullable: true (redacted)
+    description: City
+    purpose: Local market analysis
+    
+  POSTCODE:
+    type: string
+    nullable: true (redacted)
+    description: Postal code
+    purpose: Hyper-local targeting
+    
+  IP_ADDRESS:
+    type: string
+    nullable: false (redacted)
+    description: IP address
+    purpose: Fraud detection
+    
+  LAT:
+    type: float64
+    nullable: true (100% null)
+    description: Latitude
+    purpose: Location-based targeting
+    
+  LONG:
+    type: float64
+    nullable: true (100% null)
+    description: Longitude
+    purpose: Location-based targeting
+    
+  AGE:
+    type: int64
+    nullable: true (100% null)
+    description: User age
+    purpose: Demographic targeting
+    notes: Always null - privacy/not collected
+    
+  SEX:
+    type: string
+    nullable: true (100% null)
+    description: User gender
+    purpose: Demographic targeting
+    notes: Always null - privacy/not collected
+    
+  USER_EMAIL:
+    type: string
+    nullable: true (100% null)
+    description: User email
+    purpose: User identification
+    notes: Always null - privacy
+    
+  # Localization
+  LOCALE:
+    type: string
+    nullable: false
+    description: Device locale
+    purpose: Regional formatting
+    
+  LANG:
+    type: string
+    nullable: false
+    description: Device language
+    purpose: Language targeting
+    
+  # SDK Context
+  SDK_VERSION:
+    type: string
+    nullable: false
+    description: SDK version
+    purpose: SDK performance tracking
+    
+  SDK_SOURCE:
+    type: string
+    nullable: false
+    description: SDK integration source
+    purpose: Integration tracking
+    
+  UNITY_VERSION:
+    type: string
+    nullable: true
+    description: Unity engine version
+    purpose: Engine compatibility
+    
+  UNREAL_VERSION:
+    type: string
+    nullable: true
+    description: Unreal engine version
+    purpose: Engine compatibility
+    
+  APPLICATION_VERSION:
+    type: string
+    nullable: true
+    description: Game app version
+    purpose: Version-specific analysis
+    
+  # Platform Context
+  STORE_ID:
+    type: int64
+    nullable: false
+    description: App store identifier
+    purpose: Platform tracking
+    
+  STORE_URL:
+    type: string (URL)
+    nullable: true
+    description: App store listing URL
+    purpose: App verification
+    
+  INSTALLER_NAME:
+    type: string
+    nullable: true
+    description: Package installer name
+    purpose: Fraud detection
+    
+  INSTALL_MODE:
+    type: string
+    nullable: true
+    description: Installation method
+    purpose: Fraud detection
+    
+  # Privacy & Consent
+  CONSENT_GDPR:
+    type: string
+    nullable: true (94% null)
+    description: GDPR consent
+    purpose: Privacy compliance
+    
+  CONSENT_CCPA:
+    type: bool
+    nullable: false
+    description: CCPA compliance
+    purpose: California privacy
+    
+  COPPA:
+    type: bool
+    nullable: false
+    description: Child-directed flag
+    purpose: Child protection
+    
+  TRACKING_ENABLED:
+    type: bool
+    nullable: false
+    description: Tracking permission
+    purpose: Attribution capability
+    
+  CONSENT_PERSONALISED_GDPR:
+    type: string
+    nullable: true
+    description: Personalization consent
+    purpose: Targeting compliance
+    
+  CONSENT_OTHER:
+    type: string
+    nullable: true
+    description: Other consent frameworks
+    purpose: Future frameworks
+    
+  T_C_STRING:
+    type: string
+    nullable: true (100% null)
+    description: Terms & conditions acceptance
+    purpose: Legal compliance
+    notes: Always null - not used?
+    
+  # Fraud Detection
+  FRAUD_CODE:
+    type: string
+    nullable: true
+    description: Fraud detection code if flagged
+    purpose: Fraud classification
+    
+  SOURCE_OBJECT:
+    type: string
+    nullable: true
+    description: In-game source object
+    purpose: 3D placement tracking
+    
+  FAILED_REASON:
+    type: string
+    nullable: true
+    description: Reason if impression failed
+    purpose: Failure analysis
+    
+  ERROR_DETAIL:
+    type: string
+    nullable: true
+    description: Detailed error information
+    purpose: Debug and optimization
+    
+  BATCH_NUMBER:
+    type: int64
+    nullable: true
+    description: Batch identifier for bulk requests
+    purpose: Batch processing tracking
+    
+  # Special Features
+  ZBD_MILLISATS_REWARD:
+    type: int64
+    nullable: true
+    description: Bitcoin Lightning reward amount
+    purpose: Crypto reward tracking
+    notes: ZEBEDEE integration for crypto rewards
+    
+  ZBD_GAMERTAG:
+    type: string
+    nullable: true
+    description: ZEBEDEE user identifier
+    purpose: Crypto wallet linking
+    
+  ZBD_USER_ID:
+    type: string
+    nullable: true
+    description: ZEBEDEE user ID
+    purpose: Crypto user identification
+    
+  EXTERNAL_ZBD_ID:
+    type: string
+    nullable: true
+    description: External ZEBEDEE identifier
+    purpose: Cross-platform crypto tracking
+    
+  DEVICE_UNIQUE_IDENTIFIER:
+    type: string
+    nullable: true
+    description: Alternative device identifier
+    purpose: Backup device identification
+
+relationships:
+  many_to_one:
+    - table: bids
+      via: BID_ID
+      description: Each impression originates from a bid request
+      
+    - table: sessions
+      via: SESSION_ID
+      description: Multiple impressions per session
+      
+    - table: games
+      via: GAME_ID
+      description: Impressions within games
+      
+  one_to_many:
+    - table: tracker_events
+      via: IMPRESSION_ID
+      description: Multiple tracker events per impression
+      
+data_quality_notes:
+  always_null:
+    - AGE (100%)
+    - SEX (100%)
+    - USER_EMAIL (100%)
+    - LAT (100%)
+    - LONG (100%)
+    - COOLDOWN_COVERAGE (100%)
+    - T_C_STRING (100%)
+    
+  mostly_null:
+    - CONSENT_GDPR (94%)
+    
+  redacted:
+    - IP_ADDRESS
+    - ADVERTISING_ID
+    - Geo fields
+
+industry_applications:
+  ad_tech:
+    - Viewability measurement and optimization
+    - Fraud detection and prevention
+    - Fill rate optimization
+    - Exchange performance comparison
+    - Revenue attribution and reconciliation
+    
+  gaming:
+    - Ad load optimization
+    - Player experience monitoring
+    - Monetization funnel analysis
+    - Session depth correlation with ad tolerance
+    
+  ml_training:
+    - Engagement score prediction
+    - Optimal ad frequency prediction
+    - Creative performance prediction
+    - User value prediction
+    - Fraud detection models
+    
+  compliance:
+    - MRC viewability standards
+    - IAB measurement guidelines
+    - Privacy regulation compliance
+
+key_questions:
+  - What exactly makes an impression "invalid"?
+  - How is PLAYER_ENGAGEMENT_SCORE calculated?
+  - Why are demographic fields (AGE, SEX) always null?
+  - What's the coverage measurement interval?
+  - How does ZEBEDEE crypto integration work?
+  - What's the difference between FAILED_REASON and ERROR_DETAIL?
+

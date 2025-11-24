@@ -1,0 +1,507 @@
+---
+# Adinmo Sessions Table Schema
+# Records gaming session starts and metadata
+
+table_name: sessions
+description: |
+  Captures the beginning of each gaming session. A session starts when
+  a user opens the game app. This provides the foundational context for
+  all other events (bids, impressions, IAP, tracker events) that occur
+  during gameplay.
+  
+business_context: |
+  Sessions are the top-level container for user activity.
+  Critical for:
+  - Session-level metrics (duration, ad load, monetization)
+  - Frequency capping (don't show too many ads per session)
+  - User engagement patterns (how often do they play?)
+  - Cohort analysis (new vs returning users)
+
+primary_key: INSERT_ID
+unique_keys: [SESSION_ID]
+foreign_keys:
+  - ANON_DEVICE_ID  # User identity
+  - GAME_ID         # Game identity
+
+record_volume_estimate: ~42 sessions/hour in sample
+
+fields:
+  # Core Identity
+  INSERT_ID:
+    type: int64
+    nullable: false
+    description: Unique database record identifier
+    purpose: Primary key
+    
+  INSERTED_TS:
+    type: timestamp
+    nullable: false
+    description: Database insertion timestamp
+    purpose: Pipeline monitoring
+    
+  ACTIVITY_TS:
+    type: timestamp
+    nullable: false
+    description: SOURCE OF TRUTH - When session started
+    purpose: Session timing and frequency analysis
+    
+  # Session Identity
+  SESSION_ID:
+    type: string (uuid)
+    nullable: false
+    description: CRITICAL - Unique identifier for this gaming session
+    purpose: Link all events within a session
+    cardinality: High (1 per app open)
+    lifecycle: |
+      Session starts when app opens.
+      Session ends when app closes or times out.
+      All bids, impressions, IAP, tracker events reference this SESSION_ID.
+      
+  # Event Type
+  EVENT_TYPE:
+    type: string
+    nullable: false
+    description: Type of session event
+    possible_values: ["session_start", "session_end"]
+    purpose: Session lifecycle tracking
+    distribution: Sample only shows session_start events
+    question: Is session_end tracked in a different table/system?
+    
+  # Device Linking
+  ANON_DEVICE_ID:
+    type: string (guid/hash)
+    nullable: false
+    description: CRITICAL - Anonymized device/user identifier
+    purpose: Link sessions to same user over time
+    use_cases:
+      - Calculate sessions per user
+      - Identify returning vs new users
+      - Build user engagement profiles
+      
+  GAME_ID:
+    type: int64
+    nullable: false
+    description: Game identifier
+    purpose: Game-level session metrics
+    
+  # Device Information
+  ADVERTISING_ID:
+    type: string
+    nullable: true (redacted)
+    description: Platform advertising ID (IDFA/GAID)
+    purpose: Cross-app attribution
+    privacy_notes: Subject to ATT on iOS
+    
+  DEVICE_TYPE:
+    type: string
+    nullable: false
+    description: Device category
+    possible_values: ["phone", "tablet"]
+    purpose: Device targeting and optimization
+    
+  DEVICE_OS:
+    type: string
+    nullable: false
+    description: Operating system
+    possible_values: ["android", "ios"]
+    purpose: Platform segmentation
+    
+  OS:
+    type: string
+    nullable: false
+    description: Detailed OS version string
+    format: "android os 14 / api-34 (build details)"
+    purpose: OS compatibility tracking
+    business_insight: |
+      Newer OS versions may have:
+      - Better privacy restrictions (iOS 14.5+ ATT)
+      - Different SDK behavior
+      - Security improvements affecting ads
+      
+  DEVICE_NAME:
+    type: string
+    nullable: false (redacted)
+    description: Human-readable device name
+    purpose: Device-level analysis
+    
+  DEVICE_MODEL:
+    type: string
+    nullable: false
+    description: Manufacturer model code
+    examples: ["xiaomi 22101320g", "infinix infinix x669c"]
+    purpose: Technical device identification
+    
+  # Geolocation
+  COUNTRY:
+    type: string (ISO 2-letter)
+    nullable: false (redacted)
+    description: Country code from IP geolocation
+    purpose: Geographic segmentation
+    business_use: |
+      Different countries have vastly different:
+      - Monetization rates
+      - User behaviors
+      - Regulatory requirements
+      
+  STATE:
+    type: string
+    nullable: true (redacted)
+    description: State/province
+    purpose: Sub-national analysis
+    
+  CITY:
+    type: string
+    nullable: true (redacted)
+    description: City name
+    purpose: Local market analysis
+    
+  POSTCODE:
+    type: string
+    nullable: true (redacted)
+    description: Postal code
+    purpose: Neighborhood-level targeting
+    
+  IP_ADDRESS:
+    type: string
+    nullable: false (redacted)
+    description: IP address of device
+    purpose: Geolocation and fraud detection
+    privacy_notes: PII - must be handled securely
+    
+  LAT:
+    type: float64
+    nullable: true (100% null)
+    description: Latitude coordinate
+    purpose: Precise location targeting
+    notes: Always null - privacy restriction
+    
+  LONG:
+    type: float64
+    nullable: true (100% null)
+    description: Longitude coordinate
+    purpose: Precise location targeting
+    notes: Always null - privacy restriction
+    
+  AGE:
+    type: int64
+    nullable: true (100% null)
+    description: User age
+    purpose: Demographic targeting
+    notes: Always null - not collected or privacy
+    
+  SEX:
+    type: string
+    nullable: true (100% null)
+    description: User gender
+    purpose: Demographic targeting
+    notes: Always null - not collected or privacy
+    
+  USER_EMAIL:
+    type: string
+    nullable: true (100% null)
+    description: User email address
+    purpose: User identification
+    notes: Always null - privacy/not collected
+    
+  # Localization
+  LOCALE:
+    type: string
+    nullable: false
+    description: Device locale setting
+    examples: ["unknown", "en_US", "id_ID"]
+    purpose: Regional formatting preferences
+    
+  LANG:
+    type: string
+    nullable: false
+    description: Device language
+    examples: ["english", "indonesian", "french"]
+    purpose: Language targeting
+    
+  # SDK Context
+  SDK_VERSION:
+    type: string
+    nullable: false
+    description: Adinmo SDK version
+    examples: ["314"]
+    purpose: SDK version tracking and debugging
+    
+  SDK_SOURCE:
+    type: string
+    nullable: false
+    description: SDK integration source
+    distribution: All "unknown" in sample
+    purpose: Track SDK distribution method
+    question: Why is this always "unknown"?
+    
+  UNITY_VERSION:
+    type: string
+    nullable: true
+    description: Unity engine version if applicable
+    format: "2022.3.64f1"
+    purpose: Engine compatibility tracking
+    
+  UNREAL_VERSION:
+    type: string
+    nullable: true
+    description: Unreal engine version if applicable
+    purpose: Engine compatibility tracking
+    
+  APPLICATION_VERSION:
+    type: string
+    nullable: false
+    description: Game app version
+    examples: ["2.9.3", "4.0.54"]
+    purpose: Version-specific behavior tracking
+    business_use: |
+      New app versions may have:
+      - Different ad placements
+      - SDK upgrades
+      - Bug fixes or new bugs
+      
+  # Platform Details
+  STORE_ID:
+    type: int64
+    nullable: false
+    description: Platform store identifier
+    possible_values: [1, 2] # Likely 1=Google Play, 2=App Store
+    purpose: Platform segmentation
+    
+  INSTALLER_NAME:
+    type: string
+    nullable: false
+    description: Package name that installed the app
+    examples: ["com.android.vending", "unknown"]
+    purpose: Fraud detection
+    business_insight: |
+      "com.android.vending" = Google Play Store (legitimate)
+      Other values might indicate sideloading (potential fraud)
+      
+  INSTALL_MODE:
+    type: string
+    nullable: false
+    description: Installation method
+    possible_values: ["store", "sideload", "enterprise"]
+    purpose: Fraud detection and attribution
+    
+  PLATFORM:
+    type: string
+    nullable: false
+    description: Platform identifier
+    possible_values: ["android", "ios"]
+    purpose: Platform targeting
+    
+  # Privacy & Consent
+  CONSENT_GDPR:
+    type: string
+    nullable: true (93% null)
+    description: GDPR consent status
+    purpose: EU privacy compliance
+    legal_importance: Critical for European users
+    
+  CONSENT_CCPA:
+    type: bool
+    nullable: false
+    description: CCPA opt-out status
+    purpose: California privacy compliance
+    
+  COPPA:
+    type: bool
+    nullable: false
+    description: Child-directed content flag
+    purpose: Child privacy protection (COPPA compliance)
+    legal_importance: Violations have serious penalties
+    
+  TRACKING_ENABLED:
+    type: bool
+    nullable: false
+    description: Whether tracking is enabled
+    purpose: Attribution capability indicator
+    distribution: All false in sample
+    question: |
+      Does this track iOS ATT (App Tracking Transparency) status?
+      Why is it always false?
+      
+  CONSENT_PERSONALISED_GDPR:
+    type: string
+    nullable: true (93% null)
+    description: Consent for personalized experiences under GDPR
+    purpose: Targeting compliance
+    
+  CONSENT_OTHER:
+    type: string
+    nullable: true (60% null)
+    description: Other consent frameworks
+    purpose: Future consent mechanisms
+    
+  HAS_DMP_DATA:
+    type: bool
+    nullable: false
+    description: Whether DMP (Data Management Platform) data exists
+    purpose: Enrichment data availability
+    distribution: All true in sample
+    question: What DMP is integrated? What data?
+    
+  T_C_STRING:
+    type: string
+    nullable: true (redacted)
+    description: Terms & conditions acceptance string
+    purpose: Legal compliance
+    
+  # Fraud Detection (Pixalate Integration)
+  PIXALATE_IP_FRAUD:
+    type: bool
+    nullable: false
+    description: IP-based fraud flag from Pixalate
+    purpose: Fraud detection
+    distribution: All false in sample
+    notes: Pixalate partnership ended (losing money)
+    
+  PIXALATE_DATACENTER_FRAUD:
+    type: bool
+    nullable: false
+    description: Datacenter IP detection
+    purpose: Bot/datacenter fraud prevention
+    distribution: All false in sample
+    
+  PIXALATE_USER_AGENT_FRAUD:
+    type: bool
+    nullable: false
+    description: User agent fraud detection
+    purpose: Spoofed device detection
+    distribution: All false in sample
+    
+  PIXALATE_AD_ID_SCORE:
+    type: float64
+    nullable: true (100% null)
+    description: Advertising ID fraud score
+    purpose: IDFA/GAID fraud detection
+    notes: Null because Pixalate integration ended?
+    
+  PIXALATE_IP_SCORE:
+    type: float64
+    nullable: true (100% null)
+    description: IP address fraud score
+    purpose: IP reputation scoring
+    notes: Null because Pixalate integration ended?
+    
+  GAME_FRAUD_CODE:
+    type: int64
+    nullable: false
+    description: Game-level fraud detection code
+    distribution: All 0 in sample
+    purpose: Custom fraud detection
+    question: What do non-zero values indicate?
+
+relationships:
+  one_to_many:
+    - table: bids
+      via: SESSION_ID
+      description: Multiple bid requests per session
+      
+    - table: impressions
+      via: SESSION_ID
+      description: Multiple impressions per session
+      
+    - table: iap
+      via: SESSION_ID
+      description: Multiple purchase attempts per session
+      
+    - table: tracker_events
+      via: SESSION_ID
+      description: Multiple tracking events per session
+      
+  many_to_one:
+    - table: games
+      via: GAME_ID
+      description: Sessions within a specific game
+      
+  conceptual_aggregations:
+    - Sessions per user (via ANON_DEVICE_ID)
+    - Sessions per day/hour (via ACTIVITY_TS)
+    - Session frequency patterns
+
+data_quality_notes:
+  always_null:
+    - LAT (100%)
+    - LONG (100%)
+    - AGE (100%)
+    - SEX (100%)
+    - USER_EMAIL (100%)
+    - PIXALATE_AD_ID_SCORE (100%)
+    - PIXALATE_IP_SCORE (100%)
+    
+  mostly_null:
+    - CONSENT_GDPR (93%)
+    - CONSENT_PERSONALISED_GDPR (93%)
+    - CONSENT_OTHER (60%)
+    
+  interesting_distributions:
+    - TRACKING_ENABLED: All false (iOS ATT impact?)
+    - HAS_DMP_DATA: All true (what data?)
+    - All Pixalate fields: False/null (integration ended)
+    - SDK_SOURCE: All "unknown"
+
+industry_applications:
+  user_analytics:
+    - Session frequency analysis (DAU, MAU, retention)
+    - Session duration calculation (when combined with session_end)
+    - User engagement patterns
+    - New vs returning user cohorts
+    
+  monetization:
+    - Sessions per user before first purchase
+    - Ad load per session optimization
+    - Session-level revenue attribution
+    
+  fraud_prevention:
+    - Bot detection (unusual session patterns)
+    - Install fraud (INSTALLER_NAME analysis)
+    - Datacenter traffic detection
+    
+  product_analytics:
+    - Feature adoption by app version
+    - Cross-platform behavior differences
+    - Device performance issues
+    
+  ml_training:
+    - Session duration prediction
+    - Churn risk prediction
+    - LTV prediction (sessions are early signal)
+    - Optimal session length for monetization
+
+key_insights:
+  session_as_container:
+    observation: Sessions are the organizational unit for all events
+    business_value: |
+      Everything else (bids, impressions, IAP) happens within a session.
+      Understanding session patterns is key to:
+      - Frequency capping
+      - User experience optimization
+      - Engagement measurement
+      
+  fraud_detection_evolution:
+    observation: Pixalate integration was discontinued
+    business_context: |
+      Company stopped Pixalate partnership (losing money).
+      Questions:
+      - Was fraud not a problem?
+      - Was Pixalate too expensive/inaccurate?
+      - Is there alternative fraud detection now?
+      
+  privacy_impact:
+    observation: Many null demographics and geo fields
+    business_context: |
+      Modern privacy regulations (GDPR, ATT) limit data collection.
+      Must optimize monetization with limited targeting data.
+
+key_questions:
+  - Is session_end tracked? If so, where?
+  - What DMP is integrated (HAS_DMP_DATA always true)?
+  - Why is TRACKING_ENABLED always false?
+  - Why is SDK_SOURCE always "unknown"?
+  - What replaced Pixalate for fraud detection?
+  - How long is typical session duration?
+  - What triggers session timeout?
+  - Are there any session quality/health metrics?
+

@@ -1,0 +1,453 @@
+---
+# Adinmo In-App Purchase (IAP) Table Schema
+# Records ALL in-app purchase attempts (not just ad-driven purchases)
+
+table_name: iap
+description: |
+  Captures every in-app purchase attempt, including both successful and failed transactions.
+  Records purchases across ALL games, providing visibility into organic monetization
+  in addition to ad-driven revenue.
+  
+business_context: |
+  CRITICAL INSIGHT: This table records ALL purchases, not just Adinmo-related ones.
+  Enables powerful analysis:
+  - Organic uplift from ad exposure (brand lift studies)
+  - Ad-exposed vs control group purchase behavior
+  - Cross-game purchase patterns per device
+  - Failed purchase analysis for conversion optimization
+
+primary_key: INSERT_ID
+foreign_keys:
+  - ANON_DEVICE_ID  # Links to user identity
+  - SESSION_ID      # Links to specific session
+  - GAME_ID         # Links to game
+  - CAMPAIGN_ID     # Links to ad campaign (if ad-influenced)
+
+record_volume_estimate: ~42 events/hour in sample (mostly failed purchases - 95%+)
+
+fields:
+  # Core Identity Fields
+  INSERT_ID:
+    type: int64
+    nullable: false
+    description: Unique identifier for this IAP record
+    purpose: Primary key
+    
+  INSERTED_TS:
+    type: timestamp
+    nullable: false
+    description: Database insertion timestamp
+    purpose: Pipeline monitoring
+    
+  ACTIVITY_TS:
+    type: timestamp
+    nullable: false
+    description: SOURCE OF TRUTH - When purchase attempt occurred
+    purpose: Temporal analysis and attribution
+    
+  # Device Linking
+  ANON_DEVICE_ID:
+    type: string (guid/hash)
+    nullable: false
+    description: CRITICAL - Anonymized device ID linking user across tables
+    purpose: User purchase behavior tracking
+    cardinality: High (1 per user per game)
+    
+  SESSION_ID:
+    type: string (uuid)
+    nullable: false
+    description: Session where purchase was attempted
+    purpose: Session-level monetization analysis
+    
+  GAME_ID:
+    type: int64
+    nullable: false
+    description: Game where purchase occurred
+    purpose: Game-level revenue analysis
+    
+  # Purchase Details
+  IAP_PURCHASE_MADE:
+    type: bool
+    nullable: false
+    description: Whether purchase was successfully completed
+    purpose: Success/failure classification
+    distribution: Typically 95%+ false (failed attempts)
+    business_insight: |
+      Most IAP events are failures! Huge opportunity for:
+      - Failed purchase recovery
+      - UX/friction reduction
+      - Payment method optimization
+      
+  IAP_ID:
+    type: string
+    nullable: false
+    description: Product identifier for the item being purchased
+    examples: ["craft.charpack", "craft.removeads", "craft.gem7"]
+    purpose: Product-level revenue and conversion analysis
+    
+  ITEM_COST:
+    type: int64
+    nullable: false
+    description: Price in local currency (smallest unit - cents/paise)
+    purpose: Revenue calculation in local currency
+    
+  ITEM_COST_USD:
+    type: int64
+    nullable: false
+    description: Price converted to USD (cents)
+    purpose: Revenue aggregation and comparison across currencies
+    notes: Key field for standardized revenue reporting
+    
+  CURRENCY_CODE:
+    type: string (ISO 3-letter code)
+    nullable: false
+    description: Currency of transaction
+    examples: ["usd", "php", "iqd", "inr"]
+    purpose: Currency conversion and regional pricing analysis
+    
+  AMOUNT_INVOICEABLE:
+    type: int64
+    nullable: false
+    description: Amount that can be invoiced/billed
+    purpose: Revenue recognition
+    distribution: Mostly 0 in sample (failed purchases)
+    business_context: |
+      This is the ACTUAL revenue generated.
+      0 for failed purchases, equals ITEM_COST for successful ones.
+      
+  # Failure Analysis
+  FAILURE_REASON:
+    type: string
+    nullable: true (only populated for failures)
+    description: Reason purchase failed
+    possible_values:
+      - UserCancelled
+      - PaymentDeclined
+      - InsufficientFunds
+      - NetworkError
+      - InvalidProduct
+    purpose: Optimize checkout flow and reduce friction
+    business_opportunity: |
+      99% of records show UserCancelled - huge conversion opportunity!
+      Questions to explore:
+      - Is price too high?
+      - Is UI confusing?
+      - Is value proposition unclear?
+      - Are payment methods limited?
+      
+  # Transaction Tracking
+  TRANSACTION_CODE:
+    type: string
+    nullable: false
+    description: Transaction ID from payment provider
+    purpose: Reconciliation with app store receipts
+    
+  PURCHASE_SOURCE:
+    type: string
+    nullable: false
+    description: Source/trigger of purchase flow
+    possible_values: ["other", "rewarded_ad", "offer_wall", "shop"]
+    purpose: Attribution of purchase trigger
+    distribution: Mostly "other" in sample
+    question: What does "other" mean specifically?
+    
+  # App Store Context
+  STORE_ID:
+    type: int64
+    nullable: false
+    description: Platform store identifier
+    possible_values: [1, 2, 3] # likely 1=Google, 2=Apple, 3=Other
+    purpose: Platform-specific analytics
+    
+  # Ad Attribution
+  CAMPAIGN_ID:
+    type: int64
+    nullable: true
+    description: Ad campaign ID if purchase was influenced by ad
+    purpose: Ad-to-purchase attribution
+    business_value: |
+      Links ad exposure to downstream monetization.
+      Enables calculation of:
+      - Ad ROI beyond just ad revenue
+      - Brand lift from ad exposure
+      - Organic uplift in ad-exposed users
+      
+  PLACEMENT_ID:
+    type: string
+    nullable: false
+    description: In-game placement where IAP was triggered
+    purpose: Optimize placement of purchase prompts
+    
+  IMAGE_GUID:
+    type: string (uuid)
+    nullable: false
+    description: Creative/image identifier
+    purpose: Visual creative attribution
+    question: Is this the ad creative that influenced purchase?
+    
+  # Device Information
+  ADVERTISING_ID:
+    type: string
+    nullable: true (redacted)
+    description: Platform advertising identifier (IDFA/GAID)
+    purpose: Cross-app attribution
+    
+  DEVICE_TYPE:
+    type: string
+    nullable: false
+    description: Device category
+    possible_values: ["phone", "tablet"]
+    purpose: Device targeting analysis
+    
+  DEVICE_OS:
+    type: string
+    nullable: false
+    description: Operating system
+    possible_values: ["android", "ios"]
+    purpose: Platform monetization comparison
+    
+  OS:
+    type: string
+    nullable: false
+    description: Detailed OS version
+    purpose: SDK compatibility and fraud detection
+    
+  DEVICE_NAME:
+    type: string
+    nullable: false
+    description: Human-readable device name
+    purpose: Device-level conversion analysis
+    
+  DEVICE_MODEL:
+    type: string
+    nullable: false
+    description: Manufacturer model code
+    purpose: Technical device identification
+    
+  # Geolocation
+  COUNTRY:
+    type: string (ISO 2-letter)
+    nullable: false
+    description: Country of user
+    purpose: Regional pricing and payment method optimization
+    business_insight: |
+      Different countries have vastly different:
+      - Willingness to pay
+      - Preferred payment methods
+      - Price sensitivity
+      
+  STATE:
+    type: string
+    nullable: true (redacted)
+    description: State/province
+    purpose: Sub-national analysis
+    
+  CITY:
+    type: string
+    nullable: true (redacted)
+    description: City
+    purpose: Local market analysis
+    
+  POSTCODE:
+    type: string
+    nullable: true (redacted)
+    description: Postal code
+    purpose: Neighborhood-level analysis
+    
+  IP_ADDRESS:
+    type: string
+    nullable: false (redacted)
+    description: IP address
+    purpose: Fraud detection and geolocation
+    
+  LAT:
+    type: float64
+    nullable: true (100% null)
+    description: Latitude
+    purpose: Location-based analysis
+    notes: Always null - privacy restriction?
+    
+  LONG:
+    type: float64
+    nullable: true (100% null)
+    description: Longitude
+    purpose: Location-based analysis
+    notes: Always null - same as LAT
+    
+  # Localization
+  LOCALE:
+    type: string
+    nullable: false
+    description: Device locale
+    purpose: Regional formatting
+    
+  LANG:
+    type: string
+    nullable: false
+    description: Device language
+    purpose: Language-specific pricing and messaging
+    
+  # SDK Context
+  SDK_VERSION:
+    type: string
+    nullable: false
+    description: Adinmo SDK version
+    purpose: SDK performance tracking
+    
+  UNITY_VERSION:
+    type: string
+    nullable: true
+    description: Unity engine version
+    purpose: Engine-specific tracking
+    
+  UNREAL_VERSION:
+    type: string
+    nullable: true
+    description: Unreal engine version
+    purpose: Engine-specific tracking
+    
+  # Privacy & Consent
+  CONSENT_GDPR:
+    type: string
+    nullable: true (95% null)
+    description: GDPR consent status
+    purpose: Privacy compliance
+    
+  CONSENT_CCPA:
+    type: string
+    nullable: true
+    description: CCPA consent status
+    purpose: California privacy law compliance
+    
+  COPPA:
+    type: bool
+    nullable: true
+    description: Child-directed content flag
+    purpose: Child privacy protection
+    
+  TRACKING_ENABLED:
+    type: bool
+    nullable: false
+    description: Whether tracking is enabled
+    distribution: Mostly false in sample
+    purpose: Attribution capability indicator
+    question: |
+      Is this tracking iOS ATT status?
+      Field might be broken according to notes.
+      
+  HAS_CONSENT_STRING:
+    type: bool
+    nullable: false
+    description: Whether consent string is present
+    purpose: GDPR TCF compliance
+    
+  CONSENT_PERSONALISED_GDPR:
+    type: string
+    nullable: true (95% null)
+    description: Consent for personalized experiences
+    purpose: Personalization compliance
+    
+  CONSENT_OTHER:
+    type: string
+    nullable: true (66% null)
+    description: Other consent frameworks
+    purpose: Future-proofing consent management
+
+relationships:
+  many_to_one:
+    - table: sessions
+      via: SESSION_ID
+      description: Multiple IAP attempts per session
+      
+    - table: games
+      via: GAME_ID
+      description: Purchases within specific game
+      
+    - table: campaigns
+      via: CAMPAIGN_ID
+      description: Ad campaigns that influenced purchase
+      notes: Can be null for organic purchases
+      
+  one_to_one:
+    - table: attributed_installs
+      via: ANON_DEVICE_ID
+      description: Link install source to purchase behavior
+
+data_quality_notes:
+  high_null_fields:
+    - LAT (100%)
+    - LONG (100%)
+    - CONSENT_GDPR (95%)
+    - CONSENT_PERSONALISED_GDPR (95%)
+    
+  key_distributions:
+    - IAP_PURCHASE_MADE: 95%+ false (mostly failed attempts)
+    - AMOUNT_INVOICEABLE: Mostly 0 (correlates with failures)
+    - FAILURE_REASON: Mostly "UserCancelled"
+
+industry_applications:
+  gaming_monetization:
+    - Failed purchase recovery systems
+    - Dynamic pricing optimization
+    - Payment friction analysis
+    - Cross-game purchase patterns
+    
+  marketing_attribution:
+    - Ad-driven vs organic revenue
+    - Brand lift studies (did ad exposure increase purchases?)
+    - Campaign ROI including downstream monetization
+    - Creative effectiveness on purchase intent
+    
+  user_analytics:
+    - User lifetime value prediction
+    - Purchase propensity modeling
+    - Price sensitivity analysis
+    - Payment method optimization
+    
+  fraud_prevention:
+    - Payment fraud detection
+    - Refund abuse detection
+    - Account sharing patterns
+    
+  ml_opportunities:
+    - Purchase likelihood prediction
+    - Optimal pricing per user
+    - Churn prediction based on purchase patterns
+    - Next product recommendation
+    - Failed purchase recovery targeting
+
+key_insights:
+  massive_failure_rate:
+    observation: 95%+ of IAP events are failures
+    business_opportunity: |
+      Even a 1% improvement in conversion would massively impact revenue.
+      Opportunities:
+      - A/B test pricing
+      - Improve UX/friction
+      - Retarget failed purchasers
+      - Offer alternative payment methods
+      
+  all_purchases_tracked:
+    observation: Captures ALL purchases, not just ad-related
+    business_value: |
+      Unique dataset for understanding:
+      - Organic uplift from ads
+      - Cross-game spending patterns
+      - Full user monetization picture
+      
+  multi_currency_complexity:
+    observation: Purchases in dozens of currencies
+    business_need: |
+      Requires robust currency conversion for:
+      - Accurate revenue reporting
+      - Comparative analysis across regions
+      - Dynamic pricing by market
+
+key_questions:
+  - Is TRACKING_ENABLED tracking iOS ATT status specifically?
+  - What exactly triggers PURCHASE_SOURCE="other" vs other values?
+  - Why is TRACKING_ENABLED "might be broken" according to notes?
+  - How is CAMPAIGN_ID attribution determined (view-through? click-through? window?)
+  - What's the relationship between IAP_ID and IMAGE_GUID?
+  - Are there any post-purchase events (refunds, chargebacks)?
+

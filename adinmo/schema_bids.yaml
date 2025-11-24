@@ -1,0 +1,566 @@
+---
+# Adinmo Bids Table Schema
+# Represents ad bid requests from the SDK to backend servers
+
+table_name: bids
+description: |
+  Records every bid request made when the SDK requests ad inventory.
+  The backend processes device information and returns bid responses from ad exchanges.
+  This is the initial step in the ad serving pipeline.
+  
+business_context: |
+  Captures the moment when a game requests an ad to show. Contains detailed device,
+  geo, and contextual information used for ad targeting and fraud prevention.
+
+primary_key: INSERT_ID
+foreign_keys:
+  - ANON_DEVICE_ID  # Links to user across all tables
+  - SESSION_ID      # Links to specific gaming session
+  - GAME_ID         # Links to specific game
+  - BID_ID          # Used by impressions table
+
+record_volume_estimate: ~42 events/hour in sample (likely 100x-1000x in production)
+
+fields:
+  # Core Identity Fields
+  INSERT_ID:
+    type: int64
+    nullable: false
+    description: Unique identifier for this bid request record
+    purpose: Primary key for deduplication and record tracking
+    
+  INSERTED_TS:
+    type: timestamp
+    nullable: false
+    description: Timestamp when record was inserted into database
+    purpose: Audit trail for data pipeline lag and ingestion monitoring
+    
+  ACTIVITY_TS:
+    type: timestamp
+    nullable: false
+    description: SOURCE OF TRUTH timestamp when bid request actually occurred
+    purpose: Temporal ordering and time-series analysis
+    notes: Use this for all time-based analysis, not INSERTED_TS
+    
+  EVENT_TYPE:
+    type: string
+    nullable: false
+    description: Type of event (always "bid_request" for this table)
+    purpose: Event classification in unified event stream
+    possible_values: [bid_request]
+    
+  # Device Linking Keys
+  ANON_DEVICE_ID:
+    type: string (guid/hash)
+    nullable: false
+    description: CRITICAL - Anonymized device identifier, unique per user per game
+    purpose: User tracking across sessions (privacy-preserving)
+    cardinality: High (1 per user per game)
+    privacy_notes: |
+      This is THE primary linking key across all tables.
+      Generated per device, per game. Enables cross-session user journey analysis
+      without exposing true device identifiers.
+    use_cases:
+      - Link bids to impressions to clicks to installs to IAP
+      - Build user behavioral profiles
+      - Calculate lifetime value
+      - Detect fraud patterns
+      
+  SESSION_ID:
+    type: string (uuid)
+    nullable: false
+    description: Unique identifier for this gaming session
+    purpose: Group all events within a single app session
+    cardinality: High (1 per app open)
+    
+  GAME_ID:
+    type: int64
+    nullable: false
+    description: Identifier for the game/app making the request
+    purpose: Segment data by game, calculate game-level metrics
+    cardinality: Low (~5-10 games based on sample)
+    
+  BID_ID:
+    type: string (uuid)
+    nullable: false
+    description: Unique identifier for this specific bid request
+    purpose: Link bid requests to resulting impressions
+    relationships:
+      - impressions.BID_ID (one-to-many: one bid can result in multiple impression attempts)
+      
+  # Bid Request Metadata
+  REQUEST_ID:
+    type: string (uuid)
+    nullable: false
+    description: SDK-generated request identifier
+    purpose: Debug and trace individual requests through system
+    
+  SDK_REQUEST_ID:
+    type: string (uuid)
+    nullable: true
+    description: Another request identifier (relationship to REQUEST_ID unclear)
+    purpose: QUESTION - How does this differ from REQUEST_ID?
+    questions:
+      - Is this from a different SDK version?
+      - Is this for batch vs individual requests?
+      
+  # Ad Placement Details
+  ASPECT_RATIO:
+    type: string
+    nullable: true
+    description: Aspect ratio of ad placement area
+    possible_values: ["1:1", "5:1", "2:3", "16:9"]
+    purpose: Match creative dimensions to available screen space
+    
+  PLACEMENT_FIT:
+    type: string
+    nullable: false
+    description: How flexible the placement sizing is
+    possible_values: ["VeryLoose", "Strict", "Moderate"]
+    purpose: Ad creative scaling tolerance
+    business_impact: VeryLoose = more fill rate but potentially worse UX
+    
+  HEIGHT:
+    type: float64
+    nullable: true (52% null in sample)
+    description: Height of ad placement in pixels
+    purpose: Creative size matching
+    
+  WIDTH:
+    type: float64
+    nullable: true (52% null in sample)
+    description: Width of ad placement in pixels
+    purpose: Creative size matching
+    
+  REQUEST_SIZES:
+    type: string (JSON array)
+    nullable: true
+    description: Array of acceptable ad sizes for this placement
+    format: '[{"h": 50, "w": 320}, {"h": 100, "w": 640}]'
+    purpose: Multiple size options for better fill rate
+    
+  # Bidding Parameters
+  BID_FLOOR:
+    type: int64 (cents CPM)
+    nullable: false
+    description: Minimum acceptable bid price in cents CPM
+    purpose: Revenue optimization, prevents low-value ads
+    typical_range: 100-5000 (=$1-$50 CPM)
+    business_context: |
+      Floor price affects fill rate vs revenue tradeoff.
+      Lower floors = more ads shown but less revenue per ad.
+      
+  BID_PRICE:
+    type: float64
+    nullable: true (100% null - populated in impressions)
+    description: Winning bid price (if bid was successful)
+    purpose: Calculate actual revenue potential
+    notes: Mostly null in bids table, populated in impressions table
+    
+  # Bid Response
+  NO_BID_REASON:
+    type: string
+    nullable: true
+    description: Short reason code if no bid was received
+    possible_values: ["No Content", "No Fill", "Timeout"]
+    purpose: Analyze fill rate issues and optimization opportunities
+    
+  NO_BID_MAJOR:
+    type: int64
+    nullable: true
+    description: Major category code for no-bid reason
+    purpose: Categorize no-bid reasons for analysis
+    
+  NO_BID_MINOR:
+    type: string
+    nullable: true
+    description: Detailed reason for no bid
+    possible_values: ["No Content", "Invalid Request", "Rate Limited"]
+    purpose: Debug and optimize bid request quality
+    
+  # Ad Exchange Integration
+  AD_EXCHANGE:
+    type: string
+    nullable: true
+    description: Name of ad exchange that received this bid request
+    possible_values: ["gamoshi", "smaato", "insticator", "rubicon"]
+    purpose: Analyze exchange performance and fill rates
+    cardinality: Low (5-10 major exchanges)
+    
+  SEAT:
+    type: string
+    nullable: true (100% null)
+    description: Seat ID from winning bidder
+    purpose: Identify specific demand partners
+    notes: QUESTION - Why is this always null? Not used?
+    
+  PROTOCOLS:
+    type: string
+    nullable: true (100% null)
+    description: Supported video protocols (VAST, VPAID, etc)
+    purpose: Video ad compatibility
+    notes: QUESTION - Null because most ads are static?
+    
+  # Device Information
+  ADVERTISING_ID:
+    type: string
+    nullable: true (redacted in sample)
+    description: Platform advertising identifier (IDFA/GAID)
+    purpose: Cross-app attribution and targeting
+    privacy_notes: Subject to user consent (GDPR, ATT)
+    
+  DEVICE_TYPE:
+    type: string
+    nullable: false
+    description: Category of device
+    possible_values: ["phone", "tablet", "desktop", "tv"]
+    purpose: Device segmentation for creative optimization
+    
+  DEVICE_OS:
+    type: string
+    nullable: false
+    description: Operating system name
+    possible_values: ["android", "ios", "windows", "tvos"]
+    purpose: Platform-specific targeting and attribution
+    
+  OS:
+    type: string
+    nullable: false
+    description: Detailed OS version string
+    format: "android os 15 / api-35 (build info)"
+    purpose: SDK compatibility, fraud detection
+    
+  DEVICE_NAME:
+    type: string
+    nullable: false
+    description: Human-readable device name
+    examples: ["moto g22", "unknown"]
+    purpose: Device targeting and performance analysis
+    
+  DEVICE_MODEL:
+    type: string
+    nullable: false
+    description: Manufacturer device model code
+    examples: ["samsung sm-x518u", "motorola moto g22"]
+    purpose: Technical device identification
+    
+  # Geolocation
+  COUNTRY:
+    type: string (ISO 2-letter code)
+    nullable: false
+    description: Country code from IP geolocation
+    purpose: Geographic targeting and regulatory compliance
+    
+  STATE:
+    type: string
+    nullable: true (redacted)
+    description: State/province
+    purpose: Sub-national geographic targeting
+    
+  CITY:
+    type: string
+    nullable: true (redacted)
+    description: City name
+    purpose: Hyper-local targeting
+    
+  POSTCODE:
+    type: string
+    nullable: true (redacted)
+    description: Postal/ZIP code
+    purpose: Neighborhood-level targeting
+    
+  LAT:
+    type: float64
+    nullable: true (100% null)
+    description: Latitude coordinate
+    purpose: Location-based targeting
+    notes: QUESTION - Why always null? Privacy restriction?
+    
+  LONG:
+    type: float64
+    nullable: true (100% null)
+    description: Longitude coordinate
+    purpose: Location-based targeting
+    notes: QUESTION - Same as LAT - consent issue?
+    
+  IP_ADDRESS:
+    type: string
+    nullable: false (redacted in sample)
+    description: IP address of device
+    purpose: Geolocation and fraud detection
+    privacy_notes: Sensitive PII, must be handled carefully
+    
+  # Network Context
+  CONNECTION_TYPE:
+    type: string
+    nullable: true
+    description: Network connection type
+    possible_values: ["wifi", "cellular", "unknown"]
+    purpose: Creative optimization (e.g., limit video on cellular)
+    
+  # Localization
+  LOCALE:
+    type: string
+    nullable: false
+    description: Device locale setting
+    purpose: Language and regional formatting
+    
+  LANG:
+    type: string
+    nullable: false
+    description: Device language
+    possible_values: ["english", "spanish", "portuguese", "arabic"]
+    purpose: Ad creative language targeting
+    
+  # App Context
+  APP_ID:
+    type: string (bundle identifier)
+    nullable: false
+    description: Platform app identifier
+    format: "com.company.appname"
+    purpose: App-level targeting and verification
+    
+  STORE_URL:
+    type: string (url)
+    nullable: true
+    description: App store listing URL
+    purpose: App verification and context
+    
+  BUNDLE_ID:
+    type: string
+    nullable: true
+    description: App bundle identifier
+    purpose: App identification
+    notes: QUESTION - Same as APP_ID? Why separate field?
+    
+  STORE_ID:
+    type: int64
+    nullable: true
+    description: Internal store identifier
+    purpose: Link to store/platform
+    
+  INSTALLER_NAME:
+    type: string
+    nullable: true
+    description: Package name of app installer
+    possible_values: ["com.android.vending", "unknown"]
+    purpose: Fraud detection (sideloaded apps)
+    
+  INSTALL_MODE:
+    type: string
+    nullable: true
+    description: How app was installed
+    possible_values: ["store", "sideload", "enterprise"]
+    purpose: Fraud detection and attribution
+    
+  # Content Categories
+  IAB_CAT:
+    type: string (JSON array)
+    nullable: true
+    description: IAB content category codes
+    format: '["iab9-30", "iab1-5"]'
+    purpose: Brand safety and category targeting
+    reference: https://www.iab.com/guidelines/content-taxonomy/
+    
+  # Privacy & Consent
+  CONSENT_GDPR:
+    type: string
+    nullable: true (91% null)
+    description: GDPR consent status
+    possible_values: ["true", "false", null]
+    purpose: GDPR compliance for EU users
+    legal_importance: CRITICAL for European operations
+    
+  CONSENT_CCPA:
+    type: bool
+    nullable: true (100% null)
+    description: CCPA opt-out status
+    purpose: California privacy compliance
+    notes: QUESTION - Why always null? Not implemented yet?
+    
+  COPPA:
+    type: bool
+    nullable: false
+    description: Child-directed content flag (COPPA compliance)
+    purpose: Prevent serving ads to children
+    legal_importance: CRITICAL - violating COPPA has serious penalties
+    
+  CONSENT_PERSONALISED_GDPR:
+    type: string
+    nullable: true
+    description: Consent for personalized ads under GDPR
+    purpose: Limit targeting based on consent
+    
+  CONSENT_OTHER:
+    type: string
+    nullable: true
+    description: Other consent framework status
+    purpose: Future consent frameworks
+    notes: QUESTION - Which framework? TCF 2.0?
+    
+  HAS_CONSENT_STRING:
+    type: bool
+    nullable: false
+    description: Whether TCF consent string is present
+    purpose: GDPR consent verification
+    
+  # Dynamic Pricing & Optimization
+  IS_THROTTLED:
+    type: bool
+    nullable: false
+    description: Whether this request was rate-limited
+    purpose: Manage server load and prevent abuse
+    
+  USED_DYNAMIC_PRICING:
+    type: bool
+    nullable: false
+    description: Whether dynamic floor pricing was applied
+    purpose: Optimize revenue through automated pricing
+    business_context: |
+      Dynamic pricing adjusts BID_FLOOR based on:
+      - User value estimation
+      - Historical performance
+      - Time of day / supply-demand
+      
+  # Creative Details (post-bid)
+  CREATIVE_URL:
+    type: string (url)
+    nullable: true
+    description: URL of winning creative asset
+    purpose: Track which creatives performed
+    
+  CREATIVE_ID:
+    type: string
+    nullable: true
+    description: Identifier of winning creative
+    purpose: Creative performance analysis
+    
+  CAMPAIGN_ID:
+    type: int64
+    nullable: true
+    description: Campaign identifier
+    purpose: Campaign-level analysis and attribution
+    
+  ADVERTISER_DOMAIN:
+    type: string
+    nullable: true
+    description: Domain of advertiser
+    purpose: Brand safety and competitive analysis
+    
+  # Technical Details
+  SDK_VERSION:
+    type: string
+    nullable: true
+    description: Adinmo SDK version in use
+    purpose: SDK performance tracking and compatibility
+    
+  APPLICATION_VERSION:
+    type: string
+    nullable: true
+    description: Game app version
+    purpose: Cross-reference SDK integration issues
+    
+  PLATFORM:
+    type: string
+    nullable: true
+    description: Platform identifier
+    possible_values: ["android", "ios", "unity", "unreal"]
+    purpose: Platform segmentation
+    
+  AD_TYPE:
+    type: string
+    nullable: true
+    description: Type of ad requested
+    possible_values: ["banner", "video", "interstitial", "rewarded"]
+    purpose: Ad format analysis
+    
+  SDK_VAST_PARSING:
+    type: bool
+    nullable: true
+    description: Whether SDK handles VAST parsing
+    purpose: Video ad compatibility flag
+    
+  USER_AGENT:
+    type: string
+    nullable: false (redacted)
+    description: HTTP user agent string
+    purpose: Device identification and fraud detection
+    
+  # Provider Integration
+  PROVIDER_REQUEST_ID:
+    type: string
+    nullable: true
+    description: Request ID from upstream provider
+    purpose: Debug provider integration
+    
+  DEAL_ID:
+    type: string
+    nullable: true
+    description: Programmatic guaranteed deal ID
+    purpose: Private marketplace deal tracking
+    
+  BID_URL:
+    type: string (url)
+    nullable: true
+    description: Endpoint URL for bid request
+    purpose: Route requests to correct exchange
+
+relationships:
+  one_to_many:
+    - table: impressions
+      via: BID_ID
+      description: One bid request can generate multiple impression attempts
+      
+  many_to_one:
+    - table: sessions
+      via: SESSION_ID
+      description: Multiple bid requests per session
+      
+    - table: games (external reference table)
+      via: GAME_ID
+      description: Multiple bids per game
+
+data_quality_notes:
+  high_null_fields:
+    - LAT (100%) - Privacy restriction or not implemented?
+    - LONG (100%) - Same as LAT
+    - BID_PRICE (100%) - Populated only when bid wins
+    - CONSENT_CCPA (100%) - Not implemented yet?
+    - PROTOCOLS (100%) - Video not common?
+    
+  redacted_in_sample:
+    - IP_ADDRESS
+    - ADVERTISING_ID
+    - USER_AGENT
+    - Geo fields (STATE, CITY, POSTCODE)
+    
+industry_applications:
+  advertising_tech:
+    - RTB optimization
+    - Fill rate analysis
+    - Exchange performance comparison
+    
+  gaming_analytics:
+    - Monetization funnel analysis
+    - User session value prediction
+    - Ad load optimization
+    
+  fraud_detection:
+    - Device fingerprinting
+    - Install fraud detection
+    - Click fraud patterns
+    
+  ml_training:
+    - Bid price prediction models
+    - User LTV prediction
+    - Creative performance prediction
+    - Fraud detection models
+
+key_questions:
+  - What determines when BID_PRICE is populated in this table vs impressions?
+  - Why are LAT/LONG always null? Privacy policy or technical limitation?
+  - What's the difference between REQUEST_ID and SDK_REQUEST_ID?
+  - Why is CONSENT_CCPA always null? Feature not launched?
+  - What causes "No Content" no-bid reason specifically?
+  - How does dynamic pricing algorithm work specifically?
+

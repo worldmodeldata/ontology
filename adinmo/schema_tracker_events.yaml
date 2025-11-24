@@ -1,0 +1,570 @@
+---
+# Adinmo Tracker Events Table Schema
+# Records granular user interactions with ads
+
+table_name: tracker_events
+description: |
+  Captures detailed user interactions and events within ad impressions.
+  These are point-in-time events that occur during ad display lifecycle:
+  - render (ad started loading)
+  - impression (ad visible for threshold time)
+  - click (user clicked ad)
+  - magnified (user expanded ad - in-game unique feature)
+  - video quartiles (25%, 50%, 75%, 100% complete)
+  
+business_context: |
+  Tracker events provide granular engagement data beyond simple impressions.
+  Critical for:
+  - Click-through rate calculation
+  - Video completion rate analysis
+  - User engagement patterns
+  - Attribution (clicks lead to installs)
+  - Fraud detection (impossible event sequences)
+
+primary_key: INSERT_ID
+foreign_keys:
+  - ANON_DEVICE_ID  # User identity
+  - SESSION_ID      # Session context
+  - GAME_ID         # Game context
+  - IMPRESSION_ID   # Parent impression (nullable - not all events tied to impressions)
+  - BID_ID          # Originating bid
+  - CAMPAIGN_ID     # Campaign tracking
+
+record_volume_estimate: ~42 events/hour (multiple events per impression)
+
+fields:
+  # Core Identity
+  INSERT_ID:
+    type: int64
+    nullable: false
+    description: Unique database record identifier
+    purpose: Primary key
+    
+  INSERTED_TS:
+    type: timestamp
+    nullable: false
+    description: Database insertion timestamp
+    purpose: Pipeline monitoring
+    
+  ACTIVITY_TS:
+    type: timestamp
+    nullable: false
+    description: SOURCE OF TRUTH - When interaction occurred
+    purpose: Event sequencing and timing analysis
+    critical_for: |
+      Sequencing events to understand user journey:
+      render → impression → click → install
+      
+  # Event Classification
+  EVENT_TYPE:
+    type: string
+    nullable: false
+    description: Type of tracker event
+    possible_values:
+      - render: Ad started displaying
+      - impression: Ad met viewability threshold (in vision for 1+ seconds)
+      - click: User clicked on ad
+      - magnified: User expanded/zoomed ad (unique to in-game ads)
+      - video_start: Video ad started playing
+      - video_firstQuartile: 25% complete
+      - video_midpoint: 50% complete
+      - video_thirdQuartile: 75% complete
+      - video_complete: 100% complete
+    purpose: Classify interaction type
+    business_metrics:
+      - CTR = clicks / impressions
+      - VCR = video_complete / video_start
+      - Engagement Rate = (clicks + magnified) / impressions
+      
+  # Linking Keys
+  ANON_DEVICE_ID:
+    type: string
+    nullable: false
+    description: CRITICAL - Device/user identifier
+    purpose: User behavior tracking
+    
+  SESSION_ID:
+    type: string (uuid)
+    nullable: false
+    description: Gaming session identifier
+    purpose: Session-level event analysis
+    
+  GAME_ID:
+    type: int64
+    nullable: false
+    description: Game identifier
+    purpose: Game-level metrics
+    
+  IMPRESSION_ID:
+    type: string (uuid)
+    nullable: true
+    description: Parent impression this event belongs to
+    purpose: Link events to impression
+    relationships:
+      - impressions.IMPRESSION_ID (many-to-one)
+    notes: Some events may not have impression (e.g., early-stage render failures)
+    
+  IMP_ID:
+    type: string
+    nullable: true
+    description: Alternative impression identifier
+    purpose: Impression linking
+    question: How does this differ from IMPRESSION_ID?
+    
+  BID_ID:
+    type: string (uuid)
+    nullable: true
+    description: Originating bid request
+    purpose: Link back to bid
+    
+  REQUEST_ID:
+    type: string (uuid)
+    nullable: false
+    description: Request identifier
+    purpose: Trace through system
+    
+  PROVIDER_REQUEST_ID:
+    type: string
+    nullable: true
+    description: Upstream provider request ID
+    purpose: Debug provider integration
+    
+  # Ad Details
+  CAMPAIGN_ID:
+    type: int64
+    nullable: true
+    description: Campaign identifier
+    purpose: Campaign performance tracking
+    
+  CREATIVE_ID:
+    type: string
+    nullable: true
+    description: Creative asset identifier
+    purpose: Creative performance analysis
+    
+  IMAGE_GUID:
+    type: string (uuid)
+    nullable: true
+    description: Creative image identifier
+    purpose: Asset tracking
+    
+  ADVERTISER_DOMAIN:
+    type: string
+    nullable: true
+    description: Advertiser domain
+    purpose: Brand tracking
+    
+  # Ad Format & Sizing
+  AD_TYPE:
+    type: string
+    nullable: false
+    description: Ad format type
+    possible_values: ["banner", "video", "interstitial"]
+    purpose: Format-specific analysis
+    
+  ASPECT_RATIO:
+    type: string
+    nullable: true (67% null)
+    description: Ad dimensions ratio
+    purpose: Creative sizing
+    
+  HEIGHT:
+    type: int64
+    nullable: true (4% null)
+    description: Ad height in pixels
+    purpose: Creative dimensions
+    
+  WIDTH:
+    type: int64
+    nullable: true (4% null)
+    description: Ad width in pixels
+    purpose: Creative dimensions
+    
+  PLACEMENT_FIT:
+    type: string
+    nullable: false
+    description: Placement flexibility
+    purpose: Creative adaptation tracking
+    
+  PLACEMENT_KEY:
+    type: string
+    nullable: false
+    description: Placement identifier
+    purpose: Placement performance analysis
+    
+  # Video Specifics
+  VIDEO_DURATION_MS:
+    type: int64
+    nullable: true (83% null)
+    description: Video length in milliseconds
+    purpose: Video ad analysis
+    populated_when: EVENT_TYPE includes video events
+    
+  # Pricing & Revenue
+  BID_PRICE:
+    type: int64 (cents CPM)
+    nullable: false
+    description: Bid price for this ad
+    purpose: Revenue tracking
+    
+  FOR_REVENUE:
+    type: bool
+    nullable: false
+    description: Whether this event generates revenue
+    purpose: Revenue attribution
+    distribution: Mostly false in sample
+    business_context: |
+      Not all events generate revenue.
+      Typically only "impression" and "video_complete" events are billable.
+      
+  # Interaction Timing
+  DISPLAY_TIME:
+    type: float64
+    nullable: true (100% null)
+    description: How long ad was displayed
+    purpose: Engagement time tracking
+    notes: Always null - why? Calculated elsewhere?
+    
+  # Device Information
+  ADVERTISING_ID:
+    type: string
+    nullable: true (redacted)
+    description: Platform advertising identifier
+    purpose: Cross-app attribution
+    
+  DEVICE_TYPE:
+    type: string
+    nullable: false
+    description: Device category
+    purpose: Device targeting
+    
+  DEVICE_OS:
+    type: string
+    nullable: false
+    description: Operating system
+    purpose: Platform analysis
+    
+  OS:
+    type: string
+    nullable: false
+    description: Detailed OS version
+    purpose: Compatibility tracking
+    
+  DEVICE_NAME:
+    type: string
+    nullable: false
+    description: Device name
+    purpose: Device analysis
+    
+  DEVICE_MODEL:
+    type: string
+    nullable: false
+    description: Device model code
+    purpose: Technical identification
+    
+  # Geolocation
+  COUNTRY:
+    type: string (ISO 2-letter)
+    nullable: false
+    description: Country code
+    purpose: Geographic analysis
+    
+  STATE:
+    type: string
+    nullable: true (redacted)
+    description: State/province
+    purpose: Sub-national targeting
+    
+  CITY:
+    type: string
+    nullable: true (redacted)
+    description: City
+    purpose: Local analysis
+    
+  POSTCODE:
+    type: string
+    nullable: true (redacted)
+    description: Postal code
+    purpose: Hyper-local targeting
+    
+  IP_ADDRESS:
+    type: string
+    nullable: false (redacted)
+    description: IP address
+    purpose: Fraud detection
+    
+  TRACKER_IP_ADDRESS:
+    type: string
+    nullable: false (redacted)
+    description: IP address from tracker call
+    purpose: Compare to original IP for fraud detection
+    fraud_use: |
+      If TRACKER_IP_ADDRESS != IP_ADDRESS, might indicate:
+      - VPN usage
+      - Proxy/bot traffic
+      - IP spoofing
+      
+  LAT:
+    type: float64
+    nullable: true (100% null)
+    description: Latitude
+    purpose: Location targeting
+    notes: Always null
+    
+  LONG:
+    type: float64
+    nullable: true (100% null)
+    description: Longitude
+    purpose: Location targeting
+    notes: Always null
+    
+  # Localization
+  LOCALE:
+    type: string
+    nullable: false
+    description: Device locale
+    purpose: Regional formatting
+    
+  LANG:
+    type: string
+    nullable: false
+    description: Device language
+    purpose: Language targeting
+    
+  # SDK Context
+  SDK_VERSION:
+    type: string
+    nullable: false
+    description: SDK version
+    purpose: SDK tracking
+    
+  BUNDLE_ID:
+    type: string
+    nullable: false
+    description: App bundle identifier
+    purpose: App identification
+    
+  APP_ID:
+    type: string
+    nullable: false
+    description: Platform app ID
+    purpose: App tracking
+    
+  # Platform Details
+  STORE_ID:
+    type: int64
+    nullable: false
+    description: App store identifier
+    purpose: Platform tracking
+    
+  INSTALLER_NAME:
+    type: string
+    nullable: false
+    description: Package installer
+    purpose: Fraud detection
+    
+  INSTALL_MODE:
+    type: string
+    nullable: false
+    description: Installation method
+    purpose: Fraud detection
+    
+  # Ad Exchange
+  AD_EXCHANGE:
+    type: string
+    nullable: false
+    description: Ad exchange name
+    possible_values: ["smaato", "insticator", "unknown"]
+    purpose: Exchange performance tracking
+    
+  # Privacy & Consent
+  CONSENT_GDPR:
+    type: string
+    nullable: true (93% null)
+    description: GDPR consent
+    purpose: Privacy compliance
+    
+  HAS_CONSENT_STRING:
+    type: bool
+    nullable: false
+    description: Consent string present
+    purpose: TCF compliance
+    
+  CONSENT_PERSONALISED_GDPR:
+    type: string
+    nullable: true (93% null)
+    description: Personalization consent
+    purpose: Targeting compliance
+    
+  CONSENT_OTHER:
+    type: string
+    nullable: true (65% null)
+    description: Other consent frameworks
+    purpose: Future frameworks
+    
+  # Fraud Detection
+  FRAUD_REASON:
+    type: string
+    nullable: true
+    description: Fraud detection reason if flagged
+    purpose: Fraud classification
+    
+  FRAUD_DETAILS:
+    type: string (JSON)
+    nullable: true
+    description: Detailed fraud information
+    purpose: Fraud investigation
+    
+  USED_N8:
+    type: bool
+    nullable: false
+    description: Whether N8 system was used
+    distribution: All false in sample
+    purpose: Unknown system tracking
+    question: What is N8?
+
+relationships:
+  many_to_one:
+    - table: impressions
+      via: IMPRESSION_ID
+      description: Multiple tracker events per impression
+      event_flow: |
+        render → impression → click (all same IMPRESSION_ID)
+        
+    - table: bids
+      via: BID_ID
+      description: Tracker events link back to original bid
+      
+    - table: sessions
+      via: SESSION_ID
+      description: Multiple tracker events per session
+      
+  one_to_one:
+    - table: attributed_installs
+      via: ANON_DEVICE_ID + IMAGE_GUID
+      description: Click events that lead to app installs
+      attribution_window: Typically 1-7 days
+
+data_quality_notes:
+  always_null:
+    - LAT (100%)
+    - LONG (100%)
+    - DISPLAY_TIME (100%)
+    
+  mostly_null:
+    - VIDEO_DURATION_MS (83% - only for video ads)
+    - ASPECT_RATIO (67%)
+    - CONSENT_GDPR (93%)
+    
+  interesting_patterns:
+    - FOR_REVENUE mostly false (only specific events generate revenue)
+    - USED_N8 always false
+    - TRACKER_IP_ADDRESS enables IP fraud detection
+
+industry_applications:
+  advertising_analytics:
+    - Click-through rate (CTR) calculation
+    - Video completion rate (VCR) analysis
+    - Engagement funnel optimization (render→impression→click)
+    - Creative performance comparison
+    - Placement performance optimization
+    
+  attribution:
+    - Click-to-install tracking
+    - Campaign performance attribution
+    - Multi-touch attribution modeling
+    - Cross-device attribution
+    
+  fraud_detection:
+    - Click fraud (impossible click patterns)
+    - Click farms (same device, many clicks)
+    - Bot detection (event timing patterns)
+    - IP mismatch detection
+    - Impossible event sequences
+    
+  user_behavior:
+    - Engagement pattern analysis
+    - Content preference learning
+    - Optimal ad timing discovery
+    - User intent prediction
+    
+  ml_training:
+    - CTR prediction models
+    - Video completion prediction
+    - Fraud detection models
+    - User engagement scoring
+    - Optimal ad format per user
+
+key_insights:
+  granular_engagement_data:
+    observation: Multiple events per impression capture detailed engagement
+    business_value: |
+      Beyond simple "ad shown" metrics, understand exactly how users engage:
+      - Did they see it? (impression)
+      - Did they watch video to end? (video_complete)
+      - Did they click? (click)
+      - Did they magnify/engage? (magnified - unique to in-game ads)
+      
+  attribution_foundation:
+    observation: Click events link to install events via ANON_DEVICE_ID
+    business_value: |
+      Essential for proving ad effectiveness:
+      - Which campaigns drive installs?
+      - Which creatives perform best?
+      - What's the install rate by placement?
+      
+  fraud_detection_signals:
+    observation: Multiple fraud detection fields (IP comparison, timing, patterns)
+    business_value: |
+      Protect against:
+      - Click fraud (bots clicking ads)
+      - Impression fraud (hidden ads)
+      - Install fraud (fake installs)
+      
+  video_ad_insights:
+    observation: Granular video quartile tracking
+    business_value: |
+      Understand video engagement:
+      - Where do users drop off?
+      - Which videos hold attention?
+      - Optimize video length and content
+
+event_sequences:
+  typical_banner_flow:
+    - render (ad loads)
+    - impression (ad visible 1+ seconds)
+    - [optional] click (user interaction)
+    
+  typical_video_flow:
+    - render
+    - video_start
+    - video_firstQuartile (25%)
+    - video_midpoint (50%)
+    - video_thirdQuartile (75%)
+    - video_complete (100%)
+    - [optional] click
+    
+  rewarded_ad_flow:
+    - render
+    - video_start
+    - video_complete (must complete for reward)
+    - reward_granted (tracked elsewhere?)
+    
+  fraud_detection_sequences:
+    impossible_patterns:
+      - Click before impression
+      - Multiple clicks <1ms apart
+      - Video_complete without video_start
+      - Event from different IP than impression
+
+key_questions:
+  - What exactly is N8 (USED_N8 field)?
+  - Why is DISPLAY_TIME always null?
+  - How does IMP_ID differ from IMPRESSION_ID?
+  - What's the impression viewability threshold (1 second mentioned in notes)?
+  - Are there reward_granted events for rewarded videos?
+  - What's the attribution window for clicks to installs?
+  - How are "magnified" events triggered (unique to in-game)?
+  - What percentage of impressions get clicks?
+  - What percentage of clicks lead to installs?
+

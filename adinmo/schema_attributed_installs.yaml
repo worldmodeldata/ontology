@@ -1,0 +1,395 @@
+---
+# Adinmo Attributed Installs Table Schema
+# Records app installs attributed to ad campaigns
+
+table_name: attributed_installs
+description: |
+  Captures app install events that are attributed to Adinmo ad campaigns.
+  This data comes from attribution partners (Singular, AppsFlyer, Adjust)
+  and links ad exposure/clicks to actual app installations.
+  
+business_context: |
+  CRITICAL for proving ad campaign effectiveness!
+  This is the "holy grail" metric - did the ad actually drive an install?
+  
+  Key for:
+  - Campaign ROI calculation
+  - Creative optimization (which ads drive installs?)
+  - Cross-promotion effectiveness
+  - Partner performance comparison
+  - Attribution model validation
+
+primary_key: INSERT_ID
+foreign_keys:
+  - ANON_DEVICE_ID  # Links to user who installed
+  - SESSION_ID      # First session after install
+  - GAME_ID         # Game where ad was shown
+  - CAMPAIGN_ID     # Campaign that drove install
+  - IMAGE_GUID      # Creative that drove install
+
+record_volume_estimate: ~29 events in sample (much lower volume than other tables)
+
+fields:
+  # Core Identity
+  INSERT_ID:
+    type: int64
+    nullable: false
+    description: Unique database record identifier
+    purpose: Primary key
+    
+  INSERTED_TS:
+    type: timestamp
+    nullable: false
+    description: Database insertion timestamp
+    purpose: Pipeline monitoring
+    
+  ACTIVITY_TS:
+    type: timestamp
+    nullable: false
+    description: SOURCE OF TRUTH - When click/impression occurred (NOT install time)
+    purpose: Attribution timestamp
+    critical_note: |
+      This is the ad interaction timestamp, NOT install timestamp!
+      Use INSTALL_TS for actual install time.
+      
+  INSTALL_TS:
+    type: timestamp
+    nullable: false
+    description: When app was actually installed
+    purpose: True install timing
+    business_use: |
+      Calculate time-to-install (INSTALL_TS - ACTIVITY_TS)
+      Typical attribution windows: 1, 3, 7, 14, 30 days
+      
+  # Event Type
+  EVENT_TYPE:
+    type: string
+    nullable: false
+    description: Type of attribution event
+    possible_values: ["click", "view"]
+    purpose: Attribution method classification
+    distribution: All "click" in sample
+    business_context: |
+      - click attribution: User clicked ad, then installed
+      - view attribution: User saw ad, installed later (no click)
+      View-through attribution is less common but valuable for brand campaigns.
+      
+  # Device Linking
+  ANON_DEVICE_ID:
+    type: string (guid/hash)
+    nullable: false
+    description: CRITICAL - Device identifier of user who installed
+    purpose: Link install back to ad exposure
+    attribution_flow: |
+      1. User sees ad in Game A (logged with ANON_DEVICE_ID)
+      2. User clicks ad
+      3. User installs Game B
+      4. Attribution partner sends install event
+      5. Match ANON_DEVICE_ID to link ad → install
+      
+  SESSION_ID:
+    type: string (uuid)
+    nullable: false
+    description: First session ID after install
+    purpose: Link install to post-install behavior
+    business_value: |
+      Follow user journey after install:
+      - Did they make IAP?
+      - How long did they play?
+      - Did they churn quickly?
+      - What's their LTV?
+      
+  GAME_ID:
+    type: int64
+    nullable: false
+    description: Game where ad was shown (not installed game!)
+    purpose: Cross-promotion tracking
+    critical_note: |
+      This is the game where the AD appeared,
+      not the game that was installed.
+      For cross-promotion analysis.
+      
+  # Campaign Attribution
+  CAMPAIGN_ID:
+    type: int64
+    nullable: false
+    description: Campaign that drove the install
+    purpose: Campaign ROI calculation
+    business_metrics: |
+      - Cost per install (CPI) = campaign_spend / installs
+      - Install rate = installs / clicks
+      - View-through rate = installs / impressions
+      
+  CAMPAIGN_BATCH_ID:
+    type: int64
+    nullable: false
+    description: Batch/flight within campaign
+    purpose: A/B testing and optimization
+    cardinality: Low (4 unique values in sample)
+    
+  # Creative Attribution
+  IMAGE_GUID:
+    type: string (uuid)
+    nullable: false
+    description: CRITICAL - Creative that drove install
+    purpose: Creative performance optimization
+    business_value: |
+      Which creative assets drive most installs?
+      Essential for:
+      - Creative testing
+      - Asset optimization
+      - Design insights
+      
+  # Attribution Partner
+  PARTNER_ID:
+    type: int64
+    nullable: false
+    description: Attribution partner identifier
+    possible_values: [1, 2, 3] # Likely different attribution providers
+    distribution: All 3 in sample
+    purpose: Attribution partner tracking
+    known_partners: |
+      Mentioned in notes:
+      - Singular
+      - AppsFlyer
+      - Adjust
+      These are major mobile attribution platforms
+      
+  SDK_REQUEST_ID:
+    type: string (uuid)
+    nullable: false
+    description: SDK request identifier
+    purpose: Link to original ad request
+    
+  # Attribution Details
+  # [No click_id, conversion_id, or similar fields visible]
+  # [No install_referrer or store_tracking fields visible]
+
+relationships:
+  attribution_chain:
+    description: Complete attribution flow across tables
+    flow: |
+      1. bids: User requests ad in Game A
+      2. impressions: Ad shown to user
+      3. tracker_events: User clicks ad (EVENT_TYPE='click')
+      4. attributed_installs: User installs advertised app
+      5. sessions: User starts first session in new app
+      6. iap: User makes purchase (ultimate ROI proof)
+      
+  many_to_one:
+    - table: campaigns
+      via: CAMPAIGN_ID
+      description: Multiple installs per campaign
+      
+    - table: creative_assets
+      via: IMAGE_GUID
+      description: Multiple installs per creative
+      
+  join_patterns:
+    cross_promotion_analysis:
+      query: |
+        SELECT 
+          game_a.name as source_game,
+          game_b.name as installed_game,
+          COUNT(*) as installs
+        FROM attributed_installs ai
+        JOIN games game_a ON ai.GAME_ID = game_a.id
+        JOIN sessions s ON ai.SESSION_ID = s.SESSION_ID
+        JOIN games game_b ON s.GAME_ID = game_b.id
+        GROUP BY 1, 2
+        
+    install_to_revenue:
+      query: |
+        SELECT
+          ai.CAMPAIGN_ID,
+          COUNT(DISTINCT ai.ANON_DEVICE_ID) as installs,
+          COUNT(DISTINCT iap.ANON_DEVICE_ID) as purchasers,
+          SUM(iap.AMOUNT_INVOICEABLE) as revenue
+        FROM attributed_installs ai
+        LEFT JOIN iap ON ai.ANON_DEVICE_ID = iap.ANON_DEVICE_ID
+        WHERE iap.IAP_PURCHASE_MADE = true
+        GROUP BY 1
+
+data_quality_notes:
+  sample_size:
+    observation: Only 29 records in sample vs 1000 in other tables
+    implication: |
+      Installs are much rarer than impressions or clicks.
+      Typical funnel:
+      - 1000 impressions
+      - 10-50 clicks (1-5% CTR)
+      - 1-5 installs (2-10% of clicks)
+      
+  all_clicks:
+    observation: All EVENT_TYPE = "click" in sample
+    question: |
+      - Are view-through installs tracked?
+      - Or are they just rare?
+      
+  limited_fields:
+    observation: Only 13 fields vs 87 in impressions
+    implication: |
+      This is attribution metadata, not device metadata.
+      Device details are in the sessions table (via SESSION_ID).
+
+industry_applications:
+  user_acquisition:
+    - Campaign ROI measurement
+    - Cost per install (CPI) optimization
+    - Creative performance testing
+    - Channel mix optimization
+    - Attribution partner comparison
+    
+  cross_promotion:
+    - Game portfolio cross-promotion effectiveness
+    - User flow between games
+    - Optimal source-target game pairs
+    - Cross-install patterns
+    
+  attribution_science:
+    - Multi-touch attribution modeling
+    - Attribution window optimization
+    - Click vs view-through comparison
+    - Incrementality testing
+    - Deduplication across partners
+    
+  product_strategy:
+    - Which games attract users to other games?
+    - User acquisition funnel optimization
+    - Creative strategy insights
+    - Partner negotiations (which partner drives most installs?)
+    
+  ml_training:
+    - Install likelihood prediction
+    - Creative performance prediction
+    - Optimal attribution window determination
+    - Fraud detection (fake install patterns)
+    - LTV prediction (combine with post-install IAP)
+
+key_insights:
+  closes_attribution_loop:
+    observation: Links ad exposure → click → install → behavior → revenue
+    business_value: |
+      This is THE critical table for proving ad effectiveness!
+      Without this, you only know ads were shown and clicked.
+      This proves they drove actual installs.
+      
+      Full ROI calculation:
+      Revenue = Post-install IAP revenue
+      Cost = Campaign spend (from external system)
+      ROI = (Revenue - Cost) / Cost
+      
+  partner_integration:
+    observation: Integrates with major attribution platforms
+    business_value: |
+      Leverages industry-standard attribution:
+      - Singular: ML-based fraud detection
+      - AppsFlyer: Deep linking, aggregated analytics
+      - Adjust: Audience segmentation
+      
+      Benefits:
+      - Industry-standard attribution
+      - Fraud protection from partners
+      - Cross-network attribution
+      - SDK-less tracking
+      
+  creative_level_tracking:
+    observation: IMAGE_GUID provides creative-level attribution
+    business_value: |
+      Not just "campaign worked" but "THIS specific creative worked"
+      Enables:
+      - Creative A/B testing
+      - Design pattern learning
+      - Asset optimization
+      - Creative fatigue detection
+      
+  time_to_install:
+    observation: Both ACTIVITY_TS and INSTALL_TS captured
+    business_value: |
+      Analyze time lag between ad click and install:
+      - Immediate installs (hot leads)
+      - Delayed installs (considered purchases)
+      - Optimal attribution window
+      - User intent signals
+
+attribution_challenges:
+  device_id_matching:
+    challenge: Matching ANON_DEVICE_ID across ad view and install
+    solutions:
+      - Fingerprinting (IP, device, timestamp)
+      - Probabilistic matching
+      - Deterministic matching (advertising ID)
+      
+  attribution_window:
+    challenge: How long after ad click should install be attributed?
+    typical_windows:
+      - 1 day: Very conservative
+      - 7 days: Industry standard
+      - 30 days: Generous (but risk of false attribution)
+      
+  multi-touch_attribution:
+    challenge: User saw multiple ads before installing - which gets credit?
+    models:
+      - Last click (most common - this table likely uses this)
+      - First click
+      - Linear (equal credit)
+      - Time decay
+      - Custom ML models
+      
+  cross_device:
+    challenge: User sees ad on tablet, installs on phone
+    solutions:
+      - Cross-device graphs (from partners)
+      - Login matching
+      - Probabilistic matching
+
+key_questions:
+  - Are view-through installs tracked? (All sample shows click)
+  - What's the attribution window used (1 day? 7 days? 30 days?)
+  - How are installs matched to devices (fingerprinting? IDFA/GAID?)
+  - Is there deduplication if multiple partners claim same install?
+  - Which PARTNER_ID maps to which attribution provider?
+  - Are there post-install events (retention, revenue) linked?
+  - How are cross-device installs handled?
+  - What's the typical install rate (installs/clicks)?
+  - Are organic installs tracked separately?
+  - Is there cost data to calculate true ROI?
+
+critical_business_metrics:
+  install_rate:
+    formula: installs / clicks
+    typical_range: 2-10%
+    optimization_target: Improve creative and targeting
+    
+  time_to_install:
+    formula: INSTALL_TS - ACTIVITY_TS
+    typical_range: Minutes to days
+    business_insight: |
+      - Fast installs = high intent
+      - Slow installs = consideration period
+      
+  cost_per_install:
+    formula: campaign_spend / installs
+    external_data_needed: Campaign spend (not in this table)
+    benchmark: $0.50 - $5.00 depending on game type
+    
+  install_to_purchase_rate:
+    formula: users_with_iap / installs
+    typical_range: 1-5%
+    critical_for: LTV calculation
+    
+  campaign_roi:
+    formula: (post_install_revenue - campaign_spend) / campaign_spend
+    goal: >100% (positive ROI)
+    notes: Requires joining with IAP table
+
+future_enhancements:
+  additional_fields_needed:
+    - Install store (Google Play vs App Store)
+    - Install country (from partner)
+    - Attribution method (click, view, fingerprint, deterministic)
+    - Organic vs paid flag
+    - Fraud score from partner
+    - Click timestamp (separate from ACTIVITY_TS)
+    - Post-install events (D1, D7, D30 retention)
+
