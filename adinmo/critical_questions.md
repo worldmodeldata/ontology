@@ -142,6 +142,8 @@ If EVENT_TYPE = 'invalid_impression':
 
 **Range**: 0-100? 0-1? Unbounded?
 
+**Answer**: Server side calculation - I've asked for more information on what features they use to do calculation.
+
 ---
 
 ### Q2.5: "Magnified" Event
@@ -233,6 +235,7 @@ If EVENT_TYPE = 'invalid_impression':
 - Should we ignore these fields entirely?
 - Are there other fraud signals we should use instead?
 
+**Answer**: Partership ended - did not provide reason why specifically except that it didn't work out
 ---
 
 ## Priority 4: MEDIUM - Business Context
