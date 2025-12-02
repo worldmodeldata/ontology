@@ -1,0 +1,442 @@
+@prefix : <http://ontology.gaming.network/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Gaming Ontology v1.0
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Core ontology for multi-game data and analytics
+# ============================================================================
+
+<http://ontology.gaming.network/core> a owl:Ontology ;
+    dc:title "Gaming Network Core Ontology" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-11-24" ;
+    owl:versionInfo "1.0.0" ;
+    rdfs:comment "Formal ontology for gaming data across multiple games and ad networks" .
+
+# ============================================================================
+# TOP-LEVEL CLASSES
+# ============================================================================
+
+:Entity a owl:Class ;
+    rdfs:label "Entity"@en ;
+    skos:definition "Top-level class for all entities in the gaming ecosystem" .
+
+:Actor a owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Actor"@en ;
+    skos:definition "An entity that can perform actions in the gaming ecosystem" .
+
+:Event a owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Event"@en ;
+    skos:definition "A temporal occurrence in the gaming ecosystem" .
+
+:Resource a owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Resource"@en ;
+    skos:definition "A resource used or consumed in the gaming ecosystem" .
+
+# ============================================================================
+# ACTOR CLASSES
+# ============================================================================
+
+:Device a owl:Class ;
+    rdfs:subClassOf :Actor ;
+    rdfs:label "Device"@en ;
+    skos:definition "A unique hardware device used to access games" ;
+    skos:altLabel "Player"@en, "User"@en ;
+    rdfs:comment "Represents the same concept as Player or User in different games" .
+
+:Game a owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Game"@en ;
+    skos:definition "A game application in the network" .
+
+:Campaign a owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Campaign"@en ;
+    skos:definition "An advertising campaign" .
+
+# ============================================================================
+# EVENT CLASSES
+# ============================================================================
+
+:Session a owl:Class ;
+    rdfs:subClassOf :Event ;
+    rdfs:label "Session"@en ;
+    skos:definition "A period of continuous interaction with a game" .
+
+:GameSession a owl:Class ;
+    rdfs:subClassOf :Session ;
+    rdfs:label "Game Session"@en ;
+    skos:definition "A session within a specific game" .
+
+:AdEvent a owl:Class ;
+    rdfs:subClassOf :Event ;
+    rdfs:label "Ad Event"@en ;
+    skos:definition "An event related to advertising" .
+
+:Bid a owl:Class ;
+    rdfs:subClassOf :AdEvent ;
+    rdfs:label "Bid"@en ;
+    skos:definition "A bid request in the ad auction" .
+
+:Impression a owl:Class ;
+    rdfs:subClassOf :AdEvent ;
+    rdfs:label "Impression"@en ;
+    skos:definition "An ad impression shown to a user" .
+
+:AdInteraction a owl:Class ;
+    rdfs:subClassOf :AdEvent ;
+    rdfs:label "Ad Interaction"@en ;
+    skos:definition "User interaction with an advertisement" .
+
+:Transaction a owl:Class ;
+    rdfs:subClassOf :Event ;
+    rdfs:label "Transaction"@en ;
+    skos:definition "A financial transaction" .
+
+:InAppPurchase a owl:Class ;
+    rdfs:subClassOf :Transaction ;
+    rdfs:label "In-App Purchase"@en ;
+    skos:definition "A purchase made within a game" ;
+    skos:altLabel "IAP"@en .
+
+:AttributedInstall a owl:Class ;
+    rdfs:subClassOf :Event ;
+    rdfs:label "Attributed Install"@en ;
+    skos:definition "A game installation attributed to a campaign" .
+
+# ============================================================================
+# ENGAGEMENT CLASSES (Inferred)
+# ============================================================================
+
+:EngagementLevel a owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Engagement Level"@en ;
+    skos:definition "Classification of user engagement" .
+
+:LowEngagement a owl:Class ;
+    rdfs:subClassOf :EngagementLevel ;
+    rdfs:label "Low Engagement"@en ;
+    skos:definition "User with low engagement (1-2 sessions)" .
+
+:MediumEngagement a owl:Class ;
+    rdfs:subClassOf :EngagementLevel ;
+    rdfs:label "Medium Engagement"@en ;
+    skos:definition "User with medium engagement (3-9 sessions)" .
+
+:HighEngagement a owl:Class ;
+    rdfs:subClassOf :EngagementLevel ;
+    rdfs:label "High Engagement"@en ;
+    skos:definition "User with high engagement (10+ sessions)" .
+
+# ============================================================================
+# MONETIZATION CLASSES (Inferred)
+# ============================================================================
+
+:MonetizationSegment a owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Monetization Segment"@en ;
+    skos:definition "Classification of user monetization behavior" .
+
+:NonPayer a owl:Class ;
+    rdfs:subClassOf :MonetizationSegment ;
+    rdfs:label "Non-Payer"@en ;
+    skos:definition "User who has never made a purchase" .
+
+:Minnow a owl:Class ;
+    rdfs:subClassOf :MonetizationSegment ;
+    rdfs:label "Minnow"@en ;
+    skos:definition "User with low spending (£0-£10)" .
+
+:Dolphin a owl:Class ;
+    rdfs:subClassOf :MonetizationSegment ;
+    rdfs:label "Dolphin"@en ;
+    skos:definition "User with medium spending (£10-£50)" .
+
+:Whale a owl:Class ;
+    rdfs:subClassOf :MonetizationSegment ;
+    rdfs:label "Whale"@en ;
+    skos:definition "User with high spending (£50+)" .
+
+# ============================================================================
+# MONETIZATION THRESHOLDS CONFIGURATION
+# ============================================================================
+
+:MonetizationThresholds a owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Monetization Thresholds"@en ;
+    skos:definition "Configuration class for tenant-specific monetization segment thresholds"@en .
+
+:appliesToTenant a owl:DatatypeProperty ;
+    rdfs:domain :MonetizationThresholds ;
+    rdfs:range xsd:string ;
+    rdfs:label "applies to tenant"@en ;
+    skos:definition "Tenant identifier this threshold configuration applies to"@en .
+
+:whaleIapThreshold a owl:DatatypeProperty ;
+    rdfs:domain :MonetizationThresholds ;
+    rdfs:range xsd:integer ;
+    rdfs:label "whale IAP threshold"@en ;
+    skos:definition "Minimum IAP count to classify as Whale"@en .
+
+:dolphinIapThreshold a owl:DatatypeProperty ;
+    rdfs:domain :MonetizationThresholds ;
+    rdfs:range xsd:integer ;
+    rdfs:label "dolphin IAP threshold"@en ;
+    skos:definition "Minimum IAP count to classify as Dolphin"@en .
+
+:minnowIapThreshold a owl:DatatypeProperty ;
+    rdfs:domain :MonetizationThresholds ;
+    rdfs:range xsd:integer ;
+    rdfs:label "minnow IAP threshold"@en ;
+    skos:definition "Minimum IAP count to classify as Minnow"@en .
+
+:whaleMonetaryThreshold a owl:DatatypeProperty ;
+    rdfs:domain :MonetizationThresholds ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "whale monetary threshold"@en ;
+    skos:definition "Minimum monetary value (£) to classify as Whale (future use)"@en .
+
+:dolphinMonetaryThreshold a owl:DatatypeProperty ;
+    rdfs:domain :MonetizationThresholds ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "dolphin monetary threshold"@en ;
+    skos:definition "Minimum monetary value (£) to classify as Dolphin (future use)"@en .
+
+:minnowMonetaryThreshold a owl:DatatypeProperty ;
+    rdfs:domain :MonetizationThresholds ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "minnow monetary threshold"@en ;
+    skos:definition "Minimum monetary value (£) to classify as Minnow (future use)"@en .
+
+# ============================================================================
+# RETENTION CLASSES (Inferred)
+# ============================================================================
+
+:RetentionStatus a owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Retention Status"@en ;
+    skos:definition "Classification of user retention" .
+
+:Churned a owl:Class ;
+    rdfs:subClassOf :RetentionStatus ;
+    rdfs:label "Churned"@en ;
+    skos:definition "User who has not returned after first session" .
+
+:AtRisk a owl:Class ;
+    rdfs:subClassOf :RetentionStatus ;
+    rdfs:label "At Risk"@en ;
+    skos:definition "User who may churn soon" .
+
+:Retained a owl:Class ;
+    rdfs:subClassOf :RetentionStatus ;
+    rdfs:label "Retained"@en ;
+    skos:definition "User who continues to engage regularly" .
+
+# ============================================================================
+# OBJECT PROPERTIES (Relationships)
+# ============================================================================
+
+:hasSession a owl:ObjectProperty ;
+    rdfs:domain :Device ;
+    rdfs:range :Session ;
+    rdfs:label "has session"@en ;
+    skos:definition "Relates a device to its sessions" ;
+    owl:inverseOf :belongsToDevice .
+
+:belongsToDevice a owl:ObjectProperty ;
+    rdfs:domain :Session ;
+    rdfs:range :Device ;
+    rdfs:label "belongs to device"@en ;
+    skos:definition "Relates a session to its device" .
+
+:occursInGame a owl:ObjectProperty ;
+    rdfs:domain :Session ;
+    rdfs:range :Game ;
+    rdfs:label "occurs in game"@en ;
+    skos:definition "Relates a session to the game it occurs in" .
+
+:playsGame a owl:ObjectProperty ;
+    rdfs:domain :Device ;
+    rdfs:range :Game ;
+    rdfs:label "plays game"@en ;
+    skos:definition "Relates a device to games it plays" ;
+    rdfs:comment "Inferred from hasSession and occursInGame" .
+
+:containsBid a owl:ObjectProperty ;
+    rdfs:domain :Session ;
+    rdfs:range :Bid ;
+    rdfs:label "contains bid"@en ;
+    skos:definition "Relates a session to bids that occurred during it" .
+
+:hasImpression a owl:ObjectProperty ;
+    rdfs:domain :Session ;
+    rdfs:range :Impression ;
+    rdfs:label "has impression"@en ;
+    skos:definition "Relates a session to ad impressions shown during it" .
+
+:hasAdInteraction a owl:ObjectProperty ;
+    rdfs:domain :Session ;
+    rdfs:range :AdInteraction ;
+    rdfs:label "has ad interaction"@en ;
+    skos:definition "Relates a session to ad interactions during it" .
+
+:hasInAppPurchase a owl:ObjectProperty ;
+    rdfs:domain :Session ;
+    rdfs:range :InAppPurchase ;
+    rdfs:label "has in-app purchase"@en ;
+    skos:definition "Relates a session to purchases made during it" .
+
+:partOfCampaign a owl:ObjectProperty ;
+    rdfs:domain :AdEvent ;
+    rdfs:range :Campaign ;
+    rdfs:label "part of campaign"@en ;
+    skos:definition "Relates an ad event to its campaign" .
+
+:attributedTo a owl:ObjectProperty ;
+    rdfs:domain :AttributedInstall ;
+    rdfs:range :Campaign ;
+    rdfs:label "attributed to"@en ;
+    skos:definition "Relates an install to the campaign that drove it" .
+
+:hasAttributedInstall a owl:ObjectProperty ;
+    rdfs:domain :Device ;
+    rdfs:range :AttributedInstall ;
+    rdfs:label "has attributed install"@en ;
+    skos:definition "Relates a device to its attributed install event" .
+
+# ============================================================================
+# ENGAGEMENT PROPERTIES
+# ============================================================================
+
+:hasEngagementLevel a owl:ObjectProperty ;
+    rdfs:domain :Device ;
+    rdfs:range :EngagementLevel ;
+    rdfs:label "has engagement level"@en ;
+    skos:definition "Relates a device to its inferred engagement classification" .
+
+:hasMonetizationSegment a owl:ObjectProperty ;
+    rdfs:domain :Device ;
+    rdfs:range :MonetizationSegment ;
+    rdfs:label "has monetization segment"@en ;
+    skos:definition "Relates a device to its inferred monetization classification" .
+
+:hasRetentionStatus a owl:ObjectProperty ;
+    rdfs:domain :Device ;
+    rdfs:range :RetentionStatus ;
+    rdfs:label "has retention status"@en ;
+    skos:definition "Relates a device to its inferred retention status" .
+
+# ============================================================================
+# DATA PROPERTIES
+# ============================================================================
+
+:deviceId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :Device ;
+    rdfs:range xsd:string ;
+    rdfs:label "device ID"@en ;
+    skos:definition "Unique identifier for a device" .
+
+:deviceType a owl:DatatypeProperty ;
+    rdfs:domain :Device ;
+    rdfs:range xsd:string ;
+    rdfs:label "device type"@en ;
+    skos:definition "Type of device (phone, tablet, etc.)" .
+
+:deviceOS a owl:DatatypeProperty ;
+    rdfs:domain :Device ;
+    rdfs:range xsd:string ;
+    rdfs:label "device OS"@en ;
+    skos:definition "Operating system of the device" .
+
+:country a owl:DatatypeProperty ;
+    rdfs:domain :Device ;
+    rdfs:range xsd:string ;
+    rdfs:label "country"@en ;
+    skos:definition "Country code of the device" .
+
+:sessionCount a owl:DatatypeProperty ;
+    rdfs:domain :Device ;
+    rdfs:range xsd:integer ;
+    rdfs:label "session count"@en ;
+    skos:definition "Total number of sessions for this device" .
+
+:totalSpent a owl:DatatypeProperty ;
+    rdfs:domain :Device ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "total spent"@en ;
+    skos:definition "Total amount spent by this device" .
+
+:sessionId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :Session ;
+    rdfs:range xsd:string ;
+    rdfs:label "session ID"@en ;
+    skos:definition "Unique identifier for a session" .
+
+:activityTimestamp a owl:DatatypeProperty ;
+    rdfs:domain :Event ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "activity timestamp"@en ;
+    skos:definition "Timestamp when the event occurred" .
+
+:eventType a owl:DatatypeProperty ;
+    rdfs:domain :Event ;
+    rdfs:range xsd:string ;
+    rdfs:label "event type"@en ;
+    skos:definition "Type of event" .
+
+:amount a owl:DatatypeProperty ;
+    rdfs:domain :Transaction ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "amount"@en ;
+    skos:definition "Transaction amount" .
+
+:currency a owl:DatatypeProperty ;
+    rdfs:domain :Transaction ;
+    rdfs:range xsd:string ;
+    rdfs:label "currency"@en ;
+    skos:definition "Currency code for the transaction" .
+
+:bidPrice a owl:DatatypeProperty ;
+    rdfs:domain :Bid ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "bid price"@en ;
+    skos:definition "Price of the bid in the ad auction" .
+
+:campaignId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :Campaign ;
+    rdfs:range xsd:string ;
+    rdfs:label "campaign ID"@en ;
+    skos:definition "Unique identifier for a campaign" .
+
+:advertiserDomain a owl:DatatypeProperty ;
+    rdfs:domain :Campaign ;
+    rdfs:range xsd:string ;
+    rdfs:label "advertiser domain"@en ;
+    skos:definition "Domain of the advertiser" .
+
+# ============================================================================
+# DISJOINT CLASSES
+# ============================================================================
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :LowEngagement :MediumEngagement :HighEngagement ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :NonPayer :Minnow :Dolphin :Whale ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :Churned :AtRisk :Retained ) .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================

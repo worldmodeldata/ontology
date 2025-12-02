@@ -1,0 +1,261 @@
+@prefix : <http://ontology.gaming.network/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# ============================================================================
+# Inference Rules for Gaming Ontology
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: SPARQL-based inference rules for semantic reasoning
+# ============================================================================
+
+# These rules are expressed in SPARQL CONSTRUCT format
+# They can be executed by the reasoning engine to infer new triples
+
+# ============================================================================
+# RULE 1: Infer playsGame from hasSession and occursInGame
+# ============================================================================
+# If a device has a session, and that session occurs in a game,
+# then the device plays that game
+
+# CONSTRUCT {
+#     ?device :playsGame ?game .
+# }
+# WHERE {
+#     ?device :hasSession ?session .
+#     ?session :occursInGame ?game .
+# }
+
+# ============================================================================
+# RULE 2: Infer Low Engagement
+# ============================================================================
+# If a device has 1-2 sessions, classify as Low Engagement
+
+# CONSTRUCT {
+#     ?device :hasEngagementLevel :LowEngagement .
+#     ?device rdf:type :LowEngagement .
+# }
+# WHERE {
+#     ?device a :Device .
+#     ?device :sessionCount ?count .
+#     FILTER (?count >= 1 && ?count <= 2)
+# }
+
+# ============================================================================
+# RULE 3: Infer Medium Engagement
+# ============================================================================
+# If a device has 3-9 sessions, classify as Medium Engagement
+
+# CONSTRUCT {
+#     ?device :hasEngagementLevel :MediumEngagement .
+#     ?device rdf:type :MediumEngagement .
+# }
+# WHERE {
+#     ?device a :Device .
+#     ?device :sessionCount ?count .
+#     FILTER (?count >= 3 && ?count <= 9)
+# }
+
+# ============================================================================
+# RULE 4: Infer High Engagement
+# ============================================================================
+# If a device has 10+ sessions, classify as High Engagement
+
+# CONSTRUCT {
+#     ?device :hasEngagementLevel :HighEngagement .
+#     ?device rdf:type :HighEngagement .
+# }
+# WHERE {
+#     ?device a :Device .
+#     ?device :sessionCount ?count .
+#     FILTER (?count >= 10)
+# }
+
+# ============================================================================
+# RULE 5: Infer Non-Payer
+# ============================================================================
+# If a device has total spent = 0, classify as Non-Payer
+
+# CONSTRUCT {
+#     ?device :hasMonetizationSegment :NonPayer .
+#     ?device rdf:type :NonPayer .
+# }
+# WHERE {
+#     ?device a :Device .
+#     ?device :totalSpent ?spent .
+#     FILTER (?spent = 0)
+# }
+
+# ============================================================================
+# RULE 6: Infer Minnow
+# ============================================================================
+# If a device has spent £0.01-£10, classify as Minnow
+
+# CONSTRUCT {
+#     ?device :hasMonetizationSegment :Minnow .
+#     ?device rdf:type :Minnow .
+# }
+# WHERE {
+#     ?device a :Device .
+#     ?device :totalSpent ?spent .
+#     FILTER (?spent > 0 && ?spent <= 10)
+# }
+
+# ============================================================================
+# RULE 7: Infer Dolphin
+# ============================================================================
+# If a device has spent £10.01-£50, classify as Dolphin
+
+# CONSTRUCT {
+#     ?device :hasMonetizationSegment :Dolphin .
+#     ?device rdf:type :Dolphin .
+# }
+# WHERE {
+#     ?device a :Device .
+#     ?device :totalSpent ?spent .
+#     FILTER (?spent > 10 && ?spent <= 50)
+# }
+
+# ============================================================================
+# RULE 8: Infer Whale
+# ============================================================================
+# If a device has spent £50+, classify as Whale
+
+# CONSTRUCT {
+#     ?device :hasMonetizationSegment :Whale .
+#     ?device rdf:type :Whale .
+# }
+# WHERE {
+#     ?device a :Device .
+#     ?device :totalSpent ?spent .
+#     FILTER (?spent > 50)
+# }
+
+# ============================================================================
+# RULE 9: Infer Churned Status
+# ============================================================================
+# If a device has 1-2 sessions and last activity > 7 days ago, classify as Churned
+
+# CONSTRUCT {
+#     ?device :hasRetentionStatus :Churned .
+#     ?device rdf:type :Churned .
+# }
+# WHERE {
+#     ?device a :Device .
+#     ?device :sessionCount ?count .
+#     ?device :hasSession ?session .
+#     ?session :activityTimestamp ?lastActivity .
+#     FILTER (?count <= 2)
+#     FILTER (NOW() - ?lastActivity > "P7D"^^xsd:duration)
+# }
+
+# ============================================================================
+# RULE 10: Infer At Risk Status
+# ============================================================================
+# If a device has 3+ sessions but last activity > 14 days ago, classify as At Risk
+
+# CONSTRUCT {
+#     ?device :hasRetentionStatus :AtRisk .
+#     ?device rdf:type :AtRisk .
+# }
+# WHERE {
+#     ?device a :Device .
+#     ?device :sessionCount ?count .
+#     ?device :hasSession ?session .
+#     ?session :activityTimestamp ?lastActivity .
+#     FILTER (?count >= 3)
+#     FILTER (NOW() - ?lastActivity > "P14D"^^xsd:duration)
+# }
+
+# ============================================================================
+# RULE 11: Infer Retained Status
+# ============================================================================
+# If a device has 3+ sessions and last activity within 7 days, classify as Retained
+
+# CONSTRUCT {
+#     ?device :hasRetentionStatus :Retained .
+#     ?device rdf:type :Retained .
+# }
+# WHERE {
+#     ?device a :Device .
+#     ?device :sessionCount ?count .
+#     ?device :hasSession ?session .
+#     ?session :activityTimestamp ?lastActivity .
+#     FILTER (?count >= 3)
+#     FILTER (NOW() - ?lastActivity <= "P7D"^^xsd:duration)
+# }
+
+# ============================================================================
+# RULE 12: Compute Session Count
+# ============================================================================
+# Count sessions for each device
+
+# CONSTRUCT {
+#     ?device :sessionCount ?count .
+# }
+# WHERE {
+#     SELECT ?device (COUNT(?session) AS ?count)
+#     WHERE {
+#         ?device a :Device .
+#         ?device :hasSession ?session .
+#     }
+#     GROUP BY ?device
+# }
+
+# ============================================================================
+# RULE 13: Compute Total Spent
+# ============================================================================
+# Sum all purchases for each device
+
+# CONSTRUCT {
+#     ?device :totalSpent ?total .
+# }
+# WHERE {
+#     SELECT ?device (SUM(?amount) AS ?total)
+#     WHERE {
+#         ?device a :Device .
+#         ?device :hasSession ?session .
+#         ?session :hasInAppPurchase ?purchase .
+#         ?purchase :amount ?amount .
+#     }
+#     GROUP BY ?device
+# }
+
+# ============================================================================
+# RULE 14: Infer High-Value Non-Payer (Opportunity)
+# ============================================================================
+# Device with high engagement but no spending - prime for targeted offers
+
+# CONSTRUCT {
+#     ?device rdf:type :HighValueOpportunity .
+# }
+# WHERE {
+#     ?device a :Device .
+#     ?device :hasEngagementLevel :HighEngagement .
+#     ?device :hasMonetizationSegment :NonPayer .
+# }
+
+# ============================================================================
+# RULE 15: Infer Cross-Game Player
+# ============================================================================
+# Device that plays multiple games
+
+# CONSTRUCT {
+#     ?device rdf:type :CrossGamePlayer .
+#     ?device :playsMultipleGames true .
+# }
+# WHERE {
+#     SELECT ?device
+#     WHERE {
+#         ?device a :Device .
+#         ?device :playsGame ?game .
+#     }
+#     GROUP BY ?device
+#     HAVING (COUNT(DISTINCT ?game) > 1)
+# }
+
+# ============================================================================
+# END OF RULES
+# ============================================================================

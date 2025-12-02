@@ -1,0 +1,85 @@
+@prefix : <http://ontology.gaming.network/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Tenant-Specific Monetization Thresholds
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Tenant-specific monetization segment thresholds for IAP counts
+#              and monetary values. Supports 10s-100s of tenants without code changes.
+# ============================================================================
+
+# Default thresholds (used for tenants without specific configuration)
+# These provide fallback values for new tenants
+:DefaultMonetizationThresholds a :MonetizationThresholds ;
+    rdfs:label "Default Monetization Thresholds"@en ;
+    skos:definition "Default thresholds used when tenant-specific thresholds are not defined"@en ;
+    :whaleIapThreshold 5 ;
+    :dolphinIapThreshold 2 ;
+    :minnowIapThreshold 1 ;
+    :whaleMonetaryThreshold 50.0 ;
+    :dolphinMonetaryThreshold 10.0 ;
+    :minnowMonetaryThreshold 0.01 .
+
+# ============================================================================
+# Flick Solitaire Thresholds
+# ============================================================================
+# Thresholds derived from Phase 4.2 pattern specifications:
+# - Expected: 13 whales
+# - 13th highest IAP count: 425 (after aggregation across 14 partitions)
+# - Note: Flick generates IAPs deterministically (5-15 per whale user per partition)
+
+:FlickMonetizationThresholds a :MonetizationThresholds ;
+    rdfs:label "Flick Solitaire Monetization Thresholds"@en ;
+    skos:definition "Thresholds for Flick Solitaire tenant. 13th highest IAP count is 425."@en ;
+    :appliesToTenant "flick" ;
+    :whaleIapThreshold 425 ;
+    :dolphinIapThreshold 2 ;
+    :minnowIapThreshold 1 .
+
+# ============================================================================
+# Avakin Life Thresholds
+# ============================================================================
+# Thresholds derived from Phase 4.2 pattern specifications:
+# - Expected: 25 whales
+# - 25th highest IAP count: 34,190 (after aggregation across 14 partitions)
+# - Note: Avakin generates many IAP events per session (probabilistic, 10% per session for whales)
+
+:AvakinMonetizationThresholds a :MonetizationThresholds ;
+    rdfs:label "Avakin Life Monetization Thresholds"@en ;
+    skos:definition "Thresholds for Avakin Life tenant. 25th highest IAP count is 34,190."@en ;
+    :appliesToTenant "avakin" ;
+    :whaleIapThreshold 34190 ;
+    :dolphinIapThreshold 1000 ;
+    :minnowIapThreshold 100 .
+
+# ============================================================================
+# Adinmo Thresholds
+# ============================================================================
+# Thresholds derived from Phase 4.2 pattern specifications:
+# - Expected: 10 whales
+# - 10th highest IAP count: 1,680 (after aggregation across 14 partitions)
+# - Note: Adinmo generates IAP events from separate iap table
+
+:AdinmoMonetizationThresholds a :MonetizationThresholds ;
+    rdfs:label "Adinmo Monetization Thresholds"@en ;
+    skos:definition "Thresholds for Adinmo tenant. 10th highest IAP count is 1,680."@en ;
+    :appliesToTenant "adinmo" ;
+    :whaleIapThreshold 1680 ;
+    :dolphinIapThreshold 2 ;
+    :minnowIapThreshold 1 .
+
+# ============================================================================
+# END OF TENANT THRESHOLDS
+# ============================================================================
+# To add a new tenant:
+# 1. Create a new :TenantNameMonetizationThresholds instance
+# 2. Set :appliesToTenant to the tenant_id (e.g., "new_tenant")
+# 3. Set :whaleIapThreshold, :dolphinIapThreshold, :minnowIapThreshold
+# 4. Optionally set monetary thresholds for future use
+# 5. No code changes required - thresholds are loaded automatically
+
