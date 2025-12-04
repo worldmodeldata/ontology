@@ -1,0 +1,276 @@
+@prefix : <http://ontology.gaming.network/core#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# ============================================================================
+# SHACL Shapes for Gaming Ontology Validation
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# ============================================================================
+
+# ============================================================================
+# DEVICE SHAPE
+# ============================================================================
+
+:DeviceShape a sh:NodeShape ;
+    sh:targetClass :Device ;
+    sh:property [
+        sh:path :deviceId ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1 ;
+        sh:message "Device must have exactly one non-empty device ID" ;
+    ] ;
+    sh:property [
+        sh:path :deviceType ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:in ( "phone" "tablet" "desktop" "console" "other" ) ;
+        sh:message "Device type must be one of: phone, tablet, desktop, console, other" ;
+    ] ;
+    sh:property [
+        sh:path :deviceOS ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Device must have at most one OS" ;
+    ] ;
+    sh:property [
+        sh:path :country ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:pattern "^[a-z]{2}$" ;
+        sh:message "Country must be a 2-letter lowercase code" ;
+    ] ;
+    sh:property [
+        sh:path :sessionCount ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:message "Session count must be a non-negative integer" ;
+    ] ;
+    sh:property [
+        sh:path :totalSpent ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0.0 ;
+        sh:message "Total spent must be a non-negative decimal" ;
+    ] ;
+    sh:property [
+        sh:path :hasEngagementLevel ;
+        sh:maxCount 1 ;
+        sh:class :EngagementLevel ;
+        sh:message "Device can have at most one engagement level" ;
+    ] ;
+    sh:property [
+        sh:path :hasMonetizationSegment ;
+        sh:maxCount 1 ;
+        sh:class :MonetizationSegment ;
+        sh:message "Device can have at most one monetization segment" ;
+    ] ;
+    sh:property [
+        sh:path :hasRetentionStatus ;
+        sh:maxCount 1 ;
+        sh:class :RetentionStatus ;
+        sh:message "Device can have at most one retention status" ;
+    ] .
+
+# ============================================================================
+# SESSION SHAPE
+# ============================================================================
+
+:SessionShape a sh:NodeShape ;
+    sh:targetClass :Session ;
+    sh:property [
+        sh:path :sessionId ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1 ;
+        sh:message "Session must have exactly one non-empty session ID" ;
+    ] ;
+    sh:property [
+        sh:path :activityTimestamp ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+        sh:message "Session must have exactly one activity timestamp" ;
+    ] ;
+    sh:property [
+        sh:path :belongsToDevice ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class :Device ;
+        sh:message "Session must belong to exactly one device" ;
+    ] ;
+    sh:property [
+        sh:path :occursInGame ;
+        sh:maxCount 1 ;
+        sh:class :Game ;
+        sh:message "Session can occur in at most one game" ;
+    ] .
+
+# ============================================================================
+# IN-APP PURCHASE SHAPE
+# ============================================================================
+
+:InAppPurchaseShape a sh:NodeShape ;
+    sh:targetClass :InAppPurchase ;
+    sh:property [
+        sh:path :amount ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:decimal ;
+        sh:minExclusive 0.0 ;
+        sh:message "In-app purchase must have exactly one positive amount" ;
+    ] ;
+    sh:property [
+        sh:path :currency ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:pattern "^[A-Z]{3}$" ;
+        sh:message "Currency must be a 3-letter uppercase code (e.g., GBP, USD)" ;
+    ] ;
+    sh:property [
+        sh:path :activityTimestamp ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+        sh:message "Purchase must have exactly one timestamp" ;
+    ] .
+
+# ============================================================================
+# BID SHAPE
+# ============================================================================
+
+:BidShape a sh:NodeShape ;
+    sh:targetClass :Bid ;
+    sh:property [
+        sh:path :bidPrice ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0.0 ;
+        sh:message "Bid price must be a non-negative decimal" ;
+    ] ;
+    sh:property [
+        sh:path :partOfCampaign ;
+        sh:maxCount 1 ;
+        sh:class :Campaign ;
+        sh:message "Bid can be part of at most one campaign" ;
+    ] ;
+    sh:property [
+        sh:path :activityTimestamp ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+        sh:message "Bid must have exactly one timestamp" ;
+    ] .
+
+# ============================================================================
+# IMPRESSION SHAPE
+# ============================================================================
+
+:ImpressionShape a sh:NodeShape ;
+    sh:targetClass :Impression ;
+    sh:property [
+        sh:path :partOfCampaign ;
+        sh:maxCount 1 ;
+        sh:class :Campaign ;
+        sh:message "Impression can be part of at most one campaign" ;
+    ] ;
+    sh:property [
+        sh:path :activityTimestamp ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+        sh:message "Impression must have exactly one timestamp" ;
+    ] .
+
+# ============================================================================
+# CAMPAIGN SHAPE
+# ============================================================================
+
+:CampaignShape a sh:NodeShape ;
+    sh:targetClass :Campaign ;
+    sh:property [
+        sh:path :campaignId ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1 ;
+        sh:message "Campaign must have exactly one non-empty campaign ID" ;
+    ] ;
+    sh:property [
+        sh:path :advertiserDomain ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Campaign can have at most one advertiser domain" ;
+    ] .
+
+# ============================================================================
+# ATTRIBUTED INSTALL SHAPE
+# ============================================================================
+
+:AttributedInstallShape a sh:NodeShape ;
+    sh:targetClass :AttributedInstall ;
+    sh:property [
+        sh:path :attributedTo ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class :Campaign ;
+        sh:message "Attributed install must be attributed to exactly one campaign" ;
+    ] ;
+    sh:property [
+        sh:path :activityTimestamp ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+        sh:message "Install must have exactly one timestamp" ;
+    ] .
+
+# ============================================================================
+# ENGAGEMENT LEVEL CONSTRAINTS
+# ============================================================================
+
+:EngagementLevelShape a sh:NodeShape ;
+    sh:targetClass :EngagementLevel ;
+    sh:message "Engagement level must be one of: LowEngagement, MediumEngagement, HighEngagement" ;
+    sh:or (
+        [ sh:class :LowEngagement ]
+        [ sh:class :MediumEngagement ]
+        [ sh:class :HighEngagement ]
+    ) .
+
+# ============================================================================
+# MONETIZATION SEGMENT CONSTRAINTS
+# ============================================================================
+
+:MonetizationSegmentShape a sh:NodeShape ;
+    sh:targetClass :MonetizationSegment ;
+    sh:message "Monetization segment must be one of: NonPayer, Minnow, Dolphin, Whale" ;
+    sh:or (
+        [ sh:class :NonPayer ]
+        [ sh:class :Minnow ]
+        [ sh:class :Dolphin ]
+        [ sh:class :Whale ]
+    ) .
+
+# ============================================================================
+# RETENTION STATUS CONSTRAINTS
+# ============================================================================
+
+:RetentionStatusShape a sh:NodeShape ;
+    sh:targetClass :RetentionStatus ;
+    sh:message "Retention status must be one of: Churned, AtRisk, Retained" ;
+    sh:or (
+        [ sh:class :Churned ]
+        [ sh:class :AtRisk ]
+        [ sh:class :Retained ]
+    ) .
+
+# ============================================================================
+# END OF SHAPES
+# ============================================================================

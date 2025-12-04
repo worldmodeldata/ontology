@@ -1,0 +1,98 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix lo: <http://livingontology.io/schema#> .
+
+# Player Shape
+lo:PlayerShape
+    a sh:NodeShape ;
+    sh:targetClass lo:Player ;
+    sh:property [
+        sh:path lo:playerId ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:pattern "^[a-zA-Z0-9_-]+$" ;
+        sh:message "Player ID must be alphanumeric with underscores or hyphens" ;
+    ] ;
+    sh:property [
+        sh:path lo:cohort ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in (lo:Whale lo:Dolphin lo:Minnow lo:NonPayer lo:Churned) ;
+        sh:message "Cohort must be one of: Whale, Dolphin, Minnow, NonPayer, Churned" ;
+    ] ;
+    sh:property [
+        sh:path lo:engagementLevel ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in (lo:High lo:Medium lo:Low) ;
+        sh:message "Engagement level must be one of: High, Medium, Low" ;
+    ] ;
+    sh:property [
+        sh:path lo:totalSessions ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:message "Total sessions must be a non-negative integer" ;
+    ] ;
+    sh:property [
+        sh:path lo:totalRevenue ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0.0 ;
+        sh:message "Total revenue must be a non-negative decimal" ;
+    ] .
+
+# Session Shape
+lo:SessionShape
+    a sh:NodeShape ;
+    sh:targetClass lo:Session ;
+    sh:property [
+        sh:path lo:sessionId ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path lo:playerId ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path lo:startTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+    ] ;
+    sh:property [
+        sh:path lo:duration ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:message "Duration must be a non-negative integer (seconds)" ;
+    ] .
+
+# IAP Event Shape
+lo:IAPEventShape
+    a sh:NodeShape ;
+    sh:targetClass lo:IAPEvent ;
+    sh:property [
+        sh:path lo:amount ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0.0 ;
+        sh:message "IAP amount must be a non-negative decimal" ;
+    ] ;
+    sh:property [
+        sh:path lo:currency ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:pattern "^[A-Z]{3}$" ;
+        sh:message "Currency must be a 3-letter ISO code (e.g., USD, EUR)" ;
+    ] .
