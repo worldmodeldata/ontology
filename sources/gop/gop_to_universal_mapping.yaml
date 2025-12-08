@@ -1,0 +1,101 @@
+# Game Ontology Project (GOP) to Universal Gaming Foundation Mapping
+# Author: Gi Fernando
+# Date: 2025-12-27
+
+# Spatial Concept Mappings
+spatial_mappings:
+  gop_game_space:
+    universal: GameSpace
+    description: Playable area in game
+    
+  gop_region:
+    universal: GameRegion
+    description: Sub-areas within game space
+    
+  gop_boundary:
+    universal: GameBoundary
+    description: Limits and borders
+    
+  gop_connection:
+    universal: SpatialRelationship
+    description: Links between regions
+    
+  spatial_types:
+    linear: LinearGameSpace
+    grid_based: GridBasedGameSpace
+    open_world: OpenWorldGameSpace
+    multi_level: MultiLevelGameSpace
+
+# Temporal Concept Mappings
+temporal_mappings:
+  gop_temporal_structure:
+    universal: TemporalStructure
+    description: Time organization in games
+    
+  gop_temporal_type:
+    universal: TemporalType
+    description: Type of temporal structure
+    
+  temporal_types:
+    turn_based: TurnBasedTemporalStructure
+    real_time: RealTimeTemporalStructure
+    hybrid: HybridTemporalStructure
+    
+  gop_temporal_sequence:
+    universal: TemporalSequence
+    description: Event ordering in time
+
+# Mechanics Concept Mappings
+mechanics_mappings:
+  gop_movement_mechanic:
+    universal: MovementMechanic
+    description: Player/object movement
+    
+  gop_combat_mechanic:
+    universal: CombatMechanic
+    description: Combat interactions
+    
+  gop_collection_mechanic:
+    universal: CollectionMechanic
+    description: Item/objective collection
+    
+  gop_puzzle_mechanic:
+    universal: PuzzleMechanic
+    description: Problem-solving
+    
+  gop_social_mechanic:
+    universal: SocialMechanic
+    description: Multiplayer interactions
+
+# State Concept Mappings
+state_mappings:
+  gop_game_state:
+    universal: GameState
+    description: Current game condition
+    
+  gop_player_state:
+    universal: PlayerState
+    description: Current player condition
+    
+  gop_entity_state:
+    universal: EntityState
+    description: Current entity condition
+    
+  gop_progress_state:
+    universal: ProgressState
+    description: Advancement condition
+
+# Goal Concept Mappings
+goal_mappings:
+  gop_primary_goal:
+    universal: PrimaryGoal
+    description: Main objectives
+    
+  gop_secondary_goal:
+    universal: SecondaryGoal
+    description: Optional objectives
+    
+  gop_sub_goal:
+    universal: SubGoal
+    description: Components of larger goals
+

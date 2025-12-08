@@ -1,0 +1,214 @@
+@prefix : <http://ontology.gaming.network/universal/human_behavior#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Universal Human Behavior Foundation Ontology
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Universal extensible foundation for human behavior data
+#               Works for gaming, healthcare, finance, video analysis, etc.
+# ============================================================================
+
+<http://ontology.gaming.network/universal/human_behavior> a owl:Ontology ;
+    dc:title "Universal Human Behavior Foundation" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    owl:versionInfo "1.0.0" ;
+    rdfs:comment "Universal extensible foundation for human behavior data across domains" .
+
+# ============================================================================
+# UNIVERSAL ENTITY PATTERNS
+# ============================================================================
+
+:HumanActor a owl:Class ;
+    rdfs:label "Human Actor"@en ;
+    skos:definition "Universal concept for any human entity (Player, Patient, Trader, Consumer, VideoSubject)" ;
+    rdfs:comment "Base class for any human actor in behavioral data. Extensible to domain-specific actors." .
+
+:Activity a owl:Class ;
+    rdfs:label "Activity"@en ;
+    skos:definition "Universal concept for any human activity (GameSession, TreatmentSession, VideoPlaythrough, TradingSession)" ;
+    rdfs:comment "Base class for any activity period. Extensible to domain-specific activities." .
+
+:BehavioralEvent a owl:Class ;
+    rdfs:label "Behavioral Event"@en ;
+    skos:definition "Universal concept for any behavioral event (Purchase, Treatment, Movement, VideoAction, Trade)" ;
+    rdfs:comment "Base class for any behavioral event. Extensible to domain-specific events." .
+
+:BehavioralState a owl:Class ;
+    rdfs:label "Behavioral State"@en ;
+    skos:definition "Universal concept for any behavioral state (Engagement, Recovery, MarketState, VideoEmotionState)" ;
+    rdfs:comment "Base class for any behavioral state. Extensible to domain-specific states." .
+
+# ============================================================================
+# UNIVERSAL BEHAVIORAL PROPERTIES
+# ============================================================================
+
+:hasEngagementLevel a owl:ObjectProperty ;
+    rdfs:domain :HumanActor ;
+    rdfs:range :BehavioralState ;
+    rdfs:label "has engagement level"@en ;
+    skos:definition "Applies to gaming (player engagement), treatment (patient engagement), task performance (user engagement)" ;
+    rdfs:comment "Universal property for engagement classification across domains." .
+
+:hasRetentionStatus a owl:ObjectProperty ;
+    rdfs:domain :HumanActor ;
+    rdfs:range :BehavioralState ;
+    rdfs:label "has retention status"@en ;
+    skos:definition "Applies to player retention (gaming), treatment adherence (healthcare), customer retention (finance)" ;
+    rdfs:comment "Universal property for retention classification across domains." .
+
+:hasValueSegment a owl:ObjectProperty ;
+    rdfs:domain :HumanActor ;
+    rdfs:range :BehavioralState ;
+    rdfs:label "has value segment"@en ;
+    skos:definition "Applies to monetization (gaming), treatment compliance (healthcare), customer value (finance)" ;
+    rdfs:comment "Universal property for value segmentation across domains." .
+
+:hasTemporalPattern a owl:ObjectProperty ;
+    rdfs:domain :HumanActor ;
+    rdfs:range :BehavioralState ;
+    rdfs:label "has temporal pattern"@en ;
+    skos:definition "Applies to session frequency (gaming), treatment frequency (healthcare), activity frequency (finance)" ;
+    rdfs:comment "Universal property for temporal behavior patterns across domains." .
+
+:hasSocialContext a owl:ObjectProperty ;
+    rdfs:domain :HumanActor ;
+    rdfs:range :BehavioralState ;
+    rdfs:label "has social context"@en ;
+    skos:definition "Applies to multiplayer games (gaming), social support (healthcare), network effects (finance)" ;
+    rdfs:comment "Universal property for social context across domains." .
+
+# ============================================================================
+# UNIVERSAL RELATIONSHIPS
+# ============================================================================
+
+:performsActivity a owl:ObjectProperty ;
+    rdfs:domain :HumanActor ;
+    rdfs:range :Activity ;
+    rdfs:label "performs activity"@en ;
+    skos:definition "Relates a human actor to activities they perform" ;
+    owl:inverseOf :performedByActor .
+
+:performedByActor a owl:ObjectProperty ;
+    rdfs:domain :Activity ;
+    rdfs:range :HumanActor ;
+    rdfs:label "performed by actor"@en ;
+    skos:definition "Relates an activity to the human actor performing it" .
+
+:generatesEvent a owl:ObjectProperty ;
+    rdfs:domain :Activity ;
+    rdfs:range :BehavioralEvent ;
+    rdfs:label "generates event"@en ;
+    skos:definition "Relates an activity to behavioral events it generates" ;
+    owl:inverseOf :generatedByActivity .
+
+:generatedByActivity a owl:ObjectProperty ;
+    rdfs:domain :BehavioralEvent ;
+    rdfs:range :Activity ;
+    rdfs:label "generated by activity"@en ;
+    skos:definition "Relates a behavioral event to the activity that generated it" .
+
+:hasState a owl:ObjectProperty ;
+    rdfs:domain :HumanActor ;
+    rdfs:range :BehavioralState ;
+    rdfs:label "has state"@en ;
+    skos:definition "Relates a human actor to their behavioral state" ;
+    owl:inverseOf :stateOfActor .
+
+:stateOfActor a owl:ObjectProperty ;
+    rdfs:domain :BehavioralState ;
+    rdfs:range :HumanActor ;
+    rdfs:label "state of actor"@en ;
+    skos:definition "Relates a behavioral state to the human actor it describes" .
+
+:influencesState a owl:ObjectProperty ;
+    rdfs:domain :BehavioralEvent ;
+    rdfs:range :BehavioralState ;
+    rdfs:label "influences state"@en ;
+    skos:definition "Relates a behavioral event to behavioral states it influences" ;
+    owl:inverseOf :influencedByEvent .
+
+:influencedByEvent a owl:ObjectProperty ;
+    rdfs:domain :BehavioralState ;
+    rdfs:range :BehavioralEvent ;
+    rdfs:label "influenced by event"@en ;
+    skos:definition "Relates a behavioral state to events that influence it" .
+
+:similarTo a owl:ObjectProperty ;
+    rdfs:domain :HumanActor ;
+    rdfs:range :HumanActor ;
+    rdfs:label "similar to"@en ;
+    skos:definition "Relates human actors with similar behavioral patterns" ;
+    owl:SymmetricProperty ;
+    rdfs:comment "Used for behavioral similarity analysis and pattern recognition." .
+
+# ============================================================================
+# UNIVERSAL DATA PROPERTIES
+# ============================================================================
+
+:actorId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :HumanActor ;
+    rdfs:range xsd:string ;
+    rdfs:label "actor ID"@en ;
+    skos:definition "Unique identifier for a human actor" ;
+    rdfs:comment "Universal identifier property for any human actor type." .
+
+:activityId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :Activity ;
+    rdfs:range xsd:string ;
+    rdfs:label "activity ID"@en ;
+    skos:definition "Unique identifier for an activity" ;
+    rdfs:comment "Universal identifier property for any activity type." .
+
+:eventId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :BehavioralEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "event ID"@en ;
+    skos:definition "Unique identifier for a behavioral event" ;
+    rdfs:comment "Universal identifier property for any behavioral event type." .
+
+:activityTimestamp a owl:DatatypeProperty ;
+    rdfs:domain :BehavioralEvent ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "activity timestamp"@en ;
+    skos:definition "Timestamp when the behavioral event occurred" ;
+    rdfs:comment "Universal temporal property for any behavioral event type." .
+
+:activityStartTimestamp a owl:DatatypeProperty ;
+    rdfs:domain :Activity ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "activity start timestamp"@en ;
+    skos:definition "Timestamp when the activity started" ;
+    rdfs:comment "Universal temporal property for activity start time." .
+
+:activityEndTimestamp a owl:DatatypeProperty ;
+    rdfs:domain :Activity ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "activity end timestamp"@en ;
+    skos:definition "Timestamp when the activity ended" ;
+    rdfs:comment "Universal temporal property for activity end time." .
+
+:activityDuration a owl:DatatypeProperty ;
+    rdfs:domain :Activity ;
+    rdfs:range xsd:integer ;
+    rdfs:label "activity duration"@en ;
+    skos:definition "Duration of the activity in seconds" ;
+    rdfs:comment "Universal temporal property for activity duration." .
+
+# ============================================================================
+# DISJOINT CLASSES
+# ============================================================================
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :HumanActor :Activity :BehavioralEvent :BehavioralState ) .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================
+

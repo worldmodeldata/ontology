@@ -1,0 +1,104 @@
+@prefix : <http://ontology.gaming.network/mappings/video#> .
+@prefix v: <http://ontology.gaming.network/extensions/video#> .
+@prefix ub: <http://ontology.gaming.network/universal/human_behavior#> .
+@prefix g: <http://ontology.gaming.network/universal/gaming#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Video Data to Universal Gaming Foundation Mapping
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Maps video data concepts to universal gaming ontology
+# ============================================================================
+
+<http://ontology.gaming.network/mappings/video> a owl:Ontology ;
+    dc:title "Video to Universal Mapping" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    owl:versionInfo "1.0.0" ;
+    owl:imports <http://ontology.gaming.network/extensions/video> ,
+                 <http://ontology.gaming.network/universal/human_behavior> ,
+                 <http://ontology.gaming.network/universal/gaming> ;
+    rdfs:comment "Maps video data concepts to universal gaming foundation" .
+
+# ============================================================================
+# VIDEO-TO-UNIVERSAL MAPPINGS
+# ============================================================================
+
+:VideoSubjectToHumanActor a owl:Class ;
+    owl:equivalentClass v:VideoSubject ;
+    rdfs:subClassOf ub:HumanActor ;
+    rdfs:label "Video Subject to Human Actor"@en ;
+    skos:definition "VideoSubject extends universal HumanActor" .
+
+:VideoPlaythroughToActivity a owl:Class ;
+    owl:equivalentClass v:VideoPlaythrough ;
+    rdfs:subClassOf ub:Activity ;
+    rdfs:label "Video Playthrough to Activity"@en ;
+    skos:definition "VideoPlaythrough extends universal Activity" .
+
+:VideoActionToBehavioralEvent a owl:Class ;
+    owl:equivalentClass v:VideoAction ;
+    rdfs:subClassOf ub:BehavioralEvent ;
+    rdfs:label "Video Action to Behavioral Event"@en ;
+    skos:definition "VideoAction extends universal BehavioralEvent" .
+
+:VideoEmotionStateToBehavioralState a owl:Class ;
+    owl:equivalentClass v:VideoEmotionState ;
+    rdfs:subClassOf ub:BehavioralState ;
+    rdfs:label "Video Emotion State to Behavioral State"@en ;
+    skos:definition "VideoEmotionState extends universal BehavioralState" .
+
+# ============================================================================
+# VIDEO-TO-GAMING MAPPINGS
+# ============================================================================
+
+:VideoSubjectToPlayer a owl:Class ;
+    owl:equivalentClass v:VideoSubject ;
+    rdfs:subClassOf g:Player ;
+    rdfs:label "Video Subject to Player"@en ;
+    skos:definition "VideoSubject maps to gaming Player" .
+
+:VideoPlaythroughToGameSession a owl:Class ;
+    owl:equivalentClass v:VideoPlaythrough ;
+    rdfs:subClassOf g:GameSession ;
+    rdfs:label "Video Playthrough to Game Session"@en ;
+    skos:definition "VideoPlaythrough maps to gaming GameSession" .
+
+:VideoActionToGameEvent a owl:Class ;
+    owl:equivalentClass v:VideoAction ;
+    rdfs:subClassOf g:GameEvent ;
+    rdfs:label "Video Action to Game Event"@en ;
+    skos:definition "VideoAction maps to gaming GameEvent" .
+
+:VideoEmotionStateToPlayerState a owl:Class ;
+    owl:equivalentClass v:VideoEmotionState ;
+    rdfs:subClassOf g:PlayerState ;
+    rdfs:label "Video Emotion State to Player State"@en ;
+    skos:definition "VideoEmotionState maps to gaming PlayerState" .
+
+# ============================================================================
+# CORRELATION RULES (Documentation)
+# ============================================================================
+
+:VideoToGameCorrelationRule a owl:Class ;
+    rdfs:label "Video to Game Correlation Rule"@en ;
+    skos:definition "Rules for correlating video timestamps with game events" .
+
+:VideoActionMappingRule a owl:Class ;
+    rdfs:label "Video Action Mapping Rule"@en ;
+    skos:definition "Rules for mapping video actions to game actions" .
+
+:VideoBehavioralPatternExtractionRule a owl:Class ;
+    rdfs:label "Video Behavioral Pattern Extraction Rule"@en ;
+    skos:definition "Rules for extracting behavioral patterns from video" .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================
+

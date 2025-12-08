@@ -1,0 +1,212 @@
+@prefix : <http://ontology.gaming.network/sources/unity#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Unity Analytics Patterns Ontology
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Unity Analytics-specific event and schema patterns
+# ============================================================================
+
+<http://ontology.gaming.network/sources/unity> a owl:Ontology ;
+    dc:title "Unity Analytics Patterns" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    owl:versionInfo "1.0.0" ;
+    rdfs:comment "Unity Analytics event model and schema patterns" .
+
+# ============================================================================
+# UNITY EVENT CLASSES
+# ============================================================================
+
+:UnityEvent a owl:Class ;
+    rdfs:label "Unity Event"@en ;
+    skos:definition "Base class for all Unity Analytics events" .
+
+:UnityStandardEvent a owl:Class ;
+    rdfs:subClassOf :UnityEvent ;
+    rdfs:label "Unity Standard Event"@en ;
+    skos:definition "Unity Analytics standard events (automatically tracked)" .
+
+:UnityCustomEvent a owl:Class ;
+    rdfs:subClassOf :UnityEvent ;
+    rdfs:label "Unity Custom Event"@en ;
+    skos:definition "Custom Unity Analytics events (developer-defined)" .
+
+:UnityLevelEvent a owl:Class ;
+    rdfs:subClassOf :UnityStandardEvent ;
+    rdfs:label "Unity Level Event"@en ;
+    skos:definition "Level-related Unity events (level_start, level_complete, level_fail)" .
+
+:UnityMonetizationEvent a owl:Class ;
+    rdfs:subClassOf :UnityStandardEvent ;
+    rdfs:label "Unity Monetization Event"@en ;
+    skos:definition "Monetization-related Unity events (purchase)" .
+
+:UnityStoreEvent a owl:Class ;
+    rdfs:subClassOf :UnityStandardEvent ;
+    rdfs:label "Unity Store Event"@en ;
+    skos:definition "Store-related Unity events (store_opened, store_item_click, store_closed)" .
+
+:UnitySessionEvent a owl:Class ;
+    rdfs:subClassOf :UnityEvent ;
+    rdfs:label "Unity Session Event"@en ;
+    skos:definition "Session-related Unity events (session_start, session_end)" .
+
+# ============================================================================
+# UNITY DATA PROPERTIES
+# ============================================================================
+
+:unityUserId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :UnityEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity User ID"@en ;
+    skos:definition "Primary user identifier in Unity Analytics" .
+
+:unitySessionId a owl:DatatypeProperty ;
+    rdfs:domain :UnityEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Session ID"@en ;
+    skos:definition "Session identifier in Unity Analytics" .
+
+:unityTimestamp a owl:DatatypeProperty ;
+    rdfs:domain :UnityEvent ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "Unity Timestamp"@en ;
+    skos:definition "Unix timestamp of the event" .
+
+:unityPlatform a owl:DatatypeProperty ;
+    rdfs:domain :UnityEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Platform"@en ;
+    skos:definition "Platform (iOS, Android, WebGL, etc.)" .
+
+:unityDeviceModel a owl:DatatypeProperty ;
+    rdfs:domain :UnityEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Device Model"@en ;
+    skos:definition "Device model" .
+
+:unityDeviceType a owl:DatatypeProperty ;
+    rdfs:domain :UnityEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Device Type"@en ;
+    skos:definition "Device type (mobile, desktop, console)" .
+
+:unityOsVersion a owl:DatatypeProperty ;
+    rdfs:domain :UnityEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity OS Version"@en ;
+    skos:definition "Operating system version" .
+
+:unityAppVersion a owl:DatatypeProperty ;
+    rdfs:domain :UnityEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity App Version"@en ;
+    skos:definition "Application version" .
+
+:unityCountry a owl:DatatypeProperty ;
+    rdfs:domain :UnityEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Country"@en ;
+    skos:definition "Country code" .
+
+:unityLanguage a owl:DatatypeProperty ;
+    rdfs:domain :UnityEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Language"@en ;
+    skos:definition "Language code" .
+
+# ============================================================================
+# UNITY LEVEL EVENT PROPERTIES
+# ============================================================================
+
+:unityLevelNumber a owl:DatatypeProperty ;
+    rdfs:domain :UnityLevelEvent ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Unity Level Number"@en ;
+    skos:definition "Level identifier/number" .
+
+:unityLevelName a owl:DatatypeProperty ;
+    rdfs:domain :UnityLevelEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Level Name"@en ;
+    skos:definition "Name of the level" .
+
+:unityDifficulty a owl:DatatypeProperty ;
+    rdfs:domain :UnityLevelEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Difficulty"@en ;
+    skos:definition "Difficulty level" .
+
+:unityScore a owl:DatatypeProperty ;
+    rdfs:domain :UnityLevelEvent ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Unity Score"@en ;
+    skos:definition "Player score" .
+
+:unityDuration a owl:DatatypeProperty ;
+    rdfs:domain :UnityLevelEvent ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Unity Duration"@en ;
+    skos:definition "Event duration in seconds" .
+
+# ============================================================================
+# UNITY PURCHASE EVENT PROPERTIES
+# ============================================================================
+
+:unityProductId a owl:DatatypeProperty ;
+    rdfs:domain :UnityMonetizationEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Product ID"@en ;
+    skos:definition "Product identifier" .
+
+:unityProductType a owl:DatatypeProperty ;
+    rdfs:domain :UnityMonetizationEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Product Type"@en ;
+    skos:definition "Product type/category" .
+
+:unityCurrency a owl:DatatypeProperty ;
+    rdfs:domain :UnityMonetizationEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Currency"@en ;
+    skos:definition "Currency code" .
+
+:unityAmount a owl:DatatypeProperty ;
+    rdfs:domain :UnityMonetizationEvent ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "Unity Amount"@en ;
+    skos:definition "Purchase amount" .
+
+:unityTransactionId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :UnityMonetizationEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Transaction ID"@en ;
+    skos:definition "Transaction identifier" .
+
+# ============================================================================
+# UNITY CUSTOM EVENT PROPERTIES
+# ============================================================================
+
+:unityCustomEventName a owl:DatatypeProperty ;
+    rdfs:domain :UnityCustomEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Custom Event Name"@en ;
+    skos:definition "Name of the custom event" .
+
+:unityCustomParameter a owl:DatatypeProperty ;
+    rdfs:domain :UnityCustomEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Unity Custom Parameter"@en ;
+    skos:definition "Custom parameter (key-value pairs)" .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================
+

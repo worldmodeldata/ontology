@@ -1,0 +1,102 @@
+# Unity Analytics to Universal Gaming Foundation Mapping
+# Author: Gi Fernando
+# Date: 2025-12-27
+
+# Event Type Mappings
+event_mappings:
+  unity_level_start:
+    universal: EngagementEvent
+    type: LevelStart
+    description: Level initialization event
+    
+  unity_level_complete:
+    universal: EngagementEvent
+    type: LevelComplete
+    description: Level completion event
+    
+  unity_level_fail:
+    universal: EngagementEvent
+    type: LevelFail
+    description: Level failure event
+    
+  unity_purchase:
+    universal: MonetizationEvent
+    type: Purchase
+    description: Purchase event
+    
+  unity_store_opened:
+    universal: EngagementEvent
+    type: StoreOpened
+    description: Store opened event
+    
+  unity_session_start:
+    universal: GameSession
+    type: SessionStart
+    description: Session initialization event
+    
+  unity_session_end:
+    universal: GameSession
+    type: SessionEnd
+    description: Session termination event
+
+# Property Mappings
+property_mappings:
+  unity_user_id:
+    universal: device_id
+    type: identifier
+    required: true
+    
+  unity_session_id:
+    universal: session_id
+    type: identifier
+    required: false
+    
+  unity_timestamp:
+    universal: activity_timestamp
+    type: temporal
+    required: true
+    
+  unity_level_number:
+    universal: level_number
+    type: categorical
+    required: false
+    
+  unity_difficulty:
+    universal: difficulty
+    type: categorical
+    required: false
+    
+  unity_product_id:
+    universal: item_id
+    type: identifier
+    required: false
+    
+  unity_amount:
+    universal: amount
+    type: monetary
+    required: false
+    
+  unity_platform:
+    universal: platform
+    type: categorical
+    required: false
+    
+  unity_device_model:
+    universal: device_type
+    type: categorical
+    required: false
+
+# Concept Mappings
+concept_mappings:
+  unity_level:
+    universal: ProgressionLevel
+    description: Game level/progression stage
+    
+  unity_store:
+    universal: MonetizationStore
+    description: In-game store for purchases
+    
+  unity_session:
+    universal: GameSession
+    description: Gaming session period
+

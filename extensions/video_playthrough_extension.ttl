@@ -1,0 +1,154 @@
+@prefix : <http://ontology.gaming.network/extensions/video#> .
+@prefix ub: <http://ontology.gaming.network/universal/human_behavior#> .
+@prefix g: <http://ontology.gaming.network/universal/gaming#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Video Playthrough Extension Ontology
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Extension for video data of people playing games
+# ============================================================================
+
+<http://ontology.gaming.network/extensions/video> a owl:Ontology ;
+    dc:title "Video Playthrough Extension" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    owl:versionInfo "1.0.0" ;
+    owl:imports <http://ontology.gaming.network/universal/human_behavior> ,
+                 <http://ontology.gaming.network/universal/gaming> ;
+    rdfs:comment "Extension for integrating video data of people playing games" .
+
+# ============================================================================
+# VIDEO-SPECIFIC CLASSES (extends Universal Foundation)
+# ============================================================================
+
+:VideoPlaythrough a owl:Class ;
+    rdfs:subClassOf ub:Activity ;
+    rdfs:label "Video Playthrough"@en ;
+    skos:definition "Video of someone playing a game" ;
+    rdfs:comment "Extends universal Activity for video playthrough representation." .
+
+:VideoSubject a owl:Class ;
+    rdfs:subClassOf ub:HumanActor ;
+    rdfs:label "Video Subject"@en ;
+    skos:definition "Person in the video (playing the game)" ;
+    rdfs:comment "Extends universal HumanActor for video subject representation." .
+
+:VideoFrame a owl:Class ;
+    rdfs:label "Video Frame"@en ;
+    skos:definition "Video frame at specific timestamp" .
+
+:VideoAction a owl:Class ;
+    rdfs:subClassOf ub:BehavioralEvent ;
+    rdfs:label "Video Action"@en ;
+    skos:definition "Action visible in video (movements, gestures)" ;
+    rdfs:comment "Extends universal BehavioralEvent for video action representation." .
+
+:VideoEmotionState a owl:Class ;
+    rdfs:subClassOf ub:BehavioralState ;
+    rdfs:label "Video Emotion State"@en ;
+    skos:definition "Emotion visible in video (facial expressions)" ;
+    rdfs:comment "Extends universal BehavioralState for video emotion representation." .
+
+:VideoInteraction a owl:Class ;
+    rdfs:subClassOf ub:BehavioralEvent ;
+    rdfs:label "Video Interaction"@en ;
+    skos:definition "Interaction between subject and game visible in video" ;
+    rdfs:comment "Extends universal BehavioralEvent for video interaction representation." .
+
+# ============================================================================
+# VIDEO-TO-GAMING RELATIONSHIPS
+# ============================================================================
+
+:playsGame a owl:ObjectProperty ;
+    rdfs:domain :VideoSubject ;
+    rdfs:range g:Game ;
+    rdfs:label "plays game"@en ;
+    skos:definition "Video shows someone playing this game" .
+
+:correspondsTo a owl:ObjectProperty ;
+    rdfs:domain :VideoPlaythrough ;
+    rdfs:range g:GameSession ;
+    rdfs:label "corresponds to"@en ;
+    skos:definition "Video shows this game session" .
+
+:mapsTo a owl:ObjectProperty ;
+    rdfs:domain :VideoAction ;
+    rdfs:range g:GameEvent ;
+    rdfs:label "maps to"@en ;
+    skos:definition "Video action corresponds to game event" .
+
+:capturesState a owl:ObjectProperty ;
+    rdfs:domain :VideoFrame ;
+    rdfs:range g:PlayerState ;
+    rdfs:label "captures state"@en ;
+    skos:definition "Frame shows player state" .
+
+:containsFrame a owl:ObjectProperty ;
+    rdfs:domain :VideoPlaythrough ;
+    rdfs:range :VideoFrame ;
+    rdfs:label "contains frame"@en ;
+    skos:definition "Relates video playthrough to its frames" .
+
+:showsAction a owl:ObjectProperty ;
+    rdfs:domain :VideoPlaythrough ;
+    rdfs:range :VideoAction ;
+    rdfs:label "shows action"@en ;
+    skos:definition "Relates video playthrough to actions shown" .
+
+:showsEmotion a owl:ObjectProperty ;
+    rdfs:domain :VideoFrame ;
+    rdfs:range :VideoEmotionState ;
+    rdfs:label "shows emotion"@en ;
+    skos:definition "Frame shows emotion state" .
+
+# ============================================================================
+# VIDEO-SPECIFIC DATA PROPERTIES
+# ============================================================================
+
+:videoUrl a owl:DatatypeProperty ;
+    rdfs:domain :VideoPlaythrough ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "video URL"@en ;
+    skos:definition "Link to video" .
+
+:timestamp a owl:DatatypeProperty ;
+    rdfs:domain :VideoFrame ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "timestamp"@en ;
+    skos:definition "Timestamp in video (seconds)" .
+
+:detectedEmotion a owl:DatatypeProperty ;
+    rdfs:domain :VideoFrame ;
+    rdfs:range xsd:string ;
+    rdfs:label "detected emotion"@en ;
+    skos:definition "Emotion detected from video (facial expressions)" .
+
+:detectedAction a owl:DatatypeProperty ;
+    rdfs:domain :VideoAction ;
+    rdfs:range xsd:string ;
+    rdfs:label "detected action"@en ;
+    skos:definition "Action detected from video (movements, gestures)" .
+
+:videoQualityScore a owl:DatatypeProperty ;
+    rdfs:domain :VideoPlaythrough ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "video quality score"@en ;
+    skos:definition "Quality of video data (0.0 to 1.0)" .
+
+:frameNumber a owl:DatatypeProperty ;
+    rdfs:domain :VideoFrame ;
+    rdfs:range xsd:integer ;
+    rdfs:label "frame number"@en ;
+    skos:definition "Frame number in video sequence" .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================
+

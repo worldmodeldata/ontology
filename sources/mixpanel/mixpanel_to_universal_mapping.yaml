@@ -1,0 +1,92 @@
+# Mixpanel to Universal Gaming Foundation Mapping
+# Author: Gi Fernando
+# Date: 2025-12-27
+
+# Event Type Mappings
+event_mappings:
+  mixpanel_session_start:
+    universal: GameSession
+    type: SessionStart
+    description: Session initialization event
+    
+  mixpanel_session_end:
+    universal: GameSession
+    type: SessionEnd
+    description: Session termination event
+    
+  mixpanel_game_start:
+    universal: EngagementEvent
+    type: GameStart
+    description: Game initialization event
+    
+  mixpanel_game_end:
+    universal: EngagementEvent
+    type: GameEnd
+    description: Game completion event
+    
+  mixpanel_iap_purchase:
+    universal: MonetizationEvent
+    type: Purchase
+    description: In-app purchase event
+    
+  mixpanel_ad_viewed:
+    universal: MonetizationEvent
+    type: AdViewed
+    description: Ad impression event
+
+# Property Mappings
+property_mappings:
+  mixpanel_distinct_id:
+    universal: device_id
+    type: identifier
+    required: true
+    
+  mixpanel_user_id:
+    universal: user_id
+    type: identifier
+    required: false
+    
+  mixpanel_event_name:
+    universal: event_type
+    type: categorical
+    required: true
+    
+  mixpanel_timestamp:
+    universal: activity_timestamp
+    type: temporal
+    required: true
+    
+  mixpanel_session_count:
+    universal: session_count
+    type: cumulative_metric
+    required: false
+    
+  mixpanel_iap_count:
+    universal: total_iaps
+    type: cumulative_metric
+    required: false
+    
+  mixpanel_coins:
+    universal: currency_balance
+    type: state_metric
+    required: false
+    
+  mixpanel_ad_count:
+    universal: ad_view_count
+    type: session_metric
+    required: false
+
+# Concept Mappings
+concept_mappings:
+  mixpanel_funnel:
+    universal: TemporalSequence
+    description: Event sequence representing user journey
+    
+  mixpanel_cohort:
+    universal: BehavioralSegment
+    description: Group of users with similar characteristics
+    
+  mixpanel_retention:
+    universal: RetentionStatus
+    description: User retention classification
+

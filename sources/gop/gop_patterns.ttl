@@ -1,0 +1,275 @@
+@prefix : <http://ontology.gaming.network/sources/gop#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Game Ontology Project (GOP) Patterns Ontology
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: GOP structural patterns for game design and analysis
+# ============================================================================
+
+<http://ontology.gaming.network/sources/gop> a owl:Ontology ;
+    dc:title "Game Ontology Project Patterns" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    owl:versionInfo "1.0.0" ;
+    rdfs:comment "GOP structural patterns for game design and analysis" .
+
+# ============================================================================
+# GOP SPATIAL CONCEPTS
+# ============================================================================
+
+:GOPGameSpace a owl:Class ;
+    rdfs:label "GOP Game Space"@en ;
+    skos:definition "The playable area in a game" .
+
+:GOPRegion a owl:Class ;
+    rdfs:subClassOf :GOPGameSpace ;
+    rdfs:label "GOP Region"@en ;
+    skos:definition "Sub-areas within the game space" .
+
+:GOPBoundary a owl:Class ;
+    rdfs:label "GOP Boundary"@en ;
+    skos:definition "Limits and borders in game space" .
+
+:GOPConnection a owl:Class ;
+    rdfs:label "GOP Connection"@en ;
+    skos:definition "Links between regions in game space" .
+
+# ============================================================================
+# GOP SPATIAL PROPERTIES
+# ============================================================================
+
+:hasRegion a owl:ObjectProperty ;
+    rdfs:domain :GOPGameSpace ;
+    rdfs:range :GOPRegion ;
+    rdfs:label "has region"@en ;
+    skos:definition "Relates game space to its regions" .
+
+:hasBoundary a owl:ObjectProperty ;
+    rdfs:domain :GOPRegion ;
+    rdfs:range :GOPBoundary ;
+    rdfs:label "has boundary"@en ;
+    skos:definition "Relates region to its boundaries" .
+
+:connectsTo a owl:ObjectProperty ;
+    rdfs:domain :GOPRegion ;
+    rdfs:range :GOPRegion ;
+    rdfs:label "connects to"@en ;
+    skos:definition "Relates regions that are connected" .
+
+:spatialDistance a owl:DatatypeProperty ;
+    rdfs:domain :GOPRegion ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "spatial distance"@en ;
+    skos:definition "Distance between regions" .
+
+:spatialType a owl:DatatypeProperty ;
+    rdfs:domain :GOPGameSpace ;
+    rdfs:range xsd:string ;
+    rdfs:label "spatial type"@en ;
+    skos:definition "Type of spatial structure (linear, grid-based, open-world, multi-level)" .
+
+# ============================================================================
+# GOP TEMPORAL CONCEPTS
+# ============================================================================
+
+:GOPTemporalStructure a owl:Class ;
+    rdfs:label "GOP Temporal Structure"@en ;
+    skos:definition "Time structure and organization in games" .
+
+:GOPTemporalType a owl:Class ;
+    rdfs:subClassOf :GOPTemporalStructure ;
+    rdfs:label "GOP Temporal Type"@en ;
+    skos:definition "Type of temporal structure (turn-based, real-time, hybrid)" .
+
+:GOPTemporalSequence a owl:Class ;
+    rdfs:subClassOf :GOPTemporalStructure ;
+    rdfs:label "GOP Temporal Sequence"@en ;
+    skos:definition "Ordering of events in time" .
+
+# ============================================================================
+# GOP TEMPORAL PROPERTIES
+# ============================================================================
+
+:temporalType a owl:DatatypeProperty ;
+    rdfs:domain :GOPTemporalStructure ;
+    rdfs:range xsd:string ;
+    rdfs:label "temporal type"@en ;
+    skos:definition "Type of temporal structure (turn-based, real-time, hybrid)" .
+
+:temporalDuration a owl:DatatypeProperty ;
+    rdfs:domain :GOPTemporalStructure ;
+    rdfs:range xsd:integer ;
+    rdfs:label "temporal duration"@en ;
+    skos:definition "Length of time period" .
+
+:temporalFrequency a owl:DatatypeProperty ;
+    rdfs:domain :GOPTemporalStructure ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "temporal frequency"@en ;
+    skos:definition "Rate of occurrence" .
+
+:precedes a owl:ObjectProperty ;
+    rdfs:domain :GOPTemporalSequence ;
+    rdfs:range :GOPTemporalSequence ;
+    rdfs:label "precedes"@en ;
+    skos:definition "Relates events in temporal order" .
+
+# ============================================================================
+# GOP MECHANICS CONCEPTS
+# ============================================================================
+
+:GOPGameMechanic a owl:Class ;
+    rdfs:label "GOP Game Mechanic"@en ;
+    skos:definition "Core gameplay mechanics" .
+
+:GOPMovementMechanic a owl:Class ;
+    rdfs:subClassOf :GOPGameMechanic ;
+    rdfs:label "GOP Movement Mechanic"@en ;
+    skos:definition "Player/object movement mechanics" .
+
+:GOPCombatMechanic a owl:Class ;
+    rdfs:subClassOf :GOPGameMechanic ;
+    rdfs:label "GOP Combat Mechanic"@en ;
+    skos:definition "Combat interaction mechanics" .
+
+:GOPCollectionMechanic a owl:Class ;
+    rdfs:subClassOf :GOPGameMechanic ;
+    rdfs:label "GOP Collection Mechanic"@en ;
+    skos:definition "Item/objective collection mechanics" .
+
+:GOPPuzzleMechanic a owl:Class ;
+    rdfs:subClassOf :GOPGameMechanic ;
+    rdfs:label "GOP Puzzle Mechanic"@en ;
+    skos:definition "Problem-solving mechanics" .
+
+:GOPSocialMechanic a owl:Class ;
+    rdfs:subClassOf :GOPGameMechanic ;
+    rdfs:label "GOP Social Mechanic"@en ;
+    skos:definition "Multiplayer interaction mechanics" .
+
+# ============================================================================
+# GOP MECHANICS PROPERTIES
+# ============================================================================
+
+:mechanicName a owl:DatatypeProperty ;
+    rdfs:domain :GOPGameMechanic ;
+    rdfs:range xsd:string ;
+    rdfs:label "mechanic name"@en ;
+    skos:definition "Name of the game mechanic" .
+
+:mechanicType a owl:DatatypeProperty ;
+    rdfs:domain :GOPGameMechanic ;
+    rdfs:range xsd:string ;
+    rdfs:label "mechanic type"@en ;
+    skos:definition "Type of mechanic (movement, combat, collection, puzzle, social)" .
+
+:requiresMechanic a owl:ObjectProperty ;
+    rdfs:domain :GOPGameMechanic ;
+    rdfs:range :GOPGameMechanic ;
+    rdfs:label "requires mechanic"@en ;
+    skos:definition "Relates mechanics that depend on each other" .
+
+:synergizesWithMechanic a owl:ObjectProperty ;
+    rdfs:domain :GOPGameMechanic ;
+    rdfs:range :GOPGameMechanic ;
+    rdfs:label "synergizes with mechanic"@en ;
+    skos:definition "Relates mechanics that enhance each other" .
+
+# ============================================================================
+# GOP STATE CONCEPTS
+# ============================================================================
+
+:GOPGameState a owl:Class ;
+    rdfs:label "GOP Game State"@en ;
+    skos:definition "Current game condition" .
+
+:GOPPlayerState a owl:Class ;
+    rdfs:label "GOP Player State"@en ;
+    skos:definition "Current player condition" .
+
+:GOPEntityState a owl:Class ;
+    rdfs:label "GOP Entity State"@en ;
+    skos:definition "Current entity condition" .
+
+:GOPProgressState a owl:Class ;
+    rdfs:label "GOP Progress State"@en ;
+    skos:definition "Advancement condition" .
+
+# ============================================================================
+# GOP STATE PROPERTIES
+# ============================================================================
+
+:stateName a owl:DatatypeProperty ;
+    rdfs:domain :GOPGameState ;
+    rdfs:range xsd:string ;
+    rdfs:label "state name"@en ;
+    skos:definition "Name of the state" .
+
+:transitionsTo a owl:ObjectProperty ;
+    rdfs:domain :GOPGameState ;
+    rdfs:range :GOPGameState ;
+    rdfs:label "transitions to"@en ;
+    skos:definition "Relates states that can transition to each other" .
+
+:stateTrigger a owl:DatatypeProperty ;
+    rdfs:domain :GOPGameState ;
+    rdfs:range xsd:string ;
+    rdfs:label "state trigger"@en ;
+    skos:definition "Event that causes state transition" .
+
+# ============================================================================
+# GOP GOAL CONCEPTS
+# ============================================================================
+
+:GOPGoal a owl:Class ;
+    rdfs:label "GOP Goal"@en ;
+    skos:definition "Game objectives and win conditions" .
+
+:GOPPrimaryGoal a owl:Class ;
+    rdfs:subClassOf :GOPGoal ;
+    rdfs:label "GOP Primary Goal"@en ;
+    skos:definition "Main objectives" .
+
+:GOPSecondaryGoal a owl:Class ;
+    rdfs:subClassOf :GOPGoal ;
+    rdfs:label "GOP Secondary Goal"@en ;
+    skos:definition "Optional objectives" .
+
+:GOPSubGoal a owl:Class ;
+    rdfs:subClassOf :GOPGoal ;
+    rdfs:label "GOP Sub-Goal"@en ;
+    skos:definition "Components of larger goals" .
+
+# ============================================================================
+# GOP GOAL PROPERTIES
+# ============================================================================
+
+:goalName a owl:DatatypeProperty ;
+    rdfs:domain :GOPGoal ;
+    rdfs:range xsd:string ;
+    rdfs:label "goal name"@en ;
+    skos:definition "Name of the goal" .
+
+:requiresGoal a owl:ObjectProperty ;
+    rdfs:domain :GOPGoal ;
+    rdfs:range :GOPGoal ;
+    rdfs:label "requires goal"@en ;
+    skos:definition "Relates goals that depend on each other" .
+
+:winCondition a owl:DatatypeProperty ;
+    rdfs:domain :GOPGoal ;
+    rdfs:range xsd:string ;
+    rdfs:label "win condition"@en ;
+    skos:definition "Requirements for goal completion" .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================
+

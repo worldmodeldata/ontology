@@ -1,0 +1,158 @@
+@prefix : <http://ontology.gaming.network/mappings/game_source#> .
+@prefix g: <http://ontology.gaming.network/universal/gaming#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Generic Game Source to Universal Gaming Foundation Mapping Framework
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Framework for mapping any game's data to universal gaming ontology
+# ============================================================================
+
+<http://ontology.gaming.network/mappings/game_source> a owl:Ontology ;
+    dc:title "Generic Game Source to Universal Mapping Framework" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    owl:versionInfo "1.0.0" ;
+    owl:imports <http://ontology.gaming.network/universal/gaming> ;
+    rdfs:comment "Framework for mapping any game source to universal gaming foundation" .
+
+# ============================================================================
+# GENERIC GAME SOURCE CLASSES
+# ============================================================================
+
+:GameSource a owl:Class ;
+    rdfs:label "Game Source"@en ;
+    skos:definition "Generic game data source" .
+
+:GameSourceEvent a owl:Class ;
+    rdfs:subClassOf g:GameEvent ;
+    rdfs:label "Game Source Event"@en ;
+    skos:definition "Generic event from game source" .
+
+:GameSourceSession a owl:Class ;
+    rdfs:subClassOf g:GameSession ;
+    rdfs:label "Game Source Session"@en ;
+    skos:definition "Generic session from game source" .
+
+:GameSourcePlayer a owl:Class ;
+    rdfs:subClassOf g:Player ;
+    rdfs:label "Game Source Player"@en ;
+    skos:definition "Generic player from game source" .
+
+# ============================================================================
+# EVENT TYPE PATTERN MATCHING
+# ============================================================================
+
+:EventTypePattern a owl:Class ;
+    rdfs:label "Event Type Pattern"@en ;
+    skos:definition "Pattern for matching common game event types" .
+
+:SessionEventPattern a owl:Class ;
+    rdfs:subClassOf :EventTypePattern ;
+    rdfs:label "Session Event Pattern"@en ;
+    skos:definition "Pattern for session events (session_start, session_end)" .
+
+:PurchaseEventPattern a owl:Class ;
+    rdfs:subClassOf :EventTypePattern ;
+    rdfs:label "Purchase Event Pattern"@en ;
+    skos:definition "Pattern for purchase events (purchase, iap, transaction)" .
+
+:LevelEventPattern a owl:Class ;
+    rdfs:subClassOf :EventTypePattern ;
+    rdfs:label "Level Event Pattern"@en ;
+    skos:definition "Pattern for level events (level_start, level_complete, level_fail)" .
+
+:GameplayEventPattern a owl:Class ;
+    rdfs:subClassOf :EventTypePattern ;
+    rdfs:label "Gameplay Event Pattern"@en ;
+    skos:definition "Pattern for gameplay events (game_start, game_end, move, action)" .
+
+# ============================================================================
+# PROPERTY MAPPING PATTERNS
+# ============================================================================
+
+:PropertyMappingPattern a owl:Class ;
+    rdfs:label "Property Mapping Pattern"@en ;
+    skos:definition "Pattern for mapping source properties to universal properties" .
+
+:IdentifierMappingPattern a owl:Class ;
+    rdfs:subClassOf :PropertyMappingPattern ;
+    rdfs:label "Identifier Mapping Pattern"@en ;
+    skos:definition "Pattern for mapping identifier properties (user_id, device_id, player_id)" .
+
+:TemporalMappingPattern a owl:Class ;
+    rdfs:subClassOf :PropertyMappingPattern ;
+    rdfs:label "Temporal Mapping Pattern"@en ;
+    skos:definition "Pattern for mapping temporal properties (timestamp, time, date)" .
+
+:MonetizationMappingPattern a owl:Class ;
+    rdfs:subClassOf :PropertyMappingPattern ;
+    rdfs:label "Monetization Mapping Pattern"@en ;
+    skos:definition "Pattern for mapping monetization properties (amount, cost, price, revenue)" .
+
+# ============================================================================
+# MAPPING FRAMEWORK PROPERTIES
+# ============================================================================
+
+:sourceEventType a owl:DatatypeProperty ;
+    rdfs:domain :GameSourceEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "source event type"@en ;
+    skos:definition "Original event type from game source" .
+
+:sourcePropertyName a owl:DatatypeProperty ;
+    rdfs:domain :PropertyMappingPattern ;
+    rdfs:range xsd:string ;
+    rdfs:label "source property name"@en ;
+    skos:definition "Original property name from game source" .
+
+:universalPropertyName a owl:DatatypeProperty ;
+    rdfs:domain :PropertyMappingPattern ;
+    rdfs:range xsd:string ;
+    rdfs:label "universal property name"@en ;
+    skos:definition "Mapped property name in universal ontology" .
+
+:mappingConfidence a owl:DatatypeProperty ;
+    rdfs:domain :PropertyMappingPattern ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "mapping confidence"@en ;
+    skos:definition "Confidence score for mapping (0.0 to 1.0)" .
+
+# ============================================================================
+# MAPPING PROCESS DOCUMENTATION
+# ============================================================================
+
+:GameSourceIntegrationProcess a owl:Class ;
+    rdfs:label "Game Source Integration Process"@en ;
+    skos:definition "Process for integrating new game source" .
+
+:SchemaAnalysisStep a owl:Class ;
+    rdfs:subClassOf :GameSourceIntegrationProcess ;
+    rdfs:label "Schema Analysis Step"@en ;
+    skos:definition "Step 1: Analyze game source data schema" .
+
+:ConceptMappingStep a owl:Class ;
+    rdfs:subClassOf :GameSourceIntegrationProcess ;
+    rdfs:label "Concept Mapping Step"@en ;
+    skos:definition "Step 2: Map game source concepts to universal concepts" .
+
+:ValidationStep a owl:Class ;
+    rdfs:subClassOf :GameSourceIntegrationProcess ;
+    rdfs:label "Validation Step"@en ;
+    skos:definition "Step 3: Validate mapping correctness" .
+
+:ExtensionStep a owl:Class ;
+    rdfs:subClassOf :GameSourceIntegrationProcess ;
+    rdfs:label "Extension Step"@en ;
+    skos:definition "Step 4: Extend ontology if needed for game-specific concepts" .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================
+

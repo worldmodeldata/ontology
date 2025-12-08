@@ -1,0 +1,135 @@
+@prefix : <http://ontology.gaming.network/extensions/human_behavior#> .
+@prefix ub: <http://ontology.gaming.network/universal/human_behavior#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Human Behavior Data Extension Ontology
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Framework for integrating other human behavior datasets
+# ============================================================================
+
+<http://ontology.gaming.network/extensions/human_behavior> a owl:Ontology ;
+    dc:title "Human Behavior Data Extension" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    owl:versionInfo "1.0.0" ;
+    owl:imports <http://ontology.gaming.network/universal/human_behavior> ;
+    rdfs:comment "Framework for integrating other human behavior datasets" .
+
+# ============================================================================
+# BEHAVIORAL DATASET CONCEPTS
+# ============================================================================
+
+:BehavioralDataset a owl:Class ;
+    rdfs:label "Behavioral Dataset"@en ;
+    skos:definition "Generic human behavior dataset" .
+
+:BehavioralPattern a owl:Class ;
+    rdfs:label "Behavioral Pattern"@en ;
+    skos:definition "Reusable behavioral pattern (applies across domains)" .
+
+:BehavioralSimilarity a owl:Class ;
+    rdfs:label "Behavioral Similarity"@en ;
+    skos:definition "Similarity between behavioral datasets" .
+
+:CrossDomainPattern a owl:Class ;
+    rdfs:label "Cross-Domain Pattern"@en ;
+    skos:definition "Pattern that works across multiple domains" .
+
+# ============================================================================
+# BEHAVIORAL PATTERN CATEGORIES
+# ============================================================================
+
+:EngagementPattern a owl:Class ;
+    rdfs:subClassOf :BehavioralPattern ;
+    rdfs:label "Engagement Pattern"@en ;
+    skos:definition "Engagement patterns (gaming → healthcare → finance)" .
+
+:RetentionPattern a owl:Class ;
+    rdfs:subClassOf :BehavioralPattern ;
+    rdfs:label "Retention Pattern"@en ;
+    skos:definition "Retention patterns (gaming → customer retention → treatment adherence)" .
+
+:RiskPattern a owl:Class ;
+    rdfs:subClassOf :BehavioralPattern ;
+    rdfs:label "Risk Pattern"@en ;
+    skos:definition "Risk patterns (churn → dropout → failure)" .
+
+:TemporalPattern a owl:Class ;
+    rdfs:subClassOf :BehavioralPattern ;
+    rdfs:label "Temporal Pattern"@en ;
+    skos:definition "Temporal patterns (session frequency → activity frequency)" .
+
+# ============================================================================
+# RELATIONSHIPS
+# ============================================================================
+
+:mapsToUniversal a owl:ObjectProperty ;
+    rdfs:domain :BehavioralDataset ;
+    rdfs:range ub:HumanActor ;
+    rdfs:label "maps to universal"@en ;
+    skos:definition "Maps behavioral dataset to universal foundation concepts" .
+
+:hasPattern a owl:ObjectProperty ;
+    rdfs:domain :BehavioralDataset ;
+    rdfs:range :BehavioralPattern ;
+    rdfs:label "has pattern"@en ;
+    skos:definition "Relates dataset to behavioral patterns" .
+
+:similarToDataset a owl:ObjectProperty ;
+    rdfs:domain :BehavioralDataset ;
+    rdfs:range :BehavioralDataset ;
+    rdfs:label "similar to dataset"@en ;
+    skos:definition "Relates similar behavioral datasets" ;
+    owl:SymmetricProperty .
+
+:transfersToDomain a owl:ObjectProperty ;
+    rdfs:domain :BehavioralPattern ;
+    rdfs:range :CrossDomainPattern ;
+    rdfs:label "transfers to domain"@en ;
+    skos:definition "Relates patterns that transfer across domains" .
+
+# ============================================================================
+# DATA PROPERTIES
+# ============================================================================
+
+:datasetName a owl:DatatypeProperty ;
+    rdfs:domain :BehavioralDataset ;
+    rdfs:range xsd:string ;
+    rdfs:label "dataset name"@en ;
+    skos:definition "Name of the behavioral dataset" .
+
+:datasetDomain a owl:DatatypeProperty ;
+    rdfs:domain :BehavioralDataset ;
+    rdfs:range xsd:string ;
+    rdfs:label "dataset domain"@en ;
+    skos:definition "Domain of the dataset (gaming, healthcare, finance, etc.)" .
+
+:patternName a owl:DatatypeProperty ;
+    rdfs:domain :BehavioralPattern ;
+    rdfs:range xsd:string ;
+    rdfs:label "pattern name"@en ;
+    skos:definition "Name of the behavioral pattern" .
+
+:similarityScore a owl:DatatypeProperty ;
+    rdfs:domain :BehavioralSimilarity ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "similarity score"@en ;
+    skos:definition "Similarity score between datasets (0.0 to 1.0)" .
+
+:transferScore a owl:DatatypeProperty ;
+    rdfs:domain :CrossDomainPattern ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "transfer score"@en ;
+    skos:definition "Transferability score across domains (0.0 to 1.0)" .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================
+

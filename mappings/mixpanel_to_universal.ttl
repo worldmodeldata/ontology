@@ -1,0 +1,122 @@
+@prefix : <http://ontology.gaming.network/mappings/mixpanel#> .
+@prefix m: <http://ontology.gaming.network/sources/mixpanel#> .
+@prefix g: <http://ontology.gaming.network/universal/gaming#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Mixpanel to Universal Gaming Foundation Mapping
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Maps Mixpanel events and properties to universal gaming ontology
+# ============================================================================
+
+<http://ontology.gaming.network/mappings/mixpanel> a owl:Ontology ;
+    dc:title "Mixpanel to Universal Mapping" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    owl:versionInfo "1.0.0" ;
+    owl:imports <http://ontology.gaming.network/sources/mixpanel> ,
+                 <http://ontology.gaming.network/universal/gaming> ;
+    rdfs:comment "Maps Mixpanel concepts to universal gaming foundation" .
+
+# ============================================================================
+# EVENT MAPPINGS (OWL Equivalent Classes)
+# ============================================================================
+
+:MixpanelSessionStartToGameSession a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            m:MixpanelSessionEvent
+            [
+                a owl:Restriction ;
+                owl:onProperty m:mixpanelEventName ;
+                owl:hasValue "session_start"
+            ]
+        )
+    ] ;
+    rdfs:subClassOf g:GameSession ;
+    rdfs:label "Mixpanel Session Start to Game Session"@en .
+
+:MixpanelIapPurchaseToMonetizationEvent a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            m:MixpanelMonetizationEvent
+            [
+                a owl:Restriction ;
+                owl:onProperty m:mixpanelEventName ;
+                owl:hasValue "iap_purchase"
+            ]
+        )
+    ] ;
+    rdfs:subClassOf g:Purchase ;
+    rdfs:label "Mixpanel IAP Purchase to Monetization Event"@en .
+
+:MixpanelGameStartToEngagementEvent a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            m:MixpanelGameplayEvent
+            [
+                a owl:Restriction ;
+                owl:onProperty m:mixpanelEventName ;
+                owl:hasValue "game_start"
+            ]
+        )
+    ] ;
+    rdfs:subClassOf g:GameStart ;
+    rdfs:label "Mixpanel Game Start to Engagement Event"@en .
+
+# ============================================================================
+# PROPERTY MAPPINGS (OWL Property Chains)
+# ============================================================================
+
+:mapsMixpanelDistinctIdToDeviceId a owl:DatatypeProperty ;
+    rdfs:domain m:MixpanelEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "maps Mixpanel distinct ID to device ID"@en ;
+    rdfs:comment "Maps m:mixpanelDistinctId to g:deviceId" .
+
+:mapsMixpanelTimestampToActivityTimestamp a owl:DatatypeProperty ;
+    rdfs:domain m:MixpanelEvent ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "maps Mixpanel timestamp to activity timestamp"@en ;
+    rdfs:comment "Maps m:mixpanelTimestamp to g:activityTimestamp" .
+
+:mapsMixpanelSessionCountToSessionCount a owl:DatatypeProperty ;
+    rdfs:domain m:MixpanelEvent ;
+    rdfs:range xsd:integer ;
+    rdfs:label "maps Mixpanel session count to session count"@en ;
+    rdfs:comment "Maps m:mixpanelSessionCount to g:sessionCount" .
+
+:mapsMixpanelIapCountToTotalIaps a owl:DatatypeProperty ;
+    rdfs:domain m:MixpanelEvent ;
+    rdfs:range xsd:integer ;
+    rdfs:label "maps Mixpanel IAP count to total IAPs"@en ;
+    rdfs:comment "Maps m:mixpanelIapCount to g:totalIaps" .
+
+# ============================================================================
+# MAPPING RULES (Documentation)
+# ============================================================================
+
+# Note: Actual transformation is done via adapters (Python scripts)
+# This ontology documents the semantic mapping relationships
+
+:MixpanelEventMappingRule a owl:Class ;
+    rdfs:label "Mixpanel Event Mapping Rule"@en ;
+    skos:definition "Rules for mapping Mixpanel events to universal gaming events" .
+
+:MixpanelPropertyMappingRule a owl:Class ;
+    rdfs:label "Mixpanel Property Mapping Rule"@en ;
+    skos:definition "Rules for mapping Mixpanel properties to universal gaming properties" .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================
+

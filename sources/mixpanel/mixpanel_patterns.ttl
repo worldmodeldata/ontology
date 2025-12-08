@@ -1,0 +1,228 @@
+@prefix : <http://ontology.gaming.network/sources/mixpanel#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Mixpanel Analytics Patterns Ontology
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Mixpanel-specific event and analytics patterns
+# ============================================================================
+
+<http://ontology.gaming.network/sources/mixpanel> a owl:Ontology ;
+    dc:title "Mixpanel Analytics Patterns" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    owl:versionInfo "1.0.0" ;
+    rdfs:comment "Mixpanel-specific event model and analytics patterns" .
+
+# ============================================================================
+# MIXPANEL EVENT CLASSES
+# ============================================================================
+
+:MixpanelEvent a owl:Class ;
+    rdfs:label "Mixpanel Event"@en ;
+    skos:definition "Base class for all Mixpanel analytics events" .
+
+:MixpanelSessionEvent a owl:Class ;
+    rdfs:subClassOf :MixpanelEvent ;
+    rdfs:label "Mixpanel Session Event"@en ;
+    skos:definition "Session-related Mixpanel events (session_start, session_end)" .
+
+:MixpanelGameplayEvent a owl:Class ;
+    rdfs:subClassOf :MixpanelEvent ;
+    rdfs:label "Mixpanel Gameplay Event"@en ;
+    skos:definition "Gameplay-related Mixpanel events (game_start, game_end, move)" .
+
+:MixpanelMonetizationEvent a owl:Class ;
+    rdfs:subClassOf :MixpanelEvent ;
+    rdfs:label "Mixpanel Monetization Event"@en ;
+    skos:definition "Monetization-related Mixpanel events (iap_purchase, ad_viewed)" .
+
+:MixpanelEngagementEvent a owl:Class ;
+    rdfs:subClassOf :MixpanelEvent ;
+    rdfs:label "Mixpanel Engagement Event"@en ;
+    skos:definition "Engagement-related Mixpanel events (level_complete, achievement_unlocked)" .
+
+# ============================================================================
+# MIXPANEL ANALYTICS CONCEPTS
+# ============================================================================
+
+:MixpanelFunnel a owl:Class ;
+    rdfs:label "Mixpanel Funnel"@en ;
+    skos:definition "A sequence of events representing a user journey" .
+
+:MixpanelCohort a owl:Class ;
+    rdfs:label "Mixpanel Cohort"@en ;
+    skos:definition "A group of users defined by acquisition date or behavior" .
+
+:MixpanelRetention a owl:Class ;
+    rdfs:label "Mixpanel Retention"@en ;
+    skos:definition "Retention metric calculation (day 1, day 7, day 30)" .
+
+# ============================================================================
+# MIXPANEL DATA PROPERTIES
+# ============================================================================
+
+:mixpanelDistinctId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :MixpanelEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Mixpanel Distinct ID"@en ;
+    skos:definition "Primary user identifier in Mixpanel" .
+
+:mixpanelUserId a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Mixpanel User ID"@en ;
+    skos:definition "Alternative user identifier in Mixpanel" .
+
+:mixpanelEventName a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Mixpanel Event Name"@en ;
+    skos:definition "Name of the Mixpanel event" .
+
+:mixpanelInsertId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :MixpanelEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Mixpanel Insert ID"@en ;
+    skos:definition "Unique identifier for event insertion" .
+
+:mixpanelTimestamp a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelEvent ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "Mixpanel Timestamp"@en ;
+    skos:definition "Unix timestamp of the event" .
+
+:mixpanelLibVersion a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Mixpanel Library Version"@en ;
+    skos:definition "Version of Mixpanel SDK used" .
+
+:mixpanelAppVersion a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Mixpanel App Version"@en ;
+    skos:definition "Version of the application" .
+
+# ============================================================================
+# MIXPANEL PROPERTIES (from properties object)
+# ============================================================================
+
+:mixpanelSessionCount a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelEvent ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Mixpanel Session Count"@en ;
+    skos:definition "Cumulative session count for user" .
+
+:mixpanelIapCount a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelEvent ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Mixpanel IAP Count"@en ;
+    skos:definition "Cumulative in-app purchase count" .
+
+:mixpanelCoins a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelEvent ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Mixpanel Coins"@en ;
+    skos:definition "Current currency balance" .
+
+:mixpanelAdCount a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelEvent ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Mixpanel Ad Count"@en ;
+    skos:definition "Number of ads viewed" .
+
+:mixpanelGameType a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelGameplayEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Mixpanel Game Type"@en ;
+    skos:definition "Type of game (e.g., klondike, spider)" .
+
+:mixpanelDifficulty a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelGameplayEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Mixpanel Difficulty"@en ;
+    skos:definition "Difficulty level (e.g., easy, medium, hard)" .
+
+:mixpanelMoveCount a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelGameplayEvent ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Mixpanel Move Count"@en ;
+    skos:definition "Number of moves made" .
+
+:mixpanelGameResult a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelGameplayEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "Mixpanel Game Result"@en ;
+    skos:definition "Game result (win, lose, abandoned)" .
+
+# ============================================================================
+# MIXPANEL FUNNEL PROPERTIES
+# ============================================================================
+
+:funnelName a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelFunnel ;
+    rdfs:range xsd:string ;
+    rdfs:label "Funnel Name"@en ;
+    skos:definition "Name of the funnel" .
+
+:funnelSteps a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelFunnel ;
+    rdfs:range xsd:string ;
+    rdfs:label "Funnel Steps"@en ;
+    skos:definition "Sequence of events in the funnel" .
+
+:conversionRate a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelFunnel ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "Conversion Rate"@en ;
+    skos:definition "Percentage of users completing the funnel" .
+
+# ============================================================================
+# MIXPANEL COHORT PROPERTIES
+# ============================================================================
+
+:cohortName a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelCohort ;
+    rdfs:range xsd:string ;
+    rdfs:label "Cohort Name"@en ;
+    skos:definition "Name of the cohort" .
+
+:cohortType a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelCohort ;
+    rdfs:range xsd:string ;
+    rdfs:label "Cohort Type"@en ;
+    skos:definition "Type of cohort (acquisition, behavioral, segment)" .
+
+:cohortSize a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelCohort ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Cohort Size"@en ;
+    skos:definition "Number of users in the cohort" .
+
+# ============================================================================
+# MIXPANEL RETENTION PROPERTIES
+# ============================================================================
+
+:retentionDay a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelRetention ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Retention Day"@en ;
+    skos:definition "Day for retention calculation (1, 7, 30)" .
+
+:retentionRate a owl:DatatypeProperty ;
+    rdfs:domain :MixpanelRetention ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "Retention Rate"@en ;
+    skos:definition "Percentage of users retained on this day" .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================
+

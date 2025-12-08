@@ -1,0 +1,415 @@
+@prefix : <http://ontology.gaming.network/universal/gaming#> .
+@prefix ub: <http://ontology.gaming.network/universal/human_behavior#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Universal Gaming Foundation Ontology v1.0
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Comprehensive gaming ontology synthesizing Unity, Mixpanel, GOP,
+#              and production patterns. Extends Universal Human Behavior Foundation.
+# ============================================================================
+
+<http://ontology.gaming.network/universal/gaming> a owl:Ontology ;
+    dc:title "Universal Gaming Foundation Ontology v1.0" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    owl:versionInfo "1.0.0" ;
+    owl:imports <http://ontology.gaming.network/universal/human_behavior> ;
+    rdfs:comment "Comprehensive gaming ontology extending universal human behavior foundation" .
+
+# ============================================================================
+# GAMING ENTITY CLASSES (extends HumanActor)
+# ============================================================================
+
+:Player a owl:Class ;
+    rdfs:subClassOf ub:HumanActor ;
+    rdfs:label "Player"@en ;
+    skos:definition "Gaming-specific human actor" ;
+    skos:altLabel "Device"@en, "User"@en ;
+    rdfs:comment "Represents a player/user in gaming context. Alias for Device/User terminology." .
+
+:Game a owl:Class ;
+    rdfs:label "Game"@en ;
+    skos:definition "Game application" ;
+    rdfs:comment "Represents a game application." .
+
+:GameSession a owl:Class ;
+    rdfs:subClassOf ub:Activity ;
+    rdfs:label "Game Session"@en ;
+    skos:definition "Gaming activity period" ;
+    rdfs:comment "Represents a gaming session, extending universal Activity concept." .
+
+# ============================================================================
+# GAMING EVENT CLASSES (extends BehavioralEvent)
+# ============================================================================
+
+:GameEvent a owl:Class ;
+    rdfs:subClassOf ub:BehavioralEvent ;
+    rdfs:label "Game Event"@en ;
+    skos:definition "Gaming-specific events" ;
+    rdfs:comment "Base class for all gaming events, extending universal BehavioralEvent." .
+
+:MonetizationEvent a owl:Class ;
+    rdfs:subClassOf :GameEvent ;
+    rdfs:label "Monetization Event"@en ;
+    skos:definition "Monetization-related events (Purchase, IAP, Subscription)" ;
+    rdfs:comment "Events related to monetization and revenue generation." .
+
+:Purchase a owl:Class ;
+    rdfs:subClassOf :MonetizationEvent ;
+    rdfs:label "Purchase"@en ;
+    skos:definition "Purchase event (in-app purchase, subscription)" .
+
+:AdViewed a owl:Class ;
+    rdfs:subClassOf :MonetizationEvent ;
+    rdfs:label "Ad Viewed"@en ;
+    skos:definition "Advertisement impression event" .
+
+:EngagementEvent a owl:Class ;
+    rdfs:subClassOf :GameEvent ;
+    rdfs:label "Engagement Event"@en ;
+    skos:definition "Engagement-related events (LevelStart, LevelComplete, Achievement)" ;
+    rdfs:comment "Events related to player engagement and progression." .
+
+:LevelStart a owl:Class ;
+    rdfs:subClassOf :EngagementEvent ;
+    rdfs:label "Level Start"@en ;
+    skos:definition "Level initialization event" .
+
+:LevelComplete a owl:Class ;
+    rdfs:subClassOf :EngagementEvent ;
+    rdfs:label "Level Complete"@en ;
+    skos:definition "Level completion event" .
+
+:LevelFail a owl:Class ;
+    rdfs:subClassOf :EngagementEvent ;
+    rdfs:label "Level Fail"@en ;
+    skos:definition "Level failure event" .
+
+:GameStart a owl:Class ;
+    rdfs:subClassOf :EngagementEvent ;
+    rdfs:label "Game Start"@en ;
+    skos:definition "Game initialization event" .
+
+:GameEnd a owl:Class ;
+    rdfs:subClassOf :EngagementEvent ;
+    rdfs:label "Game End"@en ;
+    skos:definition "Game completion event" .
+
+:SocialEvent a owl:Class ;
+    rdfs:subClassOf :GameEvent ;
+    rdfs:label "Social Event"@en ;
+    skos:definition "Social events (MultiplayerJoin, FriendInvite, ChatMessage)" ;
+    rdfs:comment "Events related to social interactions in games." .
+
+:ProgressionEvent a owl:Class ;
+    rdfs:subClassOf :GameEvent ;
+    rdfs:label "Progression Event"@en ;
+    skos:definition "Progression events (LevelUp, SkillUnlock, Milestone)" ;
+    rdfs:comment "Events related to player progression." .
+
+# ============================================================================
+# GAMING BEHAVIORAL CLASSES (extends BehavioralState)
+# ============================================================================
+
+:EngagementLevel a owl:Class ;
+    rdfs:subClassOf ub:BehavioralState ;
+    rdfs:label "Engagement Level"@en ;
+    skos:definition "Classification of user engagement" ;
+    rdfs:comment "Extends universal BehavioralState for engagement classification." .
+
+:HighEngagement a owl:Class ;
+    rdfs:subClassOf :EngagementLevel ;
+    rdfs:label "High Engagement"@en ;
+    skos:definition "User with high engagement (10+ sessions)" .
+
+:MediumEngagement a owl:Class ;
+    rdfs:subClassOf :EngagementLevel ;
+    rdfs:label "Medium Engagement"@en ;
+    skos:definition "User with medium engagement (3-9 sessions)" .
+
+:LowEngagement a owl:Class ;
+    rdfs:subClassOf :EngagementLevel ;
+    rdfs:label "Low Engagement"@en ;
+    skos:definition "User with low engagement (1-2 sessions)" .
+
+:MonetizationSegment a owl:Class ;
+    rdfs:subClassOf ub:BehavioralState ;
+    rdfs:label "Monetization Segment"@en ;
+    skos:definition "Classification of user monetization behavior" ;
+    rdfs:comment "Extends universal BehavioralState for monetization segmentation." .
+
+:Whale a owl:Class ;
+    rdfs:subClassOf :MonetizationSegment ;
+    rdfs:label "Whale"@en ;
+    skos:definition "User with high spending" .
+
+:Dolphin a owl:Class ;
+    rdfs:subClassOf :MonetizationSegment ;
+    rdfs:label "Dolphin"@en ;
+    skos:definition "User with medium spending" .
+
+:Minnow a owl:Class ;
+    rdfs:subClassOf :MonetizationSegment ;
+    rdfs:label "Minnow"@en ;
+    skos:definition "User with low spending" .
+
+:NonPayer a owl:Class ;
+    rdfs:subClassOf :MonetizationSegment ;
+    rdfs:label "Non-Payer"@en ;
+    skos:definition "User who has never made a purchase" .
+
+:RetentionStatus a owl:Class ;
+    rdfs:subClassOf ub:BehavioralState ;
+    rdfs:label "Retention Status"@en ;
+    skos:definition "Classification of user retention" ;
+    rdfs:comment "Extends universal BehavioralState for retention classification." .
+
+:Retained a owl:Class ;
+    rdfs:subClassOf :RetentionStatus ;
+    rdfs:label "Retained"@en ;
+    skos:definition "User who continues to engage regularly" .
+
+:AtRisk a owl:Class ;
+    rdfs:subClassOf :RetentionStatus ;
+    rdfs:label "At Risk"@en ;
+    skos:definition "User who may churn soon" .
+
+:Churned a owl:Class ;
+    rdfs:subClassOf :RetentionStatus ;
+    rdfs:label "Churned"@en ;
+    skos:definition "User who has not returned after first session" .
+
+:PlayerState a owl:Class ;
+    rdfs:subClassOf ub:BehavioralState ;
+    rdfs:label "Player State"@en ;
+    skos:definition "Current player state (Active, Inactive, Churned)" ;
+    rdfs:comment "Extends universal BehavioralState for player state classification." .
+
+:ActivePlayer a owl:Class ;
+    rdfs:subClassOf :PlayerState ;
+    rdfs:label "Active Player"@en ;
+    skos:definition "Currently active player" .
+
+:InactivePlayer a owl:Class ;
+    rdfs:subClassOf :PlayerState ;
+    rdfs:label "Inactive Player"@en ;
+    skos:definition "Currently inactive player" .
+
+# ============================================================================
+# GAMING RELATIONSHIPS
+# ============================================================================
+
+:playsGame a owl:ObjectProperty ;
+    rdfs:domain :Player ;
+    rdfs:range :Game ;
+    rdfs:label "plays game"@en ;
+    skos:definition "Relates a player to games they play" .
+
+:hasSession a owl:ObjectProperty ;
+    rdfs:domain :Player ;
+    rdfs:range :GameSession ;
+    rdfs:label "has session"@en ;
+    skos:definition "Relates a player to their gaming sessions" ;
+    owl:inverseOf :belongsToPlayer .
+
+:belongsToPlayer a owl:ObjectProperty ;
+    rdfs:domain :GameSession ;
+    rdfs:range :Player ;
+    rdfs:label "belongs to player"@en ;
+    skos:definition "Relates a gaming session to the player" .
+
+:occursInGame a owl:ObjectProperty ;
+    rdfs:domain :GameSession ;
+    rdfs:range :Game ;
+    rdfs:label "occurs in game"@en ;
+    skos:definition "Relates a gaming session to the game it occurs in" .
+
+:containsEvent a owl:ObjectProperty ;
+    rdfs:domain :GameSession ;
+    rdfs:range :GameEvent ;
+    rdfs:label "contains event"@en ;
+    skos:definition "Relates a gaming session to events it contains" ;
+    owl:inverseOf :occursInSession .
+
+:occursInSession a owl:ObjectProperty ;
+    rdfs:domain :GameEvent ;
+    rdfs:range :GameSession ;
+    rdfs:label "occurs in session"@en ;
+    skos:definition "Relates a gaming event to the session it occurs in" .
+
+:hasEngagementLevel a owl:ObjectProperty ;
+    rdfs:domain :Player ;
+    rdfs:range :EngagementLevel ;
+    rdfs:label "has engagement level"@en ;
+    skos:definition "Relates a player to their engagement level classification" .
+
+:hasMonetizationSegment a owl:ObjectProperty ;
+    rdfs:domain :Player ;
+    rdfs:range :MonetizationSegment ;
+    rdfs:label "has monetization segment"@en ;
+    skos:definition "Relates a player to their monetization segment classification" .
+
+:hasRetentionStatus a owl:ObjectProperty ;
+    rdfs:domain :Player ;
+    rdfs:range :RetentionStatus ;
+    rdfs:label "has retention status"@en ;
+    skos:definition "Relates a player to their retention status classification" .
+
+:hasPlayerState a owl:ObjectProperty ;
+    rdfs:domain :Player ;
+    rdfs:range :PlayerState ;
+    rdfs:label "has player state"@en ;
+    skos:definition "Relates a player to their current state" .
+
+# Cross-Game Relationships
+:similarBehaviorTo a owl:ObjectProperty ;
+    rdfs:domain :Player ;
+    rdfs:range :Player ;
+    rdfs:label "similar behavior to"@en ;
+    skos:definition "Relates players with similar behavioral patterns (across games)" ;
+    owl:SymmetricProperty .
+
+:similarGenreTo a owl:ObjectProperty ;
+    rdfs:domain :Game ;
+    rdfs:range :Game ;
+    rdfs:label "similar genre to"@en ;
+    skos:definition "Relates games with similar genres" ;
+    owl:SymmetricProperty .
+
+:similarEventTypeTo a owl:ObjectProperty ;
+    rdfs:domain :GameEvent ;
+    rdfs:range :GameEvent ;
+    rdfs:label "similar event type to"@en ;
+    skos:definition "Relates similar event types across games" ;
+    owl:SymmetricProperty .
+
+# ============================================================================
+# GAMING DATA PROPERTIES
+# ============================================================================
+
+:deviceId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :Player ;
+    rdfs:range xsd:string ;
+    rdfs:label "device ID"@en ;
+    skos:definition "Unique identifier for a player/device" ;
+    rdfs:comment "Maps to ub:actorId in universal foundation." .
+
+:sessionId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :GameSession ;
+    rdfs:range xsd:string ;
+    rdfs:label "session ID"@en ;
+    skos:definition "Unique identifier for a gaming session" ;
+    rdfs:comment "Maps to ub:activityId in universal foundation." .
+
+:eventType a owl:DatatypeProperty ;
+    rdfs:domain :GameEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "event type"@en ;
+    skos:definition "Type of gaming event" .
+
+:totalIaps a owl:DatatypeProperty ;
+    rdfs:domain :Player ;
+    rdfs:range xsd:integer ;
+    rdfs:label "total IAPs"@en ;
+    skos:definition "Total in-app purchases for this player" .
+
+:sessionCount a owl:DatatypeProperty ;
+    rdfs:domain :Player ;
+    rdfs:range xsd:integer ;
+    rdfs:label "session count"@en ;
+    skos:definition "Number of gaming sessions for this player" .
+
+:sessionDuration a owl:DatatypeProperty ;
+    rdfs:domain :GameSession ;
+    rdfs:range xsd:integer ;
+    rdfs:label "session duration"@en ;
+    skos:definition "Duration of gaming session in seconds" ;
+    rdfs:comment "Maps to ub:activityDuration in universal foundation." .
+
+:engagementScore a owl:DatatypeProperty ;
+    rdfs:domain :Player ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "engagement score"@en ;
+    skos:definition "Calculated engagement metric" .
+
+:retentionDay a owl:DatatypeProperty ;
+    rdfs:domain :Player ;
+    rdfs:range xsd:integer ;
+    rdfs:label "retention day"@en ;
+    skos:definition "Day X retention status (1, 7, 30)" .
+
+:gameId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :Game ;
+    rdfs:range xsd:string ;
+    rdfs:label "game ID"@en ;
+    skos:definition "Unique identifier for a game" .
+
+:gameName a owl:DatatypeProperty ;
+    rdfs:domain :Game ;
+    rdfs:range xsd:string ;
+    rdfs:label "game name"@en ;
+    skos:definition "Name of the game" .
+
+:gameGenre a owl:DatatypeProperty ;
+    rdfs:domain :Game ;
+    rdfs:range xsd:string ;
+    rdfs:label "game genre"@en ;
+    skos:definition "Genre of the game (Action, RPG, Puzzle, etc.)" .
+
+:levelNumber a owl:DatatypeProperty ;
+    rdfs:domain :EngagementEvent ;
+    rdfs:range xsd:integer ;
+    rdfs:label "level number"@en ;
+    skos:definition "Level identifier/number" .
+
+:difficulty a owl:DatatypeProperty ;
+    rdfs:domain :EngagementEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "difficulty"@en ;
+    skos:definition "Difficulty level (easy, medium, hard)" .
+
+:amount a owl:DatatypeProperty ;
+    rdfs:domain :MonetizationEvent ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "amount"@en ;
+    skos:definition "Transaction amount" .
+
+:currency a owl:DatatypeProperty ;
+    rdfs:domain :MonetizationEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "currency"@en ;
+    skos:definition "Currency code" .
+
+:itemId a owl:DatatypeProperty ;
+    rdfs:domain :MonetizationEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "item ID"@en ;
+    skos:definition "Item/product identifier" .
+
+# ============================================================================
+# DISJOINT CLASSES
+# ============================================================================
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :HighEngagement :MediumEngagement :LowEngagement ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :Whale :Dolphin :Minnow :NonPayer ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :Retained :AtRisk :Churned ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :ActivePlayer :InactivePlayer ) .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================
+

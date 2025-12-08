@@ -1,0 +1,124 @@
+@prefix : <http://ontology.gaming.network/extensions/cross_game#> .
+@prefix g: <http://ontology.gaming.network/universal/gaming#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# Cross-Game Data Integration Extension Ontology
+# Author: Gi Fernando
+# Copyright: © 2025 Gi Fernando. All rights reserved.
+# Description: Extension for cross-game data integration
+# ============================================================================
+
+<http://ontology.gaming.network/extensions/cross_game> a owl:Ontology ;
+    dc:title "Cross-Game Integration Extension" ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    owl:versionInfo "1.0.0" ;
+    owl:imports <http://ontology.gaming.network/universal/gaming> ;
+    rdfs:comment "Extension for integrating data from multiple games" .
+
+# ============================================================================
+# CROSS-GAME CLASSES
+# ============================================================================
+
+:GameGenre a owl:Class ;
+    rdfs:label "Game Genre"@en ;
+    skos:definition "Genre classification (Action, RPG, Puzzle, etc.)" .
+
+:CrossGamePlayer a owl:Class ;
+    rdfs:subClassOf g:Player ;
+    rdfs:label "Cross-Game Player"@en ;
+    skos:definition "Player identity across multiple games" .
+
+:CrossGameBehaviorPattern a owl:Class ;
+    rdfs:label "Cross-Game Behavior Pattern"@en ;
+    skos:definition "Behavioral patterns that span games" .
+
+:CrossGameEventAlignment a owl:Class ;
+    rdfs:label "Cross-Game Event Alignment"@en ;
+    skos:definition "Event type alignment across games" .
+
+# ============================================================================
+# CROSS-GAME RELATIONSHIPS
+# ============================================================================
+
+:playsMultipleGames a owl:ObjectProperty ;
+    rdfs:domain g:Player ;
+    rdfs:range g:Game ;
+    rdfs:label "plays multiple games"@en ;
+    skos:definition "One player, many games" .
+
+:alignsWith a owl:ObjectProperty ;
+    rdfs:domain g:GameEvent ;
+    rdfs:range g:GameEvent ;
+    rdfs:label "aligns with"@en ;
+    skos:definition "Similar events across games" ;
+    owl:SymmetricProperty .
+
+:hasCrossGamePattern a owl:ObjectProperty ;
+    rdfs:domain g:Player ;
+    rdfs:range :CrossGameBehaviorPattern ;
+    rdfs:label "has cross-game pattern"@en ;
+    skos:definition "Relates player to cross-game behavioral patterns" .
+
+:hasGenre a owl:ObjectProperty ;
+    rdfs:domain g:Game ;
+    rdfs:range :GameGenre ;
+    rdfs:label "has genre"@en ;
+    skos:definition "Relates game to its genre" .
+
+# ============================================================================
+# CROSS-GAME DATA PROPERTIES
+# ============================================================================
+
+:crossGameEngagementScore a owl:DatatypeProperty ;
+    rdfs:domain g:Player ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "cross-game engagement score"@en ;
+    skos:definition "Engagement across all games" .
+
+:crossGameMonetizationTotal a owl:DatatypeProperty ;
+    rdfs:domain g:Player ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "cross-game monetization total"@en ;
+    skos:definition "Total spending across games" .
+
+:crossGameRetentionPattern a owl:DatatypeProperty ;
+    rdfs:domain g:Player ;
+    rdfs:range xsd:string ;
+    rdfs:label "cross-game retention pattern"@en ;
+    skos:definition "Retention pattern across games" .
+
+:gamePreferenceProfile a owl:DatatypeProperty ;
+    rdfs:domain g:Player ;
+    rdfs:range xsd:string ;
+    rdfs:label "game preference profile"@en ;
+    skos:definition "Preferred game genres/types" .
+
+:genreName a owl:DatatypeProperty ;
+    rdfs:domain :GameGenre ;
+    rdfs:range xsd:string ;
+    rdfs:label "genre name"@en ;
+    skos:definition "Name of the genre" .
+
+:patternName a owl:DatatypeProperty ;
+    rdfs:domain :CrossGameBehaviorPattern ;
+    rdfs:range xsd:string ;
+    rdfs:label "pattern name"@en ;
+    skos:definition "Name of the behavioral pattern" .
+
+:alignmentScore a owl:DatatypeProperty ;
+    rdfs:domain :CrossGameEventAlignment ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "alignment score"@en ;
+    skos:definition "Similarity score for event alignment (0.0 to 1.0)" .
+
+# ============================================================================
+# END OF ONTOLOGY
+# ============================================================================
+
