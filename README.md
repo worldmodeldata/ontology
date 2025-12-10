@@ -54,7 +54,9 @@ This repository contains the Living Ontology System's gaming ontology definition
 
 **All documentation for this ontology work is located in the `docs` repository:**
 
-### 🎨 Visual Architecture Documentation (in `docs` repository)
+### 🎨 Visual Architecture Documentation
+
+**GitHub:**
 - **[ONTOLOGY_SYSTEM_VISUAL_ARCHITECTURE.md](https://github.com/worldmodeldata/docs/blob/main/09-ontology/ONTOLOGY_SYSTEM_VISUAL_ARCHITECTURE.md)** - **START HERE** - Comprehensive visual guide showing:
   - High-level system architecture and component interactions
   - Detailed workflows for ontology updates, triple extraction, reasoning, and LLM integration
@@ -62,25 +64,55 @@ This repository contains the Living Ontology System's gaming ontology definition
   - Universal ontology status and file structure
   - Perfect for explaining the system to stakeholders like Tony Seale
 
-### 📚 Primary Documentation (in `docs` repository)
+**Local:**
+- `../docs/09-ontology/ONTOLOGY_SYSTEM_VISUAL_ARCHITECTURE.md`
+
+### 📚 Primary Documentation
+
+**GitHub:**
 - **[UNIVERSAL_FOUNDATION_IMPLEMENTATION_SUMMARY.md](https://github.com/worldmodeldata/docs/blob/main/09-ontology/UNIVERSAL_FOUNDATION_IMPLEMENTATION_SUMMARY.md)** - Implementation progress summary (Phase 0-4 complete)
 - **[UNIVERSAL_FOUNDATION_CRITIQUE.md](https://github.com/worldmodeldata/docs/blob/main/09-ontology/UNIVERSAL_FOUNDATION_CRITIQUE.md)** - Knowledge Graph Guys critique of the ontology work
+
+**Local:**
+- `../docs/09-ontology/UNIVERSAL_FOUNDATION_IMPLEMENTATION_SUMMARY.md`
+- `../docs/09-ontology/UNIVERSAL_FOUNDATION_CRITIQUE.md`
 
 ### 📚 Quick Start Guide
 - **[README_UNIVERSAL_FOUNDATION.md](README_UNIVERSAL_FOUNDATION.md)** - Quick start and usage guide (this repo)
 
-### 📚 Implementation & Enhancement Plans (in `docs` repository)
-- **[KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md)** - Comprehensive implementation plan based on Knowledge Graph Guys principles
+### 📚 Implementation & Enhancement Plans
+
+**GitHub:**
+- **[KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md)** - Comprehensive implementation plan based on Knowledge Graph Guys principles (Step 0.8 complete)
 - **[KNOWLEDGE_GRAPH_GUYS_CRITIQUE.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/KNOWLEDGE_GRAPH_GUYS_CRITIQUE.md)** - Critique of implementation plan
 - **[BLOG_ARTICLES_ANALYSIS.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/BLOG_ARTICLES_ANALYSIS.md)** - Analysis of Knowledge Graph Guys blog articles
 - **[FINAL_REVIEW_IMPLEMENTATION_PLAN.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/FINAL_REVIEW_IMPLEMENTATION_PLAN.md)** - Final review of implementation plan
 
-### 📚 Architecture Documentation (in `docs` repository)
-- **[ONTOLOGY_ARCHITECTURE.md](https://github.com/worldmodeldata/docs/blob/main/04-architecture/ONTOLOGY_ARCHITECTURE.md)** - Ontology service architecture and semantic enrichment
+**Local:**
+- `../docs/05-implementation/KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md`
+- `../docs/05-implementation/KNOWLEDGE_GRAPH_GUYS_CRITIQUE.md`
+- `../docs/05-implementation/BLOG_ARTICLES_ANALYSIS.md`
+- `../docs/05-implementation/FINAL_REVIEW_IMPLEMENTATION_PLAN.md`
+
+### 📚 Architecture Documentation
+
+**GitHub:**
+- **[ONTOLOGY_ARCHITECTURE.md](https://github.com/worldmodeldata/docs/blob/main/04-architecture/ONTOLOGY_ARCHITECTURE.md)** - Ontology service architecture, semantic enrichment, Spec-First Development, and LLM integration
 - **[KNOWLEDGE_GRAPH_ARCHITECTURE.md](https://github.com/worldmodeldata/docs/blob/main/04-architecture/KNOWLEDGE_GRAPH_ARCHITECTURE.md)** - Knowledge graph architecture (Neo4j, relationships)
 
-### 📚 Reference Documentation (in `docs` repository)
+**Local:**
+- `../docs/04-architecture/ONTOLOGY_ARCHITECTURE.md`
+- `../docs/04-architecture/KNOWLEDGE_GRAPH_ARCHITECTURE.md`
+
+### 📚 Reference Documentation
+
+**GitHub:**
 - **[ONTOLOGY_REFERENCE.md](https://github.com/worldmodeldata/docs/blob/main/06-reference/ONTOLOGY_REFERENCE.md)** - Ontology structure, classes, properties, rules reference
+- **[API_REFERENCE.md](https://github.com/worldmodeldata/docs/blob/main/06-reference/API_REFERENCE.md)** - Complete API reference (includes Spec-First Development endpoints)
+
+**Local:**
+- `../docs/06-reference/ONTOLOGY_REFERENCE.md`
+- `../docs/06-reference/API_REFERENCE.md`
 
 ---
 
@@ -94,15 +126,28 @@ See **[README_UNIVERSAL_FOUNDATION.md](README_UNIVERSAL_FOUNDATION.md)** for qui
 
 For comprehensive information about the ontology architecture, evolution, and integration:
 
+**GitHub Links:**
 - **🎨 Visual Architecture Guide**: [ONTOLOGY_SYSTEM_VISUAL_ARCHITECTURE.md](https://github.com/worldmodeldata/docs/blob/main/09-ontology/ONTOLOGY_SYSTEM_VISUAL_ARCHITECTURE.md) - **Visual diagrams and workflows**
 - **Ontology Implementation Summary**: [UNIVERSAL_FOUNDATION_IMPLEMENTATION_SUMMARY.md](https://github.com/worldmodeldata/docs/blob/main/09-ontology/UNIVERSAL_FOUNDATION_IMPLEMENTATION_SUMMARY.md)
 - **Ontology Critique**: [UNIVERSAL_FOUNDATION_CRITIQUE.md](https://github.com/worldmodeldata/docs/blob/main/09-ontology/UNIVERSAL_FOUNDATION_CRITIQUE.md)
-- **Ontology Architecture**: [ONTOLOGY_ARCHITECTURE.md](https://github.com/worldmodeldata/docs/blob/main/04-architecture/ONTOLOGY_ARCHITECTURE.md)
+- **Ontology Architecture**: [ONTOLOGY_ARCHITECTURE.md](https://github.com/worldmodeldata/docs/blob/main/04-architecture/ONTOLOGY_ARCHITECTURE.md) - Includes Spec-First Development and LLM integration
 - **Knowledge Graph Architecture**: [KNOWLEDGE_GRAPH_ARCHITECTURE.md](https://github.com/worldmodeldata/docs/blob/main/04-architecture/KNOWLEDGE_GRAPH_ARCHITECTURE.md)
 - **Orchestrator Architecture**: [ORCHESTRATOR_ARCHITECTURE.md](https://github.com/worldmodeldata/docs/blob/main/04-architecture/ORCHESTRATOR_ARCHITECTURE.md)
 - **Complete System Explainer**: [COMPLETE_SYSTEM_EXPLAINER.md](https://github.com/worldmodeldata/docs/blob/main/01-system-overview/COMPLETE_SYSTEM_EXPLAINER.md)
-- **Implementation Plan**: [KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md)
+- **Implementation Plan**: [KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md) - Step 0.8 (Spec-First Development) complete
+- **API Reference**: [API_REFERENCE.md](https://github.com/worldmodeldata/docs/blob/main/06-reference/API_REFERENCE.md) - Includes Spec-First Development endpoints
+
+**Local Links (for development):**
+- `../docs/09-ontology/ONTOLOGY_SYSTEM_VISUAL_ARCHITECTURE.md`
+- `../docs/09-ontology/UNIVERSAL_FOUNDATION_IMPLEMENTATION_SUMMARY.md`
+- `../docs/09-ontology/UNIVERSAL_FOUNDATION_CRITIQUE.md`
+- `../docs/04-architecture/ONTOLOGY_ARCHITECTURE.md`
+- `../docs/04-architecture/KNOWLEDGE_GRAPH_ARCHITECTURE.md`
+- `../docs/04-architecture/ORCHESTRATOR_ARCHITECTURE.md`
+- `../docs/01-system-overview/COMPLETE_SYSTEM_EXPLAINER.md`
+- `../docs/05-implementation/KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md`
+- `../docs/06-reference/API_REFERENCE.md`
 
 ---
 
-**Last Updated:** 2025-12-27
+**Last Updated:** 2025-01-29

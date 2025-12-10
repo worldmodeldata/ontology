@@ -28,6 +28,11 @@
     rdfs:subClassOf :Entity ;
     skos:definition "A resource used or consumed in the gaming ecosystem" .
 
+:TEST a owl:Class ;
+    rdfs:label "Test Class"@en ;
+    rdfs:subClassOf :Event ;
+    skos:definition "A test class" .
+
 :activityTimestamp a owl:DatatypeProperty ;
     rdfs:label "activity timestamp"@en ;
     rdfs:domain :Event ;
@@ -219,6 +224,12 @@
     rdfs:range xsd:string ;
     skos:definition "Unique identifier for a session" .
 
+:testProperty a owl:DatatypeProperty ;
+    rdfs:label "Test Property"@en ;
+    rdfs:domain :TestClass ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#xsd:string> ;
+    skos:definition "Test property for E2E testing" .
+
 :totalSpent a owl:DatatypeProperty ;
     rdfs:label "total spent"@en ;
     rdfs:domain :Device ;
@@ -303,6 +314,11 @@
     rdfs:subClassOf :RetentionStatus ;
     skos:definition "User who continues to engage regularly" .
 
+:TestClass a owl:Class ;
+    rdfs:label "Test Class"@en ;
+    rdfs:subClassOf :Entity ;
+    skos:definition "Test class for E2E testing" .
+
 :Whale a owl:Class ;
     rdfs:label "Whale"@en ;
     rdfs:subClassOf :MonetizationSegment ;
@@ -374,14 +390,14 @@
     rdfs:subClassOf :Entity ;
     skos:definition "Configuration class for tenant-specific monetization segment thresholds"@en .
 
-:Entity a owl:Class ;
-    rdfs:label "Entity"@en ;
-    skos:definition "Top-level class for all entities in the gaming ecosystem" .
-
 :Session a owl:Class ;
     rdfs:label "Session"@en ;
     rdfs:subClassOf :Event ;
     skos:definition "A period of continuous interaction with a game" .
+
+:Entity a owl:Class ;
+    rdfs:label "Entity"@en ;
+    skos:definition "Top-level class for all entities in the gaming ecosystem" .
 
 :Device a owl:Class ;
     rdfs:label "Device"@en ;
