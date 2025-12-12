@@ -1,0 +1,43 @@
+{
+  "iri_to_local_path": {
+    "http://ontology.gaming.network/extensions/character_mechanics": "extensions/character_mechanics_extension.ttl",
+    "http://ontology.gaming.network/extensions/game_design": "extensions/game_design_extension.ttl",
+    "http://ontology.gaming.network/universal/bridge": "universal_bridge.ttl",
+    "http://ontology.gaming.network/universal/gaming": "universal/gaming_foundation_v1.ttl",
+    "http://ontology.gaming.network/universal/gaming_ontology": "worldmodeldata_universal_gaming_ontology_v1.ttl",
+    "http://ontology.gaming.network/universal/gaming_ontology_composed": "worldmodeldata_universal_gaming_ontology_v1_composed.ttl",
+    "http://ontology.gaming.network/universal/human_behavior": "universal/human_behavior_foundation.ttl"
+  },
+  "modules": [
+    {
+      "id": "flagship_universal",
+      "kind": "flagship",
+      "local_path": "worldmodeldata_universal_gaming_ontology_v1.ttl",
+      "ontology_iri": "http://ontology.gaming.network/universal/gaming_ontology",
+      "redistributable": true
+    },
+    {
+      "id": "composed_entrypoint",
+      "kind": "entrypoint",
+      "local_path": "worldmodeldata_universal_gaming_ontology_v1_composed.ttl",
+      "ontology_iri": "http://ontology.gaming.network/universal/gaming_ontology_composed",
+      "redistributable": true
+    },
+    {
+      "id": "extension_game_design",
+      "kind": "extension",
+      "local_path": "extensions/game_design_extension.ttl",
+      "ontology_iri": "http://ontology.gaming.network/extensions/game_design",
+      "redistributable": true
+    },
+    {
+      "id": "extension_character_mechanics",
+      "kind": "extension",
+      "local_path": "extensions/character_mechanics_extension.ttl",
+      "ontology_iri": "http://ontology.gaming.network/extensions/character_mechanics",
+      "redistributable": true
+    }
+  ],
+  "note": "Offline module registry for ontology composition. Used to resolve owl:imports IRIs to local file paths without network access.",
+  "version": "0.1.0"
+}

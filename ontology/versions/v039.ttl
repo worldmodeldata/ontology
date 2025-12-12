@@ -1,0 +1,1295 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ns1: <http://ontology.gaming.network/universal/gaming#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ontology.gaming.network/core#Actor> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Actor' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Actor .
+
+<http://ontology.gaming.network/core#AdEvent> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#AdEvent' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:AdEvent .
+
+<http://ontology.gaming.network/core#AdInteraction> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#AdInteraction' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:AdInteraction .
+
+<http://ontology.gaming.network/core#AtRisk> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#AtRisk' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:AtRisk .
+
+<http://ontology.gaming.network/core#AttributedInstall> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#AttributedInstall' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:AttributedInstall .
+
+<http://ontology.gaming.network/core#Bid> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Bid' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Bid .
+
+<http://ontology.gaming.network/core#Campaign> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Campaign' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Campaign .
+
+<http://ontology.gaming.network/core#Churned> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Churned' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Churned .
+
+<http://ontology.gaming.network/core#Device> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Player' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Player .
+
+<http://ontology.gaming.network/core#Dolphin> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Dolphin' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Dolphin .
+
+<http://ontology.gaming.network/core#EngagementLevel> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#EngagementLevel' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:EngagementLevel .
+
+<http://ontology.gaming.network/core#Event> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/human_behavior#BehavioralEvent' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> .
+
+<http://ontology.gaming.network/core#Game> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Game' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Game .
+
+<http://ontology.gaming.network/core#GameEvent> owl:equivalentClass ns1:GameEvent .
+
+<http://ontology.gaming.network/core#GameSession> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#GameSession' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:GameSession .
+
+<http://ontology.gaming.network/core#HighEngagement> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#HighEngagement' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:HighEngagement .
+
+<http://ontology.gaming.network/core#Human> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Human' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Human .
+
+<http://ontology.gaming.network/core#Impression> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Impression' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Impression .
+
+<http://ontology.gaming.network/core#InAppPurchase> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#InAppPurchase' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:InAppPurchase .
+
+<http://ontology.gaming.network/core#LowEngagement> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#LowEngagement' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:LowEngagement .
+
+<http://ontology.gaming.network/core#MediumEngagement> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#MediumEngagement' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:MediumEngagement .
+
+<http://ontology.gaming.network/core#Minnow> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Minnow' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Minnow .
+
+<http://ontology.gaming.network/core#MonetizationSegment> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#MonetizationSegment' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:MonetizationSegment .
+
+<http://ontology.gaming.network/core#MonetizationThresholds> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#MonetizationThresholds' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:MonetizationThresholds .
+
+<http://ontology.gaming.network/core#NonPayer> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#NonPayer' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:NonPayer .
+
+<http://ontology.gaming.network/core#Person> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Person' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Person .
+
+<http://ontology.gaming.network/core#Player> owl:equivalentClass ns1:Player .
+
+<http://ontology.gaming.network/core#Resource> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Resource' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Resource .
+
+<http://ontology.gaming.network/core#Retained> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Retained' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Retained .
+
+<http://ontology.gaming.network/core#RetentionStatus> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#RetentionStatus' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:RetentionStatus .
+
+<http://ontology.gaming.network/core#Session> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/human_behavior#Activity' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass <http://ontology.gaming.network/universal/human_behavior#Activity> .
+
+<http://ontology.gaming.network/core#Transaction> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Transaction' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Transaction .
+
+<http://ontology.gaming.network/core#Whale> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Whale' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Whale .
+
+<http://ontology.gaming.network/core#activityTimestamp> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#activityTimestamp' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:activityTimestamp .
+
+<http://ontology.gaming.network/core#advertiserDomain> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#advertiserDomain' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:advertiserDomain .
+
+<http://ontology.gaming.network/core#amount> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#amount' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:amount .
+
+<http://ontology.gaming.network/core#appliesToTenant> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#appliesToTenant' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:appliesToTenant .
+
+<http://ontology.gaming.network/core#attributedTo> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#attributedTo' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:attributedTo .
+
+<http://ontology.gaming.network/core#belongsToDevice> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#belongsToDevice' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:belongsToDevice .
+
+<http://ontology.gaming.network/core#belongsToPlayer> owl:equivalentProperty ns1:belongsToPlayer .
+
+<http://ontology.gaming.network/core#bidPrice> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#bidPrice' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:bidPrice .
+
+<http://ontology.gaming.network/core#businessDefinition> a owl:AnnotationProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#businessDefinition' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:businessDefinition .
+
+<http://ontology.gaming.network/core#businessImpact> a owl:AnnotationProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#businessImpact' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:businessImpact .
+
+<http://ontology.gaming.network/core#businessRationale> a owl:AnnotationProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#businessRationale' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:businessRationale .
+
+<http://ontology.gaming.network/core#businessTerms> a owl:AnnotationProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#businessTerms' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:businessTerms .
+
+<http://ontology.gaming.network/core#businessThreshold> a owl:AnnotationProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#businessThreshold' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:businessThreshold .
+
+<http://ontology.gaming.network/core#businessUseCase> a owl:AnnotationProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#businessUseCase' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:businessUseCase .
+
+<http://ontology.gaming.network/core#campaignId> a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#campaignId' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:campaignId .
+
+<http://ontology.gaming.network/core#containsBid> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#containsBid' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:containsBid .
+
+<http://ontology.gaming.network/core#containsEvent> owl:equivalentProperty ns1:containsEvent .
+
+<http://ontology.gaming.network/core#contributedBy> a owl:AnnotationProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#contributedBy' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:contributedBy .
+
+<http://ontology.gaming.network/core#contributionDate> a owl:AnnotationProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#contributionDate' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:contributionDate .
+
+<http://ontology.gaming.network/core#country> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#country' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:country .
+
+<http://ontology.gaming.network/core#currency> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#currency' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:currency .
+
+<http://ontology.gaming.network/core#deviceId> a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#deviceId' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:deviceId .
+
+<http://ontology.gaming.network/core#deviceOS> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#deviceOS' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:deviceOS .
+
+<http://ontology.gaming.network/core#deviceType> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#deviceType' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:deviceType .
+
+<http://ontology.gaming.network/core#dolphinIapThreshold> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#dolphinIapThreshold' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:dolphinIapThreshold .
+
+<http://ontology.gaming.network/core#dolphinMonetaryThreshold> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#dolphinMonetaryThreshold' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:dolphinMonetaryThreshold .
+
+<http://ontology.gaming.network/core#eventType> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#eventType' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:eventType .
+
+<http://ontology.gaming.network/core#hasAdInteraction> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#hasAdInteraction' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:hasAdInteraction .
+
+<http://ontology.gaming.network/core#hasAttributedInstall> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#hasAttributedInstall' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:hasAttributedInstall .
+
+<http://ontology.gaming.network/core#hasEngagementLevel> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#hasEngagementLevel' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:hasEngagementLevel .
+
+<http://ontology.gaming.network/core#hasImpression> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#hasImpression' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:hasImpression .
+
+<http://ontology.gaming.network/core#hasInAppPurchase> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#hasInAppPurchase' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:hasInAppPurchase .
+
+<http://ontology.gaming.network/core#hasMonetizationSegment> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#hasMonetizationSegment' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:hasMonetizationSegment .
+
+<http://ontology.gaming.network/core#hasRetentionStatus> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#hasRetentionStatus' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:hasRetentionStatus .
+
+<http://ontology.gaming.network/core#hasSession> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#hasSession' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:hasSession .
+
+<http://ontology.gaming.network/core#lastReviewed> a owl:AnnotationProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#lastReviewed' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:lastReviewed .
+
+<http://ontology.gaming.network/core#minnowIapThreshold> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#minnowIapThreshold' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:minnowIapThreshold .
+
+<http://ontology.gaming.network/core#minnowMonetaryThreshold> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#minnowMonetaryThreshold' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:minnowMonetaryThreshold .
+
+<http://ontology.gaming.network/core#occursInGame> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#occursInGame' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:occursInGame .
+
+<http://ontology.gaming.network/core#occursInSession> owl:equivalentProperty ns1:occursInSession .
+
+<http://ontology.gaming.network/core#partOfCampaign> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#partOfCampaign' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:partOfCampaign .
+
+<http://ontology.gaming.network/core#playsGame> a owl:ObjectProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#playsGame' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:playsGame .
+
+<http://ontology.gaming.network/core#sessionCount> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#sessionCount' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:sessionCount .
+
+<http://ontology.gaming.network/core#sessionDuration> owl:equivalentProperty ns1:sessionDuration .
+
+<http://ontology.gaming.network/core#sessionId> a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#sessionId' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:sessionId .
+
+<http://ontology.gaming.network/core#testProperty> a owl:DatatypeProperty ;
+    rdfs:label "Test Property"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#TestClass> ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#xsd:string> ;
+    skos:definition "Test property for E2E testing" .
+
+<http://ontology.gaming.network/core#totalSpent> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#totalSpent' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:totalSpent .
+
+<http://ontology.gaming.network/core#whaleIapThreshold> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#whaleIapThreshold' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:whaleIapThreshold .
+
+<http://ontology.gaming.network/core#whaleMonetaryThreshold> a owl:DatatypeProperty ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#whaleMonetaryThreshold' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty ns1:whaleMonetaryThreshold .
+
+<http://ontology.gaming.network/universal/bridge> a owl:Ontology ;
+    rdfs:comment "Alignment axioms mapping core gaming ontology terms to universal foundations." .
+
+ns1:AdViewed a owl:Class ;
+    rdfs:label "Ad Viewed"@en ;
+    rdfs:subClassOf ns1:MonetizationEvent ;
+    skos:definition "Advertisement impression event" .
+
+ns1:GameEnd a owl:Class ;
+    rdfs:label "Game End"@en ;
+    rdfs:subClassOf ns1:EngagementEvent ;
+    skos:definition "Game completion event" .
+
+ns1:GameStart a owl:Class ;
+    rdfs:label "Game Start"@en ;
+    rdfs:subClassOf ns1:EngagementEvent ;
+    skos:definition "Game initialization event" .
+
+ns1:LevelComplete a owl:Class ;
+    rdfs:label "Level Complete"@en ;
+    rdfs:subClassOf ns1:EngagementEvent ;
+    skos:definition "Level completion event" .
+
+ns1:LevelFail a owl:Class ;
+    rdfs:label "Level Fail"@en ;
+    rdfs:subClassOf ns1:EngagementEvent ;
+    skos:definition "Level failure event" .
+
+ns1:LevelStart a owl:Class ;
+    rdfs:label "Level Start"@en ;
+    rdfs:subClassOf ns1:EngagementEvent ;
+    skos:definition "Level initialization event" .
+
+ns1:ProgressionEvent a owl:Class ;
+    rdfs:label "Progression Event"@en ;
+    rdfs:comment "Events related to player progression." ;
+    rdfs:subClassOf ns1:GameEvent ;
+    skos:definition "Progression events (LevelUp, SkillUnlock, Milestone)" .
+
+ns1:Purchase a owl:Class ;
+    rdfs:label "Purchase"@en ;
+    rdfs:subClassOf ns1:MonetizationEvent ;
+    skos:definition "Purchase event (in-app purchase, subscription)" .
+
+ns1:SocialEvent a owl:Class ;
+    rdfs:label "Social Event"@en ;
+    rdfs:comment "Events related to social interactions in games." ;
+    rdfs:subClassOf ns1:GameEvent ;
+    skos:definition "Social events (MultiplayerJoin, FriendInvite, ChatMessage)" .
+
+ns1:difficulty a owl:DatatypeProperty ;
+    rdfs:label "difficulty"@en ;
+    rdfs:domain ns1:EngagementEvent ;
+    rdfs:range xsd:string ;
+    skos:definition "Difficulty level (easy, medium, hard)" .
+
+ns1:engagementScore a owl:DatatypeProperty ;
+    rdfs:label "engagement score"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Calculated engagement metric" .
+
+ns1:gameGenre a owl:DatatypeProperty ;
+    rdfs:label "game genre"@en ;
+    rdfs:domain ns1:Game ;
+    rdfs:range xsd:string ;
+    skos:definition "Genre of the game (Action, RPG, Puzzle, etc.)" .
+
+ns1:gameId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "game ID"@en ;
+    rdfs:domain ns1:Game ;
+    rdfs:range xsd:string ;
+    skos:definition "Unique identifier for a game" .
+
+ns1:gameName a owl:DatatypeProperty ;
+    rdfs:label "game name"@en ;
+    rdfs:domain ns1:Game ;
+    rdfs:range xsd:string ;
+    skos:definition "Name of the game" .
+
+ns1:hasPlayerState a owl:ObjectProperty ;
+    rdfs:label "has player state"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range ns1:PlayerState ;
+    skos:definition "Relates a player to their current state" .
+
+ns1:itemId a owl:DatatypeProperty ;
+    rdfs:label "item ID"@en ;
+    rdfs:domain ns1:MonetizationEvent ;
+    rdfs:range xsd:string ;
+    skos:definition "Item/product identifier" .
+
+ns1:levelNumber a owl:DatatypeProperty ;
+    rdfs:label "level number"@en ;
+    rdfs:domain ns1:EngagementEvent ;
+    rdfs:range xsd:integer ;
+    skos:definition "Level identifier/number" .
+
+ns1:retentionDay a owl:DatatypeProperty ;
+    rdfs:label "retention day"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range xsd:integer ;
+    skos:definition "Day X retention status (1, 7, 30)" .
+
+ns1:similarBehaviorTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "similar behavior to"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range ns1:Player ;
+    skos:definition "Relates players with similar behavioral patterns (across games)" .
+
+ns1:similarEventTypeTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "similar event type to"@en ;
+    rdfs:domain ns1:GameEvent ;
+    rdfs:range ns1:GameEvent ;
+    skos:definition "Relates similar event types across games" .
+
+ns1:similarGenreTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "similar genre to"@en ;
+    rdfs:domain ns1:Game ;
+    rdfs:range ns1:Game ;
+    skos:definition "Relates games with similar genres" .
+
+ns1:totalIaps a owl:DatatypeProperty ;
+    rdfs:label "total IAPs"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range xsd:integer ;
+    skos:definition "Total in-app purchases for this player" .
+
+<http://ontology.gaming.network/universal/gaming_ontology> a owl:Ontology ;
+    dc:creator "WorldModelData" ;
+    dc:title "WorldModelData Universal Gaming Ontology v1"@en ;
+    rdfs:comment "Flagship universal gaming ontology release. Flattened distribution containing the universal foundations plus absorbed legacy core semantics."@en ;
+    owl:imports <http://ontology.gaming.network/universal/gaming>,
+        <http://ontology.gaming.network/universal/human_behavior> ;
+    owl:versionInfo "1.0.0" .
+
+<http://ontology.gaming.network/universal/human_behavior#activityDuration> a owl:DatatypeProperty ;
+    rdfs:label "activity duration"@en ;
+    rdfs:comment "Universal temporal property for activity duration." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Duration of the activity in seconds" .
+
+<http://ontology.gaming.network/universal/human_behavior#activityEndTimestamp> a owl:DatatypeProperty ;
+    rdfs:label "activity end timestamp"@en ;
+    rdfs:comment "Universal temporal property for activity end time." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "Timestamp when the activity ended" .
+
+<http://ontology.gaming.network/universal/human_behavior#activityId> a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "activity ID"@en ;
+    rdfs:comment "Universal identifier property for any activity type." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range xsd:string ;
+    skos:definition "Unique identifier for an activity" .
+
+<http://ontology.gaming.network/universal/human_behavior#activityStartTimestamp> a owl:DatatypeProperty ;
+    rdfs:label "activity start timestamp"@en ;
+    rdfs:comment "Universal temporal property for activity start time." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "Timestamp when the activity started" .
+
+<http://ontology.gaming.network/universal/human_behavior#activityTimestamp> a owl:DatatypeProperty ;
+    rdfs:label "activity timestamp"@en ;
+    rdfs:comment "Universal temporal property for any behavioral event type." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "Timestamp when the behavioral event occurred" .
+
+<http://ontology.gaming.network/universal/human_behavior#actorId> a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "actor ID"@en ;
+    rdfs:comment "Universal identifier property for any human actor type." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    rdfs:range xsd:string ;
+    skos:definition "Unique identifier for a human actor" .
+
+<http://ontology.gaming.network/universal/human_behavior#eventId> a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "event ID"@en ;
+    rdfs:comment "Universal identifier property for any behavioral event type." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    rdfs:range xsd:string ;
+    skos:definition "Unique identifier for a behavioral event" .
+
+<http://ontology.gaming.network/universal/human_behavior#generatesEvent> a owl:ObjectProperty ;
+    rdfs:label "generates event"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    owl:inverseOf <http://ontology.gaming.network/universal/human_behavior#generatedByActivity> ;
+    skos:definition "Relates an activity to behavioral events it generates" .
+
+<http://ontology.gaming.network/universal/human_behavior#hasEngagementLevel> a owl:ObjectProperty ;
+    rdfs:label "has engagement level"@en ;
+    rdfs:comment "Universal property for engagement classification across domains." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    skos:definition "Applies to gaming (player engagement), treatment (patient engagement), task performance (user engagement)" .
+
+<http://ontology.gaming.network/universal/human_behavior#hasRetentionStatus> a owl:ObjectProperty ;
+    rdfs:label "has retention status"@en ;
+    rdfs:comment "Universal property for retention classification across domains." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    skos:definition "Applies to player retention (gaming), treatment adherence (healthcare), customer retention (finance)" .
+
+<http://ontology.gaming.network/universal/human_behavior#hasSocialContext> a owl:ObjectProperty ;
+    rdfs:label "has social context"@en ;
+    rdfs:comment "Universal property for social context across domains." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    skos:definition "Applies to multiplayer games (gaming), social support (healthcare), network effects (finance)" .
+
+<http://ontology.gaming.network/universal/human_behavior#hasState> a owl:ObjectProperty ;
+    rdfs:label "has state"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    owl:inverseOf <http://ontology.gaming.network/universal/human_behavior#stateOfActor> ;
+    skos:definition "Relates a human actor to their behavioral state" .
+
+<http://ontology.gaming.network/universal/human_behavior#hasTemporalPattern> a owl:ObjectProperty ;
+    rdfs:label "has temporal pattern"@en ;
+    rdfs:comment "Universal property for temporal behavior patterns across domains." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    skos:definition "Applies to session frequency (gaming), treatment frequency (healthcare), activity frequency (finance)" .
+
+<http://ontology.gaming.network/universal/human_behavior#hasValueSegment> a owl:ObjectProperty ;
+    rdfs:label "has value segment"@en ;
+    rdfs:comment "Universal property for value segmentation across domains." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    skos:definition "Applies to monetization (gaming), treatment compliance (healthcare), customer value (finance)" .
+
+<http://ontology.gaming.network/universal/human_behavior#influencesState> a owl:ObjectProperty ;
+    rdfs:label "influences state"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    owl:inverseOf <http://ontology.gaming.network/universal/human_behavior#influencedByEvent> ;
+    skos:definition "Relates a behavioral event to behavioral states it influences" .
+
+<http://ontology.gaming.network/universal/human_behavior#performsActivity> a owl:ObjectProperty ;
+    rdfs:label "performs activity"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    owl:inverseOf <http://ontology.gaming.network/universal/human_behavior#performedByActor> ;
+    skos:definition "Relates a human actor to activities they perform" .
+
+<http://ontology.gaming.network/universal/human_behavior#similarTo> a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "similar to"@en ;
+    rdfs:comment "Used for behavioral similarity analysis and pattern recognition." ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    skos:definition "Relates human actors with similar behavioral patterns" .
+
+<http://ontology.gaming.network/core#Entity> a owl:Class ;
+    rdfs:comment "DEPRECATED legacy IRI. Use 'http://ontology.gaming.network/universal/gaming#Entity' instead."@en ;
+    owl:deprecated true ;
+    owl:equivalentClass ns1:Entity .
+
+<http://ontology.gaming.network/core#TestClass> a owl:Class ;
+    rdfs:label "Test Class"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Entity> ;
+    skos:definition "Test class for E2E testing" .
+
+<http://ontology.gaming.network/universal/gaming> a owl:Ontology ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    dc:title "Universal Gaming Foundation Ontology v1.0" ;
+    rdfs:comment "Comprehensive gaming ontology extending universal human behavior foundation" ;
+    owl:imports <http://ontology.gaming.network/universal/human_behavior> ;
+    owl:versionInfo "1.0.0" .
+
+ns1:Human a owl:Class ;
+    rdfs:label "New Class"@en ;
+    rdfs:subClassOf ns1:Person ;
+    skos:definition "A Human being" .
+
+ns1:Resource a owl:Class ;
+    rdfs:label "Resource"@en ;
+    rdfs:subClassOf ns1:Entity ;
+    skos:definition "A resource used or consumed in the gaming ecosystem" .
+
+ns1:activityTimestamp a owl:DatatypeProperty ;
+    rdfs:label "activity timestamp"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "Timestamp when the event occurred" .
+
+ns1:advertiserDomain a owl:DatatypeProperty ;
+    rdfs:label "advertiser domain"@en ;
+    rdfs:domain ns1:Campaign ;
+    rdfs:range xsd:string ;
+    skos:definition "Domain of the advertiser" .
+
+ns1:amount a owl:DatatypeProperty ;
+    rdfs:label "amount"@en ;
+    rdfs:domain ns1:MonetizationEvent,
+        ns1:Transaction ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Transaction amount" .
+
+ns1:appliesToTenant a owl:DatatypeProperty ;
+    rdfs:label "applies to tenant"@en ;
+    rdfs:domain ns1:MonetizationThresholds ;
+    rdfs:range xsd:string ;
+    skos:definition "Tenant identifier this threshold configuration applies to"@en .
+
+ns1:attributedTo a owl:ObjectProperty ;
+    rdfs:label "attributed to"@en ;
+    rdfs:domain ns1:AttributedInstall ;
+    rdfs:range ns1:Campaign ;
+    skos:definition "Relates an install to the campaign that drove it" .
+
+ns1:bidPrice a owl:DatatypeProperty ;
+    rdfs:label "bid price"@en ;
+    rdfs:domain ns1:Bid ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Price of the bid in the ad auction" .
+
+ns1:businessDefinition a owl:AnnotationProperty ;
+    rdfs:label "business definition"@en ;
+    rdfs:comment "Plain-language business definition of a concept (multi-language supported via language tags)."@en .
+
+ns1:businessImpact a owl:AnnotationProperty ;
+    rdfs:label "business impact"@en ;
+    rdfs:comment "Business value/impact statement for the concept (e.g., HIGH/MEDIUM/LOW with rationale)."@en .
+
+ns1:businessRationale a owl:AnnotationProperty ;
+    rdfs:label "business rationale"@en ;
+    rdfs:comment "Why this concept matters from a business perspective (multi-language supported via language tags)."@en .
+
+ns1:businessTerms a owl:AnnotationProperty ;
+    rdfs:label "business terms"@en ;
+    rdfs:comment "Business terminology/synonyms used for the concept (multi-language supported via language tags)."@en .
+
+ns1:businessThreshold a owl:AnnotationProperty ;
+    rdfs:label "business threshold"@en ;
+    rdfs:comment "Business thresholds/criteria used to operationalize the concept (multi-language supported via language tags)."@en .
+
+ns1:businessUseCase a owl:AnnotationProperty ;
+    rdfs:label "business use case"@en ;
+    rdfs:comment "Real-world business use cases for the concept (multi-language supported via language tags)."@en .
+
+ns1:campaignId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "campaign ID"@en ;
+    rdfs:domain ns1:Campaign ;
+    rdfs:range xsd:string ;
+    skos:definition "Unique identifier for a campaign" .
+
+ns1:containsBid a owl:ObjectProperty ;
+    rdfs:label "contains bid"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range ns1:Bid ;
+    skos:definition "Relates a session to bids that occurred during it" .
+
+ns1:containsEvent a owl:ObjectProperty ;
+    rdfs:label "contains event"@en ;
+    rdfs:domain ns1:GameSession ;
+    rdfs:range ns1:GameEvent ;
+    owl:inverseOf ns1:occursInSession ;
+    skos:definition "Relates a gaming session to events it contains" .
+
+ns1:contributedBy a owl:AnnotationProperty ;
+    rdfs:label "contributed by"@en ;
+    rdfs:comment "Provenance: identifier of the contributor (domain expert, ontology editor, etc.)."@en .
+
+ns1:contributionDate a owl:AnnotationProperty ;
+    rdfs:label "contribution date"@en ;
+    rdfs:comment "Provenance: date of contribution (xsd:date)."@en .
+
+ns1:country a owl:DatatypeProperty ;
+    rdfs:label "country"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range xsd:string ;
+    skos:definition "Country code of the device" .
+
+ns1:currency a owl:DatatypeProperty ;
+    rdfs:label "currency"@en ;
+    rdfs:domain ns1:MonetizationEvent,
+        ns1:Transaction ;
+    rdfs:range xsd:string ;
+    skos:definition "Currency code",
+        "Currency code for the transaction" .
+
+ns1:deviceId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "device ID"@en ;
+    rdfs:comment "Maps to ub:actorId in universal foundation." ;
+    rdfs:domain ns1:Player ;
+    rdfs:range xsd:string ;
+    skos:definition "Unique identifier for a device",
+        "Unique identifier for a player/device" .
+
+ns1:deviceOS a owl:DatatypeProperty ;
+    rdfs:label "device OS"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range xsd:string ;
+    skos:definition "Operating system of the device" .
+
+ns1:deviceType a owl:DatatypeProperty ;
+    rdfs:label "device type"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range xsd:string ;
+    skos:definition "Type of device (phone, tablet, etc.)" .
+
+ns1:dolphinIapThreshold a owl:DatatypeProperty ;
+    rdfs:label "dolphin IAP threshold"@en ;
+    rdfs:domain ns1:MonetizationThresholds ;
+    rdfs:range xsd:integer ;
+    skos:definition "Minimum IAP count to classify as Dolphin"@en .
+
+ns1:dolphinMonetaryThreshold a owl:DatatypeProperty ;
+    rdfs:label "dolphin monetary threshold"@en ;
+    rdfs:domain ns1:MonetizationThresholds ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Minimum monetary value (£) to classify as Dolphin (future use)"@en .
+
+ns1:eventType a owl:DatatypeProperty ;
+    rdfs:label "event type"@en ;
+    rdfs:domain ns1:GameEvent,
+        <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    rdfs:range xsd:string ;
+    skos:definition "Type of event",
+        "Type of gaming event" .
+
+ns1:hasAdInteraction a owl:ObjectProperty ;
+    rdfs:label "has ad interaction"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range ns1:AdInteraction ;
+    skos:definition "Relates a session to ad interactions during it" .
+
+ns1:hasAttributedInstall a owl:ObjectProperty ;
+    rdfs:label "has attributed install"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range ns1:AttributedInstall ;
+    skos:definition "Relates a device to its attributed install event" .
+
+ns1:hasEngagementLevel a owl:ObjectProperty ;
+    rdfs:label "has engagement level"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range ns1:EngagementLevel ;
+    skos:definition "Relates a device to its inferred engagement classification",
+        "Relates a player to their engagement level classification" .
+
+ns1:hasImpression a owl:ObjectProperty ;
+    rdfs:label "has impression"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range ns1:Impression ;
+    skos:definition "Relates a session to ad impressions shown during it" .
+
+ns1:hasInAppPurchase a owl:ObjectProperty ;
+    rdfs:label "has in-app purchase"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range ns1:InAppPurchase ;
+    skos:definition "Relates a session to purchases made during it" .
+
+ns1:hasMonetizationSegment a owl:ObjectProperty ;
+    rdfs:label "has monetization segment"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range ns1:MonetizationSegment ;
+    skos:definition "Relates a device to its inferred monetization classification",
+        "Relates a player to their monetization segment classification" .
+
+ns1:hasRetentionStatus a owl:ObjectProperty ;
+    rdfs:label "has retention status"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range ns1:RetentionStatus ;
+    skos:definition "Relates a device to its inferred retention status",
+        "Relates a player to their retention status classification" .
+
+ns1:hasSession a owl:ObjectProperty ;
+    rdfs:label "has session"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range ns1:GameSession,
+        <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    owl:inverseOf ns1:belongsToDevice,
+        ns1:belongsToPlayer ;
+    skos:definition "Relates a device to its sessions",
+        "Relates a player to their gaming sessions" .
+
+ns1:lastReviewed a owl:AnnotationProperty ;
+    rdfs:label "last reviewed"@en ;
+    rdfs:comment "Provenance: date this business semantics annotation was last reviewed (xsd:date)."@en .
+
+ns1:minnowIapThreshold a owl:DatatypeProperty ;
+    rdfs:label "minnow IAP threshold"@en ;
+    rdfs:domain ns1:MonetizationThresholds ;
+    rdfs:range xsd:integer ;
+    skos:definition "Minimum IAP count to classify as Minnow"@en .
+
+ns1:minnowMonetaryThreshold a owl:DatatypeProperty ;
+    rdfs:label "minnow monetary threshold"@en ;
+    rdfs:domain ns1:MonetizationThresholds ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Minimum monetary value (£) to classify as Minnow (future use)"@en .
+
+ns1:occursInGame a owl:ObjectProperty ;
+    rdfs:label "occurs in game"@en ;
+    rdfs:domain ns1:GameSession,
+        <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range ns1:Game ;
+    skos:definition "Relates a gaming session to the game it occurs in",
+        "Relates a session to the game it occurs in" .
+
+ns1:partOfCampaign a owl:ObjectProperty ;
+    rdfs:label "part of campaign"@en ;
+    rdfs:domain ns1:AdEvent ;
+    rdfs:range ns1:Campaign ;
+    skos:definition "Relates an ad event to its campaign" .
+
+ns1:playsGame a owl:ObjectProperty ;
+    rdfs:label "plays game"@en ;
+    rdfs:comment "Inferred from hasSession and occursInGame" ;
+    rdfs:domain ns1:Player ;
+    rdfs:range ns1:Game ;
+    skos:definition "Relates a device to games it plays",
+        "Relates a player to games they play" .
+
+ns1:sessionCount a owl:DatatypeProperty ;
+    rdfs:label "session count"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range xsd:integer ;
+    skos:definition "Number of gaming sessions for this player",
+        "Total number of sessions for this device" .
+
+ns1:sessionDuration a owl:DatatypeProperty ;
+    rdfs:label "session duration"@en ;
+    rdfs:comment "Maps to ub:activityDuration in universal foundation." ;
+    rdfs:domain ns1:GameSession ;
+    rdfs:range xsd:integer ;
+    skos:definition "Duration of gaming session in seconds" .
+
+ns1:sessionId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "session ID"@en ;
+    rdfs:comment "Maps to ub:activityId in universal foundation." ;
+    rdfs:domain ns1:GameSession,
+        <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range xsd:string ;
+    skos:definition "Unique identifier for a gaming session",
+        "Unique identifier for a session" .
+
+ns1:totalSpent a owl:DatatypeProperty ;
+    rdfs:label "total spent"@en ;
+    rdfs:domain ns1:Player ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Total amount spent by this device" .
+
+ns1:whaleIapThreshold a owl:DatatypeProperty ;
+    rdfs:label "whale IAP threshold"@en ;
+    rdfs:domain ns1:MonetizationThresholds ;
+    rdfs:range xsd:integer ;
+    skos:definition "Minimum IAP count to classify as Whale"@en .
+
+ns1:whaleMonetaryThreshold a owl:DatatypeProperty ;
+    rdfs:label "whale monetary threshold"@en ;
+    rdfs:domain ns1:MonetizationThresholds ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Minimum monetary value (£) to classify as Whale (future use)"@en .
+
+<http://ontology.gaming.network/universal/human_behavior#generatedByActivity> a owl:ObjectProperty ;
+    rdfs:label "generated by activity"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    skos:definition "Relates a behavioral event to the activity that generated it" .
+
+<http://ontology.gaming.network/universal/human_behavior#influencedByEvent> a owl:ObjectProperty ;
+    rdfs:label "influenced by event"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    skos:definition "Relates a behavioral state to events that influence it" .
+
+<http://ontology.gaming.network/universal/human_behavior#performedByActor> a owl:ObjectProperty ;
+    rdfs:label "performed by actor"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    skos:definition "Relates an activity to the human actor performing it" .
+
+<http://ontology.gaming.network/universal/human_behavior#stateOfActor> a owl:ObjectProperty ;
+    rdfs:label "state of actor"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    rdfs:range <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    skos:definition "Relates a behavioral state to the human actor it describes" .
+
+ns1:AdInteraction a owl:Class ;
+    rdfs:label "Ad Interaction"@en ;
+    rdfs:subClassOf ns1:AdEvent ;
+    skos:definition "User interaction with an advertisement" .
+
+ns1:Impression a owl:Class ;
+    rdfs:label "Impression"@en ;
+    rdfs:subClassOf ns1:AdEvent ;
+    skos:definition "An ad impression shown to a user" .
+
+ns1:InAppPurchase a owl:Class ;
+    rdfs:label "In-App Purchase"@en ;
+    rdfs:subClassOf ns1:Transaction ;
+    skos:altLabel "IAP"@en ;
+    skos:definition "A purchase made within a game" .
+
+ns1:Person a owl:Class ;
+    rdfs:label "New Class"@en ;
+    rdfs:subClassOf ns1:Actor ;
+    skos:definition "A Human that interacts with a system" .
+
+ns1:belongsToDevice a owl:ObjectProperty ;
+    rdfs:label "belongs to device"@en ;
+    rdfs:domain <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    rdfs:range ns1:Player ;
+    skos:definition "Relates a session to its device" .
+
+ns1:belongsToPlayer a owl:ObjectProperty ;
+    rdfs:label "belongs to player"@en ;
+    rdfs:domain ns1:GameSession ;
+    rdfs:range ns1:Player ;
+    skos:definition "Relates a gaming session to the player" .
+
+ns1:occursInSession a owl:ObjectProperty ;
+    rdfs:label "occurs in session"@en ;
+    rdfs:domain ns1:GameEvent ;
+    rdfs:range ns1:GameSession ;
+    skos:definition "Relates a gaming event to the session it occurs in" .
+
+<http://ontology.gaming.network/universal/human_behavior> a owl:Ontology ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-12-27" ;
+    dc:title "Universal Human Behavior Foundation" ;
+    rdfs:comment "Universal extensible foundation for human behavior data across domains" ;
+    owl:versionInfo "1.0.0" .
+
+ns1:ActivePlayer a owl:Class ;
+    rdfs:label "Active Player"@en ;
+    rdfs:subClassOf ns1:PlayerState ;
+    skos:definition "Currently active player" .
+
+ns1:Actor a owl:Class ;
+    rdfs:label "Actor"@en ;
+    rdfs:subClassOf ns1:Entity ;
+    skos:definition "An entity that can perform actions in the gaming ecosystem" .
+
+ns1:AttributedInstall a owl:Class ;
+    rdfs:label "Attributed Install"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    skos:definition "A game installation attributed to a campaign" .
+
+ns1:Bid a owl:Class ;
+    rdfs:label "Bid"@en ;
+    rdfs:subClassOf ns1:AdEvent ;
+    skos:definition "A bid request in the ad auction" .
+
+ns1:InactivePlayer a owl:Class ;
+    rdfs:label "Inactive Player"@en ;
+    rdfs:subClassOf ns1:PlayerState ;
+    skos:definition "Currently inactive player" .
+
+ns1:PlayerState a owl:Class ;
+    rdfs:label "Player State"@en ;
+    rdfs:comment "Extends universal BehavioralState for player state classification." ;
+    rdfs:subClassOf <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    skos:definition "Current player state (Active, Inactive, Churned)" .
+
+ns1:AtRisk a owl:Class ;
+    rdfs:label "At Risk"@en ;
+    rdfs:subClassOf ns1:RetentionStatus ;
+    skos:definition "User who may churn soon" .
+
+ns1:Churned a owl:Class ;
+    rdfs:label "Churned"@en ;
+    rdfs:subClassOf ns1:RetentionStatus ;
+    skos:definition "User who has not returned after first session" .
+
+ns1:Dolphin a owl:Class ;
+    rdfs:label "Dolphin"@en ;
+    rdfs:subClassOf ns1:MonetizationSegment ;
+    skos:definition "User with medium spending",
+        "User with medium spending (£10-£50)" .
+
+ns1:HighEngagement a owl:Class ;
+    rdfs:label "High Engagement"@en ;
+    rdfs:subClassOf ns1:EngagementLevel ;
+    skos:definition "User with high engagement (10+ sessions)" .
+
+ns1:LowEngagement a owl:Class ;
+    rdfs:label "Low Engagement"@en ;
+    rdfs:subClassOf ns1:EngagementLevel ;
+    skos:definition "User with low engagement (1-2 sessions)" .
+
+ns1:MediumEngagement a owl:Class ;
+    rdfs:label "Medium Engagement"@en ;
+    rdfs:subClassOf ns1:EngagementLevel ;
+    skos:definition "User with medium engagement (3-9 sessions)" .
+
+ns1:Minnow a owl:Class ;
+    rdfs:label "Minnow"@en ;
+    rdfs:subClassOf ns1:MonetizationSegment ;
+    skos:definition "User with low spending",
+        "User with low spending (£0-£10)" .
+
+ns1:NonPayer a owl:Class ;
+    rdfs:label "Non-Payer"@en ;
+    rdfs:subClassOf ns1:MonetizationSegment ;
+    skos:definition "User who has never made a purchase" .
+
+ns1:Retained a owl:Class ;
+    rdfs:label "Retained"@en ;
+    rdfs:subClassOf ns1:RetentionStatus ;
+    skos:definition "User who continues to engage regularly" .
+
+ns1:Transaction a owl:Class ;
+    rdfs:label "Transaction"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    skos:definition "A financial transaction" .
+
+ns1:Whale a owl:Class ;
+    rdfs:label "Whale"@en ;
+    rdfs:subClassOf ns1:MonetizationSegment ;
+    skos:definition "User with high spending",
+        "User with high spending (£50+)" .
+
+ns1:AdEvent a owl:Class ;
+    rdfs:label "Ad Event"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    skos:definition "An event related to advertising" .
+
+ns1:Campaign a owl:Class ;
+    rdfs:label "Campaign"@en ;
+    rdfs:subClassOf ns1:Entity ;
+    skos:definition "An advertising campaign" .
+
+ns1:EngagementLevel a owl:Class ;
+    rdfs:label "Engagement Level"@en ;
+    rdfs:comment "Extends universal BehavioralState for engagement classification." ;
+    rdfs:subClassOf ns1:Entity,
+        <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    skos:definition "Classification of user engagement" .
+
+ns1:MonetizationEvent a owl:Class ;
+    rdfs:label "Monetization Event"@en ;
+    rdfs:comment "Events related to monetization and revenue generation." ;
+    rdfs:subClassOf ns1:GameEvent ;
+    skos:definition "Monetization-related events (Purchase, IAP, Subscription)" .
+
+ns1:RetentionStatus a owl:Class ;
+    rdfs:label "Retention Status"@en ;
+    rdfs:comment "Extends universal BehavioralState for retention classification." ;
+    rdfs:subClassOf ns1:Entity,
+        <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    skos:definition "Classification of user retention" .
+
+ns1:MonetizationSegment a owl:Class ;
+    rdfs:label "Monetization Segment"@en ;
+    rdfs:comment "Extends universal BehavioralState for monetization segmentation." ;
+    rdfs:subClassOf ns1:Entity,
+        <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ;
+    skos:definition "Classification of user monetization behavior" .
+
+ns1:EngagementEvent a owl:Class ;
+    rdfs:label "Engagement Event"@en ;
+    rdfs:comment "Events related to player engagement and progression." ;
+    rdfs:subClassOf ns1:GameEvent ;
+    skos:definition "Engagement-related events (LevelStart, LevelComplete, Achievement)" .
+
+ns1:Game a owl:Class ;
+    rdfs:label "Game"@en ;
+    rdfs:comment "Represents a game application." ;
+    rdfs:subClassOf ns1:Entity ;
+    skos:definition "A game application in the network",
+        "Game application" .
+
+ns1:GameSession a owl:Class ;
+    rdfs:label "Game Session"@en ;
+    rdfs:comment "Represents a gaming session, extending universal Activity concept." ;
+    rdfs:subClassOf <http://ontology.gaming.network/universal/human_behavior#Activity> ;
+    skos:definition "A session within a specific game",
+        "Gaming activity period" .
+
+ns1:MonetizationThresholds a owl:Class ;
+    rdfs:label "Monetization Thresholds"@en ;
+    rdfs:subClassOf ns1:Entity ;
+    skos:definition "Configuration class for tenant-specific monetization segment thresholds"@en .
+
+ns1:Entity a owl:Class ;
+    rdfs:label "Entity"@en ;
+    skos:definition "Top-level class for all entities in the gaming ecosystem" .
+
+ns1:GameEvent a owl:Class ;
+    rdfs:label "Game Event"@en ;
+    rdfs:comment "Base class for all gaming events, extending universal BehavioralEvent." ;
+    rdfs:subClassOf <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    skos:definition "Gaming-specific events" .
+
+<http://ontology.gaming.network/universal/human_behavior#BehavioralState> a owl:Class ;
+    rdfs:label "Behavioral State"@en ;
+    rdfs:comment "Base class for any behavioral state. Extensible to domain-specific states." ;
+    skos:definition "Universal concept for any behavioral state (Engagement, Recovery, MarketState, VideoEmotionState)" .
+
+<http://ontology.gaming.network/universal/human_behavior#HumanActor> a owl:Class ;
+    rdfs:label "Human Actor"@en ;
+    rdfs:comment "Base class for any human actor in behavioral data. Extensible to domain-specific actors." ;
+    skos:definition "Universal concept for any human entity (Player, Patient, Trader, Consumer, VideoSubject)" .
+
+<http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> a owl:Class ;
+    rdfs:label "Behavioral Event"@en,
+        "Event"@en ;
+    rdfs:comment "Base class for any behavioral event. Extensible to domain-specific events." ;
+    rdfs:subClassOf ns1:Entity ;
+    skos:definition "A temporal occurrence in the gaming ecosystem",
+        "Universal concept for any behavioral event (Purchase, Treatment, Movement, VideoAction, Trade)" .
+
+<http://ontology.gaming.network/universal/human_behavior#Activity> a owl:Class ;
+    rdfs:label "Activity"@en,
+        "Session"@en ;
+    rdfs:comment "Base class for any activity period. Extensible to domain-specific activities." ;
+    rdfs:subClassOf <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> ;
+    skos:definition "A period of continuous interaction with a game",
+        "Universal concept for any human activity (GameSession, TreatmentSession, VideoPlaythrough, TradingSession)" .
+
+ns1:Player a owl:Class ;
+    rdfs:label "Device"@en,
+        "Player"@en ;
+    ns1:businessDefinition "A tracked entity representing a player/device from a business perspective."@en ;
+    ns1:businessRationale "We need this definition for client-facing documentation and alignment."@en ;
+    ns1:businessTerms "player, user, device"@en ;
+    ns1:businessThreshold "N/A"@en ;
+    ns1:businessUseCase "Segmentation, retention analysis, client mapping"@en ;
+    ns1:contributedBy "test_user" ;
+    rdfs:comment "Represents a player/user in gaming context. Alias for Device/User terminology.",
+        "Represents the same concept as Player or User in different games" ;
+    rdfs:subClassOf ns1:Actor,
+        <http://ontology.gaming.network/universal/human_behavior#HumanActor> ;
+    skos:altLabel "Device"@en,
+        "Player"@en,
+        "User"@en ;
+    skos:definition "A unique hardware device used to access games",
+        "Gaming-specific human actor" .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( <http://ontology.gaming.network/universal/human_behavior#HumanActor> <http://ontology.gaming.network/universal/human_behavior#Activity> <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:HighEngagement ns1:MediumEngagement ns1:LowEngagement ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:Retained ns1:AtRisk ns1:Churned ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:ActivePlayer ns1:InactivePlayer ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:Whale ns1:Dolphin ns1:Minnow ns1:NonPayer ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( <http://ontology.gaming.network/universal/human_behavior#HumanActor> <http://ontology.gaming.network/universal/human_behavior#Activity> <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:Retained ns1:AtRisk ns1:Churned ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:ActivePlayer ns1:InactivePlayer ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:Whale ns1:Dolphin ns1:Minnow ns1:NonPayer ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( <http://ontology.gaming.network/universal/human_behavior#HumanActor> <http://ontology.gaming.network/universal/human_behavior#Activity> <http://ontology.gaming.network/universal/human_behavior#BehavioralEvent> <http://ontology.gaming.network/universal/human_behavior#BehavioralState> ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:Retained ns1:AtRisk ns1:Churned ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:ActivePlayer ns1:InactivePlayer ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:Whale ns1:Dolphin ns1:Minnow ns1:NonPayer ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:HighEngagement ns1:MediumEngagement ns1:LowEngagement ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ns1:HighEngagement ns1:MediumEngagement ns1:LowEngagement ) .
+

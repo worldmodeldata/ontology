@@ -1,0 +1,51 @@
+@prefix : <http://ontology.gaming.network/mappings/adinmo#> .
+@prefix a: <http://ontology.gaming.network/sources/adinmo#> .
+@prefix g: <http://ontology.gaming.network/universal/gaming#> .
+@prefix ub: <http://ontology.gaming.network/universal/human_behavior#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+<http://ontology.gaming.network/mappings/adinmo> a owl:Ontology ;
+  dc:title "Adinmo to Universal Mapping" ;
+  dc:creator "Gi Fernando" ;
+  dc:date "2025-12-27" ;
+  owl:versionInfo "1.0.0" ;
+  owl:imports <http://ontology.gaming.network/sources/adinmo> ,
+              <http://ontology.gaming.network/universal/gaming> ,
+              <http://ontology.gaming.network/universal/human_behavior> ;
+  rdfs:comment "Maps Adinmo tables into universal gaming semantics." .
+
+:AdinmoSessionToGameSession a owl:Class ;
+  owl:equivalentClass a:AdinmoSessionEvent ;
+  rdfs:subClassOf g:GameSession .
+
+:AdinmoBidToBid a owl:Class ;
+  owl:equivalentClass a:AdinmoBidRequest ;
+  rdfs:subClassOf g:Bid .
+
+:AdinmoImpressionToImpression a owl:Class ;
+  owl:equivalentClass a:AdinmoImpression ;
+  rdfs:subClassOf g:Impression .
+
+:AdinmoTrackerEventToAdInteraction a owl:Class ;
+  owl:equivalentClass a:AdinmoTrackerEvent ;
+  rdfs:subClassOf g:AdInteraction .
+
+:AdinmoAttributedInstallToAttributedInstall a owl:Class ;
+  owl:equivalentClass a:AdinmoAttributedInstall ;
+  rdfs:subClassOf g:AttributedInstall .
+
+:mapsAnonDeviceIdToDeviceId a owl:DatatypeProperty ;
+  rdfs:domain a:AdinmoSessionEvent ;
+  rdfs:range xsd:string ;
+  rdfs:comment "Maps a:anonDeviceId to g:deviceId (canonical user identifier for analytics)."@en .
+
+:mapsActivityTsToActivityTimestamp a owl:DatatypeProperty ;
+  rdfs:domain a:AdinmoTrackerEvent ;
+  rdfs:range xsd:dateTime ;
+  rdfs:comment "Maps a:activityTs to ub:activityTimestamp / ug:activityTimestamp."@en .
+
+

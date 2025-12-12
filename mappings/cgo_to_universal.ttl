@@ -1,0 +1,29 @@
+@prefix cgo: <http://autosemanticgame.eu/ontologies/cgo#> .
+@prefix ug:  <http://ontology.gaming.network/universal/gaming#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#> .
+
+# NOTE: This is an alignment/mapping ontology.
+# It should remain small and explicit: bridges between CGO and our universal foundation.
+#
+# Source ontology:
+# - https://autosemanticgame.institutedigitalgames.com/ontologies/core-game-ontology/
+# - local normalized copy: sources/cgo/cgo.ttl (derived from source/cgo.rdf)
+
+<https://worldmodeldata.org/ontology/mappings/cgo_to_universal>
+  a owl:Ontology ;
+  rdfs:label "CGO → Universal alignment" ;
+  rdfs:comment "Bridges Core Game Ontology (CGO) concepts into the universal gaming foundation (ug:/ub:) without importing CGO into the flagship ontology." ;
+  owl:imports
+    <http://autosemanticgame.eu/ontologies/cgo#> ;
+  .
+
+# ============================================================================
+# First-pass class alignments (high-signal / low-risk)
+# ============================================================================
+
+# Both ontologies model a "Game" as an application/unit of analysis.
+# CGO's other classes are primarily design facets and are intentionally not forced into ug:.* yet.
+cgo:Game owl:equivalentClass ug:Game .
+

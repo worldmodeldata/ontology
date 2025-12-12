@@ -1,0 +1,80 @@
+@prefix : <http://ontology.gaming.network/extensions/game_design#> .
+@prefix cgo: <http://autosemanticgame.eu/ontologies/cgo#> .
+@prefix ug: <http://ontology.gaming.network/universal/gaming#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ==========================================================================
+# Game Design Extension Ontology
+# Description: Adds a minimal, cross-domain vocabulary for game design facets
+#              (audio/visuals/narrative/gameplay/level design) so we can align
+#              CGO without expanding the universal core prematurely.
+# ==========================================================================
+
+<http://ontology.gaming.network/extensions/game_design> a owl:Ontology ;
+  dc:title "Game Design Extension" ;
+  dc:creator "WorldModelData" ;
+  dc:date "2025-12-12" ;
+  owl:versionInfo "0.1.0" ;
+  owl:imports <http://ontology.gaming.network/universal/gaming> ;
+  rdfs:comment "Adds minimal game design facet vocabulary and bridges CGO design facets to universal gaming."@en .
+
+# --------------------------------------------------------------------------
+# Design facet classes
+# --------------------------------------------------------------------------
+
+:GameDesignFacet a owl:Class ;
+  rdfs:label "Game Design Facet"@en ;
+  skos:definition "A design-time facet/aspect of a game (e.g., audio, visuals, narrative, gameplay, level design)."@en .
+
+:AudioDesign a owl:Class ;
+  rdfs:subClassOf :GameDesignFacet ;
+  rdfs:label "Audio Design"@en .
+
+:VisualDesign a owl:Class ;
+  rdfs:subClassOf :GameDesignFacet ;
+  rdfs:label "Visual Design"@en .
+
+:NarrativeDesign a owl:Class ;
+  rdfs:subClassOf :GameDesignFacet ;
+  rdfs:label "Narrative Design"@en .
+
+:GameplayDesign a owl:Class ;
+  rdfs:subClassOf :GameDesignFacet ;
+  rdfs:label "Gameplay Design"@en .
+
+:LevelDesign a owl:Class ;
+  rdfs:subClassOf :GameDesignFacet ;
+  rdfs:label "Level Design"@en .
+
+# --------------------------------------------------------------------------
+# Relationship to Game
+# --------------------------------------------------------------------------
+
+:hasDesignFacet a owl:ObjectProperty ;
+  rdfs:domain ug:Game ;
+  rdfs:range :GameDesignFacet ;
+  rdfs:label "has design facet"@en ;
+  skos:definition "Relates a game to a design facet/aspect."@en .
+
+# --------------------------------------------------------------------------
+# CGO bridges (kept in the extension to avoid inflating ug:*)
+# --------------------------------------------------------------------------
+
+cgo:Audio rdfs:subClassOf :AudioDesign .
+cgo:Visuals rdfs:subClassOf :VisualDesign .
+cgo:Narrative rdfs:subClassOf :NarrativeDesign .
+cgo:Gameplay rdfs:subClassOf :GameplayDesign .
+cgo:LevelDesign rdfs:subClassOf :LevelDesign .
+cgo:GameDesign rdfs:subClassOf :GameDesignFacet .
+
+cgo:hasAudio rdfs:subPropertyOf :hasDesignFacet .
+cgo:hasVisuals rdfs:subPropertyOf :hasDesignFacet .
+cgo:hasNarrative rdfs:subPropertyOf :hasDesignFacet .
+cgo:hasGameplay rdfs:subPropertyOf :hasDesignFacet .
+cgo:hasLevelDesign rdfs:subPropertyOf :hasDesignFacet .
+cgo:hasGameDesign rdfs:subPropertyOf :hasDesignFacet .
+

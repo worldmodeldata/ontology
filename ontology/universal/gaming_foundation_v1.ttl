@@ -7,13 +7,11 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
-# ============================================================================
-# Universal Gaming Foundation Ontology v1.0
-# Author: Gi Fernando
-# Copyright: © 2025 Gi Fernando. All rights reserved.
-# Description: Comprehensive gaming ontology synthesizing Unity, Mixpanel, GOP,
-#              and production patterns. Extends Universal Human Behavior Foundation.
-# ============================================================================
+# NOTE:
+# This file is duplicated under ontology/ontology/ so it is available inside Docker
+# where ./ontology/ontology is mounted at /ontology.
+#
+# Canonical source for editing: ontology/universal/gaming_foundation_v1.ttl
 
 <http://ontology.gaming.network/universal/gaming> a owl:Ontology ;
     dc:title "Universal Gaming Foundation Ontology v1.0" ;
@@ -22,10 +20,6 @@
     owl:versionInfo "1.0.0" ;
     owl:imports <http://ontology.gaming.network/universal/human_behavior> ;
     rdfs:comment "Comprehensive gaming ontology extending universal human behavior foundation" .
-
-# ============================================================================
-# GAMING ENTITY CLASSES (extends HumanActor)
-# ============================================================================
 
 :Device a owl:Class ;
     rdfs:subClassOf :Entity ;
@@ -50,10 +44,6 @@
     rdfs:label "Game Session"@en ;
     skos:definition "Gaming activity period" ;
     rdfs:comment "Represents a gaming session, extending universal Activity concept." .
-
-# ============================================================================
-# GAMING EVENT CLASSES (extends BehavioralEvent)
-# ============================================================================
 
 :GameEvent a owl:Class ;
     rdfs:subClassOf ub:BehavioralEvent ;
@@ -119,10 +109,6 @@
     rdfs:label "Progression Event"@en ;
     skos:definition "Progression events (LevelUp, SkillUnlock, Milestone)" ;
     rdfs:comment "Events related to player progression." .
-
-# ============================================================================
-# GAMING BEHAVIORAL CLASSES (extends BehavioralState)
-# ============================================================================
 
 :EngagementLevel a owl:Class ;
     rdfs:subClassOf ub:BehavioralState ;
@@ -208,10 +194,6 @@
     rdfs:label "Inactive Player"@en ;
     skos:definition "Currently inactive player" .
 
-# ============================================================================
-# GAMING RELATIONSHIPS
-# ============================================================================
-
 :playsGame a owl:ObjectProperty ;
     rdfs:domain :Player ;
     rdfs:range :Game ;
@@ -274,7 +256,6 @@
     rdfs:label "has player state"@en ;
     skos:definition "Relates a player to their current state" .
 
-# Cross-Game Relationships
 :similarBehaviorTo a owl:ObjectProperty ;
     rdfs:domain :Player ;
     rdfs:range :Player ;
@@ -295,10 +276,6 @@
     rdfs:label "similar event type to"@en ;
     skos:definition "Relates similar event types across games" ;
     a owl:SymmetricProperty .
-
-# ============================================================================
-# GAMING DATA PROPERTIES
-# ============================================================================
 
 :deviceId a owl:DatatypeProperty , owl:FunctionalProperty ;
     rdfs:domain :Player ;
@@ -399,10 +376,6 @@
     rdfs:label "item ID"@en ;
     skos:definition "Item/product identifier" .
 
-# ============================================================================
-# DISJOINT CLASSES
-# ============================================================================
-
 [] a owl:AllDisjointClasses ;
     owl:members ( :HighEngagement :MediumEngagement :LowEngagement ) .
 
@@ -415,7 +388,6 @@
 [] a owl:AllDisjointClasses ;
     owl:members ( :ActivePlayer :InactivePlayer ) .
 
-# ============================================================================
 # END OF ONTOLOGY
-# ============================================================================
+
 

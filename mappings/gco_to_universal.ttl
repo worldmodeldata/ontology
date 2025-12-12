@@ -1,0 +1,41 @@
+@prefix cgo: <http://autosemanticgame.eu/ontologies/cgo#> .
+@prefix gco: <http://autosemanticgame.eu/ontologies/gco#> .
+@prefix ug:  <http://ontology.gaming.network/universal/gaming#> .
+@prefix ub:  <http://ontology.gaming.network/universal/human_behavior#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#> .
+
+# NOTE: This is an alignment/mapping ontology.
+# It should remain small and explicit: bridges between GCO and our universal foundation.
+#
+# Source ontology:
+# - https://autosemanticgame.institutedigitalgames.com/ontologies/game-character-ontology/
+# - local normalized copy: sources/gco/gco.ttl (derived from source/gco.rdf)
+
+<https://worldmodeldata.org/ontology/mappings/gco_to_universal>
+  a owl:Ontology ;
+  rdfs:label "GCO → Universal alignment" ;
+  rdfs:comment "Bridges Game Character Ontology (GCO) concepts into the universal gaming foundation (ug:/ub:) without importing GCO into the flagship ontology." ;
+  owl:imports
+    <http://autosemanticgame.eu/ontologies/gco#> ;
+  .
+
+# ============================================================================
+# First-pass class alignments (high-signal / low-risk)
+# ============================================================================
+
+# GCO models in-game characters. Our universal foundation has ug:Actor (an entity that can perform actions).
+gco:Character rdfs:subClassOf ug:Actor .
+
+# GCO has an Action concept; at minimum, it is usable as an event-like behavior in data pipelines.
+gco:Action rdfs:subClassOf ub:BehavioralEvent .
+
+# ============================================================================
+# First-pass property alignments (careful)
+# ============================================================================
+
+# GCO's appearsIn links Character → (CGO) Game. We map to a generic "plays game" relationship only when
+# the character is a player-avatar; otherwise it means "character is part of a game".
+# For now, we do not declare an equivalentProperty to avoid over-committing semantics.
+

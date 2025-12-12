@@ -4,13 +4,17 @@ This repository contains the Living Ontology System's gaming ontology definition
 
 ## Structure
 
-- `ontology/` - Core ontology files (Turtle/RDF format)
-  - `gaming_ontology_v1.ttl` - Main ontology definitions
+- `ontology/` - Release artifacts + runtime-loaded ontology modules (Turtle/RDF format)
+  - `worldmodeldata_universal_gaming_ontology_v1.ttl` - **Flagship** single-file release artifact (Protégé-friendly)
+  - `worldmodeldata_universal_gaming_ontology_v1_composed.ttl` - **Composed entrypoint** (`owl:imports`) for import-closure loading + module filtering
+  - `module_registry.json` - Module registry (IRI→local path + metadata) used for offline import resolution + UI module toggles
+  - `universal_bridge.ttl` - Core ↔ Universal alignment axioms (compatibility + migration)
   - `gaming_shapes.ttl` - SHACL shape constraints
-  - `inference_rules.ttl` - OWL inference rules
+  - `inference_rules.ttl` - SPARQL/Inference rules (where applicable)
   - `tenant_thresholds.ttl` - Tenant-specific thresholds
   - `shapes/` - Additional SHACL shape definitions
-  - `versions/` - Version history
+  - `versions/` - Version history (snapshots + metadata)
+  - `gaming_ontology_v1.ttl` - **Legacy core** ontology (deprecated compatibility surface)
 
 - `universal/` - Universal foundation ontologies
   - `human_behavior_foundation.ttl` - Universal human behavior foundation
@@ -84,12 +88,14 @@ This repository contains the Living Ontology System's gaming ontology definition
 
 **GitHub:**
 - **[KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md)** - Comprehensive implementation plan based on Knowledge Graph Guys principles (Step 0.8 complete)
+- **[UNIVERSAL_ONTOLOGY_RELEASE_AND_DEPRECATION.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/UNIVERSAL_ONTOLOGY_RELEASE_AND_DEPRECATION.md)** - Explains **flagship vs composed** artifacts, module registry, and legacy deprecation
 - **[KNOWLEDGE_GRAPH_GUYS_CRITIQUE.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/KNOWLEDGE_GRAPH_GUYS_CRITIQUE.md)** - Critique of implementation plan
 - **[BLOG_ARTICLES_ANALYSIS.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/BLOG_ARTICLES_ANALYSIS.md)** - Analysis of Knowledge Graph Guys blog articles
 - **[FINAL_REVIEW_IMPLEMENTATION_PLAN.md](https://github.com/worldmodeldata/docs/blob/main/05-implementation/FINAL_REVIEW_IMPLEMENTATION_PLAN.md)** - Final review of implementation plan
 
 **Local:**
 - `../docs/05-implementation/KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md`
+- `../docs/05-implementation/UNIVERSAL_ONTOLOGY_RELEASE_AND_DEPRECATION.md`
 - `../docs/05-implementation/KNOWLEDGE_GRAPH_GUYS_CRITIQUE.md`
 - `../docs/05-implementation/BLOG_ARTICLES_ANALYSIS.md`
 - `../docs/05-implementation/FINAL_REVIEW_IMPLEMENTATION_PLAN.md`
@@ -146,6 +152,7 @@ For comprehensive information about the ontology architecture, evolution, and in
 - `../docs/04-architecture/ORCHESTRATOR_ARCHITECTURE.md`
 - `../docs/01-system-overview/COMPLETE_SYSTEM_EXPLAINER.md`
 - `../docs/05-implementation/KNOWLEDGE_GRAPH_GUYS_ENHANCEMENT_IMPLEMENTATION.md`
+- `../docs/05-implementation/UNIVERSAL_ONTOLOGY_RELEASE_AND_DEPRECATION.md`
 - `../docs/06-reference/API_REFERENCE.md`
 
 ---

@@ -1,0 +1,41 @@
+source: adinmo
+version: 1.0.0
+date: 2025-12-27
+purpose: "High-level mapping notes from Adinmo schemas into the universal gaming ontology"
+
+identity:
+  anon_device_id: ug:deviceId
+  session_id: ug:sessionId
+  activity_ts: ub:activityTimestamp
+
+tables:
+  sessions:
+    maps_to:
+      class: ug:GameSession
+    key_fields: [ANON_DEVICE_ID, SESSION_ID, GAME_ID, ACTIVITY_TS]
+
+  bids:
+    maps_to:
+      class: ug:Bid
+    key_fields: [ANON_DEVICE_ID, SESSION_ID, GAME_ID, BID_ID, REQUEST_ID, BID_FLOOR, AD_EXCHANGE]
+
+  impressions:
+    maps_to:
+      class: ug:Impression
+    key_fields: [IMPRESSION_ID, BID_ID, SESSION_ID, ACTUAL_REVENUE, DWELL_TIME, PLAYER_ENGAGEMENT_SCORE, PLACEMENT_KEY]
+
+  tracker_events:
+    maps_to:
+      class: ug:AdInteraction
+    key_fields: [ANON_DEVICE_ID, SESSION_ID, BID_ID, IMPRESSION_ID, EVENT_TYPE, ACTIVITY_TS]
+
+  attributed_installs:
+    maps_to:
+      class: ug:AttributedInstall
+    key_fields: [INSTALL_TS, ACTIVITY_TS, CAMPAIGN_ID, IMAGE_GUID, ANON_DEVICE_ID]
+
+notes:
+  - "Some identifiers in Adinmo schemas are ambiguous (REQUEST_ID vs SDK_REQUEST_ID; IMP_ID vs IMPRESSION_ID); keep as separate source properties until clarified."
+  - "Many fields are privacy-redacted in sample; model them as optional properties and avoid making them core requirements."
+
+

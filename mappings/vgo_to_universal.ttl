@@ -1,0 +1,17 @@
+@prefix : <http://ontology.gaming.network/mappings/vgo#> .
+@prefix ug: <http://ontology.gaming.network/universal/gaming#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+<http://ontology.gaming.network/mappings/vgo> a owl:Ontology ;
+  dc:title "VGO to Universal Mapping (stub)" ;
+  dc:creator "WorldModelData" ;
+  owl:versionInfo "0.1.0" ;
+  rdfs:comment "Alignment placeholder for Video Game Ontology (VGO) once imported into sources/vgo." .
+
+# NOTE: We intentionally keep this minimal until we have the actual VGO classes/properties locally.
+# Typical expected alignment:
+# - vgo:VideoGame / vgo:Game ≡ ug:Game
+
+

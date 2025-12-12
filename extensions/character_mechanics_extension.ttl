@@ -1,0 +1,77 @@
+@prefix : <http://ontology.gaming.network/extensions/character_mechanics#> .
+@prefix gco: <http://autosemanticgame.eu/ontologies/gco#> .
+@prefix ludo:<http://ns.inria.fr/ludo/v1/gamemodel#> .
+@prefix ug:  <http://ontology.gaming.network/universal/gaming#> .
+@prefix ub:  <http://ontology.gaming.network/universal/human_behavior#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ==========================================================================
+# Character + Mechanics Extension Ontology
+# Description: Minimal universal hooks for characters and design-time mechanics
+#              (objectives/rules), with conservative bridges to GCO and LUDO.
+# ==========================================================================
+
+<http://ontology.gaming.network/extensions/character_mechanics> a owl:Ontology ;
+  dc:title "Character + Mechanics Extension" ;
+  dc:creator "WorldModelData" ;
+  dc:date "2025-12-12" ;
+  owl:versionInfo "0.1.0" ;
+  owl:imports <http://ontology.gaming.network/universal/gaming> ,
+              <http://ontology.gaming.network/universal/human_behavior> ;
+  rdfs:comment "Adds minimal character/objective/rule hooks and bridges GCO/LUDO concepts to universal gaming."@en .
+
+# --------------------------------------------------------------------------
+# Characters
+# --------------------------------------------------------------------------
+
+:Character a owl:Class ;
+  rdfs:subClassOf ug:Actor ;
+  rdfs:label "Character"@en ;
+  skos:definition "An in-game character (player avatar, NPC, or named character)."@en .
+
+:appearsInGame a owl:ObjectProperty ;
+  rdfs:domain :Character ;
+  rdfs:range ug:Game ;
+  rdfs:label "appears in game"@en ;
+  skos:definition "Relates a character to a game in which the character appears."@en .
+
+# --------------------------------------------------------------------------
+# Objectives / rules (design-time mechanics)
+# --------------------------------------------------------------------------
+
+:GameObjective a owl:Class ;
+  rdfs:label "Game Objective"@en ;
+  skos:definition "A goal/objective defined by the game (design-time), which may be operationalized via telemetry."@en .
+
+:GameRule a owl:Class ;
+  rdfs:label "Game Rule"@en ;
+  skos:definition "A rule/constraint of a game (design-time), which may be operationalized via telemetry."@en .
+
+:hasObjective a owl:ObjectProperty ;
+  rdfs:domain ug:Game ;
+  rdfs:range :GameObjective ;
+  rdfs:label "has objective"@en .
+
+:hasRule a owl:ObjectProperty ;
+  rdfs:domain ug:Game ;
+  rdfs:range :GameRule ;
+  rdfs:label "has rule"@en .
+
+# --------------------------------------------------------------------------
+# Bridges
+# --------------------------------------------------------------------------
+
+# GCO
+gco:Character owl:equivalentClass :Character .
+gco:appearsIn owl:equivalentProperty :appearsInGame .
+
+# LUDO
+ludo:GameObjective owl:equivalentClass :GameObjective .
+ludo:GameRule owl:equivalentClass :GameRule .
+ludo:hasGameObjective owl:equivalentProperty :hasObjective .
+ludo:hasGameRule owl:equivalentProperty :hasRule .
+

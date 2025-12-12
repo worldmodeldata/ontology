@@ -1,0 +1,124 @@
+@prefix : <http://ontology.gaming.network/extensions/adtech#> .
+@prefix ug: <http://ontology.gaming.network/universal/gaming#> .
+@prefix ub: <http://ontology.gaming.network/universal/human_behavior#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# In-Game AdTech Extension Ontology
+# Description: Extends universal gaming ontology with ad-tech concepts needed
+#              for Adinmo-style bid→impression→interaction→attribution analysis.
+# ============================================================================
+
+<http://ontology.gaming.network/extensions/adtech> a owl:Ontology ;
+  dc:title "In-Game AdTech Extension" ;
+  dc:creator "WorldModelData" ;
+  dc:date "2025-12-12" ;
+  owl:versionInfo "0.1.0" ;
+  owl:imports <http://ontology.gaming.network/universal/gaming> ,
+              <http://ontology.gaming.network/universal/human_behavior> ;
+  rdfs:comment "Adds placements, creatives, exchanges, viewability and attribution concepts for in-game ad telemetry."@en .
+
+# ----------------------------------------------------------------------------
+# Core ad-tech entities
+# ----------------------------------------------------------------------------
+
+:AdPlacement a owl:Class ;
+  rdfs:label "Ad Placement"@en ;
+  skos:definition "A named location/slot in a game where ads can be rendered (e.g., placement key/name, size constraints, fit)."@en .
+
+:CreativeAsset a owl:Class ;
+  rdfs:label "Creative Asset"@en ;
+  skos:definition "An ad creative/asset (image/video) rendered in a placement."@en .
+
+:AdExchange a owl:Class ;
+  rdfs:label "Ad Exchange"@en ;
+  skos:definition "Supply-side or exchange entity providing bids/demand for impressions."@en .
+
+:AttributionPartner a owl:Class ;
+  rdfs:label "Attribution Partner"@en ;
+  skos:definition "Mobile measurement/attribution provider (e.g., Adjust, AppsFlyer, Singular)."@en .
+
+:ViewabilityMeasurement a owl:Class ;
+  rdfs:label "Viewability Measurement"@en ;
+  skos:definition "Measurements supporting viewability/validity (coverage, measured flag, dwell time thresholds)."@en .
+
+# ----------------------------------------------------------------------------
+# Relationships (attach to existing universal gaming concepts)
+# ----------------------------------------------------------------------------
+
+:shownInPlacement a owl:ObjectProperty ;
+  rdfs:domain ug:Impression ;
+  rdfs:range :AdPlacement ;
+  rdfs:label "shown in placement"@en ;
+  skos:definition "Relates an impression to the in-game placement where it was shown."@en .
+
+:usesCreative a owl:ObjectProperty ;
+  rdfs:domain ug:Impression ;
+  rdfs:range :CreativeAsset ;
+  rdfs:label "uses creative"@en ;
+  skos:definition "Relates an impression to the creative asset rendered."@en .
+
+:servedViaExchange a owl:ObjectProperty ;
+  rdfs:domain ug:Bid ;
+  rdfs:range :AdExchange ;
+  rdfs:label "served via exchange"@en ;
+  skos:definition "Relates a bid request/response to an exchange/demand source."@en .
+
+:hasViewability a owl:ObjectProperty ;
+  rdfs:domain ug:Impression ;
+  rdfs:range :ViewabilityMeasurement ;
+  rdfs:label "has viewability"@en ;
+  skos:definition "Relates an impression to its viewability/validity measurements."@en .
+
+:attributedBy a owl:ObjectProperty ;
+  rdfs:domain ug:AttributedInstall ;
+  rdfs:range :AttributionPartner ;
+  rdfs:label "attributed by"@en ;
+  skos:definition "Relates an attributed install to the partner that reported/attributed it."@en .
+
+# ----------------------------------------------------------------------------
+# Key measurement properties
+# ----------------------------------------------------------------------------
+
+:placementKey a owl:DatatypeProperty ;
+  rdfs:domain :AdPlacement ;
+  rdfs:range xsd:string ;
+  rdfs:label "placement key"@en ;
+  skos:definition "Stable placement identifier (e.g., Adinmo PLACEMENT_KEY)."@en .
+
+:creativeId a owl:DatatypeProperty ;
+  rdfs:domain :CreativeAsset ;
+  rdfs:range xsd:string ;
+  rdfs:label "creative id"@en ;
+  skos:definition "Creative identifier from the ad system."@en .
+
+:imageGuid a owl:DatatypeProperty ;
+  rdfs:domain :CreativeAsset ;
+  rdfs:range xsd:string ;
+  rdfs:label "image guid"@en ;
+  skos:definition "Creative image identifier/UUID (e.g., Adinmo IMAGE_GUID)."@en .
+
+:isMeasured a owl:DatatypeProperty ;
+  rdfs:domain :ViewabilityMeasurement ;
+  rdfs:range xsd:boolean ;
+  rdfs:label "is measured"@en ;
+  skos:definition "Whether the impression met measurement criteria."@en .
+
+:dwellTimeMs a owl:DatatypeProperty ;
+  rdfs:domain :ViewabilityMeasurement ;
+  rdfs:range xsd:integer ;
+  rdfs:label "dwell time (ms)"@en ;
+  skos:definition "How long the ad was visible/in view (milliseconds)."@en .
+
+:actualRevenueCents a owl:DatatypeProperty ;
+  rdfs:domain ug:Impression ;
+  rdfs:range xsd:integer ;
+  rdfs:label "actual revenue (cents)"@en ;
+  skos:definition "Revenue attributed to a delivered impression in cents."@en .
+
+

@@ -1,0 +1,28 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+
+# ============================================================================
+# WorldModelData Universal Gaming Ontology v1 — COMPOSED ENTRYPOINT
+#
+# Purpose:
+# - Provide a single ontology entrypoint that imports:
+#   - the flagship universal gaming ontology distribution, and
+#   - optional extension modules.
+#
+# This avoids expanding the core universal namespace prematurely while still
+# making extensions available to tooling via owl:imports.
+# ============================================================================
+
+<http://ontology.gaming.network/universal/gaming_ontology_composed> a owl:Ontology ;
+  dc:title "WorldModelData Universal Gaming Ontology v1 (Composed)" ;
+  dc:creator "WorldModelData" ;
+  dc:date "2025-12-12" ;
+  owl:versionInfo "1.0.0+extensions" ;
+  rdfs:comment "Composition entrypoint: imports flagship universal gaming ontology plus selected extensions."@en ;
+  owl:imports
+    <http://ontology.gaming.network/universal/gaming_ontology> ,
+    <http://ontology.gaming.network/extensions/game_design> ,
+    <http://ontology.gaming.network/extensions/character_mechanics> ;
+  .
+

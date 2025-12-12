@@ -1,0 +1,1604 @@
+@prefix : <http://autosemanticgame.eu/ontologies/gco#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix cgo: <http://autosemanticgame.eu/ontologies/cgo#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Affiliation a owl:Class ;
+    rdfs:label "Affiliation"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Alliance a owl:Class ;
+    rdfs:label "Alliance"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Army a owl:Class ;
+    rdfs:label "Army"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Association a owl:Class ;
+    rdfs:label "Association"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Axis a owl:Class ;
+    rdfs:label "Axis"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Band a owl:Class ;
+    rdfs:label "Band"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Battalion a owl:Class ;
+    rdfs:label "Battalion"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Bloc a owl:Class ;
+    rdfs:label "Bloc"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Body a owl:Class ;
+    rdfs:label "Body"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Branch a owl:Class ;
+    rdfs:label "Branch"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Brigade a owl:Class ;
+    rdfs:label "Brigade"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Brotherhood a owl:Class ;
+    rdfs:label "Brotherhood"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Camp a owl:Class ;
+    rdfs:label "Camp"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Campaign a owl:Class ;
+    rdfs:label "Campaign"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Cartel a owl:Class ;
+    rdfs:label "Cartel"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Cell a owl:Class ;
+    rdfs:label "Cell"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Chamber a owl:Class ;
+    rdfs:label "Chamber"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Circle a owl:Class ;
+    rdfs:label "Circle"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Clan a owl:Class ;
+    rdfs:label "Clan"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Clique a owl:Class ;
+    rdfs:label "Clique"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Club a owl:Class ;
+    rdfs:label "Club"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Coalition a owl:Class ;
+    rdfs:label "Coalition"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Company a owl:Class ;
+    rdfs:label "Company"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Confederation a owl:Class ;
+    rdfs:label "Confederation"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Congress a owl:Class ;
+    rdfs:label "Congress"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Consortium a owl:Class ;
+    rdfs:label "Consortium"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Corps a owl:Class ;
+    rdfs:label "Corps"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Council a owl:Class ;
+    rdfs:label "Council"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Crew a owl:Class ;
+    rdfs:label "Crew"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Crusade a owl:Class ;
+    rdfs:label "Crusade"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Division a owl:Class ;
+    rdfs:label "Division"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Faction a owl:Class ;
+    rdfs:label "Faction"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Family a owl:Class ;
+    rdfs:label "Family"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Federation a owl:Class ;
+    rdfs:label "Federation"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Fellowship a owl:Class ;
+    rdfs:label "Fellowship"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Force a owl:Class ;
+    rdfs:label "Force"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Fraternity a owl:Class ;
+    rdfs:label "Fraternity"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Gang a owl:Class ;
+    rdfs:label "Gang"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Guild a owl:Class ;
+    rdfs:label "Guild"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Horde a owl:Class ;
+    rdfs:label "Horde"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:House a owl:Class ;
+    rdfs:label "House"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:League a owl:Class ;
+    rdfs:label "League"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Lobby a owl:Class ;
+    rdfs:label "Lobby"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Mob a owl:Class ;
+    rdfs:label "Mob"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Movement a owl:Class ;
+    rdfs:label "Movement"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:NonPlayableCharacter a owl:Class ;
+    rdfs:label "Non Playable Character"@en ;
+    rdfs:comment "Characters controlled by AI."@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Character .
+
+:Order a owl:Class ;
+    rdfs:label "Order"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Organisation a owl:Class ;
+    rdfs:label "Organisation"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Pack a owl:Class ;
+    rdfs:label "Pack"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Partnership a owl:Class ;
+    rdfs:label "Partnership"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Party a owl:Class ;
+    rdfs:label "Party"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Platoon a owl:Class ;
+    rdfs:label "Platoon"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:PlayableCharacter a owl:Class ;
+    rdfs:label "Playable Character"@en ;
+    rdfs:comment "Characters controlled by a player."@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Character .
+
+:Regiment a owl:Class ;
+    rdfs:label "Regiment"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Ring a owl:Class ;
+    rdfs:label "Ring"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Sect a owl:Class ;
+    rdfs:label "Sect"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Senate a owl:Class ;
+    rdfs:label "Senate"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Sisterhood a owl:Class ;
+    rdfs:label "Sisterhood"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Society a owl:Class ;
+    rdfs:label "Society"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Sorority a owl:Class ;
+    rdfs:label "Sorority"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Squad a owl:Class ;
+    rdfs:label "Squad"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Squadron a owl:Class ;
+    rdfs:label "Squadron"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Syndicate a owl:Class ;
+    rdfs:label "Syndicate"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Team a owl:Class ;
+    rdfs:label "Team"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Tribe a owl:Class ;
+    rdfs:label "Tribe"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Troop a owl:Class ;
+    rdfs:label "Troop"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Union a owl:Class ;
+    rdfs:label "Union"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Unit a owl:Class ;
+    rdfs:label "Unit"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:Wing a owl:Class ;
+    rdfs:label "Wing"@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Group .
+
+:acquaitanceOf a owl:ObjectProperty ;
+    rdfs:label "acquaitance of"@en ;
+    rdfs:comment "Defines that a character has met and knows slightly another character but they lack friendship."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:age a owl:DatatypeProperty ;
+    rdfs:label "age"@en ;
+    rdfs:comment """A character's age value.
+
+Note: This value indicates that the character does not age during a game, and the whole game is set during the year of the character's age. %The age can be calculated if the character's birth date or birth year is known -- see gco:birthDate or gco:birthYear respectively."""@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:int .
+
+:ancestorOf a owl:ObjectProperty ;
+    rdfs:label "ancestor of"@en ;
+    rdfs:comment "Defines that a character is an ancestor of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :descendantOf .
+
+:appearsIn a owl:ObjectProperty ;
+    rdfs:label "appears in"@en ;
+    rdfs:comment "Specifies the game(s) in which the character appears."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range cgo:Game .
+
+:apprenticeTo a owl:ObjectProperty ;
+    rdfs:label "apprentice to"@en ;
+    rdfs:comment "Defines that a character serves and learns from another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :mentorOf .
+
+:armourWearable a owl:DatatypeProperty ;
+    rdfs:label "armour wearable"@en ;
+    rdfs:comment "Defines a boolean whether an armour can be wearable or not."@en ;
+    rdfs:domain :Armour ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:boolean .
+
+:birthDate a owl:DatatypeProperty ;
+    rdfs:label "birth date"@en ;
+    rdfs:comment "Specifies the character's birth date value as an xsd:date in the format YYYY-MM-DD. This value, together with a game's date at any point in a game, could be used to calculate the character's age."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:date .
+
+:birthPlace a owl:ObjectProperty ;
+    rdfs:label "birth place"@en ;
+    rdfs:comment "Specifies a place of birth of a character."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Place .
+
+:birthYear a owl:DatatypeProperty ;
+    rdfs:label "birth year"@en ;
+    rdfs:comment "Specifies a character's year of birth value. In some instances, the birth date value is unknown but only the birth year is provided. This value could also be used to calculate the character's age during a game by calculating the difference between a game's year value at any point in the game and the gco:birthYear value."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:gYear .
+
+:brotherOf a owl:ObjectProperty ;
+    rdfs:label "brother of"@en ;
+    rdfs:comment "Defines that a character is the brother of another character."@en ;
+    rdfs:domain :Sibling ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :sisterOf .
+
+:closeFriendOf a owl:ObjectProperty ;
+    rdfs:label "close friend of"@en ;
+    rdfs:comment "Defines that two characters share a close friendship."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :enemyOf,
+        :friendOf .
+
+:collaboratesWith a owl:ObjectProperty ;
+    rdfs:label "collaborates with"@en ;
+    rdfs:comment "Defines that two characters collaborate with each other to accomplish a common goal."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:colleagueOf a owl:ObjectProperty ;
+    rdfs:label "colleague of"@en ;
+    rdfs:comment "Defines that a character works with another character within a group but it does not mean that they work together to achieve a common goal."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:currentOccupation a owl:ObjectProperty ;
+    rdfs:label "current occupation"@en ;
+    rdfs:comment "Specifies the current professional occupation of a character."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Occupation .
+
+:daughterOf a owl:ObjectProperty ;
+    rdfs:label "daughter of"@en ;
+    rdfs:comment "Defines that a character is the daughter of another character."@en ;
+    rdfs:domain :Child ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :sonOf .
+
+:deathDate a owl:DatatypeProperty ;
+    rdfs:label "death date"@en ;
+    rdfs:comment "Specifies a character's death date value as an xsd:date in the format YYYY-MM-DD."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:date .
+
+:deathPlace a owl:ObjectProperty ;
+    rdfs:label "death place"@en ;
+    rdfs:comment "Specifies a place of death of a character."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Place .
+
+:deathYear a owl:DatatypeProperty ;
+    rdfs:label "death year"@en ;
+    rdfs:comment "Specifies a character's year of death value. In some instances, the death date value is unknown and only the death year is provided."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:gYear .
+
+:defaultAbilityHitPoints a owl:DatatypeProperty ;
+    rdfs:label "default ability hit points"@en ;
+    rdfs:comment "Defines (initial) default ability hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by an increase in experience or when the character levels up etc. The upgrade value of the ability hit points is determined by the game play rules which is beyond the scope of this ontology."@en ;
+    rdfs:domain :Ability ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:int .
+
+:defaultArmourDeflectPoints a owl:DatatypeProperty ;
+    rdfs:label "default armour deflect points"@en ;
+    rdfs:comment "Defines (initial) default armour deflect points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased armour upgrade. The upgrade value of the armour deflect points is determined by the game play rules which is beyond the scope of this ontology."@en ;
+    rdfs:domain :Armour ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:int .
+
+:defaultArmourHitPoints a owl:DatatypeProperty ;
+    rdfs:label "default armour hit points"@en ;
+    rdfs:comment "Defines (initial) default armour hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased armour upgrade. The upgrade value of the armour hit points is determined by the game play rules which is beyond the scope of this ontology."@en ;
+    rdfs:domain :Armour ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:int .
+
+:defaultGarmentDeflectPoints a owl:DatatypeProperty ;
+    rdfs:label "default garment deflect points"@en ;
+    rdfs:comment "Defines (initial) default garment deflect points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased garment upgrade or when the character levels up etc. The upgrade value of the garment deflect points is determined by the game play rules which is beyond the scope of this ontology."@en ;
+    rdfs:domain :Garment ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:int .
+
+:defaultGarmentHitPoints a owl:DatatypeProperty ;
+    rdfs:label "default garment hit points"@en ;
+    rdfs:comment "Defines (initial) default garment hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased garment upgrade or when the character levels up etc. The upgrade value of the garment hit points is determined by the game play rules which is beyond the scope of this ontology."@en ;
+    rdfs:domain :Garment ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:int .
+
+:defaultItemPoints a owl:DatatypeProperty ;
+    rdfs:label "default item points"@en ;
+    rdfs:comment "Defines (initial) default item points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased item upgrade or a discovered item upgrade etc. The upgrade value of the item points is determined by the game play rules which is beyond the scope of this ontology."@en ;
+    rdfs:domain :Item ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:int .
+
+:defaultPowerHitPoints a owl:DatatypeProperty ;
+    rdfs:label "default power hit points"@en ;
+    rdfs:comment "Defines (initial) default power hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by an increase in experience or when the character levels up etc. The upgrade value of the power hit points is determined by the game play rules which is beyond the scope of this ontology."@en ;
+    rdfs:domain :Power ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:int .
+
+:defaultSkillHitPoints a owl:DatatypeProperty ;
+    rdfs:label "default skill hit points"@en ;
+    rdfs:comment "Defines (initial) default skill hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by an increase in experience or when the character levels up etc. The upgrade value of the skill hit points is determined by the game play rules which is beyond the scope of this ontology."@en ;
+    rdfs:domain :Skill ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:int .
+
+:defaultWeaponHitPoints a owl:DatatypeProperty ;
+    rdfs:label "default weapon hit points"@en ;
+    rdfs:comment "Defines (initial) default weapon hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased weapon upgrade or when the character levels up etc. The upgrade value of the weapon hit points is determined by the game play rules which is beyond the scope of this ontology."@en ;
+    rdfs:domain :Weapon ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:int .
+
+:doubleHandedWeapon a owl:DatatypeProperty ;
+    rdfs:label "double handed weapon"@en ;
+    rdfs:comment "Defines whether a weapon is double handed. A weapon cannot be both single-handed or double-handed and a character can only use one-double-handed weapon at a time (if the character has two hands). This normally requires that a character has a double-handed skill which enables the character to yield a double-handed weapon, but this restriction should be defined in the game play rules of a game and therefore this is beyond the scope of this ontology."@en ;
+    rdfs:domain :Weapon ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:boolean .
+
+:employedBy a owl:ObjectProperty ;
+    rdfs:label "employed by"@en ;
+    rdfs:comment "Defines that a character is employed by another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :employerOf .
+
+:engagedTo a owl:ObjectProperty ;
+    rdfs:label "engaged to"@en ;
+    rdfs:comment "Defines that two characters are engaged with each other."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:eyeColour a owl:ObjectProperty ;
+    rdfs:label "eye colour"@en ;
+    rdfs:comment "Specifies the colour of the character's eyes."@en ;
+    rdfs:domain :Appearance ;
+    rdfs:isDefinedBy : ;
+    rdfs:range dbo:Colour .
+
+:facialHairColour a owl:ObjectProperty ;
+    rdfs:label "facial hair colour"@en ;
+    rdfs:comment "Specifies the colour of the character's facial hair."@en ;
+    rdfs:domain :Appearance ;
+    rdfs:isDefinedBy : ;
+    rdfs:range dbo:Colour .
+
+:fatherOf a owl:ObjectProperty ;
+    rdfs:label "father of"@en ;
+    rdfs:comment "Defines that a character is the father of another character."@en ;
+    rdfs:domain :Parent ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :motherOf .
+
+:grandDaughterOf a owl:ObjectProperty ;
+    rdfs:label "grand daughter of"@en ;
+    rdfs:comment "Defines that a character is the grand daughter of another character."@en ;
+    rdfs:domain :GrandChild ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :grandSonOf .
+
+:grandFatherOf a owl:ObjectProperty ;
+    rdfs:label "grand father of"@en ;
+    rdfs:comment "Defines that a character is the grand father of another character."@en ;
+    rdfs:domain :GrandParent ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :grandMotherOf .
+
+:hairColour a owl:ObjectProperty ;
+    rdfs:label "hair colour"@en ;
+    rdfs:comment "Specifies the colour of the character's hair."@en ;
+    rdfs:domain :Appearance ;
+    rdfs:isDefinedBy : ;
+    rdfs:range dbo:Colour .
+
+:hasAbility a owl:ObjectProperty ;
+    rdfs:label "has ability"@en ;
+    rdfs:comment "Specifies an ability of a character."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Ability .
+
+:hasAbilityAction a owl:ObjectProperty ;
+    rdfs:label "has ability action"@en ;
+    rdfs:comment "Defines a default action bound to an ability and when executed produces a result."@en ;
+    rdfs:domain :Ability ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Action .
+
+:hasAbilityRestriction a owl:ObjectProperty ;
+    rdfs:label "has ability restriction"@en ;
+    rdfs:comment "Defines a restriction on using an ability."@en ;
+    rdfs:domain :Ability ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Restriction .
+
+:hasAppearance a owl:ObjectProperty ;
+    rdfs:label "has appearance"@en ;
+    rdfs:comment "Defines the character's physical appearance."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Appearance .
+
+:hasArmour a owl:ObjectProperty ;
+    rdfs:label "has armour"@en ;
+    rdfs:comment "Specifies a piece of armour that a character can wear or use to protect himself/herself from any damage."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Armour .
+
+:hasArmourAction a owl:ObjectProperty ;
+    rdfs:label "has armour action"@en ;
+    rdfs:comment "Defines a default action bound to an armour."@en ;
+    rdfs:domain :Armour ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Action .
+
+:hasCharacterClass a owl:ObjectProperty ;
+    rdfs:label "has character class"@en ;
+    rdfs:comment "Specifies a character's class which consist of archetypes or careers."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :CharacterClass .
+
+:hasCharacterClassAbility a owl:ObjectProperty ;
+    rdfs:label "has character class ability"@en ;
+    rdfs:comment "Defines a default ability which a character classified by a particular character class can perform."@en ;
+    rdfs:domain :CharacterClass ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Ability .
+
+:hasCharacterClassPower a owl:ObjectProperty ;
+    rdfs:label "has character class power"@en ;
+    rdfs:comment "Defines a default power which a character classified by a particular character class can perform."@en ;
+    rdfs:domain :CharacterClass ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Power .
+
+:hasCharacterClassSkill a owl:ObjectProperty ;
+    rdfs:label "has character class skill"@en ;
+    rdfs:comment "Defines a default skill which a character classified by a particular character class can perform."@en ;
+    rdfs:domain :CharacterClass ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Skill .
+
+:hasGarmentAction a owl:ObjectProperty ;
+    rdfs:label "has garment action"@en ;
+    rdfs:comment "Defines a default action bound to a garment."@en ;
+    rdfs:domain :Garment ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Action .
+
+:hasGarmentColour a owl:ObjectProperty ;
+    rdfs:label "has garment colour"@en ;
+    rdfs:comment "Defines the colour of the garment."@en ;
+    rdfs:domain :Garment ;
+    rdfs:isDefinedBy : ;
+    rdfs:range dbo:Colour .
+
+:hasGender a owl:ObjectProperty ;
+    rdfs:label "has gender"@en ;
+    rdfs:comment "Specifies the character's gender which can be defined as either Male or Female."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Gender .
+
+:hasGroupLogo a owl:ObjectProperty ;
+    rdfs:label "has group logo"@en ;
+    rdfs:comment "Defines a symbolic image that symbolises a group, which could be a coat of arms, a seal, a flag etc."@en ;
+    rdfs:domain :Group ;
+    rdfs:isDefinedBy : ;
+    rdfs:range foaf:Image .
+
+:hasImage a owl:ObjectProperty ;
+    rdfs:label "has image"@en ;
+    rdfs:comment "Specifies digital images (for example JPEG, PNG, GIF bitmaps, SVG diagrams etc.) that depict a character."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range foaf:Image .
+
+:hasInventory a owl:ObjectProperty ;
+    rdfs:label "has inventory"@en ;
+    rdfs:comment "Specifies an item or set of items that a character can use."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Inventory .
+
+:hasInventoryItem a owl:ObjectProperty ;
+    rdfs:label "has inventory item"@en ;
+    rdfs:comment "Defines an item such as health potions which characters can use or carry."@en ;
+    rdfs:domain :Inventory ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Item .
+
+:hasItemAction a owl:ObjectProperty ;
+    rdfs:label "has item action"@en ;
+    rdfs:comment "Defines a default action bound to an item."@en ;
+    rdfs:domain :Item ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Action .
+
+:hasLeader a owl:ObjectProperty ;
+    rdfs:label "has leader"@en ;
+    rdfs:comment "Specifies who is a current leader of a group."@en ;
+    rdfs:domain :Group ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :leaderOf .
+
+:hasMember a owl:ObjectProperty ;
+    rdfs:label "has member"@en ;
+    rdfs:comment "Specifies who is a current member of a group."@en ;
+    rdfs:domain :Group ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :memberOf .
+
+:hasOutfit a owl:ObjectProperty ;
+    rdfs:label "has outfit"@en ;
+    rdfs:comment "Specifies an outfit (consisting of a set of garments) a character can wear."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Outfit .
+
+:hasOutfitGarment a owl:ObjectProperty ;
+    rdfs:label "has outfit garment"@en ;
+    rdfs:comment "Defines a piece of a garment which is part of a specific outfit."@en ;
+    rdfs:domain :Outfit ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Garment .
+
+:hasPastLeader a owl:ObjectProperty ;
+    rdfs:label "has past leader"@en ;
+    rdfs:comment "Specifies past leaders of a group."@en ;
+    rdfs:domain :Group ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :pastLeaderOf .
+
+:hasPastMember a owl:ObjectProperty ;
+    rdfs:label "has past member"@en ;
+    rdfs:comment "Specifies past members of a group."@en ;
+    rdfs:domain :Group ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :pastMemberOf .
+
+:hasPersonality a owl:ObjectProperty ;
+    rdfs:label "has personality"@en ;
+    rdfs:comment "Specifies a character's characteristic pattern of thinking, feeling and/or behaviour."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Personality .
+
+:hasPhysicalBody a owl:ObjectProperty ;
+    rdfs:label "has physical body"@en ;
+    rdfs:comment "Specifies a character's physical body consisting of various physical body parts."@en ;
+    rdfs:domain :Appearance ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :PhysicalBody .
+
+:hasPower a owl:ObjectProperty ;
+    rdfs:label "has power"@en ;
+    rdfs:comment "Specifies a character's power."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Power .
+
+:hasPowerAction a owl:ObjectProperty ;
+    rdfs:label "has power action"@en ;
+    rdfs:comment "Defines a default action bound to a power that when executed produces a result."@en ;
+    rdfs:domain :Power ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Action .
+
+:hasRace a owl:ObjectProperty ;
+    rdfs:label "has race"@en ;
+    rdfs:comment "Specifies a character's race."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Race .
+
+:hasRaceAbility a owl:ObjectProperty ;
+    rdfs:label "has race ability"@en ;
+    rdfs:comment "Defines a default ability that a character classified by a particular race can perform."@en ;
+    rdfs:domain :Race ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Ability .
+
+:hasRacePower a owl:ObjectProperty ;
+    rdfs:label "has race power"@en ;
+    rdfs:comment "Defines a default power that a character classified by a particular race can perform."@en ;
+    rdfs:domain :Race ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Power .
+
+:hasRaceSkill a owl:ObjectProperty ;
+    rdfs:label "has race skill"@en ;
+    rdfs:comment "Defines a default skill that a character classified by a particular race can perform."@en ;
+    rdfs:domain :Race ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Skill .
+
+:hasRelationship a owl:ObjectProperty ;
+    rdfs:label "has relationship"@en ;
+    rdfs:comment "Specifies a relationship amongst characters."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Relationship .
+
+:hasRole a owl:ObjectProperty ;
+    rdfs:label "has role"@en ;
+    rdfs:comment "Specifies a character's role."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Role .
+
+:hasRoleAbility a owl:ObjectProperty ;
+    rdfs:label "has role ability"@en ;
+    rdfs:comment "Defines that a character can only use a particular ability when the character is in a particular role."@en ;
+    rdfs:domain :Role ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Ability .
+
+:hasRoleArmour a owl:ObjectProperty ;
+    rdfs:label "has role armour"@en ;
+    rdfs:comment "Defines that a character can only use a particular ability when the character is in a particular role."@en ;
+    rdfs:domain :Role ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Armour .
+
+:hasRoleInGroup a owl:ObjectProperty ;
+    rdfs:label "has role in group"@en ;
+    rdfs:comment "Defines a character's role in a group."@en ;
+    rdfs:domain :Role ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Group .
+
+:hasRoleInventory a owl:ObjectProperty ;
+    rdfs:label "has role inventory"@en ;
+    rdfs:comment "Defines that a character can only use a particular inventory when the character is in a particular role."@en ;
+    rdfs:domain :Role ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Inventory .
+
+:hasRoleOutfit a owl:ObjectProperty ;
+    rdfs:label "has role outfit"@en ;
+    rdfs:comment "Defines an outfit assigned to a role."@en ;
+    rdfs:domain :Role ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Outfit .
+
+:hasRolePower a owl:ObjectProperty ;
+    rdfs:label "has role power"@en ;
+    rdfs:comment "Defines that a character can only use a particular power when the character is in a particular role."@en ;
+    rdfs:domain :Role ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Power .
+
+:hasRoleSkill a owl:ObjectProperty ;
+    rdfs:label "has role skill"@en ;
+    rdfs:comment "Defines that a character can only use a particular skill when the character is in a particular role."@en ;
+    rdfs:domain :Role ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Skill .
+
+:hasRoleWeapon a owl:ObjectProperty ;
+    rdfs:label "has role weapon"@en ;
+    rdfs:comment "Defines that a character can only use a particular weapon when the character is in a particular role."@en ;
+    rdfs:domain :Role ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Weapon .
+
+:hasSkill a owl:ObjectProperty ;
+    rdfs:label "has skill"@en ;
+    rdfs:comment "Specifies a character's skill."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Skill .
+
+:hasSkillAction a owl:ObjectProperty ;
+    rdfs:label "has skill action"@en ;
+    rdfs:comment "Defines a default action bound to a skill that when executed produces a result."@en ;
+    rdfs:domain :Skill ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Action .
+
+:hasSpecies a owl:ObjectProperty ;
+    rdfs:label "has species"@en ;
+    rdfs:comment "Specifies the character's species."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Species .
+
+:hasSpeciesAbility a owl:ObjectProperty ;
+    rdfs:label "has species ability"@en ;
+    rdfs:comment "Defines a default ability that a character classified by a particular species can perform."@en ;
+    rdfs:domain :Species ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Ability .
+
+:hasSpeciesPower a owl:ObjectProperty ;
+    rdfs:label "has species power"@en ;
+    rdfs:comment "Defines a default power that a character classified by a particular species can perform."@en ;
+    rdfs:domain :Species ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Power .
+
+:hasSpeciesSkill a owl:ObjectProperty ;
+    rdfs:label "has species skill"@en ;
+    rdfs:comment "Defines a default skill that a character classified by a particular species can perform."@en ;
+    rdfs:domain :Species ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Skill .
+
+:hasWeapon a owl:ObjectProperty ;
+    rdfs:label "has weapon"@en ;
+    rdfs:comment "Specifies a weapon that a character can use."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Weapon .
+
+:hasWeaponAction a owl:ObjectProperty ;
+    rdfs:label "has weapon action"@en ;
+    rdfs:comment "Defines a default action bound to a weapon."@en ;
+    rdfs:domain :Weapon ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Action .
+
+:hasWeaponAmmunition a owl:ObjectProperty ;
+    rdfs:label "has weapon ammunition"@en ;
+    rdfs:comment "Defines the ammunition used by a weapon."@en ;
+    rdfs:domain :Weapon ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Ammunition .
+
+:hasWeaponAttachment a owl:ObjectProperty ;
+    rdfs:label "has weapon attachment"@en ;
+    rdfs:comment "Defines an attachment that can be fixed onto a weapon."@en ;
+    rdfs:domain :Weapon ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Attachment .
+
+:height a owl:DatatypeProperty ;
+    rdfs:label "height"@en ;
+    rdfs:comment "A character's height value."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:float .
+
+:husbandOf a owl:ObjectProperty ;
+    rdfs:label "husband of"@en ;
+    rdfs:comment "Defines that a character is the husband of another character."@en ;
+    rdfs:domain :Spouse ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :wifeOf .
+
+:influencedNegativelyBy a owl:ObjectProperty ;
+    rdfs:label "influenced negatively by"@en ;
+    rdfs:comment "Defines that a character is negatively influenced by another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :influencedPositivelyBy .
+
+:isChild a owl:ObjectProperty ;
+    rdfs:label "is child"@en ;
+    rdfs:comment "Defines that a character is a child of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Child ;
+    owl:inverseOf :isParent .
+
+:isGrandChild a owl:ObjectProperty ;
+    rdfs:label "is grand child"@en ;
+    rdfs:comment "Defines that a character is a grand child of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :GrandChild ;
+    owl:inverseOf :isGrandParent .
+
+:isSibling a owl:ObjectProperty ;
+    rdfs:label "is sibling"@en ;
+    rdfs:comment "Defines that a character is a sibling of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Sibling .
+
+:isSpouse a owl:ObjectProperty ;
+    rdfs:label "is spouse"@en ;
+    rdfs:comment "Defines that a character is a spouse of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Spouse ;
+    owl:inverseOf :partnerOf .
+
+:knowsOf a owl:ObjectProperty ;
+    rdfs:label "knows of"@en ;
+    rdfs:comment "Defines that a character knows of another character but does not necessarily mean that they have met or have any other type of friendship."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:livedIn a owl:ObjectProperty ;
+    rdfs:label "lived in"@en ;
+    rdfs:comment "Specifies past place(s) where a character lived."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Place .
+
+:livesIn a owl:ObjectProperty ;
+    rdfs:label "lives in"@en ;
+    rdfs:comment "Specifies the current place where a character lives."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Place .
+
+:livesWith a owl:ObjectProperty ;
+    rdfs:label "lives with"@en ;
+    rdfs:comment "Defines that a character lives with another character but does not necessarily mean that they are married, or are partners or have any other type of friendship."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :neighbourOf .
+
+:name a owl:DatatypeProperty ;
+    rdfs:label "name"@en ;
+    rdfs:comment "A character's full name."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:string .
+
+:nickname a owl:DatatypeProperty ;
+    rdfs:label "nickname"@en ;
+    rdfs:comment "A character's nickname."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:string .
+
+:onlineArticle a owl:ObjectProperty ;
+    rdfs:label "online article"@en ;
+    rdfs:comment "Specifies a reference to an on-line article describing a character, for example an article from fansites such as Fandom."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range <http://rdfs.org/sioc/ns#Post> .
+
+:overGarmentOf a owl:ObjectProperty ;
+    rdfs:label "over garment of"@en ;
+    rdfs:comment "Defines that a garment is over another piece of garment."@en ;
+    rdfs:domain :Garment ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Garment ;
+    owl:inverseOf :underGarmentOf .
+
+:owensacco a owl:NamedIndividual,
+        foaf:Person ;
+    rdfs:label "Owen Sacco" ;
+    foaf:homepage <http://www.owensacco.com> ;
+    foaf:name "Owen Sacco" .
+
+:partOfBody a owl:ObjectProperty ;
+    rdfs:label "part of body"@en ;
+    rdfs:comment "Defines the part of the body where the garment is worn."@en ;
+    rdfs:domain :Garment ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :PhysicalBody .
+
+:pastOccupation a owl:ObjectProperty ;
+    rdfs:label "past occupation"@en ;
+    rdfs:comment "Specifies past professional occupation(s) held by a character."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Occupation .
+
+:petOf a owl:ObjectProperty ;
+    rdfs:label "pet of"@en ;
+    rdfs:comment "Defines that a character is a pet of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:raceOf a owl:ObjectProperty ;
+    rdfs:label "race of"@en ;
+    rdfs:comment "Specifies that a particular race falls under a particular species. For example the Men race falls under the Human species. All the properties of the defined species linked to a race are automatically propagated to all the characters classified under that particular race."@en ;
+    rdfs:domain :Race ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Species .
+
+:singleHandedWeapon a owl:DatatypeProperty ;
+    rdfs:label "single handed weapon"@en ;
+    rdfs:comment "Defines whether a weapon is single handed. A weapon cannot be both single-handed or double-handed but a character could have two single-handed weapons in separate hands."@en ;
+    rdfs:domain :Weapon ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:boolean .
+
+:skinColour a owl:ObjectProperty ;
+    rdfs:label "skin colour"@en ;
+    rdfs:comment "Specifies a skin colour tone using the RGB colour model."@en ;
+    rdfs:domain :Appearance ;
+    rdfs:isDefinedBy : ;
+    rdfs:range dbo:Colour .
+
+:slaveOf a owl:ObjectProperty ;
+    rdfs:label "slave of"@en ;
+    rdfs:comment "Defines that a character is a slave  of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :slaveOwnerOf .
+
+:voicedBy a owl:ObjectProperty ;
+    rdfs:label "voiced by"@en ;
+    rdfs:comment "Specifies the voice actor who represents the character's voice, and the attribute xml:lang could be used to define the language."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range foaf:Person .
+
+:weight a owl:DatatypeProperty ;
+    rdfs:label "weight"@en ;
+    rdfs:comment "A character's weight value."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range xsd:float .
+
+dcterms:description a owl:DatatypeProperty ;
+    rdfs:domain :Ability,
+        :Action,
+        :Ammunition,
+        :Armour,
+        :Attachment,
+        :Character,
+        :CharacterClass,
+        :Garment,
+        :Gender,
+        :Group,
+        :Inventory,
+        :Item,
+        :Occupation,
+        :Outfit,
+        :Personality,
+        :PhysicalBody,
+        :Place,
+        :Power,
+        :Race,
+        :Relationship,
+        :Restriction,
+        :Role,
+        :Skill,
+        :Species,
+        :Weapon ;
+    rdfs:range rdfs:Literal .
+
+rdfs:label a owl:DatatypeProperty ;
+    rdfs:domain :Ability,
+        :Action,
+        :Ammunition,
+        :Armour,
+        :Character,
+        :CharacterClass,
+        :Garment,
+        :Gender,
+        :Group,
+        :Inventory,
+        :Item,
+        :Occupation,
+        :Outfit,
+        :Personality,
+        :PhysicalBody,
+        :Place,
+        :Power,
+        :Race,
+        :Relationship,
+        :Restriction,
+        :Role,
+        :Skill,
+        :Species,
+        :Weapon,
+        :WeaponAttachment ;
+    rdfs:range rdfs:Literal .
+
+foaf:homepage a owl:AnnotationProperty .
+
+foaf:name a owl:AnnotationProperty .
+
+cgo:Game a owl:Class ;
+    rdfs:label "Game"@en ;
+    rdfs:comment "Specifies a video game. This class is defined in the Core Game Ontology (CGO)"@en ;
+    rdfs:isDefinedBy cgo: .
+
+:Female a owl:Class ;
+    rdfs:label "Female"@en ;
+    rdfs:comment "Defines a character being a Female."@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Gender ;
+    owl:disjointWith :Male .
+
+:Male a owl:Class ;
+    rdfs:label "Male"@en ;
+    rdfs:comment "Defines a character being a Male."@en ;
+    rdfs:isDefinedBy : ;
+    rdfs:subClassOf :Gender ;
+    owl:disjointWith :Female .
+
+:descendantOf a owl:ObjectProperty ;
+    rdfs:label "descendant of"@en ;
+    rdfs:comment "Defines that a character is a descendant of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:employerOf a owl:ObjectProperty ;
+    rdfs:label "employer of"@en ;
+    rdfs:comment "Defines that a character is an employer of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:enemyOf a owl:ObjectProperty ;
+    rdfs:label "enemy of"@en ;
+    rdfs:comment "Defines that two characters are enemies of each other."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character ;
+    owl:inverseOf :friendOf .
+
+:grandMotherOf a owl:ObjectProperty ;
+    rdfs:label "grand mother of"@en ;
+    rdfs:comment "Defines that a character is the grand mother of another character."@en ;
+    rdfs:domain :GrandParent ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:grandSonOf a owl:ObjectProperty ;
+    rdfs:label "grand son of"@en ;
+    rdfs:comment "Defines that a character is the grand son of another character."@en ;
+    rdfs:domain :GrandChild ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:influencedPositivelyBy a owl:ObjectProperty ;
+    rdfs:label "influenced positively by"@en ;
+    rdfs:comment "Defines that a character is positively influenced by another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:isGrandParent a owl:ObjectProperty ;
+    rdfs:label "is grand parent"@en ;
+    rdfs:comment "Defines that a character is a grand parent of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :GrandParent .
+
+:isParent a owl:ObjectProperty ;
+    rdfs:label "is parent"@en ;
+    rdfs:comment "Defines that a character is a parent of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Parent .
+
+:leaderOf a owl:ObjectProperty ;
+    rdfs:label "leader of"@en ;
+    rdfs:comment "Specifies that a character is a current leader of a particular group."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Group .
+
+:memberOf a owl:ObjectProperty ;
+    rdfs:label "member of"@en ;
+    rdfs:comment "Specifies that a character is a current member of a particular group."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Group .
+
+:mentorOf a owl:ObjectProperty ;
+    rdfs:label "mentor of"@en ;
+    rdfs:comment "Defines that a character is a mentor of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:motherOf a owl:ObjectProperty ;
+    rdfs:label "mother of"@en ;
+    rdfs:comment "Defines that a character is the mother of another character."@en ;
+    rdfs:domain :Parent ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:neighbourOf a owl:ObjectProperty ;
+    rdfs:label "neighbour of"@en ;
+    rdfs:comment "Defines that a character lives near another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:partnerOf a owl:ObjectProperty ;
+    rdfs:label "partner of"@en ;
+    rdfs:comment "Defines that two characters share an intimate relationship but who are not married to each other."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:pastLeaderOf a owl:ObjectProperty ;
+    rdfs:label "past leader of"@en ;
+    rdfs:comment "Specifies that a character is a past leader of a particular group."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Group .
+
+:pastMemberOf a owl:ObjectProperty ;
+    rdfs:label "past member of"@en ;
+    rdfs:comment "Specifies that a character is a past member of a particular group."@en ;
+    rdfs:domain :Character ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Group .
+
+:sisterOf a owl:ObjectProperty ;
+    rdfs:label "sister of"@en ;
+    rdfs:comment "Defines that a character is the sister of another character."@en ;
+    rdfs:domain :Sibling ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:slaveOwnerOf a owl:ObjectProperty ;
+    rdfs:label "slave owner of"@en ;
+    rdfs:comment "Defines that a character is the owner of another character who is a slave."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:sonOf a owl:ObjectProperty ;
+    rdfs:label "son of"@en ;
+    rdfs:comment "Defines that a character is the son of another character."@en ;
+    rdfs:domain :Child ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+:underGarmentOf a owl:ObjectProperty ;
+    rdfs:label "under garment of"@en ;
+    rdfs:comment "Defines that a garment is underneath another piece of garment."@en ;
+    rdfs:domain :Garment ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Garment .
+
+:wifeOf a owl:ObjectProperty ;
+    rdfs:label "wife of"@en ;
+    rdfs:comment "Defines that a character is the wife of another character."@en ;
+    rdfs:domain :Spouse ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+<http://rdfs.org/sioc/ns#Post> a owl:Class .
+
+adms:SemanticAsset a owl:Class .
+
+:Attachment a owl:Class ;
+    rdfs:label "Attachment"@en ;
+    rdfs:comment "Defines an attachment which can be fixed onto a piece of equipment such as a weapon - for example a scope fixed onto a gun."@en ;
+    rdfs:isDefinedBy : .
+
+:friendOf a owl:ObjectProperty ;
+    rdfs:label "friend of"@en ;
+    rdfs:comment "Defines that a character is a friend of another character."@en ;
+    rdfs:domain :Relationship ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Character .
+
+xsd:date a rdfs:Datatype .
+
+xsd:gYear a rdfs:Datatype .
+
+foaf:Image a owl:Class .
+
+foaf:Person a owl:Class .
+
+:Ammunition a owl:Class ;
+    rdfs:label "Ammunition"@en ;
+    rdfs:comment "Defines an ammunition which a weapon can use."@en ;
+    rdfs:isDefinedBy : .
+
+:Child a owl:Class ;
+    rdfs:label "Child"@en ;
+    rdfs:comment "Defines that a character is a child."@en ;
+    rdfs:isDefinedBy : .
+
+:GrandChild a owl:Class ;
+    rdfs:label "Grand Child"@en ;
+    rdfs:comment "Defines that a character is a grand child."@en ;
+    rdfs:isDefinedBy : .
+
+:GrandParent a owl:Class ;
+    rdfs:label "Grand Parent"@en ;
+    rdfs:comment "Defines that a character is a grand parent."@en ;
+    rdfs:isDefinedBy : .
+
+:Parent a owl:Class ;
+    rdfs:label "Parent"@en ;
+    rdfs:comment "Defines that a character is a parent."@en ;
+    rdfs:isDefinedBy : .
+
+:Personality a owl:Class ;
+    rdfs:label "Personality"@en ;
+    rdfs:comment "A character's characteristic pattern of thinking, feeling or behaviour."@en ;
+    rdfs:isDefinedBy : .
+
+:Restriction a owl:Class ;
+    rdfs:label "Restriction"@en ;
+    rdfs:comment "Defines a restriction of an action."@en ;
+    rdfs:isDefinedBy : .
+
+:Sibling a owl:Class ;
+    rdfs:label "Sibling"@en ;
+    rdfs:comment "Defines that a character is a sibling."@en ;
+    rdfs:isDefinedBy : .
+
+:Spouse a owl:Class ;
+    rdfs:label "Spouse"@en ;
+    rdfs:comment "Defines that a character is a spouse."@en ;
+    rdfs:isDefinedBy : .
+
+:Occupation a owl:Class ;
+    rdfs:label "Occupation"@en ;
+    rdfs:comment "A profession that could be either either a fictional or modelled based on a real profession."@en ;
+    rdfs:isDefinedBy : .
+
+:PhysicalBody a owl:Class ;
+    rdfs:label "Character's Physical Body"@en ;
+    rdfs:comment "Defines the physical parts of a character's body."@en ;
+    rdfs:isDefinedBy : .
+
+:Gender a owl:Class ;
+    rdfs:label "Gender"@en ;
+    rdfs:comment "Defines the gender of a character being either Male or Female."@en ;
+    rdfs:isDefinedBy : .
+
+:Inventory a owl:Class ;
+    rdfs:label "Inventory"@en ;
+    rdfs:comment "A set of items, such as health potions, which characters can use or carry."@en ;
+    rdfs:isDefinedBy : .
+
+:Item a owl:Class ;
+    rdfs:label "Item"@en ;
+    rdfs:comment "Defines an inventory item such as a health potion."@en ;
+    rdfs:isDefinedBy : .
+
+:Outfit a owl:Class ;
+    rdfs:label "Outfit"@en ;
+    rdfs:comment "A piece of garment or a set of garments a character can wear."@en ;
+    rdfs:isDefinedBy : .
+
+dbo:Colour a owl:Class .
+
+:Appearance a owl:Class ;
+    rdfs:label "Appearance"@en ;
+    rdfs:comment "Defines the physical appearance of a character."@en ;
+    rdfs:isDefinedBy : .
+
+:CharacterClass a owl:Class ;
+    rdfs:label "Character Class"@en ;
+    rdfs:comment "Defines a more specific classification of characters based on archetypes and/or careers."@en ;
+    rdfs:isDefinedBy : .
+
+:Place a owl:Class ;
+    rdfs:label "Place"@en ;
+    rdfs:comment "A location that could either be a general ficitonal location, or a location in a game world, or a location modelled based on a real location in the real world."@en ;
+    rdfs:isDefinedBy : .
+
+:Race a owl:Class ;
+    rdfs:label "Race"@en ;
+    rdfs:comment "Defines a narrower character classification than the species classification, for example a \"Men\" race or a \"Women race"@en ;
+    rdfs:isDefinedBy : .
+
+:Species a owl:Class ;
+    rdfs:label "Species"@en ;
+    rdfs:comment "Defines fictional representations of generic character classifications for example the Human species or even fictional species such as Orc or Elf."@en ;
+    rdfs:isDefinedBy : .
+
+:Armour a owl:Class ;
+    rdfs:label "Armour"@en ;
+    rdfs:comment "Defines a piece of armour which characters can use or wear to deflect any damage (i.e. minimise hit points) inflicted by opponents."@en ;
+    rdfs:isDefinedBy : .
+
+:Action a owl:Class ;
+    rdfs:label "Action"@en ;
+    rdfs:comment "Defines an action which is carried out by a video game. Actions are in the form of RIF rules."@en ;
+    rdfs:isDefinedBy : .
+
+:Power a owl:Class ;
+    rdfs:label "Power"@en ;
+    rdfs:comment "Unique actions that are activated by a player, which normally consist of super-natural actions, for example magic spells or sources of energy that power up armour."@en ;
+    rdfs:isDefinedBy : .
+
+:Skill a owl:Class ;
+    rdfs:label "Skill"@en ;
+    rdfs:comment "Defines active actions (activated by a player) which characters can perform to complete a specific task in a game."@en ;
+    rdfs:isDefinedBy : .
+
+:Ability a owl:Class ;
+    rdfs:label "Ability"@en ;
+    rdfs:comment "Passive actions that are applied automatically and are not activated by a player."@en ;
+    rdfs:isDefinedBy : .
+
+:Weapon a owl:Class ;
+    rdfs:label "Weapon"@en ;
+    rdfs:comment "Defines weapons which characters can use or carry."@en ;
+    rdfs:isDefinedBy : .
+
+:Role a owl:Class ;
+    rdfs:label "Role"@en ;
+    rdfs:comment "Defines specific representations of roles that characters can change into."@en ;
+    rdfs:isDefinedBy : .
+
+:Garment a owl:Class ;
+    rdfs:label "Garment"@en ;
+    rdfs:comment "A piece of garment a character can wear."@en ;
+    rdfs:isDefinedBy : .
+
+:Relationship a owl:Class ;
+    rdfs:label "Relationship"@en ;
+    rdfs:comment "\"Defines various types of relationships which characters have with other characters."@en ;
+    rdfs:isDefinedBy : .
+
+:Group a owl:Class ;
+    rdfs:label "Group"@en ;
+    rdfs:comment "Defines various types of groups in which characters could be a part of."@en ;
+    rdfs:isDefinedBy : .
+
+:Character a owl:Class ;
+    rdfs:label "Character"@en ;
+    rdfs:comment "Any character within a video game. The character could be playable or non playable (NPC)."@en ;
+    rdfs:isDefinedBy : .
+
+: a owl:NamedIndividual,
+        owl:Ontology,
+        adms:SemanticAsset ;
+    dc:creator "Owen Sacco" ;
+    dc:date "2016-12-01" ;
+    dc:description <http://autosemanticgame.eu/ontologies/gco/diagram/gco.svg>,
+        """The Game Character Ontology (GCO) provides a light-weight vocabulary for describing characters in video games. Characters are defined using the main class gco:Character and could either be playable or non-playable characters, defined by the gco:PlayableCharacter or gco:NonPlayableCharacter subclasses respectively. Playable characters are characters controlled by the player whereas non-playable characters are controlled by AI. In some games, characters could be playable at some point in the game and non-playable at other points in the same game since the user is assigned another character whilst following the game's narrative. For example, in Assassin's Creed III, players start off by playing as a playable-character named "Haytham Kenway" and during the game's story, the players take up the role and play with another playable character named "Connor Kenway". At that point onwards, the first character "Haytham Kenway" becomes a non-playable character and is controlled by AI. In this regard, characters can be defined as instances of both the gco:PlayableCharacter and/or gco:NonPlayableCharacter subclasses. Moreover, characters could be of any type, from human-like characters to any type of creature, defined by the class gco:Species. Furthermore, characters could be main protagonists or main antagonists in a game. Whether a character is a main protagonist or not is beyond the scope of this ontology since this is bound to a specific game rather than a character. Therefore, we model game characters irrespective of which game they are played or appeared in. 
+
+Although the ontology is designed based on action-adventure and role-playing video game characters such as characters in the Assassin's Creed series or The Elder Scrolls series, the ontology still can be used for defining characters in video games of other genre types (such as first-person shooter video games) since the ontology provides detailed classes and properties that can be used for modelling any type of game character."""@en ;
+    dc:rights "This ontology is distributed under a Creative Commons Attribution License - http://creativecommons.org/licenses/by/4.0"@en ;
+    dcterms:created "2016-12-01"^^xsd:date ;
+    dcterms:description "An ontology for describing game character information" ;
+    dcterms:modified "2016-12-23"^^xsd:date ;
+    dcterms:partOf <http://autosemanticgame.eu> ;
+    dcterms:status <http://purl.org/adms/status/UnderDevelopment> ;
+    dcterms:title "The Game Character Ontology (GCO)" ;
+    dcterms:type <http://purl.org/adms/assettype/Ontology> ;
+    vann:preferredNamespacePrefix "gco" ;
+    vann:preferredNamespaceUri "http://autosemanticgame.eu/ontologies/gco#" ;
+    rdfs:comment "The Game Character Ontology (GCO) is an ontology for describing information about video game characters extracted from various sources such as fansites or even information extracted from games. This semantically-structured video game character information can be used to publish character information on the Web, and also within games used by game engines and mechanics."@en ;
+    owl:versionInfo "1.0.0"^^xsd:string ;
+    foaf:homepage <http://autosemanticgame.eu/ontologies/gco> .
+

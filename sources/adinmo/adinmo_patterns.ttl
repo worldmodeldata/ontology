@@ -1,0 +1,120 @@
+@prefix a: <http://ontology.gaming.network/sources/adinmo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+<http://ontology.gaming.network/sources/adinmo> a owl:Ontology ;
+  dc:title "Adinmo Source Patterns" ;
+  dc:creator "Gi Fernando" ;
+  dc:date "2025-12-27" ;
+  owl:versionInfo "1.0.0" ;
+  rdfs:comment "Source ontology for Adinmo tables: sessions, bids, impressions, tracker_events, attributed_installs, iap." .
+
+a:AdinmoSessionEvent a owl:Class ;
+  rdfs:label "Adinmo Session Event"@en ;
+  skos:definition "Row in Adinmo sessions table representing session_start/session_end."@en .
+
+a:AdinmoBidRequest a owl:Class ;
+  rdfs:label "Adinmo Bid Request"@en ;
+  skos:definition "Row in Adinmo bids table representing an ad inventory request."@en .
+
+a:AdinmoImpression a owl:Class ;
+  rdfs:label "Adinmo Impression"@en ;
+  skos:definition "Row in Adinmo impressions table representing delivered/validated ad impressions."@en .
+
+a:AdinmoTrackerEvent a owl:Class ;
+  rdfs:label "Adinmo Tracker Event"@en ;
+  skos:definition "Row in Adinmo tracker_events representing render/view/click/video quartiles/magnified."@en .
+
+a:AdinmoAttributedInstall a owl:Class ;
+  rdfs:label "Adinmo Attributed Install"@en ;
+  skos:definition "Row in attributed_installs representing installs attributed to Adinmo campaigns."@en .
+
+a:AdinmoIAP a owl:Class ;
+  rdfs:label "Adinmo In-App Purchase"@en ;
+  skos:definition "Row in iap table representing an IAP attempt/result (often failures captured)."@en .
+
+a:anonDeviceId a owl:DatatypeProperty , owl:FunctionalProperty ;
+  rdfs:label "anon device id"@en ;
+  rdfs:range xsd:string ;
+  skos:definition "Privacy-preserving user/device identifier used across Adinmo tables."@en .
+
+a:sessionId a owl:DatatypeProperty ;
+  rdfs:label "session id"@en ;
+  rdfs:range xsd:string ;
+  skos:definition "Session identifier linking Adinmo events within an app session."@en .
+
+a:gameId a owl:DatatypeProperty ;
+  rdfs:label "game id"@en ;
+  rdfs:range xsd:integer ;
+  skos:definition "Game/application identifier."@en .
+
+a:activityTs a owl:DatatypeProperty ;
+  rdfs:label "activity timestamp"@en ;
+  rdfs:range xsd:dateTime ;
+  skos:definition "Source-of-truth timestamp for the event (ACTIVITY_TS)."@en .
+
+a:eventType a owl:DatatypeProperty ;
+  rdfs:label "event type"@en ;
+  rdfs:range xsd:string ;
+  skos:definition "Event type classification (table-specific; e.g., session_start, bid_request, valid_impression, click)."@en .
+
+a:bidId a owl:DatatypeProperty ;
+  rdfs:label "bid id"@en ;
+  rdfs:range xsd:string ;
+  skos:definition "Identifier linking bid request to impressions/tracker events."@en .
+
+a:impressionId a owl:DatatypeProperty ;
+  rdfs:label "impression id"@en ;
+  rdfs:range xsd:string ;
+  skos:definition "Identifier linking impressions to tracker events."@en .
+
+a:campaignId a owl:DatatypeProperty ;
+  rdfs:label "campaign id"@en ;
+  rdfs:range xsd:integer ;
+  skos:definition "Campaign identifier."@en .
+
+a:imageGuid a owl:DatatypeProperty ;
+  rdfs:label "image guid"@en ;
+  rdfs:range xsd:string ;
+  skos:definition "Creative image identifier (IMAGE_GUID)."@en .
+
+a:placementKey a owl:DatatypeProperty ;
+  rdfs:label "placement key"@en ;
+  rdfs:range xsd:string ;
+  skos:definition "In-game placement identifier used for reporting and optimization."@en .
+
+a:adType a owl:DatatypeProperty ;
+  rdfs:label "ad type"@en ;
+  rdfs:range xsd:string ;
+  skos:definition "Ad format (banner, video, interstitial)."@en .
+
+a:bidPrice a owl:DatatypeProperty ;
+  rdfs:label "bid price"@en ;
+  rdfs:range xsd:decimal ;
+  skos:definition "Bid price (CPM cents in source; normalize in adapters)."@en .
+
+a:actualRevenue a owl:DatatypeProperty ;
+  rdfs:label "actual revenue"@en ;
+  rdfs:range xsd:decimal ;
+  skos:definition "Actual revenue earned from an impression (cents in source; normalize in adapters)."@en .
+
+a:dwellTimeMs a owl:DatatypeProperty ;
+  rdfs:label "dwell time (ms)"@en ;
+  rdfs:range xsd:integer ;
+  skos:definition "Ad dwell time / time-in-view metric (milliseconds)."@en .
+
+a:isMeasured a owl:DatatypeProperty ;
+  rdfs:label "is measured"@en ;
+  rdfs:range xsd:boolean ;
+  skos:definition "Whether impression met measurement criteria (viewability/fraud)."@en .
+
+a:playerEngagementScore a owl:DatatypeProperty ;
+  rdfs:label "player engagement score"@en ;
+  rdfs:range xsd:decimal ;
+  skos:definition "Engagement quality score provided by Adinmo (impressions table)."@en .
+
+

@@ -1,0 +1,126 @@
+@prefix : <http://autosemanticgame.eu/ontologies/cgo#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:hasAudio a owl:ObjectProperty ;
+    rdfs:label "has audio"@en ;
+    rdfs:comment "Specifies the music and sound of a game."@en ;
+    rdfs:domain :Game ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Audio .
+
+:hasGameDesign a owl:ObjectProperty ;
+    rdfs:label "has game design"@en ;
+    rdfs:comment "Specifies the rules and mechanics of a game."@en ;
+    rdfs:domain :Game ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :GameDesign .
+
+:hasGameplay a owl:ObjectProperty ;
+    rdfs:label "has gameplay"@en ;
+    rdfs:comment "Specifies the gameplay of a game."@en ;
+    rdfs:domain :Game ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Gameplay .
+
+:hasLevelDesign a owl:ObjectProperty ;
+    rdfs:label "has level design"@en ;
+    rdfs:comment "Specifies the levels of a game."@en ;
+    rdfs:domain :Game ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :LevelDesign .
+
+:hasNarrative a owl:ObjectProperty ;
+    rdfs:label "has narrative"@en ;
+    rdfs:comment "Specifies the story and plot of a game."@en ;
+    rdfs:domain :Game ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Narrative .
+
+:hasVisuals a owl:ObjectProperty ;
+    rdfs:label "has visuals"@en ;
+    rdfs:comment "Specifies the visuals of a game."@en ;
+    rdfs:domain :Game ;
+    rdfs:isDefinedBy : ;
+    rdfs:range :Visuals .
+
+:owensacco a owl:NamedIndividual,
+        foaf:Person ;
+    rdfs:label "Owen Sacco" ;
+    owl:sameAs <http://autosemanticgame.eu/ontologies/gco#owensacco> ;
+    foaf:homepage <http://www.owensacco.com> ;
+    foaf:name "Owen Sacco" .
+
+foaf:homepage a owl:AnnotationProperty .
+
+foaf:name a owl:AnnotationProperty .
+
+:Audio a owl:Class ;
+    rdfs:label "Audio"@en ;
+    rdfs:comment "Audio includes background music such as a fully orchestrated soundtrack, sound effects, rewarding spimds and voice-acted dialogue."@en ;
+    rdfs:isDefinedBy : .
+
+:GameDesign a owl:Class ;
+    rdfs:label "Game Design"@en ;
+    rdfs:comment "Game design contains all the game's mechanics that define the game's rules, which provide the structures and frames for play (for example winning and losing conditions) and actions available to the player."@en ;
+    rdfs:isDefinedBy : .
+
+:Gameplay a owl:Class ;
+    rdfs:label "Gameplay"@en ;
+    rdfs:comment "Gameplay consists of the players strategies whilst playing a game."@en ;
+    rdfs:isDefinedBy : .
+
+:LevelDesign a owl:Class ;
+    rdfs:label "Level Design"@en ;
+    rdfs:comment "Level design includes the architecure of the spatial navigation of levels which determine how the player agent can progress from one point in the game to another."@en ;
+    rdfs:isDefinedBy : .
+
+:Narrative a owl:Class ;
+    rdfs:label "Narrative"@en ;
+    rdfs:comment "Narrative contains the interactive story of a game which makes up the game's plot."@en ;
+    rdfs:isDefinedBy : .
+
+:Visuals a owl:Class ;
+    rdfs:label "Visuals"@en ;
+    rdfs:comment "Visuals contain any visual output of a game, which range from photorealistic, to caricaturised, to abstract visuals."@en ;
+    rdfs:isDefinedBy : .
+
+adms:SemanticAsset a owl:Class .
+
+foaf:Person a owl:Class .
+
+:Game a owl:Class ;
+    rdfs:label "Game"@en ;
+    rdfs:comment "Specifies a video game."@en ;
+    rdfs:isDefinedBy : .
+
+: a owl:NamedIndividual,
+        owl:Ontology,
+        adms:SemanticAsset ;
+    rdfs:label "CGO" ;
+    dc:creator "Owen Sacco" ;
+    dc:date "2016-12-01" ;
+    dc:description <http://autosemanticgame.eu/ontologies/cgo/diagram/cgo.svg>,
+        """The Core Game Ontology (CGO) provides a light-weight vocabulary for describing video games. Video games can be seen as multi-faceted containging the following facets: visuals, audio, narrative, gameplay, game design and level design. Each facet can be regarded as an independent model and when each model are combined together, they form a game.
+
+Visuals contain any visual output of a game, which range from photorealistic, to caricaturised, to abstract visuals. Audio includes background music such as a fully orchestrated soundtrack, sound effects, rewarding spimds and voice-acted dialogue. Narrative contains the interactive story of a game which makes up the game's plot. Game design contains all the game's mechanics that define the game's rules, which provide the structures and frames for play (for example winning and losing conditions) and actions available to the player. Level design includes the architecure of the spatial navigation of levels which determine how the player agent can progress from one point in the game to another. Gameplay consists of the players strategies whilst playing a game."""@en ;
+    dc:rights "This ontology is distributed under a Creative Commons Attribution License - http://creativecommons.org/licenses/by/4.0"@en ;
+    dcterms:created "2016-12-01"^^xsd:date ;
+    dcterms:description "An ontology for describing video game information" ;
+    dcterms:modified "2016-12-23"^^xsd:date ;
+    dcterms:partOf <http://autosemanticgame.eu> ;
+    dcterms:status <http://purl.org/adms/status/UnderDevelopment> ;
+    dcterms:title "The Core Game Ontology (CGO)" ;
+    dcterms:type <http://purl.org/adms/assettype/Ontology> ;
+    vann:preferredNamespacePrefix "cgo" ;
+    vann:preferredNamespaceUri "http://autosemanticgame.eu/ontologies/cgo#" ;
+    rdfs:comment "The Core Game Ontology (CGO) is an ontology for describing information about video games."@en ;
+    owl:versionInfo "1.0.0"^^xsd:string ;
+    foaf:homepage <http://autosemanticgame.eu/ontologies/cgo> .
+

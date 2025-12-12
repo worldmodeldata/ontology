@@ -1,0 +1,68 @@
+@prefix core: <http://ontology.gaming.network/core#> .
+@prefix ug: <http://ontology.gaming.network/universal/gaming#> .
+@prefix ub: <http://ontology.gaming.network/universal/human_behavior#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# ============================================================================
+# Core ↔ Universal bridge (alignment axioms)
+#
+# Purpose:
+# - Allow runtime composition: keep existing "core#" ontology stable, while
+#   aligning to universal foundations for cross-domain reuse.
+# - Enable queries over either vocabulary (with reasoning if/when enabled).
+#
+# This is intentionally minimal and can be expanded incrementally.
+# ============================================================================
+
+<http://ontology.gaming.network/universal/bridge> a owl:Ontology ;
+  rdfs:comment "Alignment axioms mapping core gaming ontology terms to universal foundations." .
+
+# -- Core actors / sessions / events ------------------------------------------------
+#
+# Legacy note: core:Device was historically used as an identifier for "who played" in telemetry.
+# We now model Device explicitly, and keep Player as the (typically human) actor.
+core:Device owl:equivalentClass ug:Device .
+core:Device rdfs:subClassOf ug:Device .
+core:Player owl:equivalentClass ug:Player .
+
+core:GameSession owl:equivalentClass ug:GameSession .
+core:GameEvent owl:equivalentClass ug:GameEvent .
+
+# If core has higher-level abstractions, align them to universal behavior patterns.
+#
+# Note: our UI graph + `/ontology-management/hierarchy` currently render inheritance edges
+# using explicit `rdfs:subClassOf` only (not OWL reasoning), so we prefer subclass links here.
+core:Session rdfs:subClassOf ug:GameSession .
+core:Event rdfs:subClassOf ug:GameEvent .
+
+# If you later enable OWL reasoning, you *may* strengthen some of these to owl:equivalentClass.
+# In practice, these are intended to mean the same thing in our stack, so we add equivalence
+# while keeping the `rdfs:subClassOf` edges above for UI connectivity without a reasoner.
+core:Session owl:equivalentClass ug:GameSession .
+core:Event owl:equivalentClass ug:GameEvent .
+
+# Retention states: universal defines ug:Retained as a BehavioralState; keep UI edge + add equivalence.
+core:Retained rdfs:subClassOf ub:BehavioralState .
+core:Retained owl:equivalentClass ug:Retained .
+
+# -- Behavioral state classes -------------------------------------------------------
+core:EngagementLevel owl:equivalentClass ug:EngagementLevel .
+core:RetentionStatus owl:equivalentClass ug:RetentionStatus .
+core:MonetizationSegment owl:equivalentClass ug:MonetizationSegment .
+
+# -- Key relationships --------------------------------------------------------------
+core:hasSession owl:equivalentProperty ug:hasSession .
+core:belongsToPlayer owl:equivalentProperty ug:belongsToPlayer .
+core:containsEvent owl:equivalentProperty ug:containsEvent .
+core:occursInSession owl:equivalentProperty ug:occursInSession .
+
+core:hasEngagementLevel owl:equivalentProperty ug:hasEngagementLevel .
+core:hasRetentionStatus owl:equivalentProperty ug:hasRetentionStatus .
+
+# -- ID/data properties -------------------------------------------------------------
+core:deviceId owl:equivalentProperty ug:deviceId .
+core:sessionId owl:equivalentProperty ug:sessionId .
+core:sessionDuration owl:equivalentProperty ug:sessionDuration .
+
+

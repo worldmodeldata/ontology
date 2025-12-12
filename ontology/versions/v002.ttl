@@ -1,0 +1,417 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ontology.gaming.network/core> a owl:Ontology ;
+    dc:creator "Gi Fernando" ;
+    dc:date "2025-11-24" ;
+    dc:title "Gaming Network Core Ontology" ;
+    rdfs:comment "Formal ontology for gaming data across multiple games and ad networks" ;
+    owl:versionInfo "1.0.0" .
+
+<http://ontology.gaming.network/core#GameSession> a owl:Class ;
+    rdfs:label "Game Session"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Session> ;
+    skos:definition "A session within a specific game" .
+
+<http://ontology.gaming.network/core#Human> a owl:Class ;
+    rdfs:label "New Class"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Person> ;
+    skos:definition "A Human being" .
+
+<http://ontology.gaming.network/core#Resource> a owl:Class ;
+    rdfs:label "Resource"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Entity> ;
+    skos:definition "A resource used or consumed in the gaming ecosystem" .
+
+<http://ontology.gaming.network/core#TEST> a owl:Class ;
+    rdfs:label "Test Class"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Event> ;
+    skos:definition "A test class" .
+
+<http://ontology.gaming.network/core#activityTimestamp> a owl:DatatypeProperty ;
+    rdfs:label "activity timestamp"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Event> ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "Timestamp when the event occurred" .
+
+<http://ontology.gaming.network/core#advertiserDomain> a owl:DatatypeProperty ;
+    rdfs:label "advertiser domain"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Campaign> ;
+    rdfs:range xsd:string ;
+    skos:definition "Domain of the advertiser" .
+
+<http://ontology.gaming.network/core#amount> a owl:DatatypeProperty ;
+    rdfs:label "amount"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Transaction> ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Transaction amount" .
+
+<http://ontology.gaming.network/core#appliesToTenant> a owl:DatatypeProperty ;
+    rdfs:label "applies to tenant"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#MonetizationThresholds> ;
+    rdfs:range xsd:string ;
+    skos:definition "Tenant identifier this threshold configuration applies to"@en .
+
+<http://ontology.gaming.network/core#attributedTo> a owl:ObjectProperty ;
+    rdfs:label "attributed to"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#AttributedInstall> ;
+    rdfs:range <http://ontology.gaming.network/core#Campaign> ;
+    skos:definition "Relates an install to the campaign that drove it" .
+
+<http://ontology.gaming.network/core#bidPrice> a owl:DatatypeProperty ;
+    rdfs:label "bid price"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Bid> ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Price of the bid in the ad auction" .
+
+<http://ontology.gaming.network/core#campaignId> a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "campaign ID"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Campaign> ;
+    rdfs:range xsd:string ;
+    skos:definition "Unique identifier for a campaign" .
+
+<http://ontology.gaming.network/core#containsBid> a owl:ObjectProperty ;
+    rdfs:label "contains bid"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Session> ;
+    rdfs:range <http://ontology.gaming.network/core#Bid> ;
+    skos:definition "Relates a session to bids that occurred during it" .
+
+<http://ontology.gaming.network/core#country> a owl:DatatypeProperty ;
+    rdfs:label "country"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range xsd:string ;
+    skos:definition "Country code of the device" .
+
+<http://ontology.gaming.network/core#currency> a owl:DatatypeProperty ;
+    rdfs:label "currency"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Transaction> ;
+    rdfs:range xsd:string ;
+    skos:definition "Currency code for the transaction" .
+
+<http://ontology.gaming.network/core#deviceId> a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "device ID"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range xsd:string ;
+    skos:definition "Unique identifier for a device" .
+
+<http://ontology.gaming.network/core#deviceOS> a owl:DatatypeProperty ;
+    rdfs:label "device OS"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range xsd:string ;
+    skos:definition "Operating system of the device" .
+
+<http://ontology.gaming.network/core#deviceType> a owl:DatatypeProperty ;
+    rdfs:label "device type"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range xsd:string ;
+    skos:definition "Type of device (phone, tablet, etc.)" .
+
+<http://ontology.gaming.network/core#dolphinIapThreshold> a owl:DatatypeProperty ;
+    rdfs:label "dolphin IAP threshold"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#MonetizationThresholds> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Minimum IAP count to classify as Dolphin"@en .
+
+<http://ontology.gaming.network/core#dolphinMonetaryThreshold> a owl:DatatypeProperty ;
+    rdfs:label "dolphin monetary threshold"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#MonetizationThresholds> ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Minimum monetary value (£) to classify as Dolphin (future use)"@en .
+
+<http://ontology.gaming.network/core#eventType> a owl:DatatypeProperty ;
+    rdfs:label "event type"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Event> ;
+    rdfs:range xsd:string ;
+    skos:definition "Type of event" .
+
+<http://ontology.gaming.network/core#hasAdInteraction> a owl:ObjectProperty ;
+    rdfs:label "has ad interaction"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Session> ;
+    rdfs:range <http://ontology.gaming.network/core#AdInteraction> ;
+    skos:definition "Relates a session to ad interactions during it" .
+
+<http://ontology.gaming.network/core#hasAttributedInstall> a owl:ObjectProperty ;
+    rdfs:label "has attributed install"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range <http://ontology.gaming.network/core#AttributedInstall> ;
+    skos:definition "Relates a device to its attributed install event" .
+
+<http://ontology.gaming.network/core#hasEngagementLevel> a owl:ObjectProperty ;
+    rdfs:label "has engagement level"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range <http://ontology.gaming.network/core#EngagementLevel> ;
+    skos:definition "Relates a device to its inferred engagement classification" .
+
+<http://ontology.gaming.network/core#hasImpression> a owl:ObjectProperty ;
+    rdfs:label "has impression"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Session> ;
+    rdfs:range <http://ontology.gaming.network/core#Impression> ;
+    skos:definition "Relates a session to ad impressions shown during it" .
+
+<http://ontology.gaming.network/core#hasInAppPurchase> a owl:ObjectProperty ;
+    rdfs:label "has in-app purchase"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Session> ;
+    rdfs:range <http://ontology.gaming.network/core#InAppPurchase> ;
+    skos:definition "Relates a session to purchases made during it" .
+
+<http://ontology.gaming.network/core#hasMonetizationSegment> a owl:ObjectProperty ;
+    rdfs:label "has monetization segment"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range <http://ontology.gaming.network/core#MonetizationSegment> ;
+    skos:definition "Relates a device to its inferred monetization classification" .
+
+<http://ontology.gaming.network/core#hasRetentionStatus> a owl:ObjectProperty ;
+    rdfs:label "has retention status"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range <http://ontology.gaming.network/core#RetentionStatus> ;
+    skos:definition "Relates a device to its inferred retention status" .
+
+<http://ontology.gaming.network/core#hasSession> a owl:ObjectProperty ;
+    rdfs:label "has session"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range <http://ontology.gaming.network/core#Session> ;
+    owl:inverseOf <http://ontology.gaming.network/core#belongsToDevice> ;
+    skos:definition "Relates a device to its sessions" .
+
+<http://ontology.gaming.network/core#minnowIapThreshold> a owl:DatatypeProperty ;
+    rdfs:label "minnow IAP threshold"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#MonetizationThresholds> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Minimum IAP count to classify as Minnow"@en .
+
+<http://ontology.gaming.network/core#minnowMonetaryThreshold> a owl:DatatypeProperty ;
+    rdfs:label "minnow monetary threshold"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#MonetizationThresholds> ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Minimum monetary value (£) to classify as Minnow (future use)"@en .
+
+<http://ontology.gaming.network/core#occursInGame> a owl:ObjectProperty ;
+    rdfs:label "occurs in game"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Session> ;
+    rdfs:range <http://ontology.gaming.network/core#Game> ;
+    skos:definition "Relates a session to the game it occurs in" .
+
+<http://ontology.gaming.network/core#partOfCampaign> a owl:ObjectProperty ;
+    rdfs:label "part of campaign"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#AdEvent> ;
+    rdfs:range <http://ontology.gaming.network/core#Campaign> ;
+    skos:definition "Relates an ad event to its campaign" .
+
+<http://ontology.gaming.network/core#playsGame> a owl:ObjectProperty ;
+    rdfs:label "plays game"@en ;
+    rdfs:comment "Inferred from hasSession and occursInGame" ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range <http://ontology.gaming.network/core#Game> ;
+    skos:definition "Relates a device to games it plays" .
+
+<http://ontology.gaming.network/core#sessionCount> a owl:DatatypeProperty ;
+    rdfs:label "session count"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Total number of sessions for this device" .
+
+<http://ontology.gaming.network/core#sessionId> a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "session ID"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Session> ;
+    rdfs:range xsd:string ;
+    skos:definition "Unique identifier for a session" .
+
+<http://ontology.gaming.network/core#testProperty> a owl:DatatypeProperty ;
+    rdfs:label "Test Property"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#TestClass> ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#xsd:string> ;
+    skos:definition "Test property for E2E testing" .
+
+<http://ontology.gaming.network/core#totalSpent> a owl:DatatypeProperty ;
+    rdfs:label "total spent"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Device> ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Total amount spent by this device" .
+
+<http://ontology.gaming.network/core#whaleIapThreshold> a owl:DatatypeProperty ;
+    rdfs:label "whale IAP threshold"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#MonetizationThresholds> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Minimum IAP count to classify as Whale"@en .
+
+<http://ontology.gaming.network/core#whaleMonetaryThreshold> a owl:DatatypeProperty ;
+    rdfs:label "whale monetary threshold"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#MonetizationThresholds> ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Minimum monetary value (£) to classify as Whale (future use)"@en .
+
+<http://ontology.gaming.network/core#AdInteraction> a owl:Class ;
+    rdfs:label "Ad Interaction"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#AdEvent> ;
+    skos:definition "User interaction with an advertisement" .
+
+<http://ontology.gaming.network/core#AtRisk> a owl:Class ;
+    rdfs:label "At Risk"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#RetentionStatus> ;
+    skos:definition "User who may churn soon" .
+
+<http://ontology.gaming.network/core#Churned> a owl:Class ;
+    rdfs:label "Churned"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#RetentionStatus> ;
+    skos:definition "User who has not returned after first session" .
+
+<http://ontology.gaming.network/core#Dolphin> a owl:Class ;
+    rdfs:label "Dolphin"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#MonetizationSegment> ;
+    skos:definition "User with medium spending (£10-£50)" .
+
+<http://ontology.gaming.network/core#HighEngagement> a owl:Class ;
+    rdfs:label "High Engagement"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#EngagementLevel> ;
+    skos:definition "User with high engagement (10+ sessions)" .
+
+<http://ontology.gaming.network/core#Impression> a owl:Class ;
+    rdfs:label "Impression"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#AdEvent> ;
+    skos:definition "An ad impression shown to a user" .
+
+<http://ontology.gaming.network/core#InAppPurchase> a owl:Class ;
+    rdfs:label "In-App Purchase"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Transaction> ;
+    skos:altLabel "IAP"@en ;
+    skos:definition "A purchase made within a game" .
+
+<http://ontology.gaming.network/core#LowEngagement> a owl:Class ;
+    rdfs:label "Low Engagement"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#EngagementLevel> ;
+    skos:definition "User with low engagement (1-2 sessions)" .
+
+<http://ontology.gaming.network/core#MediumEngagement> a owl:Class ;
+    rdfs:label "Medium Engagement"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#EngagementLevel> ;
+    skos:definition "User with medium engagement (3-9 sessions)" .
+
+<http://ontology.gaming.network/core#Minnow> a owl:Class ;
+    rdfs:label "Minnow"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#MonetizationSegment> ;
+    skos:definition "User with low spending (£0-£10)" .
+
+<http://ontology.gaming.network/core#NonPayer> a owl:Class ;
+    rdfs:label "Non-Payer"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#MonetizationSegment> ;
+    skos:definition "User who has never made a purchase" .
+
+<http://ontology.gaming.network/core#Person> a owl:Class ;
+    rdfs:label "New Class"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Actor> ;
+    skos:definition "A Human that interacts with a system" .
+
+<http://ontology.gaming.network/core#Retained> a owl:Class ;
+    rdfs:label "Retained"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#RetentionStatus> ;
+    skos:definition "User who continues to engage regularly" .
+
+<http://ontology.gaming.network/core#TestClass> a owl:Class ;
+    rdfs:label "Test Class"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Entity> ;
+    skos:definition "Test class for E2E testing" .
+
+<http://ontology.gaming.network/core#Whale> a owl:Class ;
+    rdfs:label "Whale"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#MonetizationSegment> ;
+    skos:definition "User with high spending (£50+)" .
+
+<http://ontology.gaming.network/core#belongsToDevice> a owl:ObjectProperty ;
+    rdfs:label "belongs to device"@en ;
+    rdfs:domain <http://ontology.gaming.network/core#Session> ;
+    rdfs:range <http://ontology.gaming.network/core#Device> ;
+    skos:definition "Relates a session to its device" .
+
+<http://ontology.gaming.network/core#Actor> a owl:Class ;
+    rdfs:label "Actor"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Entity> ;
+    skos:definition "An entity that can perform actions in the gaming ecosystem" .
+
+<http://ontology.gaming.network/core#AttributedInstall> a owl:Class ;
+    rdfs:label "Attributed Install"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Event> ;
+    skos:definition "A game installation attributed to a campaign" .
+
+<http://ontology.gaming.network/core#Bid> a owl:Class ;
+    rdfs:label "Bid"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#AdEvent> ;
+    skos:definition "A bid request in the ad auction" .
+
+<http://ontology.gaming.network/core#Game> a owl:Class ;
+    rdfs:label "Game"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Entity> ;
+    skos:definition "A game application in the network" .
+
+<http://ontology.gaming.network/core#Transaction> a owl:Class ;
+    rdfs:label "Transaction"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Event> ;
+    skos:definition "A financial transaction" .
+
+<http://ontology.gaming.network/core#AdEvent> a owl:Class ;
+    rdfs:label "Ad Event"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Event> ;
+    skos:definition "An event related to advertising" .
+
+<http://ontology.gaming.network/core#Campaign> a owl:Class ;
+    rdfs:label "Campaign"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Entity> ;
+    skos:definition "An advertising campaign" .
+
+<http://ontology.gaming.network/core#EngagementLevel> a owl:Class ;
+    rdfs:label "Engagement Level"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Entity> ;
+    skos:definition "Classification of user engagement" .
+
+<http://ontology.gaming.network/core#RetentionStatus> a owl:Class ;
+    rdfs:label "Retention Status"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Entity> ;
+    skos:definition "Classification of user retention" .
+
+<http://ontology.gaming.network/core#MonetizationSegment> a owl:Class ;
+    rdfs:label "Monetization Segment"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Entity> ;
+    skos:definition "Classification of user monetization behavior" .
+
+<http://ontology.gaming.network/core#Event> a owl:Class ;
+    rdfs:label "Event"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Entity> ;
+    skos:definition "A temporal occurrence in the gaming ecosystem" .
+
+<http://ontology.gaming.network/core#MonetizationThresholds> a owl:Class ;
+    rdfs:label "Monetization Thresholds"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Entity> ;
+    skos:definition "Configuration class for tenant-specific monetization segment thresholds"@en .
+
+<http://ontology.gaming.network/core#Session> a owl:Class ;
+    rdfs:label "Session"@en ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Event> ;
+    skos:definition "A period of continuous interaction with a game" .
+
+<http://ontology.gaming.network/core#Entity> a owl:Class ;
+    rdfs:label "Entity"@en ;
+    skos:definition "Top-level class for all entities in the gaming ecosystem" .
+
+<http://ontology.gaming.network/core#Device> a owl:Class ;
+    rdfs:label "Device"@en ;
+    rdfs:comment "Represents the same concept as Player or User in different games" ;
+    rdfs:subClassOf <http://ontology.gaming.network/core#Actor> ;
+    skos:altLabel "Player"@en,
+        "User"@en ;
+    skos:definition "A unique hardware device used to access games" .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( <http://ontology.gaming.network/core#LowEngagement> <http://ontology.gaming.network/core#MediumEngagement> <http://ontology.gaming.network/core#HighEngagement> ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( <http://ontology.gaming.network/core#Churned> <http://ontology.gaming.network/core#AtRisk> <http://ontology.gaming.network/core#Retained> ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( <http://ontology.gaming.network/core#NonPayer> <http://ontology.gaming.network/core#Minnow> <http://ontology.gaming.network/core#Dolphin> <http://ontology.gaming.network/core#Whale> ) .
+

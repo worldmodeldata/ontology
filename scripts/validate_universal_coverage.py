@@ -58,45 +58,81 @@ def extract_properties(graph: Graph) -> Set[str]:
 
 
 def validate_coverage():
-    """Validate that all source patterns are covered by universal foundation."""
+    """
+    Validate that all source patterns are covered by the universal foundation.
+
+    IMPORTANT:
+    Source ontologies intentionally use *different namespaces* than the universal ontology.
+    Coverage should therefore be assessed via the mapping ontologies (mappings/*_to_universal.ttl),
+    not by raw URI intersection.
+    """
     base_path = Path(__file__).parent.parent
     
     # Load source ontologies
     unity_graph = load_ontology(base_path / "sources" / "unity" / "unity_analytics_patterns.ttl")
     mixpanel_graph = load_ontology(base_path / "sources" / "mixpanel" / "mixpanel_patterns.ttl")
     gop_graph = load_ontology(base_path / "sources" / "gop" / "gop_patterns.ttl")
+    adinmo_graph = load_ontology(base_path / "sources" / "adinmo" / "adinmo_patterns.ttl")
     gaming_graph = load_ontology(base_path / "universal" / "gaming_foundation_v1.ttl")
+
+    # Load mapping ontologies
+    unity_mapping = load_ontology(base_path / "mappings" / "unity_to_universal.ttl")
+    mixpanel_mapping = load_ontology(base_path / "mappings" / "mixpanel_to_universal.ttl")
+    gop_mapping = load_ontology(base_path / "mappings" / "game_source_to_universal.ttl")  # GOP is a structural reference; use generic framework for now
+    adinmo_mapping = load_ontology(base_path / "mappings" / "adinmo_to_universal.ttl")
+
+    def appears_in_graph(uri: str, g: Graph) -> bool:
+        """Return True if uri appears as subject/predicate/object anywhere in graph."""
+        if g is None:
+            return False
+        from rdflib import URIRef
+        u = URIRef(uri)
+        for _ in g.triples((u, None, None)):
+            return True
+        for _ in g.triples((None, u, None)):
+            return True
+        for _ in g.triples((None, None, u)):
+            return True
+        return False
     
     # Extract classes and properties
     unity_classes = extract_classes(unity_graph) if unity_graph else set()
     mixpanel_classes = extract_classes(mixpanel_graph) if mixpanel_graph else set()
     gop_classes = extract_classes(gop_graph) if gop_graph else set()
+    adinmo_classes = extract_classes(adinmo_graph) if adinmo_graph else set()
     gaming_classes = extract_classes(gaming_graph) if gaming_graph else set()
     
     unity_props = extract_properties(unity_graph) if unity_graph else set()
     mixpanel_props = extract_properties(mixpanel_graph) if mixpanel_graph else set()
     gop_props = extract_properties(gop_graph) if gop_graph else set()
+    adinmo_props = extract_properties(adinmo_graph) if adinmo_graph else set()
     gaming_props = extract_properties(gaming_graph) if gaming_graph else set()
     
-    # Validation results
+    # Validation results (coverage via mappings)
     results = {
         "unity_coverage": {
-            "classes_covered": len(unity_classes.intersection(gaming_classes)),
+            "classes_covered": sum(1 for c in unity_classes if appears_in_graph(c, unity_mapping)),
             "classes_total": len(unity_classes),
-            "properties_covered": len(unity_props.intersection(gaming_props)),
+            "properties_covered": sum(1 for p in unity_props if appears_in_graph(p, unity_mapping)),
             "properties_total": len(unity_props)
         },
         "mixpanel_coverage": {
-            "classes_covered": len(mixpanel_classes.intersection(gaming_classes)),
+            "classes_covered": sum(1 for c in mixpanel_classes if appears_in_graph(c, mixpanel_mapping)),
             "classes_total": len(mixpanel_classes),
-            "properties_covered": len(mixpanel_props.intersection(gaming_props)),
+            "properties_covered": sum(1 for p in mixpanel_props if appears_in_graph(p, mixpanel_mapping)),
             "properties_total": len(mixpanel_props)
         },
         "gop_coverage": {
-            "classes_covered": len(gop_classes.intersection(gaming_classes)),
+            "classes_covered": sum(1 for c in gop_classes if appears_in_graph(c, gop_mapping)),
             "classes_total": len(gop_classes),
-            "properties_covered": len(gop_props.intersection(gaming_props)),
+            "properties_covered": sum(1 for p in gop_props if appears_in_graph(p, gop_mapping)),
             "properties_total": len(gop_props)
+        },
+        "adinmo_coverage": {
+            "classes_covered": sum(1 for c in adinmo_classes if appears_in_graph(c, adinmo_mapping)),
+            "classes_total": len(adinmo_classes),
+            "properties_covered": sum(1 for p in adinmo_props if appears_in_graph(p, adinmo_mapping)),
+            "properties_total": len(adinmo_props)
         }
     }
     
@@ -119,12 +155,18 @@ def validate_coverage():
     print(f"  Classes: {results['gop_coverage']['classes_covered']}/{results['gop_coverage']['classes_total']}")
     print(f"  Properties: {results['gop_coverage']['properties_covered']}/{results['gop_coverage']['properties_total']}")
     print()
+
+    print("Adinmo Coverage:")
+    print(f"  Classes: {results['adinmo_coverage']['classes_covered']}/{results['adinmo_coverage']['classes_total']}")
+    print(f"  Properties: {results['adinmo_coverage']['properties_covered']}/{results['adinmo_coverage']['properties_total']}")
+    print()
     
     # Overall validation
     all_covered = (
         results['unity_coverage']['classes_covered'] == results['unity_coverage']['classes_total'] and
         results['mixpanel_coverage']['classes_covered'] == results['mixpanel_coverage']['classes_total'] and
-        results['gop_coverage']['classes_covered'] == results['gop_coverage']['classes_total']
+        results['gop_coverage']['classes_covered'] == results['gop_coverage']['classes_total'] and
+        results['adinmo_coverage']['classes_covered'] == results['adinmo_coverage']['classes_total']
     )
     
     if all_covered:

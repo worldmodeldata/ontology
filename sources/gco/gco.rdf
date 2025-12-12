@@ -1,0 +1,2896 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://autosemanticgame.eu/ontologies/gco#"
+     xml:base="http://autosemanticgame.eu/ontologies/gco#"
+     xmlns:adms="http://www.w3.org/ns/adms#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:cgo="http://autosemanticgame.eu/ontologies/cgo#"
+     xmlns:dbo="http://dbpedia.org/ontology/"
+     xmlns:gco="http://autosemanticgame.eu/ontologies/gco#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://autosemanticgame.eu/ontologies/gco#">
+        <!-- <owl:versionIRI rdf:resource="http://autosemanticgame.eu/ontologies/gco/1.0.0"/> -->
+        <dcterms:type rdf:resource="http://purl.org/adms/assettype/Ontology"/>
+        <!-- <dc:creator rdf:resource="http://autosemanticgame.eu/ontologies/gco#owensacco"/> -->
+        <dc:creator>Owen Sacco</dc:creator>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0.0</owl:versionInfo>
+        <dcterms:partOf rdf:resource="http://autosemanticgame.eu"/>
+        <foaf:homepage rdf:resource="http://autosemanticgame.eu/ontologies/gco"/>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-12-23</dcterms:modified>
+        <dcterms:status rdf:resource="http://purl.org/adms/status/UnderDevelopment"/>
+        <vann:preferredNamespacePrefix>gco</vann:preferredNamespacePrefix>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-12-01</dcterms:created>
+        <dc:date>2016-12-01</dc:date>
+        <dcterms:title>The Game Character Ontology (GCO)</dcterms:title>
+        <rdfs:comment xml:lang="en">The Game Character Ontology (GCO) is an ontology for describing information about video game characters extracted from various sources such as fansites or even information extracted from games. This semantically-structured video game character information can be used to publish character information on the Web, and also within games used by game engines and mechanics.</rdfs:comment>
+        <dc:description xml:lang="en">The Game Character Ontology (GCO) provides a light-weight vocabulary for describing characters in video games. Characters are defined using the main class gco:Character and could either be playable or non-playable characters, defined by the gco:PlayableCharacter or gco:NonPlayableCharacter subclasses respectively. Playable characters are characters controlled by the player whereas non-playable characters are controlled by AI. In some games, characters could be playable at some point in the game and non-playable at other points in the same game since the user is assigned another character whilst following the game&apos;s narrative. For example, in Assassin&apos;s Creed III, players start off by playing as a playable-character named &quot;Haytham Kenway&quot; and during the game&apos;s story, the players take up the role and play with another playable character named &quot;Connor Kenway&quot;. At that point onwards, the first character &quot;Haytham Kenway&quot; becomes a non-playable character and is controlled by AI. In this regard, characters can be defined as instances of both the gco:PlayableCharacter and/or gco:NonPlayableCharacter subclasses. Moreover, characters could be of any type, from human-like characters to any type of creature, defined by the class gco:Species. Furthermore, characters could be main protagonists or main antagonists in a game. Whether a character is a main protagonist or not is beyond the scope of this ontology since this is bound to a specific game rather than a character. Therefore, we model game characters irrespective of which game they are played or appeared in. 
+
+Although the ontology is designed based on action-adventure and role-playing video game characters such as characters in the Assassin&apos;s Creed series or The Elder Scrolls series, the ontology still can be used for defining characters in video games of other genre types (such as first-person shooter video games) since the ontology provides detailed classes and properties that can be used for modelling any type of game character.</dc:description>
+		<dc:rights xml:lang="en">This ontology is distributed under a Creative Commons Attribution License - http://creativecommons.org/licenses/by/4.0</dc:rights>
+		<dc:description rdf:resource="http://autosemanticgame.eu/ontologies/gco/diagram/gco.svg"/>
+        <vann:preferredNamespaceUri>http://autosemanticgame.eu/ontologies/gco#</vann:preferredNamespaceUri>
+    </owl:Ontology>
+    
+
+
+    <!--    ********************************** 
+                    Annotation properties 
+            ********************************** -->
+
+    <!-- FOAF -->    
+
+    <!-- http://xmlns.com/foaf/0.1/homepage -->
+
+    <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/homepage"/>    
+
+
+    <!-- http://xmlns.com/foaf/0.1/name -->
+
+    <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/name"/>
+    
+
+
+    <!-- Datatypes -->
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
+    
+
+
+    <!--    ********************************** 
+                    Object Properties 
+            ********************************** -->    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#acquaitanceOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#acquaitanceOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">acquaitance of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character has met and knows slightly another character but they lack friendship.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#ancestorOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#ancestorOf">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#descendantOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">ancestor of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is an ancestor of another character.</rdfs:comment>      
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#appearsIn -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#appearsIn">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/cgo#Game"/>
+        <rdfs:label xml:lang="en">appears in</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies the game(s) in which the character appears.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#apprenticeTo -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#apprenticeTo">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#mentorOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">apprentice to</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character serves and learns from another character.</rdfs:comment>               
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#birthPlace -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#birthPlace">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Place"/>
+        <rdfs:label xml:lang="en">birth place</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a place of birth of a character.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#brotherOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#brotherOf">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#sisterOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Sibling"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">brother of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the brother of another character.</rdfs:comment>           
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#closeFriendOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#closeFriendOf">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#enemyOf"/>
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#friendOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">close friend of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that two characters share a close friendship.</rdfs:comment>     
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#collaboratesWith -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#collaboratesWith">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">collaborates with</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that two characters collaborate with each other to accomplish a common goal.</rdfs:comment>      
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#colleagueOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#colleagueOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">colleague of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character works with another character within a group but it does not mean that they work together to achieve a common goal.</rdfs:comment>      
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#currentOccupation -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#currentOccupation">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Occupation"/>
+        <rdfs:label xml:lang="en">current occupation</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies the current professional occupation of a character.</rdfs:comment>            
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#daughterOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#daughterOf">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#sonOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Child"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">daughter of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the daughter of another character.</rdfs:comment>           
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#deathPlace -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#deathPlace">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Place"/>
+        <rdfs:label xml:lang="en">death place</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a place of death of a character.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#descendantOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#descendantOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">descendant of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is a descendant of another character.</rdfs:comment>          
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#employedBy -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#employedBy">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#employerOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">employed by</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is employed by another character.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#employerOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#employerOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">employer of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is an employer of another character.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#enemyOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#enemyOf">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#friendOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">enemy of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that two characters are enemies of each other.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#engagedTo -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#engagedTo">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">engaged to</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that two characters are engaged with each other.</rdfs:comment>   
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#eyeColour -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#eyeColour">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Appearance"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Colour"/>
+        <rdfs:label xml:lang="en">eye colour</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies the colour of the character's eyes.</rdfs:comment>   
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#facialHairColour -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#facialHairColour">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Appearance"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Colour"/>
+        <rdfs:label xml:lang="en">facial hair colour</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies the colour of the character's facial hair.</rdfs:comment>       
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#fatherOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#fatherOf">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#motherOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Parent"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">father of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the father of another character.</rdfs:comment>  
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#friendOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#friendOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">friend of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is a friend of another character.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#grandDaughterOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#grandDaughterOf">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#grandSonOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#GrandChild"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">grand daughter of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the grand daughter of another character.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#grandFatherOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#grandFatherOf">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#grandMotherOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#GrandParent"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">grand father of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the grand father of another character.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#grandMotherOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#grandMotherOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#GrandParent"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">grand mother of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the grand mother of another character.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#grandSonOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#grandSonOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#GrandChild"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">grand son of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the grand son of another character.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hairColour -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hairColour">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Appearance"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Colour"/>
+        <rdfs:label xml:lang="en">hair colour</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies the colour of the character's hair.</rdfs:comment>       
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasAbility -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasAbility">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ability"/>
+        <rdfs:label xml:lang="en">has ability</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies an ability of a character.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasAbilityAction -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasAbilityAction">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ability"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Action"/>
+        <rdfs:label xml:lang="en">has ability action</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default action bound to an ability and when executed produces a result.</rdfs:comment>           
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasAbilityRestriction -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasAbilityRestriction">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ability"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Restriction"/>
+        <rdfs:label xml:lang="en">has ability restriction</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a restriction on using an ability.</rdfs:comment>        
+    </owl:ObjectProperty>  
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasAppearance -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasAppearance">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Appearance"/>
+        <rdfs:label xml:lang="en">has appearance</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines the character's physical appearance.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasArmour -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasArmour">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Armour"/>
+        <rdfs:label xml:lang="en">has armour</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a piece of armour that a character can wear or use to protect himself/herself from any damage.</rdfs:comment>          
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasArmourAction -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasArmourAction">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Armour"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Action"/>
+        <rdfs:label xml:lang="en">has armour action</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default action bound to an armour.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasCharacterClass -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasCharacterClass">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#CharacterClass"/>
+        <rdfs:label xml:lang="en">has character class</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a character's class which consist of archetypes or careers.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasCharacterClassAbility -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasCharacterClassAbility">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#CharacterClass"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ability"/>
+        <rdfs:label xml:lang="en">has character class ability</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default ability which a character classified by a particular character class can perform.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasCharacterClassPower -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasCharacterClassPower">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#CharacterClass"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Power"/>
+        <rdfs:label xml:lang="en">has character class power</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default power which a character classified by a particular character class can perform.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasCharacterClassSkill -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasCharacterClassSkill">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#CharacterClass"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Skill"/>
+        <rdfs:label xml:lang="en">has character class skill</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default skill which a character classified by a particular character class can perform.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasOutfitGarment -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasOutfitGarment">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Outfit"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>
+        <rdfs:label xml:lang="en">has outfit garment</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a piece of a garment which is part of a specific outfit.</rdfs:comment>        
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasGarmentAction -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasGarmentAction">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Action"/>
+        <rdfs:label xml:lang="en">has garment action</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default action bound to a garment.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasGarmentColour -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasGarmentColour">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Colour"/>
+        <rdfs:label xml:lang="en">has garment colour</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines the colour of the garment.</rdfs:comment>         
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasGender -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasGender">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Gender"/>
+        <rdfs:label xml:lang="en">has gender</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies the character's gender which can be defined as either Male or Female.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasGroupLogo -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasGroupLogo">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Image"/>
+        <rdfs:label xml:lang="en">has group logo</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a symbolic image that symbolises a group, which could be a coat of arms, a seal, a flag etc.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasImage -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasImage">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Image"/>
+        <rdfs:label xml:lang="en">has image</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies digital images (for example JPEG, PNG, GIF bitmaps, SVG diagrams etc.) that depict a character.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasInventory -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasInventory">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Inventory"/>
+        <rdfs:label xml:lang="en">has inventory</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies an item or set of items that a character can use.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasInventoryItem -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasInventoryItem">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Inventory"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Item"/>
+        <rdfs:label xml:lang="en">has inventory item</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines an item such as health potions which characters can use or carry.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasItemAction -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasItemAction">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Item"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Action"/>
+        <rdfs:label xml:lang="en">has item action</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default action bound to an item.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasLeader -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasLeader">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#leaderOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">has leader</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies who is a current leader of a group.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasMember -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasMember">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#memberOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">has member</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies who is a current member of a group.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasOutfit -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasOutfit">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Outfit"/>
+        <rdfs:label xml:lang="en">has outfit</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies an outfit (consisting of a set of garments) a character can wear.</rdfs:comment>          
+    </owl:ObjectProperty>  
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasPastLeader -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasPastLeader">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#pastLeaderOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">has past leader</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies past leaders of a group.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasPastMember -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasPastMember">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#pastMemberOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">has past member</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies past members of a group.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasPersonality -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasPersonality">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Personality"/>
+        <rdfs:label xml:lang="en">has personality</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a character's characteristic pattern of thinking, feeling and/or behaviour.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasPhysicalBody -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasPhysicalBody">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Appearance"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#PhysicalBody"/>
+        <rdfs:label xml:lang="en">has physical body</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a character's physical body consisting of various physical body parts.</rdfs:comment>        
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasPower -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasPower">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Power"/>
+        <rdfs:label xml:lang="en">has power</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a character's power.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasPowerAction -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasPowerAction">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Power"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Action"/>
+        <rdfs:label xml:lang="en">has power action</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default action bound to a power that when executed produces a result.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRace -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRace">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Race"/>
+        <rdfs:label xml:lang="en">has race</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a character's race.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRaceAbility -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRaceAbility">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Race"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ability"/>
+        <rdfs:label xml:lang="en">has race ability</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default ability that a character classified by a particular race can perform.</rdfs:comment>          
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRacePower -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRacePower">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Race"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Power"/>
+        <rdfs:label xml:lang="en">has race power</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default power that a character classified by a particular race can perform.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRaceSkill -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRaceSkill">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Race"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Skill"/>
+        <rdfs:label xml:lang="en">has race skill</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default skill that a character classified by a particular race can perform.</rdfs:comment>           
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRelationship -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRelationship">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:label xml:lang="en">has relationship</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a relationship amongst characters.</rdfs:comment>          
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRole -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRole">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Role"/>
+        <rdfs:label xml:lang="en">has role</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a character's role.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRoleAbility -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRoleAbility">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Role"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ability"/>
+        <rdfs:label xml:lang="en">has role ability</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character can only use a particular ability when the character is in a particular role.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRoleArmour -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRoleArmour">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Role"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Armour"/>
+        <rdfs:label xml:lang="en">has role armour</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character can only use a particular ability when the character is in a particular role.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRoleInGroup -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRoleInGroup">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Role"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">has role in group</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a character's role in a group.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRoleInventory -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRoleInventory">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Role"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Inventory"/>
+        <rdfs:label xml:lang="en">has role inventory</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character can only use a particular inventory when the character is in a particular role.</rdfs:comment>          
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRoleOutfit -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRoleOutfit">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Role"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Outfit"/>
+        <rdfs:label xml:lang="en">has role outfit</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines an outfit assigned to a role.</rdfs:comment>          
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRolePower -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRolePower">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Role"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Power"/>
+        <rdfs:label xml:lang="en">has role power</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character can only use a particular power when the character is in a particular role.</rdfs:comment>          
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRoleSkill -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRoleSkill">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Role"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Skill"/>
+        <rdfs:label xml:lang="en">has role skill</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character can only use a particular skill when the character is in a particular role.</rdfs:comment>          
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasRoleWeapon -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasRoleWeapon">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Role"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Weapon"/>
+        <rdfs:label xml:lang="en">has role weapon</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character can only use a particular weapon when the character is in a particular role.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasSkill -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasSkill">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Skill"/>
+        <rdfs:label xml:lang="en">has skill</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a character's skill.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasSkillAction -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasSkillAction">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Skill"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Action"/>
+        <rdfs:label xml:lang="en">has skill action</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default action bound to a skill that when executed produces a result.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasSpecies -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasSpecies">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Species"/>
+        <rdfs:label xml:lang="en">has species</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies the character's species.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasSpeciesAbility -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasSpeciesAbility">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Species"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ability"/>
+        <rdfs:label xml:lang="en">has species ability</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default ability that a character classified by a particular species can perform.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasSpeciesPower -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasSpeciesPower">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Species"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Power"/>
+        <rdfs:label xml:lang="en">has species power</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default power that a character classified by a particular species can perform.</rdfs:comment>          
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasSpeciesSkill -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasSpeciesSkill">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Species"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Skill"/>
+        <rdfs:label xml:lang="en">has species skill</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default skill that a character classified by a particular species can perform.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasWeapon -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasWeapon">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Weapon"/>
+        <rdfs:label xml:lang="en">has weapon</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a weapon that a character can use.</rdfs:comment>  
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasWeaponAction -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasWeaponAction">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Weapon"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Action"/>
+        <rdfs:label xml:lang="en">has weapon action</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a default action bound to a weapon.</rdfs:comment>          
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasWeaponAmmunition -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasWeaponAmmunition">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Weapon"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ammunition"/>
+        <rdfs:label xml:lang="en">has weapon ammunition</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines the ammunition used by a weapon.</rdfs:comment>        
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#hasWeaponAttachment -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#hasWeaponAttachment">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Weapon"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Attachment"/>
+        <rdfs:label xml:lang="en">has weapon attachment</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines an attachment that can be fixed onto a weapon.</rdfs:comment>     
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#husbandOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#husbandOf">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#wifeOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Spouse"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">husband of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the husband of another character.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#influencedNegativelyBy -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#influencedNegativelyBy">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#influencedPositivelyBy"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">influenced negatively by</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is negatively influenced by another character.</rdfs:comment>           
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#influencedPositivelyBy -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#influencedPositivelyBy">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">influenced positively by</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is positively influenced by another character.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#isChild -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#isChild">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#isParent"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Child"/>
+        <rdfs:label xml:lang="en">is child</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is a child of another character.</rdfs:comment>  
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#isGrandChild -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#isGrandChild">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#isGrandParent"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#GrandChild"/>
+        <rdfs:label xml:lang="en">is grand child</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is a grand child of another character.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#isGrandParent -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#isGrandParent">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#GrandParent"/>
+        <rdfs:label xml:lang="en">is grand parent</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is a grand parent of another character.</rdfs:comment>         
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#isParent -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#isParent">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Parent"/>
+        <rdfs:label xml:lang="en">is parent</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is a parent of another character.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#isSibling -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#isSibling">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Sibling"/>
+        <rdfs:label xml:lang="en">is sibling</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is a sibling of another character.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#isSpouse -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#isSpouse">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#partnerOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Spouse"/>
+        <rdfs:label xml:lang="en">is spouse</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is a spouse of another character.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#knowsOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#knowsOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">knows of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character knows of another character but does not necessarily mean that they have met or have any other type of friendship.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#leaderOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#leaderOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">leader of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies that a character is a current leader of a particular group.</rdfs:comment>  
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#livedIn -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#livedIn">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Place"/>
+        <rdfs:label xml:lang="en">lived in</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies past place(s) where a character lived.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#livesIn -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#livesIn">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Place"/>
+        <rdfs:label xml:lang="en">lives in</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies the current place where a character lives.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#livesWith -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#livesWith">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#neighbourOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">lives with</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character lives with another character but does not necessarily mean that they are married, or are partners or have any other type of friendship.</rdfs:comment>      
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#memberOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#memberOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">member of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies that a character is a current member of a particular group.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#mentorOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#mentorOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">mentor of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is a mentor of another character.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#motherOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#motherOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Parent"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">mother of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the mother of another character.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#neighbourOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#neighbourOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">neighbour of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character lives near another character.</rdfs:comment>     
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#onlineArticle -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#onlineArticle">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Post"/>
+        <rdfs:label xml:lang="en">online article</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a reference to an on-line article describing a character, for example an article from fansites such as Fandom.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#overGarmentOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#overGarmentOf">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#underGarmentOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>
+        <rdfs:label xml:lang="en">over garment of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a garment is over another piece of garment.</rdfs:comment>   
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#partOfBody -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#partOfBody">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#PhysicalBody"/>
+        <rdfs:label xml:lang="en">part of body</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines the part of the body where the garment is worn.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#partnerOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#partnerOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">partner of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that two characters share an intimate relationship but who are not married to each other.</rdfs:comment>        
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#pastLeaderOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#pastLeaderOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">past leader of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies that a character is a past leader of a particular group.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#pastMemberOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#pastMemberOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">past member of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies that a character is a past member of a particular group.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#pastOccupation -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#pastOccupation">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Occupation"/>
+        <rdfs:label xml:lang="en">past occupation</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies past professional occupation(s) held by a character.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#petOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#petOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">pet of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is a pet of another character.</rdfs:comment>    
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#raceOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#raceOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Race"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Species"/>
+        <rdfs:label xml:lang="en">race of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies that a particular race falls under a particular species. For example the Men race falls under the Human species. All the properties of the defined species linked to a race are automatically propagated to all the characters classified under that particular race.</rdfs:comment>    
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#sisterOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#sisterOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Sibling"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">sister of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the sister of another character.</rdfs:comment>          
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#skinColour -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#skinColour">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Appearance"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Colour"/>
+        <rdfs:label xml:lang="en">skin colour</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a skin colour tone using the RGB colour model.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#slaveOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#slaveOf">
+        <owl:inverseOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#slaveOwnerOf"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">slave of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is a slave  of another character.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#slaveOwnerOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#slaveOwnerOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">slave owner of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the owner of another character who is a slave.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#sonOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#sonOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Child"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">son of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the son of another character.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#underGarmentOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#underGarmentOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>
+        <rdfs:label xml:lang="en">under garment of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a garment is underneath another piece of garment.</rdfs:comment>  
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#voicedBy -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#voicedBy">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:label xml:lang="en">voiced by</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies the voice actor who represents the character's voice, and the attribute xml:lang could be used to define the language.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#wifeOf -->
+
+    <owl:ObjectProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#wifeOf">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Spouse"/>
+        <rdfs:range rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:label xml:lang="en">wife of</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines that a character is the wife of another character.</rdfs:comment> 
+    </owl:ObjectProperty>
+    
+
+
+    <!--    ********************************** 
+                    Data properties 
+            ********************************** -->    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#age -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#age">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">age</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">A character&apos;s age value.
+
+Note: This value indicates that the character does not age during a game, and the whole game is set during the year of the character&apos;s age. %The age can be calculated if the character&apos;s birth date or birth year is known -- see gco:birthDate or gco:birthYear respectively.</rdfs:comment>
+    </owl:DatatypeProperty>
+   
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#armourWearable -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#armourWearable">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Armour"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">armour wearable</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a boolean whether an armour can be wearable or not.</rdfs:comment>        
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#birthDate -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#birthDate">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="en">birth date</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies the character&apos;s birth date value as an xsd:date in the format YYYY-MM-DD. This value, together with a game&apos;s date at any point in a game, could be used to calculate the character&apos;s age.</rdfs:comment>   
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#birthYear -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#birthYear">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+        <rdfs:label xml:lang="en">birth year</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a character&apos;s year of birth value. In some instances, the birth date value is unknown but only the birth year is provided. This value could also be used to calculate the character&apos;s age during a game by calculating the difference between a game's year value at any point in the game and the gco:birthYear value.</rdfs:comment>  
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#deathDate -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#deathDate">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="en">death date</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a character&apos;s death date value as an xsd:date in the format YYYY-MM-DD.</rdfs:comment>  
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#deathYear -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#deathYear">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+        <rdfs:label xml:lang="en">death year</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Specifies a character&apos;s year of death value. In some instances, the death date value is unknown and only the death year is provided.</rdfs:comment>  
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#height -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#height">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label xml:lang="en">height</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">A character&apos;s height value.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#defaultAbilityHitPoints -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#defaultAbilityHitPoints">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ability"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">default ability hit points</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines (initial) default ability hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by an increase in experience or when the character levels up etc. The upgrade value of the ability hit points is determined by the game play rules which is beyond the scope of this ontology.</rdfs:comment>   
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#defaultArmourDeflectPoints -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#defaultArmourDeflectPoints">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Armour"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">default armour deflect points</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines (initial) default armour deflect points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased armour upgrade. The upgrade value of the armour deflect points is determined by the game play rules which is beyond the scope of this ontology.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#defaultArmourHitPoints -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#defaultArmourHitPoints">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Armour"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">default armour hit points</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines (initial) default armour hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased armour upgrade. The upgrade value of the armour hit points is determined by the game play rules which is beyond the scope of this ontology.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#defaultPowerHitPoints -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#defaultPowerHitPoints">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Power"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">default power hit points</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines (initial) default power hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by an increase in experience or when the character levels up etc. The upgrade value of the power hit points is determined by the game play rules which is beyond the scope of this ontology.</rdfs:comment>           
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#defaultSkillHitPoints -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#defaultSkillHitPoints">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Skill"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">default skill hit points</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines (initial) default skill hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by an increase in experience or when the character levels up etc. The upgrade value of the skill hit points is determined by the game play rules which is beyond the scope of this ontology.</rdfs:comment>          
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#defaultItemPoints -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#defaultItemPoints">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Item"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">default item points</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines (initial) default item points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased item upgrade or a discovered item upgrade etc. The upgrade value of the item points is determined by the game play rules which is beyond the scope of this ontology.</rdfs:comment>         
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#defaultGarmentDeflectPoints -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#defaultGarmentDeflectPoints">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">default garment deflect points</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines (initial) default garment deflect points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased garment upgrade or when the character levels up etc. The upgrade value of the garment deflect points is determined by the game play rules which is beyond the scope of this ontology.</rdfs:comment>           
+    </owl:DatatypeProperty> 
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#defaultGarmentHitPoints -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#defaultGarmentHitPoints">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">default garment hit points</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines (initial) default garment hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased garment upgrade or when the character levels up etc. The upgrade value of the garment hit points is determined by the game play rules which is beyond the scope of this ontology.</rdfs:comment>
+    </owl:DatatypeProperty>    
+
+
+
+   <!-- http://autosemanticgame.eu/ontologies/gco#defaultWeaponHitPoints -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#defaultWeaponHitPoints">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Weapon"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label xml:lang="en">default weapon hit points</rdfs:label>        
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines (initial) default weapon hit points value. This value could be added (or subtracted) with upgrade values accordingly during a game, for example caused by a purchased weapon upgrade or when the character levels up etc. The upgrade value of the weapon hit points is determined by the game play rules which is beyond the scope of this ontology.</rdfs:comment>         
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#doubleHandedWeapon -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#doubleHandedWeapon">         
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Weapon"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">double handed weapon</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines whether a weapon is double handed. A weapon cannot be both single-handed or double-handed and a character can only use one-double-handed weapon at a time (if the character has two hands). This normally requires that a character has a double-handed skill which enables the character to yield a double-handed weapon, but this restriction should be defined in the game play rules of a game and therefore this is beyond the scope of this ontology.</rdfs:comment>         
+    </owl:DatatypeProperty> 
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#name -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#name">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">name</rdfs:label>
+        <rdfs:comment xml:lang="en">A character&apos;s full name.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>        
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#nickname -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#nickname">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">nickname</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">A character&apos;s nickname.</rdfs:comment>         
+    </owl:DatatypeProperty>
+ 
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#singleHandedWeapon -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#singleHandedWeapon">      
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Weapon"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">single handed weapon</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines whether a weapon is single handed. A weapon cannot be both single-handed or double-handed but a character could have two single-handed weapons in separate hands.</rdfs:comment>         
+    </owl:DatatypeProperty>   
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#weight -->
+
+    <owl:DatatypeProperty rdf:about="http://autosemanticgame.eu/ontologies/gco#weight">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:label xml:lang="en">weight</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">A character&apos;s weight value.</rdfs:comment>        
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/description">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ability"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Action"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ammunition"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Armour"/>
+		<rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Attachment"/>        
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#PhysicalBody"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#CharacterClass"/>
+		<rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>        
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Gender"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Inventory"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Item"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Occupation"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Outfit"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Personality"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Place"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Power"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Race"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Restriction"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Role"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Skill"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Species"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Weapon"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label">
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ability"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Action"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Ammunition"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Armour"/>
+		<rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#WeaponAttachment"/>        
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#PhysicalBody"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#CharacterClass"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Garment"/>        
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Gender"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Inventory"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Item"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Occupation"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Outfit"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Personality"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Place"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Power"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Race"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Relationship"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Restriction"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Role"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Skill"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Species"/>
+        <rdfs:domain rdf:resource="http://autosemanticgame.eu/ontologies/gco#Weapon"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!--    ********************************** 
+                        Classes 
+            ********************************** -->  
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Ability -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Ability">
+        <rdfs:label xml:lang="en">Ability</rdfs:label>
+        <rdfs:comment xml:lang="en">Passive actions that are applied automatically and are not activated by a player.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>        
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Armour -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Armour">
+        <rdfs:label xml:lang="en">Armour</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines a piece of armour which characters can use or wear to deflect any damage (i.e. minimise hit points) inflicted by opponents.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Character -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Character">
+        <rdfs:label xml:lang="en">Character</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Any character within a video game. The character could be playable or non playable (NPC).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#CharacterClass -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#CharacterClass">
+        <rdfs:label xml:lang="en">Character Class</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a more specific classification of characters based on archetypes and/or careers.</rdfs:comment>        
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Female -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Female">
+        <rdfs:label xml:lang="en">Female</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a character being a Female.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Gender"/>
+        <owl:disjointWith rdf:resource="http://autosemanticgame.eu/ontologies/gco#Male"/>
+    </owl:Class>
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Garment -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Garment">
+        <rdfs:label xml:lang="en">Garment</rdfs:label>
+        <rdfs:comment xml:lang="en">A piece of garment a character can wear.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>        
+    </owl:Class>    
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Gender -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Gender">
+        <rdfs:label xml:lang="en">Gender</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines the gender of a character being either Male or Female.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>        
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Group -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Group">
+        <rdfs:label xml:lang="en">Group</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines various types of groups in which characters could be a part of.</rdfs:comment>        
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Inventory -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Inventory">
+        <rdfs:label xml:lang="en">Inventory</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">A set of items, such as health potions, which characters can use or carry.</rdfs:comment>        
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Male -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Male">
+        <rdfs:label xml:lang="en">Male</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines a character being a Male.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Gender"/>
+        <owl:disjointWith rdf:resource="http://autosemanticgame.eu/ontologies/gco#Female"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#NonPlayableCharacter -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#NonPlayableCharacter">
+        <rdfs:label xml:lang="en">Non Playable Character</rdfs:label>
+        <rdfs:comment xml:lang="en">Characters controlled by AI.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>   
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>     
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Occupation -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Occupation">
+        <rdfs:label xml:lang="en">Occupation</rdfs:label>
+        <rdfs:comment xml:lang="en">A profession that could be either either a fictional or modelled based on a real profession.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Outfit -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Outfit">
+        <rdfs:label xml:lang="en">Outfit</rdfs:label>
+        <rdfs:comment xml:lang="en">A piece of garment or a set of garments a character can wear.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>        
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Personality -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Personality">
+        <rdfs:label xml:lang="en">Personality</rdfs:label>
+        <rdfs:comment xml:lang="en">A character&apos;s characteristic pattern of thinking, feeling or behaviour.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Place -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Place">
+        <rdfs:label xml:lang="en">Place</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">A location that could either be a general ficitonal location, or a location in a game world, or a location modelled based on a real location in the real world.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#PlayableCharacter -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#PlayableCharacter">
+        <rdfs:label xml:lang="en">Playable Character</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Characters controlled by a player.</rdfs:comment>        
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Character"/>
+    </owl:Class>
+
+
+
+        <!-- http://autosemanticgame.eu/ontologies/gco#Power -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Power">
+        <rdfs:label xml:lang="en">Power</rdfs:label>
+        <rdfs:comment xml:lang="en">Unique actions that are activated by a player, which normally consist of super-natural actions, for example magic spells or sources of energy that power up armour.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Race -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Race">
+        <rdfs:label xml:lang="en">Race</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines a narrower character classification than the species classification, for example a &quot;Men&quot; race or a &quot;Women race</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>        
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Relationship -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Relationship">
+        <rdfs:label xml:lang="en">Relationship</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">&quot;Defines various types of relationships which characters have with other characters.</rdfs:comment>        
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Role -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Role">
+        <rdfs:label xml:lang="en">Role</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>
+        <rdfs:comment xml:lang="en">Defines specific representations of roles that characters can change into.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Skill -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Skill">
+        <rdfs:label xml:lang="en">Skill</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines active actions (activated by a player) which characters can perform to complete a specific task in a game.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>        
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Species -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Species">
+        <rdfs:label xml:lang="en">Species</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines fictional representations of generic character classifications for example the Human species or even fictional species such as Orc or Elf.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>        
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Weapon -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Weapon">
+        <rdfs:label xml:lang="en">Weapon</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines weapons which characters can use or carry.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>        
+    </owl:Class>
+
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/cgo#Game -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/cgo#Game">
+        <rdfs:label xml:lang="en">Game</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies a video game. This class is defined in the Core Game Ontology (CGO)</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/cgo#"/>            
+    </owl:Class>  
+
+
+    
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Action -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Action">
+        <rdfs:label xml:lang="en">Action</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines an action which is carried out by a video game. Actions are in the form of RIF rules.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Affiliation -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Affiliation">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Affiliation</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>            
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Alliance -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Alliance">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Alliance</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Ammunition -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Ammunition">
+        <rdfs:label xml:lang="en">Ammunition</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines an ammunition which a weapon can use.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Appearance -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Appearance">
+        <rdfs:label xml:lang="en">Appearance</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines the physical appearance of a character.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class>
+       
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Army -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Army">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Army</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Association -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Association">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Association</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Attachment -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Attachment">
+        <rdfs:label xml:lang="en">Attachment</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines an attachment which can be fixed onto a piece of equipment such as a weapon - for example a scope fixed onto a gun.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Axis -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Axis">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Axis</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Band -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Band">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Band</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Battalion -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Battalion">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Battalion</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Bloc -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Bloc">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Bloc</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Body -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Body">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Body</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Branch -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Branch">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Branch</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>    
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Brigade -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Brigade">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Brigade</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Brotherhood -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Brotherhood">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Brotherhood</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Camp -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Camp">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Camp</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Campaign -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Campaign">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Campaign</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Cartel -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Cartel">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Cartel</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Cell -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Cell">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Cell</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Chamber -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Chamber">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Chamber</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class> 
+  
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#PhysicalBody -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#PhysicalBody">
+        <rdfs:label xml:lang="en">Character's Physical Body</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines the physical parts of a character's body.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>  
+    </owl:Class>
+
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Child -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Child">
+        <rdfs:label xml:lang="en">Child</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines that a character is a child.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>  
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Circle -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Circle">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Circle</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Clan -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Clan">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Clan</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>            
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Clique -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Clique">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Clique</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Club -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Club">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Club</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Coalition -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Coalition">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Coalition</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>              
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Company -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Company">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Company</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>            
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Confederation -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Confederation">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Confederation</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Congress -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Congress">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Congress</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Consortium -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Consortium">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Consortium</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>        
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Corps -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Corps">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Corps</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Council -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Council">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Council</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Crew -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Crew">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Crew</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Crusade -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Crusade">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Crusade</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Division -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Division">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Division</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Faction -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Faction">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Faction</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Family -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Family">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Family</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>             
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Federation -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Federation">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Federation</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Fellowship -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Fellowship">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Fellowship</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class>
+    
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Force -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Force">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Force</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>  
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Fraternity -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Fraternity">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Fraternity</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Gang -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Gang">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Gang</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+   
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#GrandChild -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#GrandChild">
+        <rdfs:label xml:lang="en">Grand Child</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines that a character is a grand child.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#GrandParent -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#GrandParent">
+        <rdfs:label xml:lang="en">Grand Parent</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines that a character is a grand parent.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>             
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Guild -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Guild">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Guild</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Horde -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Horde">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Horde</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>            
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#House -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#House">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">House</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>  
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Item -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Item">
+        <rdfs:label xml:lang="en">Item</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines an inventory item such as a health potion.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>   
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#League -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#League">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">League</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Lobby -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Lobby">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Lobby</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Mob -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Mob">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Mob</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Movement -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Movement">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Movement</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Order -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Order">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Order</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Organisation -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Organisation">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Organisation</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Pack -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Pack">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Pack</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Parent -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Parent">
+        <rdfs:label xml:lang="en">Parent</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines that a character is a parent.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Partnership -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Partnership">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Partnership</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Party -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Party">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Party</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class>
+
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Platoon -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Platoon">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Platoon</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>  
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Regiment -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Regiment">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Regiment</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Restriction -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Restriction">
+        <rdfs:label xml:lang="en">Restriction</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines a restriction of an action.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>  
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Ring -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Ring">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Ring</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>    
+
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Sect -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Sect">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Sect</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Senate -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Senate">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Senate</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Sibling -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Sibling">
+        <rdfs:label xml:lang="en">Sibling</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines that a character is a sibling.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Sisterhood -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Sisterhood">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Sisterhood</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Society -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Society">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Society</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Sorority -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Sorority">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Sorority</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>   
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Spouse -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Spouse">
+        <rdfs:label xml:lang="en">Spouse</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines that a character is a spouse.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Squad -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Squad">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Squad</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Squadron -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Squadron">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Squadron</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>             
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Syndicate -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Syndicate">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Syndicate</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Team -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Team">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Team</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Tribe -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Tribe">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Tribe</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Troop -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Troop">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Troop</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Union -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Union">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Union</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>           
+    </owl:Class>
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Unit -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Unit">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Unit</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>          
+    </owl:Class>  
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#Wing -->
+
+    <owl:Class rdf:about="http://autosemanticgame.eu/ontologies/gco#Wing">
+        <rdfs:subClassOf rdf:resource="http://autosemanticgame.eu/ontologies/gco#Group"/>
+        <rdfs:label xml:lang="en">Wing</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://autosemanticgame.eu/ontologies/gco#"/>         
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Colour -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Colour"/>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#Post -->
+
+    <owl:Class rdf:about="http://rdfs.org/sioc/ns#Post"/>
+    
+
+
+    <!-- http://www.w3.org/ns/adms#SemanticAsset -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/adms#SemanticAsset"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Image -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Image"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
+    
+
+
+    <!--    ********************************** 
+                        Individuals 
+            ********************************** -->   
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco -->
+
+    <owl:NamedIndividual rdf:about="http://autosemanticgame.eu/ontologies/gco#">
+        <rdf:type rdf:resource="http://www.w3.org/ns/adms#SemanticAsset"/>
+        <dcterms:description>An ontology for describing game character information</dcterms:description>
+    </owl:NamedIndividual>      
+    
+
+
+    <!-- http://autosemanticgame.eu/ontologies/gco#owensacco -->
+
+    <owl:NamedIndividual rdf:about="http://autosemanticgame.eu/ontologies/gco#owensacco">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:label>Owen Sacco</rdfs:label>
+        <foaf:homepage rdf:resource="http://www.owensacco.com"/>
+        <foaf:name>Owen Sacco</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+
